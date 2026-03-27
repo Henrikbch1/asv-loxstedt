@@ -1,0 +1,7 @@
+cms/database/*
+cms/uploads/*
+cms/.env
+cms/.env.*
+!cms/database/.gitkeep
+!cms/uploads/.gitkeep
+!cms/extensions/.gitkeep
