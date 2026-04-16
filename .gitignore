@@ -1,7 +1,15 @@
-cms/database/*
-cms/uploads/*
+# Directus Core & Environment
 cms/.env
 cms/.env.*
+cms/node_modules/
+
+cms/database/*.db
+cms/database/*.sqlite
+cms/uploads/*
+
 !cms/database/.gitkeep
 !cms/uploads/.gitkeep
-!cms/extensions/.gitkeep
+
+# Extensions
+!cms/extensions/
+cms/extensions/.gitkeep
