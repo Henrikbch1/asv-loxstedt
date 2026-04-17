@@ -1,9 +1,7 @@
+import { AppRouter } from "./routes/AppRouter";
+
 function App() {
-  return (
-    <div>
-      <h1>ASV Loxstedt - Coming Soon</h1>
-    </div>
-  )
+  return <AppRouter />;
 }
 
-export default App
+export default App;
