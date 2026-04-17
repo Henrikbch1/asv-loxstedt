@@ -1,8 +1,8 @@
-# ASV Loxstedt Frontend
+# ASV Loxstedt — Frontend
 
-CMS-getriebenes React-Frontend auf Basis von Vite, React, TypeScript, React Router und TanStack Query. Inhalte kommen aus Directus und werden datengetrieben gerendert, damit neue Seiten, Navigationseintraege und News ohne manuelle React-Registrierung verfuegbar werden.
+React + TypeScript Frontend (Vite). Inhalte stammen aus Directus (Headless CMS). Ziel: datengetriebene Seiten, Navigation und News ohne manuelle Frontend-Registrierung.
 
-## Lokaler Start
+## Schnellstart (lokal)
 
 1. Directus starten:
 
@@ -11,65 +11,78 @@ cd ..\cms
 docker compose up -d
 ```
 
-2. Frontend konfigurieren:
+2. Frontend:
 
 ```powershell
-cd ..\frontend
+cd frontend
 Copy-Item .env.example .env.local
-```
-
-3. Frontend starten:
-
-```powershell
 npm install
 npm run dev
 ```
 
-Standardmaessig erwartet das Frontend Directus unter `http://localhost:8055`.
+(Bash):
 
-## Wichtige Architekturpunkte
+```bash
+cd frontend
+cp .env.example .env.local
+npm install
+npm run dev
+```
 
-- `src/api`: schlanke Directus-API-Abstraktion mit einheitlicher Fetch-Strategie.
-- `src/features/cms-pages`: generische CMS-Seiten und Page-Queries.
-- `src/features/news`: News-Queries, Karten und Detaildarstellung.
-- `src/features/navigation`: Navigation-Queries und Baumaufbau aus CMS-Daten.
-- `src/components/layout`: App-Layout mit Header und Footer auf Basis von `global_settings`.
-- `src/components/ui`: wiederverwendbare Loading-, Error-, Empty- und Rich-Text-Komponenten.
-- `src/utils/assets.ts`: zentrale Erzeugung von Directus-Asset-URLs.
+Standardmäßig erwartet das Frontend Directus unter `http://localhost:8055`.
+
+## Environment (siehe frontend/.env.example)
+
+- `VITE_API_BASE_URL` (default `http://localhost:8055`)
+- `VITE_DIRECTUS_ASSETS_PATH` (default `/assets`)
+- `VITE_HOME_SLUG` (default `home`)
+- `VITE_DIRECTUS_TOKEN` (optional — nur read-only Token; niemals in Git einchecken)
+
+## Scripts (frontend/package.json)
+
+- `npm run dev` — Dev-Server (Vite + HMR)
+- `npm run build` — `tsc -b && vite build` (Produktions-Build)
+- `npm run preview` — `vite preview`
+- `npm run lint` — ESLint
+
+## Architektur & wichtige Orte
+
+- `src/api/directus.ts` — zentrale Fetch- und Fehlerlogik (`CmsApiError`)
+- `src/api/cms.ts` — API-Funktionen / Endpunkte (z. B. `/items/global_settings`, `/items/navigation`, `/items/pages`, `/items/news`)
+- `src/components/ui/RichText.tsx` — HTML-Sanitizing (DOMPurify)
+- `src/utils/assets.ts` — Asset-URL-Erzeugung und Bildparameter
 
 ## Routing
 
-- `/` versucht zuerst die oeffentlich freigegebene CMS-Seite mit dem Slug `home` zu laden.
-- `/news` zeigt die oeffentlich freigegebene News-Uebersicht.
-- `/news/:slug` zeigt einen oeffentlich freigegebenen News-Detaildatensatz.
-- `/:slug` rendert eine generische oeffentlich freigegebene CMS-Seite.
-- `*` zeigt eine 404-Seite.
+- `/` → Startseite (lädt CMS-Seite mit Slug `home`)
+- `/news` → News-Übersicht
+- `/news/:slug` → News-Detail
+- `/:slug` → generische CMS-Seite
+- `*` → 404
 
-## Anpassungspunkte spaeter
+(Quellcode: `frontend/src/routes/AppRouter.tsx`)
 
-- `src/config/env.ts`: Basis-URL, Asset-Pfad und Home-Slug.
-- `src/api/cms.ts`: Feldselektion, neue Collections, weitere Directus-Endpunkte.
-- `src/components/ui/RichText.tsx`: zentrale Stelle fuer HTML-Sanitizing.
-- `src/features/navigation/navigation.utils.ts`: Logik fuer Navigationstree und spaetere Sonderregeln.
-- `src/features/cms-pages/CmsPageView.tsx`: generische Seitendarstellung fuer weitere Layout-Anpassungen.
+## API & Collections
 
-## Hinweise zu Rich Text und Sicherheit
+Wichtige Directus-Endpunkte und Collections, die das Frontend nutzt:
 
-HTML aus `pages.content`, `news.text` und `global_settings.footer_text` wird ausschliesslich ueber `src/components/ui/RichText.tsx` gerendert. Dort laeuft das Sanitizing zentral ueber DOMPurify. Wenn spaeter strengere Regeln oder Allow-Lists noetig sind, muss nur diese eine Komponente angepasst werden.
+- `GET /items/global_settings` — Singleton mit `site_name`, `logo`, `footer_text`
+- `GET /items/navigation` — Navigationseinträge
+- `GET /items/pages` — CMS-Seiten (By-Slug)
+- `GET /items/news` — News-Liste / News-By-Slug
 
-## Hinweise zu Directus-Permissions
+Erwartete Collections:
 
-Das Frontend fragt bei `pages` und `news` kein `status`-Feld ab und filtert auch nicht clientseitig auf `published`. In der aktuellen Directus-Konfiguration prueft die Public-Role die Freigabe serverseitig, bevor Datensaetze ausgeliefert werden. Das Frontend geht deshalb davon aus, dass oeffentliche Endpunkte bereits nur die sichtbaren Inhalte zurueckgeben.
+- `global_settings`, `navigation`, `pages`, `news`, `downloads`, `categories`, `persons`, `roles`
 
-## Erwartete Directus-Collections
+## Sicherheit
 
-- `global_settings` als Singleton
-- `navigation`
-- `pages`
-- `news`
-- `downloads`
-- `categories`
-- `persons`
-- `roles`
+- Falls `VITE_DIRECTUS_TOKEN` verwendet wird: nur read-only Token und `.env.local` nicht commiten.
 
-Bei der Navigation beruecksichtigt das Frontend auch die im Snapshot auffaellige Schreibweise `parrent`, damit Parent-/Child-Strukturen robust geladen werden.
+## Anpassungspunkte
+
+- `src/config/env.ts` — Default-URLs / Asset-Pfad
+- `src/features/navigation/navigation.utils.ts` — Navigation-Tree-Logik
+- `src/features/cms-pages/CmsPageView.tsx` — generische Seitendarstellung
+
+Bei Bedarf kann ich ein kurzes Beispiele-Setup (curl / fetch) liefern, um die wichtigsten Endpunkte schnell zu testen.
