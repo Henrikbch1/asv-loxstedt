@@ -12,4 +12,4 @@ cms/uploads/*
 
 # Extensions
 !cms/extensions/
-cms/extensions/.gitkeep
+cms/extensions/.gitkeepstyle.css
