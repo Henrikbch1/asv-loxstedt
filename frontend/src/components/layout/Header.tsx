@@ -15,8 +15,12 @@ export function Header({ settings, navigationItems }: HeaderProps) {
 
   return (
     <header className="site-header">
-      <div className="shell site-header__inner">
-        <Link className="brand" onClick={() => setIsOpen(false)} to="/">
+      <div className="shell site-header__inner flex items-center justify-between gap-4 py-4">
+        <Link
+          className="brand inline-flex items-center gap-3 font-bold text-black"
+          onClick={() => setIsOpen(false)}
+          to="/"
+        >
           {logoUrl ? (
             <img
               alt={getCmsAssetLabel(settings.logo)}
@@ -24,17 +28,23 @@ export function Header({ settings, navigationItems }: HeaderProps) {
               src={logoUrl}
             />
           ) : null}
-          <span className="brand__text">{settings.site_name}</span>
+          <span className="brand__text tracking-[0.18em]">
+            {settings.site_name}
+          </span>
         </Link>
 
         <button
           aria-controls="site-navigation"
           aria-expanded={isOpen}
-          className="nav-toggle"
+          className="nav-toggle inline-flex items-center gap-2 px-4 py-3 text-sm font-semibold text-text md:hidden"
           onClick={() => setIsOpen((open) => !open)}
           type="button"
         >
-          Menue
+          <span
+            className="inline-flex h-2.5 w-2.5 rounded-full bg-green"
+            aria-hidden="true"
+          />
+          <span>{isOpen ? "Schliessen" : "Menue"}</span>
         </button>
 
         <nav

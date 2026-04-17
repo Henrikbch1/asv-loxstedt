@@ -17,12 +17,12 @@ export function ErrorState({
 }: ErrorStateProps) {
   return (
     <section className="state-card state-card--error" role="alert">
-      <h2>{title}</h2>
-      <p>{message}</p>
-      <div className="state-card__actions">
+      <h2 className="text-xl font-semibold text-black">{title}</h2>
+      <p className="text-muted">{message}</p>
+      <div className="state-card__actions flex gap-3 mt-2">
         {onRetry ? (
           <button
-            className="button button--primary"
+            className="button button--primary inline-flex items-center px-4 py-2 rounded-full"
             type="button"
             onClick={onRetry}
           >
@@ -30,7 +30,10 @@ export function ErrorState({
           </button>
         ) : null}
         {homeLink ? (
-          <Link className="button button--ghost" to="/">
+          <Link
+            className="button button--ghost inline-flex items-center px-4 py-2 rounded-full"
+            to="/"
+          >
             Zur Startseite
           </Link>
         ) : null}

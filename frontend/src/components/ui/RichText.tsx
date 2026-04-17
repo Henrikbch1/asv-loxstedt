@@ -5,7 +5,7 @@ interface RichTextProps {
   className?: string;
 }
 
-export function RichText({ html, className }: RichTextProps) {
+export function RichText({ html, className = "prose" }: RichTextProps) {
   if (!html) {
     return null;
   }

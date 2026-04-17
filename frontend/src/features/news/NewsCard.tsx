@@ -23,14 +23,22 @@ export function NewsCard({ item }: NewsCardProps) {
       : null;
 
   return (
-    <article className="news-card">
+    <article className="news-card group">
       {imageUrl && detailHref ? (
-        <Link className="news-card__media" to={detailHref}>
-          <img alt={getCmsAssetLabel(item.image)} src={imageUrl} />
+        <Link className="news-card__media overflow-hidden" to={detailHref}>
+          <img
+            className="w-full h-full object-cover transition-transform duration-200 ease-in-out group-hover:scale-105"
+            alt={getCmsAssetLabel(item.image)}
+            src={imageUrl}
+          />
         </Link>
       ) : imageUrl ? (
-        <div className="news-card__media">
-          <img alt={getCmsAssetLabel(item.image)} src={imageUrl} />
+        <div className="news-card__media overflow-hidden">
+          <img
+            className="w-full h-full object-cover transition-transform duration-200 ease-in-out group-hover:scale-105"
+            alt={getCmsAssetLabel(item.image)}
+            src={imageUrl}
+          />
         </div>
       ) : null}
 
@@ -39,12 +47,15 @@ export function NewsCard({ item }: NewsCardProps) {
           {dateLabel ? <span>{dateLabel}</span> : null}
           {categoryName ? <span>{categoryName}</span> : null}
         </div>
-        <h2>
+        <h2 className="m-0 text-xl font-semibold">
           {detailHref ? <Link to={detailHref}>{item.title}</Link> : item.title}
         </h2>
-        {excerpt ? <p>{excerpt}</p> : null}
+        {excerpt ? <p className="text-muted">{excerpt}</p> : null}
         {detailHref ? (
-          <Link className="button button--ghost" to={detailHref}>
+          <Link
+            className="button button--ghost inline-flex items-center gap-2 justify-self-start"
+            to={detailHref}
+          >
             Weiterlesen
           </Link>
         ) : (

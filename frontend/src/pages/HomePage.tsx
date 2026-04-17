@@ -32,20 +32,37 @@ export function HomePage() {
 
   return (
     <section className="home-fallback">
-      <div className="page-hero">
+      <div className="page-hero home-fallback__hero">
         <div className="page-hero__copy">
           <span className="eyebrow">Fallback</span>
-          <h1>Willkommen bei ASV Loxstedt</h1>
-          <p>
+          <h1 className="text-4xl md:text-5xl font-extrabold leading-tight">
+            Willkommen bei ASV Loxstedt
+          </h1>
+          <p className="text-muted max-w-prose">
             Es wurde noch keine veroeffentlichte CMS-Seite mit dem Slug{" "}
             <strong>{appConfig.defaultHomeSlug}</strong> gefunden. Lege diese
             Seite in Directus an, um die Startseite komplett aus dem CMS zu
             steuern.
           </p>
           <div className="button-row">
-            <Link className="button button--primary" to="/news">
+            <Link
+              className="button button--primary inline-flex items-center px-4 py-3 rounded-full"
+              to="/news"
+            >
               Zu den News
             </Link>
+          </div>
+        </div>
+        <div className="page-hero__aside">
+          <div className="page-hero__stat">
+            <span className="eyebrow">Hinweis</span>
+            <strong>Die Startseite kommt noch nicht aus Directus.</strong>
+          </div>
+          <div className="page-hero__stat">
+            <span className="eyebrow">Naechster Schritt</span>
+            <strong>
+              Lege eine veroeffentlichte CMS-Seite mit dem Standardslug an.
+            </strong>
           </div>
         </div>
       </div>
