@@ -35,10 +35,8 @@ export function HomePage() {
       <div className="page-hero home-fallback__hero">
         <div className="page-hero__copy">
           <span className="eyebrow">Fallback</span>
-          <h1 className="text-4xl md:text-5xl font-extrabold leading-tight">
-            Willkommen bei ASV Loxstedt
-          </h1>
-          <p className="text-muted max-w-prose">
+          <h1>Willkommen bei ASV Loxstedt</h1>
+          <p>
             Es wurde noch keine veroeffentlichte CMS-Seite mit dem Slug{" "}
             <strong>{appConfig.defaultHomeSlug}</strong> gefunden. Lege diese
             Seite in Directus an, um die Startseite komplett aus dem CMS zu

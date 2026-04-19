@@ -47,16 +47,16 @@ export function NewsDetailPage() {
 
   return (
     <article className="content-page">
-      <header className="page-hero page-hero--content grid gap-6 p-6 rounded-lg shadow-brand bg-white/80">
+      <header className="page-hero page-hero--content">
         <div className="page-hero__copy">
-          <span className="eyebrow text-green font-bold">News-Detail</span>
-          <h1 className="text-4xl font-extrabold">{newsQuery.data.title}</h1>
-          <p className="meta-text text-muted">
+          <span className="eyebrow">News-Detail</span>
+          <h1>{newsQuery.data.title}</h1>
+          <p className="meta-text">
             {[dateLabel, categoryName].filter(Boolean).join(" · ")}
           </p>
         </div>
         {imageUrl ? (
-          <div className="page-hero__media rounded-lg overflow-hidden">
+          <div className="page-hero__media">
             <img
               className="w-full h-full object-cover"
               alt={getCmsAssetLabel(newsQuery.data.image)}

@@ -35,16 +35,16 @@ export function NewsListPage() {
 
   return (
     <section className="section-stack py-8">
-      <div className="section-heading space-y-3">
-        <span className="eyebrow text-green font-bold uppercase text-sm">News</span>
-        <h1 className="text-3xl md:text-4xl font-extrabold">Aktuelle Meldungen</h1>
-        <p className="text-muted max-w-prose">
+      <div className="section-heading">
+        <span className="eyebrow">News</span>
+        <h1>Aktuelle Meldungen</h1>
+        <p>
           Diese Uebersicht wird direkt aus der Collection <strong>news</strong>{" "}
           geladen und zeigt nur veroeffentlichte Inhalte.
         </p>
       </div>
 
-      <div className="news-grid grid grid-cols-1 md:grid-cols-3 gap-5">
+      <div className="news-grid">
         {newsQuery.data.map((item) => (
           <NewsCard item={item} key={item.id} />
         ))}

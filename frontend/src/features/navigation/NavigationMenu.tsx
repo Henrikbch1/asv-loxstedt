@@ -1,28 +1,100 @@
-import { Fragment } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
 import type { NavigationTreeNode } from "../../types/cms";
 
 interface NavigationMenuProps {
   items: NavigationTreeNode[];
   depth?: number;
+  expanded?: boolean;
   onNavigate?: () => void;
+}
+
+const DESKTOP_CLOSE_DELAY_MS = 180;
+
+function ChevronIcon() {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 12 12">
+      <path
+        d="M2.25 4.25 6 8l3.75-3.75"
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="1.5"
+      />
+    </svg>
+  );
 }
 
 export function NavigationMenu({
   items,
   depth = 0,
+  expanded = false,
   onNavigate,
 }: NavigationMenuProps) {
+  const [openKeys, setOpenKeys] = useState<string[]>([]);
+  const [desktopOpenKeys, setDesktopOpenKeys] = useState<string[]>([]);
+  const idPrefix = useId();
+  const closeTimeoutsRef = useRef<Record<string, number>>({});
+
+  useEffect(() => {
+    const closeTimeouts = closeTimeoutsRef.current;
+
+    return () => {
+      Object.values(closeTimeouts).forEach((timeoutId) => {
+        window.clearTimeout(timeoutId);
+      });
+    };
+  }, []);
+
   if (!items.length) {
     return null;
   }
 
+  const clearDesktopCloseTimeout = (itemKey: string) => {
+    const timeoutId = closeTimeoutsRef.current[itemKey];
+
+    if (timeoutId) {
+      window.clearTimeout(timeoutId);
+      delete closeTimeoutsRef.current[itemKey];
+    }
+  };
+
+  const openDesktopBranch = (itemKey: string) => {
+    clearDesktopCloseTimeout(itemKey);
+    setDesktopOpenKeys((currentKeys) =>
+      currentKeys.includes(itemKey) ? currentKeys : [...currentKeys, itemKey],
+    );
+  };
+
+  const closeDesktopBranch = (itemKey: string) => {
+    clearDesktopCloseTimeout(itemKey);
+    closeTimeoutsRef.current[itemKey] = window.setTimeout(() => {
+      setDesktopOpenKeys((currentKeys) =>
+        currentKeys.filter((key) => key !== itemKey),
+      );
+      delete closeTimeoutsRef.current[itemKey];
+    }, DESKTOP_CLOSE_DELAY_MS);
+  };
+
+  const listClassName =
+    depth === 0
+      ? "nav-list"
+      : expanded
+        ? "nav-list nav-list--sub nav-list--sub-open"
+        : "nav-list nav-list--sub";
+
   return (
-    <ul className={depth === 0 ? "nav-list" : "nav-list nav-list--sub"}>
+    <ul className={listClassName}>
       {items.map((item) => {
+        const hasChildren = item.children.length > 0;
+        const isExpanded = openKeys.includes(item.key);
+        const isDesktopExpanded = desktopOpenKeys.includes(item.key);
+        const submenuId = `${idPrefix}-${item.key}`;
+
         const content = item.href ? (
           <NavLink
-            className={({ isActive }: { isActive: boolean }) =>
+            className={({ isActive }) =>
               isActive ? "nav-link nav-link--active" : "nav-link"
             }
             onClick={onNavigate}
@@ -34,26 +106,110 @@ export function NavigationMenu({
           <span className="nav-link nav-link--muted">{item.label}</span>
         );
 
+        const desktopBranch = item.href ? (
+          <NavLink
+            className={({ isActive }) =>
+              isActive
+                ? "nav-link nav-link--desktop nav-link--branch-desktop nav-link--active"
+                : "nav-link nav-link--desktop nav-link--branch-desktop"
+            }
+            onClick={onNavigate}
+            to={item.href}
+          >
+            <span className="nav-link__label">{item.label}</span>
+            <span className="nav-branch-icon" aria-hidden="true">
+              <ChevronIcon />
+            </span>
+          </NavLink>
+        ) : (
+          <span className="nav-link nav-link--desktop nav-link--branch-desktop nav-link--muted">
+            <span className="nav-link__label">{item.label}</span>
+            <span className="nav-branch-icon" aria-hidden="true">
+              <ChevronIcon />
+            </span>
+          </span>
+        );
+
         return (
           <li
             className={
-              item.children.length ? "nav-item nav-item--branch" : "nav-item"
+              hasChildren
+                ? [
+                    "nav-item",
+                    "nav-item--branch",
+                    isExpanded ? "nav-item--open" : "",
+                    isDesktopExpanded ? "nav-item--desktop-open" : "",
+                  ]
+                    .filter(Boolean)
+                    .join(" ")
+                : "nav-item"
             }
             key={item.key}
+            onBlur={
+              hasChildren
+                ? (event) => {
+                    const nextFocusTarget = event.relatedTarget;
+
+                    if (
+                      nextFocusTarget instanceof Node &&
+                      event.currentTarget.contains(nextFocusTarget)
+                    ) {
+                      return;
+                    }
+
+                    closeDesktopBranch(item.key);
+                  }
+                : undefined
+            }
+            onFocus={
+              hasChildren ? () => openDesktopBranch(item.key) : undefined
+            }
+            onMouseEnter={
+              hasChildren ? () => openDesktopBranch(item.key) : undefined
+            }
+            onMouseLeave={
+              hasChildren ? () => closeDesktopBranch(item.key) : undefined
+            }
           >
-            {content}
-            {item.children.length ? (
-              <Fragment>
-                <span className="nav-branch-indicator" aria-hidden="true">
-                  +
-                </span>
+            {hasChildren ? (
+              <>
+                <div className="nav-item__desktop-only">{desktopBranch}</div>
+                <div className="nav-item__mobile-only">
+                  <button
+                    aria-controls={submenuId}
+                    aria-expanded={isExpanded}
+                    className={
+                      isExpanded
+                        ? "nav-branch-toggle nav-branch-toggle--open"
+                        : "nav-branch-toggle"
+                    }
+                    onClick={() => {
+                      setOpenKeys((currentKeys) =>
+                        currentKeys.includes(item.key)
+                          ? currentKeys.filter((key) => key !== item.key)
+                          : [...currentKeys, item.key],
+                      );
+                    }}
+                    type="button"
+                  >
+                    <span className="nav-branch-toggle__label">
+                      {item.label}
+                    </span>
+                    <span className="nav-branch-icon" aria-hidden="true">
+                      <ChevronIcon />
+                    </span>
+                  </button>
+                </div>
                 <NavigationMenu
                   depth={depth + 1}
+                  expanded={isExpanded}
                   items={item.children}
                   onNavigate={onNavigate}
                 />
-              </Fragment>
-            ) : null}
+              </>
+            ) : (
+              content
+            )}
           </li>
         );
       })}
