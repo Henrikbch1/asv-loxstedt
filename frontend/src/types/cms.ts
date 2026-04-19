@@ -13,7 +13,7 @@ export interface PageSummary {
 export interface GlobalSettings {
   site_name: string;
   logo: DirectusFileReference;
-  footer_text: string | null;
+  footer_note: string | null;
 }
 
 export interface CmsPage extends PageSummary {

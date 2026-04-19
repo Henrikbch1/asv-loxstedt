@@ -29,7 +29,7 @@ export function Footer({ settings }: FooterProps) {
             <span className="meta-text text-white/70">CMS-Inhalt</span>
             <RichText
               className="rich-text site-footer__richtext prose prose-sm max-w-none"
-              html={settings.footer_text}
+              html={settings.footer_note}
             />
           </div>
         </div>
