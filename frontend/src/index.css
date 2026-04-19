@@ -872,6 +872,13 @@ button {
   .nav-list--sub .nav-link {
     font-size: 0.94rem;
   }
+
+  /* Keep site name on one line and scale text to fit smaller screens */
+  .brand__text {
+    white-space: nowrap;
+    font-size: clamp(0.78rem, 1.8vw, 1.08rem);
+    letter-spacing: 0.11em;
+  }
 }
 
 @media (max-width: 640px) {
@@ -901,6 +908,7 @@ button {
   .brand__text {
     font-size: 0.88rem;
     letter-spacing: 0.1em;
+    white-space: nowrap;
   }
 
   .brand__logo {
@@ -936,8 +944,9 @@ button {
   }
 
   .brand__text {
-    max-width: 12ch;
+    max-width: none;
     font-size: 0.82rem;
+    white-space: nowrap;
   }
 
   .brand__logo {
