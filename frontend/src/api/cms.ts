@@ -26,8 +26,6 @@ const pageFields = [
   "template",
   "hero_title",
   "hero_text",
-  "seo_title",
-  "seo_description",
   "show_title",
   "show_intro",
   "related_role_groups",

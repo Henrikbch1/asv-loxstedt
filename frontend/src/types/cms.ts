@@ -32,8 +32,6 @@ export interface CmsPage extends PageSummary {
   hero_title?: string | null;
   hero_text?: string | null;
   navigation_title?: string | null;
-  seo_title?: string | null;
-  seo_description?: string | null;
   show_title?: boolean | null;
   show_intro?: boolean | null;
   related_role_groups?: DirectusRelation<unknown>[] | null;
