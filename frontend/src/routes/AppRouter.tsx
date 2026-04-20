@@ -12,7 +12,7 @@ export function AppRouter() {
         <Route element={<AppLayout />}>
           <Route element={<HomePage />} path="/" />
           <Route element={<NewsListPage />} path="/news" />
-          <Route element={<NewsDetailPage />} path="/news/:slug" />
+          <Route element={<NewsDetailPage />} path="/news/:id" />
           <Route element={<CmsPageRoute />} path="*" />
         </Route>
       </Routes>
