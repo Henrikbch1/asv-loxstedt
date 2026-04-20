@@ -6,10 +6,15 @@ import { CmsPageView } from "../features/cms-pages/CmsPageView";
 import { usePublicPageByPathQuery } from "../features/cms-pages/useCmsPageQueries";
 import { NewsCard } from "../features/news/NewsCard";
 import { usePublicNewsListQuery } from "../features/news/useNewsQueries";
+import { useSiteTitle } from "../hooks/useSiteTitle";
 
 export function HomePage() {
   const homePageQuery = usePublicPageByPathQuery(appConfig.defaultHomeSlug);
   const newsQuery = usePublicNewsListQuery();
+  const homeTitle = homePageQuery.data
+    ? homePageQuery.data.title
+    : "Startseite";
+  useSiteTitle(homeTitle);
 
   if (homePageQuery.isPending) {
     return <LoadingState />;

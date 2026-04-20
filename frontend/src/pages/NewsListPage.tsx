@@ -3,9 +3,11 @@ import { ErrorState } from "../components/ui/ErrorState";
 import { LoadingState } from "../components/ui/LoadingState";
 import { NewsCard } from "../features/news/NewsCard";
 import { usePublicNewsListQuery } from "../features/news/useNewsQueries";
+import { useSiteTitle } from "../hooks/useSiteTitle";
 
 export function NewsListPage() {
   const newsQuery = usePublicNewsListQuery();
+  useSiteTitle("Aktuelle Meldungen");
 
   if (newsQuery.isPending) {
     return <LoadingState title="News werden geladen" />;

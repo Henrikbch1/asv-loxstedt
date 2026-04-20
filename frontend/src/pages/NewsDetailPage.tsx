@@ -6,10 +6,12 @@ import { RichText } from "../components/ui/RichText";
 import { usePublicNewsBySlugQuery } from "../features/news/useNewsQueries";
 import { getCmsAssetLabel, getCmsAssetUrl } from "../utils/assets";
 import { formatDate } from "../utils/date";
+import { useSiteTitle } from "../hooks/useSiteTitle";
 
 export function NewsDetailPage() {
   const { slug = "" } = useParams();
   const newsQuery = usePublicNewsBySlugQuery(slug);
+  useSiteTitle(newsQuery.data?.title);
 
   if (!slug) {
     return <NotFoundState />;

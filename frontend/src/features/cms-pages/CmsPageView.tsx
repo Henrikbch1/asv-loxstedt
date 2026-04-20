@@ -1,12 +1,14 @@
 import { RichText } from "../../components/ui/RichText";
 import type { CmsPage } from "../../types/cms";
 import { getCmsAssetLabel, getCmsAssetUrl } from "../../utils/assets";
+import { useSiteTitle } from "../../hooks/useSiteTitle";
 
 interface CmsPageViewProps {
   page: CmsPage;
 }
 
 export function CmsPageView({ page }: CmsPageViewProps) {
+  useSiteTitle(page.title);
   const imageUrl = getCmsAssetUrl(page.featured_image, {
     fit: "cover",
     width: 1600,
