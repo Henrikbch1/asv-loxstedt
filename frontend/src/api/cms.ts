@@ -145,21 +145,22 @@ export async function getPublicPages(signal?: AbortSignal): Promise<CmsPage[]> {
   return response.data;
 }
 
-export async function getPublicNewsList(
-  signal?: AbortSignal,
-): Promise<NewsItem[]> {
-  const response = await fetchDirectus<DirectusListResponse<NewsItem>>(
-    "/items/news",
-    {
-      query: {
-        fields: newsFields,
-        sort: ["-date", "-id"],
-      },
-      signal,
-    },
-  );
+const NEWS_PAGE_SIZE = 5;
 
-  return response.data;
+export async function getPublicNewsList(
+  page = 1,
+  signal?: AbortSignal,
+): Promise<DirectusListResponse<NewsItem>> {
+  return fetchDirectus<DirectusListResponse<NewsItem>>("/items/news", {
+    query: {
+      fields: newsFields,
+      sort: ["-date", "-id"],
+      limit: NEWS_PAGE_SIZE,
+      page,
+      meta: "filter_count",
+    },
+    signal,
+  });
 }
 
 export async function getPublicNewsBySlug(
@@ -181,4 +182,21 @@ export async function getPublicNewsBySlug(
   );
 
   return response.data[0] ?? null;
+}
+
+export async function getPublicNewsById(
+  id: string | number,
+  signal?: AbortSignal,
+): Promise<NewsItem> {
+  const response = await fetchDirectus<DirectusSingletonResponse<NewsItem>>(
+    `/items/news/${encodeURIComponent(String(id))}`,
+    {
+      query: {
+        fields: newsFields,
+      },
+      signal,
+    },
+  );
+
+  return response.data;
 }
