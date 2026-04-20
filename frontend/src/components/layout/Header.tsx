@@ -39,7 +39,8 @@ function CloseIcon() {
 
 export function Header({ settings, navigationItems }: HeaderProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const logoUrl = getCmsAssetUrl(settings?.logo as any, { width: 160 });
+  const logo = settings?.logo ?? null;
+  const logoUrl = getCmsAssetUrl(logo, { width: 160 });
 
   return (
     <header className="site-header">
@@ -51,7 +52,7 @@ export function Header({ settings, navigationItems }: HeaderProps) {
         >
           {logoUrl ? (
             <img
-              alt={getCmsAssetLabel(settings?.logo as any)}
+              alt={getCmsAssetLabel(logo)}
               className="brand__logo"
               src={logoUrl}
             />

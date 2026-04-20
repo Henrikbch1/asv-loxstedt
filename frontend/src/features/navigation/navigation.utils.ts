@@ -1,4 +1,9 @@
-import type { NavigationRecord, NavigationTreeNode } from "../../types/cms";
+import type {
+  CmsPage,
+  NavigationRecord,
+  NavigationTreeNode,
+} from "../../types/cms";
+import { buildCmsPagePathMap, getCmsPageHref } from "../../utils/cmsPagePaths";
 
 function isValidNavigationItem(item: NavigationRecord): boolean {
   return Boolean(item.page?.slug);
@@ -17,16 +22,18 @@ function compareNavigation(a: NavigationRecord, b: NavigationRecord): number {
 
 export function buildNavigationTree(
   items: NavigationRecord[],
+  pages: CmsPage[],
 ): NavigationTreeNode[] {
   const validItems = items
     .filter(isValidNavigationItem)
     .sort(compareNavigation);
   const nodes = new Map<NavigationRecord["key"], NavigationTreeNode>();
+  const pagePathsById = buildCmsPagePathMap(pages);
 
   validItems.forEach((item) => {
     nodes.set(item.key, {
       ...item,
-      href: item.page?.slug ? `/${item.page.slug}` : null,
+      href: item.page ? getCmsPageHref(item.page.id, pagePathsById) : null,
       children: [],
     });
   });

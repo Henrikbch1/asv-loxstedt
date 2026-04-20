@@ -3,12 +3,12 @@ import { appConfig } from "../config/env";
 import { ErrorState } from "../components/ui/ErrorState";
 import { LoadingState } from "../components/ui/LoadingState";
 import { CmsPageView } from "../features/cms-pages/CmsPageView";
-import { usePublicPageBySlugQuery } from "../features/cms-pages/useCmsPageQueries";
+import { usePublicPageByPathQuery } from "../features/cms-pages/useCmsPageQueries";
 import { NewsCard } from "../features/news/NewsCard";
 import { usePublicNewsListQuery } from "../features/news/useNewsQueries";
 
 export function HomePage() {
-  const homePageQuery = usePublicPageBySlugQuery(appConfig.defaultHomeSlug);
+  const homePageQuery = usePublicPageByPathQuery(appConfig.defaultHomeSlug);
   const newsQuery = usePublicNewsListQuery();
 
   if (homePageQuery.isPending) {

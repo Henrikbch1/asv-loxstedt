@@ -1,6 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
-import { getPublicPageBySlug, getPublicPages } from "../../api/cms";
+import { getPublicPages } from "../../api/cms";
 import { queryKeys } from "../../api/queryKeys";
+import {
+  findCmsPageByPath,
+  normalizeCmsPagePath,
+} from "../../utils/cmsPagePaths";
 
 export function usePublicPagesQuery() {
   return useQuery({
@@ -9,10 +13,13 @@ export function usePublicPagesQuery() {
   });
 }
 
-export function usePublicPageBySlugQuery(slug: string) {
+export function usePublicPageByPathQuery(path: string) {
+  const normalizedPath = normalizeCmsPagePath(path);
+
   return useQuery({
-    enabled: Boolean(slug),
-    queryKey: queryKeys.pageBySlug(slug),
-    queryFn: ({ signal }) => getPublicPageBySlug(slug, signal),
+    enabled: Boolean(normalizedPath),
+    queryKey: queryKeys.pages,
+    queryFn: ({ signal }) => getPublicPages(signal),
+    select: (pages) => findCmsPageByPath(normalizedPath, pages),
   });
 }

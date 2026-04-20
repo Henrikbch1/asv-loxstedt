@@ -4,7 +4,6 @@ import { CmsPageRoute } from "../pages/CmsPageRoute";
 import { HomePage } from "../pages/HomePage";
 import { NewsDetailPage } from "../pages/NewsDetailPage";
 import { NewsListPage } from "../pages/NewsListPage";
-import { NotFoundPage } from "../pages/NotFoundPage";
 
 export function AppRouter() {
   return (
@@ -14,8 +13,7 @@ export function AppRouter() {
           <Route element={<HomePage />} path="/" />
           <Route element={<NewsListPage />} path="/news" />
           <Route element={<NewsDetailPage />} path="/news/:slug" />
-          <Route element={<CmsPageRoute />} path="/:slug" />
-          <Route element={<NotFoundPage />} path="*" />
+          <Route element={<CmsPageRoute />} path="*" />
         </Route>
       </Routes>
     </BrowserRouter>

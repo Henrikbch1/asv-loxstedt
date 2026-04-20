@@ -3,13 +3,14 @@ import { ErrorState } from "../components/ui/ErrorState";
 import { LoadingState } from "../components/ui/LoadingState";
 import { NotFoundState } from "../components/ui/NotFoundState";
 import { CmsPageView } from "../features/cms-pages/CmsPageView";
-import { usePublicPageBySlugQuery } from "../features/cms-pages/useCmsPageQueries";
+import { usePublicPageByPathQuery } from "../features/cms-pages/useCmsPageQueries";
 
 export function CmsPageRoute() {
-  const { slug = "" } = useParams();
-  const pageQuery = usePublicPageBySlugQuery(slug);
+  const params = useParams();
+  const path = params["*"] ?? "";
+  const pageQuery = usePublicPageByPathQuery(path);
 
-  if (!slug) {
+  if (!path) {
     return <NotFoundState />;
   }
 

@@ -1,5 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
-import { getGlobalSettings, getNavigation } from "../../api/cms";
+import {
+  getGlobalSettings,
+  getNavigation,
+  getPublicPages,
+} from "../../api/cms";
 import { queryKeys } from "../../api/queryKeys";
 import { buildNavigationTree } from "./navigation.utils";
 
@@ -19,8 +23,14 @@ export function useNavigationQuery() {
 
 export function useNavigationTreeQuery() {
   return useQuery({
-    queryKey: queryKeys.navigation,
-    queryFn: ({ signal }) => getNavigation(signal),
-    select: buildNavigationTree,
+    queryKey: queryKeys.navigationTree,
+    queryFn: async ({ signal }) => {
+      const [navigationItems, pages] = await Promise.all([
+        getNavigation(signal),
+        getPublicPages(signal),
+      ]);
+
+      return buildNavigationTree(navigationItems, pages);
+    },
   });
 }

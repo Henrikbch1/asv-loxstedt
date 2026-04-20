@@ -10,6 +10,7 @@ import type {
   DirectusListResponse,
   DirectusSingletonResponse,
 } from "../types/directus";
+import { findCmsPageByPath } from "../utils/cmsPagePaths";
 
 const pageSummaryFields = ["id", "title", "slug", "navigation_title"];
 
@@ -122,25 +123,13 @@ export async function getNavigation(
   return response.data.map(normalizeNavigationRecord);
 }
 
-export async function getPublicPageBySlug(
-  slug: string,
+export async function getPublicPageByPath(
+  path: string,
   signal?: AbortSignal,
 ): Promise<CmsPage | null> {
-  const response = await fetchDirectus<DirectusListResponse<CmsPage>>(
-    "/items/pages",
-    {
-      query: {
-        fields: pageFields,
-        filter: {
-          slug: { _eq: slug },
-        },
-        limit: 1,
-      },
-      signal,
-    },
-  );
+  const pages = await getPublicPages(signal);
 
-  return response.data[0] ?? null;
+  return findCmsPageByPath(path, pages);
 }
 
 export async function getPublicPages(signal?: AbortSignal): Promise<CmsPage[]> {
