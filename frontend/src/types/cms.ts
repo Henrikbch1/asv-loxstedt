@@ -12,9 +12,15 @@ export interface PageSummary {
 }
 
 export interface GlobalSettings {
-  site_name: string;
-  logo: DirectusFileReference;
-  footer_note: string | null;
+  id?: CmsId;
+  site_name?: string | null;
+  logo?: DirectusFileReference | null;
+  footer_note?: string | null;
+  club_name?: string | null;
+  street?: string | null;
+  postal_code?: string | null;
+  city?: string | null;
+  phone?: string | null;
 }
 
 export interface CmsPage extends PageSummary {
