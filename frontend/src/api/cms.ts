@@ -70,7 +70,7 @@ export async function getGlobalSettings(
     DirectusSingletonResponse<GlobalSettings>
   >("/items/global_settings", {
     query: {
-      fields: ["id", "site_name", "footer_note", "logo"],
+      fields: ["id", "site_name", "logo", "club_name", "footer_note", "street", "postal_code", "city", "phone"],
     },
     signal,
   });
