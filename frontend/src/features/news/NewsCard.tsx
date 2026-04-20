@@ -16,7 +16,7 @@ export function NewsCard({ item }: NewsCardProps) {
   });
   const excerpt = getExcerpt(item.text);
   const dateLabel = formatDate(item.date);
-  const detailHref = item.slug ? `/news/${item.slug}` : null;
+  const detailHref = `/news/${item.id}`;
   const categoryName =
     item.category && typeof item.category === "object"
       ? item.category.name
@@ -24,7 +24,7 @@ export function NewsCard({ item }: NewsCardProps) {
 
   return (
     <article className="news-card group">
-      {imageUrl && detailHref ? (
+      {imageUrl ? (
         <Link className="news-card__media overflow-hidden" to={detailHref}>
           <img
             className="w-full h-full object-cover transition-transform duration-200 ease-in-out group-hover:scale-105"
@@ -32,14 +32,6 @@ export function NewsCard({ item }: NewsCardProps) {
             src={imageUrl}
           />
         </Link>
-      ) : imageUrl ? (
-        <div className="news-card__media overflow-hidden">
-          <img
-            className="w-full h-full object-cover transition-transform duration-200 ease-in-out group-hover:scale-105"
-            alt={getCmsAssetLabel(item.image)}
-            src={imageUrl}
-          />
-        </div>
       ) : null}
 
       <div className="news-card__body">
@@ -48,19 +40,15 @@ export function NewsCard({ item }: NewsCardProps) {
           {categoryName ? <span>{categoryName}</span> : null}
         </div>
         <h2 className="m-0 text-xl font-semibold">
-          {detailHref ? <Link to={detailHref}>{item.title}</Link> : item.title}
+          <Link to={detailHref}>{item.title}</Link>
         </h2>
         {excerpt ? <p className="text-muted">{excerpt}</p> : null}
-        {detailHref ? (
-          <Link
-            className="button button--ghost inline-flex items-center gap-2 justify-self-start"
-            to={detailHref}
-          >
-            Weiterlesen
-          </Link>
-        ) : (
-          <span className="meta-text">Kein oeffentlicher Slug vorhanden</span>
-        )}
+        <Link
+          className="button button--ghost inline-flex items-center gap-2 justify-self-start"
+          to={detailHref}
+        >
+          Weiterlesen
+        </Link>
       </div>
     </article>
   );
