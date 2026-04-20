@@ -11,15 +11,25 @@ import type {
   DirectusSingletonResponse,
 } from "../types/directus";
 
-const pageSummaryFields = ["id", "title", "slug"];
+const pageSummaryFields = ["id", "title", "slug", "navigation_title"];
 
 const pageFields = [
   "id",
   "title",
   "slug",
+  "navigation_title",
   "content",
+  "intro",
   "featured_image",
   "parent_page",
+  "template",
+  "hero_title",
+  "hero_text",
+  "seo_title",
+  "seo_description",
+  "show_title",
+  "show_intro",
+  "related_role_groups",
 ] satisfies string[];
 
 const newsFields = [
@@ -70,7 +80,17 @@ export async function getGlobalSettings(
     DirectusSingletonResponse<GlobalSettings>
   >("/items/global_settings", {
     query: {
-      fields: ["id", "site_name", "logo", "club_name", "footer_note", "street", "postal_code", "city", "phone"],
+      fields: [
+        "id",
+        "site_name",
+        "logo",
+        "club_name",
+        "footer_note",
+        "street",
+        "postal_code",
+        "city",
+        "phone",
+      ],
     },
     signal,
   });

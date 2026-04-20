@@ -8,6 +8,7 @@ export interface PageSummary {
   id: CmsId;
   title: string;
   slug: string;
+  navigation_title?: string | null;
 }
 
 export interface GlobalSettings {
@@ -19,7 +20,17 @@ export interface GlobalSettings {
 export interface CmsPage extends PageSummary {
   content: string | null;
   featured_image: DirectusFileReference;
-  parent_page: DirectusRelation<PageSummary>;
+  parent_page: DirectusRelation<PageSummary> | null;
+  template?: string | null;
+  intro?: string | null;
+  hero_title?: string | null;
+  hero_text?: string | null;
+  navigation_title?: string | null;
+  seo_title?: string | null;
+  seo_description?: string | null;
+  show_title?: boolean | null;
+  show_intro?: boolean | null;
+  related_role_groups?: DirectusRelation<unknown>[] | null;
 }
 
 export interface Category {
