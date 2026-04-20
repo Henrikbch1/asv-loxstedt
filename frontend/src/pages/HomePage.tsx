@@ -10,7 +10,7 @@ import { useSiteTitle } from "../hooks/useSiteTitle";
 
 export function HomePage() {
   const homePageQuery = usePublicPageByPathQuery(appConfig.defaultHomeSlug);
-  const newsQuery = usePublicNewsListQuery();
+  const newsQuery = usePublicNewsListQuery(1);
   const homeTitle = homePageQuery.data
     ? homePageQuery.data.title
     : "Startseite";
@@ -84,9 +84,9 @@ export function HomePage() {
             }}
           />
         ) : null}
-        {newsQuery.data?.length ? (
+        {newsQuery.data?.data.length ? (
           <div className="news-grid">
-            {newsQuery.data.slice(0, 3).map((item) => (
+            {newsQuery.data.data.slice(0, 3).map((item) => (
               <NewsCard item={item} key={item.id} />
             ))}
           </div>

@@ -3,17 +3,18 @@ import { ErrorState } from "../components/ui/ErrorState";
 import { LoadingState } from "../components/ui/LoadingState";
 import { NotFoundState } from "../components/ui/NotFoundState";
 import { RichText } from "../components/ui/RichText";
-import { usePublicNewsBySlugQuery } from "../features/news/useNewsQueries";
+import { usePublicNewsByIdQuery } from "../features/news/useNewsQueries";
+import { CmsApiError } from "../api/directus";
 import { getCmsAssetLabel, getCmsAssetUrl } from "../utils/assets";
 import { formatDate } from "../utils/date";
 import { useSiteTitle } from "../hooks/useSiteTitle";
 
 export function NewsDetailPage() {
-  const { slug = "" } = useParams();
-  const newsQuery = usePublicNewsBySlugQuery(slug);
+  const { id = "" } = useParams();
+  const newsQuery = usePublicNewsByIdQuery(id);
   useSiteTitle(newsQuery.data?.title);
 
-  if (!slug) {
+  if (!id) {
     return <NotFoundState />;
   }
 
@@ -22,6 +23,12 @@ export function NewsDetailPage() {
   }
 
   if (newsQuery.isError) {
+    if (
+      newsQuery.error instanceof CmsApiError &&
+      newsQuery.error.statusCode === 404
+    ) {
+      return <NotFoundState title="News-Beitrag nicht gefunden" />;
+    }
     return (
       <ErrorState
         message="Der News-Beitrag konnte nicht geladen werden."
@@ -30,10 +37,6 @@ export function NewsDetailPage() {
         }}
       />
     );
-  }
-
-  if (!newsQuery.data) {
-    return <NotFoundState title="News-Beitrag nicht gefunden" />;
   }
 
   const imageUrl = getCmsAssetUrl(newsQuery.data.image, {
