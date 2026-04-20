@@ -5,7 +5,7 @@ import { getCmsAssetLabel, getCmsAssetUrl } from "../../utils/assets";
 import { NavigationMenu } from "../../features/navigation/NavigationMenu";
 
 interface HeaderProps {
-  settings: GlobalSettings;
+  settings?: GlobalSettings | null;
   navigationItems: NavigationTreeNode[];
 }
 
@@ -39,7 +39,7 @@ function CloseIcon() {
 
 export function Header({ settings, navigationItems }: HeaderProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const logoUrl = getCmsAssetUrl(settings.logo, { width: 160 });
+  const logoUrl = getCmsAssetUrl(settings?.logo as any, { width: 160 });
 
   return (
     <header className="site-header">
@@ -51,12 +51,12 @@ export function Header({ settings, navigationItems }: HeaderProps) {
         >
           {logoUrl ? (
             <img
-              alt={getCmsAssetLabel(settings.logo)}
+              alt={getCmsAssetLabel(settings?.logo as any)}
               className="brand__logo"
               src={logoUrl}
             />
           ) : null}
-          <span className="brand__text">{settings.site_name}</span>
+          <span className="brand__text">{settings?.site_name ?? ""}</span>
         </Link>
 
         <button
