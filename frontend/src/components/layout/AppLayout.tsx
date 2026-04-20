@@ -1,4 +1,5 @@
 import { Outlet } from "react-router-dom";
+import type { NavigationTreeNode } from "../../types/cms";
 import {
   useGlobalSettingsQuery,
   useNavigationTreeQuery,
@@ -7,6 +8,16 @@ import { ErrorState } from "../ui/ErrorState";
 import { LoadingState } from "../ui/LoadingState";
 import { Footer } from "./Footer";
 import { Header } from "./Header";
+
+const NEWS_NAV_ITEM: NavigationTreeNode = {
+  key: "label:news",
+  sort: 9999,
+  label: "News",
+  href: "/news",
+  page: null,
+  parentKey: null,
+  children: [],
+};
 
 export function AppLayout() {
   const settingsQuery = useGlobalSettingsQuery();
@@ -37,7 +48,7 @@ export function AppLayout() {
   return (
     <div className="app-shell">
       <Header
-        navigationItems={navigationQuery.data ?? []}
+        navigationItems={[...(navigationQuery.data ?? []), NEWS_NAV_ITEM]}
         settings={settingsQuery.data}
       />
       <main className="shell shell--main">
