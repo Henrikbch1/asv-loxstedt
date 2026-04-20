@@ -5,6 +5,5 @@ export const queryKeys = {
   pages: ["pages"] as const,
   pageByPath: (path: string) => ["pages", "path", path] as const,
   newsList: (page: number) => ["news", "list", page] as const,
-  newsBySlug: (slug: string) => ["news", slug] as const,
   newsById: (id: string | number) => ["news", "detail", String(id)] as const,
 } as const;

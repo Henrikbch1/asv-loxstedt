@@ -1,4 +1,4 @@
-import { fetchDirectus } from "./directus";
+import { CmsApiError, fetchDirectus } from "./directus";
 import type {
   CmsPage,
   GlobalSettings,
@@ -34,11 +34,18 @@ const pageFields = [
 const newsFields = [
   "id",
   "title",
-  "slug",
   "date",
   "text",
   "image",
   "category",
+] satisfies string[];
+
+const fallbackNewsFields = [
+  "id",
+  "title",
+  "date",
+  "text",
+  "image",
 ] satisfies string[];
 
 function getNavigationKey(label: string, slug?: string | null): string {
@@ -70,6 +77,54 @@ function normalizeNavigationRecord(
     page,
     parentKey,
   };
+}
+
+function getNewsTimestamp(newsItem: NewsItem): number {
+  if (!newsItem.date) {
+    return Number.NEGATIVE_INFINITY;
+  }
+
+  const timestamp = Date.parse(newsItem.date);
+
+  return Number.isNaN(timestamp) ? Number.NEGATIVE_INFINITY : timestamp;
+}
+
+function compareNewsItems(a: NewsItem, b: NewsItem): number {
+  const dateDiff = getNewsTimestamp(b) - getNewsTimestamp(a);
+
+  if (dateDiff !== 0) {
+    return dateDiff;
+  }
+
+  return String(b.id).localeCompare(String(a.id), "de-DE", { numeric: true });
+}
+
+async function fetchPublicNewsResponse<T>(
+  path: string,
+  query: Record<string, unknown>,
+  signal?: AbortSignal,
+): Promise<T> {
+  try {
+    return await fetchDirectus<T>(path, {
+      query: {
+        ...query,
+        fields: newsFields,
+      },
+      signal,
+    });
+  } catch (error) {
+    if (!(error instanceof CmsApiError) || error.code !== "FORBIDDEN") {
+      throw error;
+    }
+
+    return fetchDirectus<T>(path, {
+      query: {
+        ...query,
+        fields: fallbackNewsFields,
+      },
+      signal,
+    });
+  }
 }
 
 export async function getGlobalSettings(
@@ -151,52 +206,32 @@ export async function getPublicNewsList(
   page = 1,
   signal?: AbortSignal,
 ): Promise<DirectusListResponse<NewsItem>> {
-  return fetchDirectus<DirectusListResponse<NewsItem>>("/items/news", {
-    query: {
-      fields: newsFields,
+  const response = await fetchPublicNewsResponse<
+    DirectusListResponse<NewsItem>
+  >(
+    "/items/news",
+    {
       sort: ["-date", "-id"],
       limit: NEWS_PAGE_SIZE,
       page,
       meta: "filter_count",
     },
     signal,
-  });
-}
-
-export async function getPublicNewsBySlug(
-  slug: string,
-  signal?: AbortSignal,
-): Promise<NewsItem | null> {
-  const response = await fetchDirectus<DirectusListResponse<NewsItem>>(
-    "/items/news",
-    {
-      query: {
-        fields: newsFields,
-        filter: {
-          slug: { _eq: slug },
-        },
-        limit: 1,
-      },
-      signal,
-    },
   );
 
-  return response.data[0] ?? null;
+  return {
+    ...response,
+    data: [...response.data].sort(compareNewsItems),
+  };
 }
 
 export async function getPublicNewsById(
   id: string | number,
   signal?: AbortSignal,
 ): Promise<NewsItem> {
-  const response = await fetchDirectus<DirectusSingletonResponse<NewsItem>>(
-    `/items/news/${encodeURIComponent(String(id))}`,
-    {
-      query: {
-        fields: newsFields,
-      },
-      signal,
-    },
-  );
+  const response = await fetchPublicNewsResponse<
+    DirectusSingletonResponse<NewsItem>
+  >(`/items/news/${encodeURIComponent(String(id))}`, {}, signal);
 
   return response.data;
 }

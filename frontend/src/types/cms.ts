@@ -45,7 +45,7 @@ export interface Category {
 export interface NewsItemSummary {
   id: CmsId;
   title: string;
-  slug: string | null;
+  slug?: string | null;
   date: string | null;
   image: DirectusFileReference;
   text: string | null;
