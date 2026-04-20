@@ -16,7 +16,7 @@ export function CmsPageView({ page }: CmsPageViewProps) {
     <article className="content-page">
       <header className="page-hero page-hero--content">
         <div className="page-hero__copy">
-          <span className="eyebrow">CMS-Seite</span>
+          <span className="eyebrow">Seite</span>
           <h1>{page.title}</h1>
         </div>
         {imageUrl ? (

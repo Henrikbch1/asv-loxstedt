@@ -10,7 +10,7 @@ interface ErrorStateProps {
 
 export function ErrorState({
   title = "Inhalte konnten nicht geladen werden",
-  message = "Bitte pruefe die CMS-Verbindung und versuche es erneut.",
+  message = "Bitte versuche es in kurzer Zeit erneut.",
   retryLabel = "Erneut versuchen",
   onRetry,
   homeLink = true,

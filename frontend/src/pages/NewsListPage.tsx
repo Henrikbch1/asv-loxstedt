@@ -27,7 +27,7 @@ export function NewsListPage() {
       <EmptyState
         ctaLabel="Zur Startseite"
         ctaTo="/"
-        message="Sobald neue veroeffentlichte Eintraege im CMS vorhanden sind, erscheinen sie hier automatisch."
+        message="Sobald neue veroeffentlichte Eintraege vorhanden sind, erscheinen sie hier automatisch."
         title="Noch keine News vorhanden"
       />
     );
@@ -39,8 +39,8 @@ export function NewsListPage() {
         <span className="eyebrow">News</span>
         <h1>Aktuelle Meldungen</h1>
         <p>
-          Diese Uebersicht wird direkt aus der Collection <strong>news</strong>{" "}
-          geladen und zeigt nur veroeffentlichte Inhalte.
+          Hier findest du aktuelle Meldungen, Berichte und Hinweise aus dem
+          Vereinsleben.
         </p>
       </div>
 

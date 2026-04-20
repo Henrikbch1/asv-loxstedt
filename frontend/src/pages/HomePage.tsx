@@ -18,7 +18,7 @@ export function HomePage() {
   if (homePageQuery.isError) {
     return (
       <ErrorState
-        message="Die Home-Seite konnte nicht aus dem CMS geladen werden."
+        message="Die Startseite konnte nicht geladen werden."
         onRetry={() => {
           void homePageQuery.refetch();
         }}
@@ -37,10 +37,9 @@ export function HomePage() {
           <span className="eyebrow">Fallback</span>
           <h1>Willkommen bei ASV Loxstedt</h1>
           <p>
-            Es wurde noch keine veroeffentlichte CMS-Seite mit dem Slug{" "}
-            <strong>{appConfig.defaultHomeSlug}</strong> gefunden. Lege diese
-            Seite in Directus an, um die Startseite komplett aus dem CMS zu
-            steuern.
+            Fuer diesen Bereich sind aktuell noch keine Inhalte hinterlegt. Bis
+            die Startseite vollstaendig vorbereitet ist, findest du hier bald
+            alle wichtigen Informationen auf einen Blick.
           </p>
           <div className="button-row">
             <Link
@@ -54,13 +53,11 @@ export function HomePage() {
         <div className="page-hero__aside">
           <div className="page-hero__stat">
             <span className="eyebrow">Hinweis</span>
-            <strong>Die Startseite kommt noch nicht aus Directus.</strong>
+            <strong>Die Startseite wird gerade vorbereitet.</strong>
           </div>
           <div className="page-hero__stat">
             <span className="eyebrow">Naechster Schritt</span>
-            <strong>
-              Lege eine veroeffentlichte CMS-Seite mit dem Standardslug an.
-            </strong>
+            <strong>Schau bis dahin gerne in die aktuellen News.</strong>
           </div>
         </div>
       </div>

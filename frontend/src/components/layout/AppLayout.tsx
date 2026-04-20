@@ -24,7 +24,7 @@ export function AppLayout() {
     return (
       <div className="shell shell--main">
         <ErrorState
-          message="Header und Footer konnten nicht aus dem CMS geladen werden."
+          message="Header und Footer konnten nicht geladen werden."
           onRetry={() => {
             void settingsQuery.refetch();
             void navigationQuery.refetch();

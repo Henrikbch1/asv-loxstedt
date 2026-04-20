@@ -5,7 +5,7 @@ interface LoadingStateProps {
 
 export function LoadingState({
   title = "Inhalte werden geladen",
-  message = "Die Daten aus dem CMS werden gerade abgefragt.",
+  message = "Bitte einen Moment Geduld.",
 }: LoadingStateProps) {
   return (
     <section

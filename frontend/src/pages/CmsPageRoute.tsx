@@ -20,7 +20,7 @@ export function CmsPageRoute() {
   if (pageQuery.isError) {
     return (
       <ErrorState
-        message="Die CMS-Seite konnte nicht geladen werden."
+        message="Die Seite konnte nicht geladen werden."
         onRetry={() => {
           void pageQuery.refetch();
         }}

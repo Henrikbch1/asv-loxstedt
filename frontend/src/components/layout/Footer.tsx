@@ -21,12 +21,15 @@ export function Footer({ settings }: FooterProps) {
               Oberflaeche.
             </p>
             <p className="site-footer__content m-0 max-w-xl">
-              News, Seiten und Footer-Inhalte werden zentral im CMS gepflegt und
-              hier in einer ruhigen, gruen-warmen Oberflaeche ausgespielt.
+              News, Seiten und wichtige Vereinsinformationen werden zentral
+              gepflegt und hier in einer ruhigen, gruen-warmen Oberflaeche
+              ausgespielt.
             </p>
           </div>
           <div className="site-footer__panel break-words whitespace-normal text-left">
-            <span className="meta-text text-white/70">CMS-Inhalt</span>
+            <span className="meta-text text-white/70">
+              Weitere Informationen
+            </span>
             <RichText
               className="rich-text site-footer__richtext prose prose-invert prose-sm max-w-none text-white whitespace-normal"
               html={settings?.footer_note}
@@ -71,7 +74,7 @@ export function Footer({ settings }: FooterProps) {
             © {currentYear} - {settings?.site_name ?? settings?.club_name ?? ""}
           </p>
           <p className="text-white/70 whitespace-normal">
-            Frontend mit Directus-Anbindung
+            Aktuelles, Termine und Vereinsinformationen
           </p>
         </div>
       </div>
