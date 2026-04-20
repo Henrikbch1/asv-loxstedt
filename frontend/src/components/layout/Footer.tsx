@@ -28,7 +28,7 @@ export function Footer({ settings }: FooterProps) {
           <div className="site-footer__panel break-words whitespace-normal text-left">
             <span className="meta-text text-white/70">CMS-Inhalt</span>
             <RichText
-              className="rich-text site-footer__richtext prose prose-sm max-w-none text-white whitespace-normal"
+              className="rich-text site-footer__richtext prose prose-invert prose-sm max-w-none text-white whitespace-normal"
               html={settings?.footer_note}
             />
 

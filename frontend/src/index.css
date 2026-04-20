@@ -398,6 +398,7 @@ button {
   gap: 0.85rem;
   align-content: start;
   padding: 1.25rem;
+  color: rgba(248, 248, 242, 0.82);
   border-radius: var(--radius-md);
   background: rgba(248, 248, 242, 0.05);
   border: 1px solid rgba(248, 248, 242, 0.1);
@@ -417,9 +418,20 @@ button {
   margin: 0;
 }
 
-.site-footer__richtext,
-.site-footer__richtext :where(p, li, strong, a) {
+.site-footer__richtext.rich-text,
+.site-footer__richtext.rich-text p,
+.site-footer__richtext.rich-text li,
+.site-footer__richtext.rich-text blockquote,
+.site-footer__richtext.rich-text h2,
+.site-footer__richtext.rich-text h3,
+.site-footer__richtext.rich-text h4,
+.site-footer__richtext.rich-text strong,
+.site-footer__richtext.rich-text em {
   color: inherit;
+}
+
+.site-footer__richtext.rich-text li::marker {
+  color: rgba(248, 248, 242, 0.72);
 }
 
 .site-footer__richtext a {
