@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import { RichText } from "../../components/ui/RichText";
 import { LoadingState } from "../../components/ui/LoadingState";
 import { ErrorState } from "../../components/ui/ErrorState";
@@ -45,7 +46,7 @@ export function BoardPageView({ page }: BoardPageViewProps) {
         {isError ? <ErrorState /> : null}
         {sortedRoles.length > 0 ? (
           <ul className="board-list">
-            {sortedRoles.map((role) => {
+            {sortedRoles.map((role, index) => {
               const person =
                 role.person_link && typeof role.person_link === "object"
                   ? (role.person_link as Person)
@@ -54,30 +55,40 @@ export function BoardPageView({ page }: BoardPageViewProps) {
                 role.category && typeof role.category === "object"
                   ? (role.category as Category)
                   : null;
+              const prevRole = index > 0 ? sortedRoles[index - 1] : null;
+              const prevCategory =
+                prevRole?.category && typeof prevRole.category === "object"
+                  ? (prevRole.category as Category)
+                  : null;
+              const showCategoryMarker = category?.name !== prevCategory?.name;
               const fullName = [person?.firstname, person?.lastname]
                 .filter(Boolean)
                 .join(" ");
 
               return (
-                <li key={String(role.id)} className="board-card">
-                  <div className="eyebrow">{role.role}</div>
-                  {category ? (
-                    <span className="news-card__badge">{category.name}</span>
+                <Fragment key={String(role.id)}>
+                  {showCategoryMarker && category ? (
+                    <li className="board-list__section">
+                      <span className="news-card__badge">{category.name}</span>
+                    </li>
                   ) : null}
-                  {role.is_vacant ? (
-                    <p className="board-card__vacant">Zurzeit unbesetzt</p>
-                  ) : (
-                    <p className="board-card__name">{fullName || "—"}</p>
-                  )}
-                  {!role.is_vacant && role.email ? (
-                    <a
-                      className="board-card__email"
-                      href={`mailto:${role.email}`}
-                    >
-                      {role.email}
-                    </a>
-                  ) : null}
-                </li>
+                  <li className="board-card">
+                    <div className="eyebrow">{role.role}</div>
+                    {role.is_vacant ? (
+                      <p className="board-card__vacant">Zurzeit unbesetzt</p>
+                    ) : (
+                      <p className="board-card__name">{fullName || "—"}</p>
+                    )}
+                    {!role.is_vacant && role.email ? (
+                      <a
+                        className="board-card__email"
+                        href={`mailto:${role.email}`}
+                      >
+                        {role.email}
+                      </a>
+                    ) : null}
+                  </li>
+                </Fragment>
               );
             })}
           </ul>
