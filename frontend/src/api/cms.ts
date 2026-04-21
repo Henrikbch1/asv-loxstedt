@@ -5,6 +5,7 @@ import type {
   NavigationRecord,
   NavigationRecordRaw,
   NewsItem,
+  Role,
 } from "../types/cms";
 import type {
   DirectusListResponse,
@@ -231,6 +232,31 @@ export async function getPublicNewsById(
   const response = await fetchPublicNewsResponse<
     DirectusSingletonResponse<NewsItem>
   >(`/items/news/${encodeURIComponent(String(id))}`, {}, signal);
+
+  return response.data;
+}
+
+export async function getBoardRoles(signal?: AbortSignal): Promise<Role[]> {
+  const response = await fetchDirectus<DirectusListResponse<Role>>(
+    "/items/roles",
+    {
+      query: {
+        fields: [
+          "id",
+          "sort",
+          "role",
+          "email",
+          "is_vacant",
+          "category.name",
+          "person_link.firstname",
+          "person_link.lastname",
+        ],
+        sort: ["sort"],
+        limit: -1,
+      },
+      signal,
+    },
+  );
 
   return response.data;
 }

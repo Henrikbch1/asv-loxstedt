@@ -68,8 +68,11 @@ export interface Person {
 
 export interface Role {
   id: CmsId;
+  sort: number | null;
   role: string;
   email: string | null;
+  is_vacant: boolean;
+  category: DirectusRelation<Category>;
   person_link: DirectusRelation<Person>;
 }
 
