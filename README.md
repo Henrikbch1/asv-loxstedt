@@ -9,43 +9,107 @@
 
 # asv-loxstedt
 
-Kompakte, wartbare Codebasis für die Website des ASV Loxstedt — Headless-CMS (Directus) plus modernes React + TypeScript Frontend (Vite).
+<div align="center" markdown="1">
+	<h1 style="margin:0;">ASV Loxstedt — Website</h1>
+	<p style="margin:6px 0 0 0; color:#555;">Headless CMS (Directus) + React + TypeScript (Vite)</p>
+	<p>
+		<img alt="banner" src="cms/uploads/f2fae195-b718-4a24-80bd-4bfb5530839c__e9dcbd6d37cf1a1351d2786febd96ceaf3ef6132.avif" width="720" style="border-radius:8px; margin-top:12px;" />
+	</p>
+</div>
 
-Kurzübersicht
+<p align="center">
+	<img alt="status" src="https://img.shields.io/badge/status-active-brightgreen?style=flat-square" />
+	<img alt="tech" src="https://img.shields.io/badge/tech-React%20%2B%20TypeScript-blue?logo=react&style=flat-square" />
+	<img alt="cms" src="https://img.shields.io/badge/cms-Directus-ff69b4?style=flat-square&logo=directus" />
+	<img alt="license" src="https://img.shields.io/badge/license-GPLv3-blue?style=flat-square" />
+</p>
 
-- Directus (CMS): `cms/`
-- Frontend (Vite + React + TypeScript): `frontend/`
-- Snapshot: `cms/database/snapshot.json` (Directus v11.14.1)
+---
 
-Live-URLs (lokal)
+## Kurzübersicht
 
-- Directus Admin: http://localhost:8055
-- Frontend Dev: http://localhost:5173
+- **Architektur:** Headless CMS (`cms/`) + Frontend (`frontend/`) mit klarer Trennung von Content und Presentation
+- **Snapshot:** `cms/database/snapshot.json`
+- **Local:** Directus Admin — `http://localhost:8055`, Frontend Dev — `http://localhost:5173`
 
-Inhalt dieser Datei
+---
 
-- Über das Projekt
-- Lokales Setup
-- Wichtige Environment-Variablen
-- Genutzte Directus-Collections
-- Frontend-Scripts & Routing
-- Snapshot & Wiederherstellung
-- Produktion & Hinweise
+<div style="background:linear-gradient(90deg,#f3f8ff,#ffffff); border-left:4px solid #2b90d9; padding:12px; margin:12px 0; border-radius:6px;">
+	<strong>Was macht dieses Repo?</strong>
+	<p style="margin:6px 0 0 0; color:#333;">Redakteure pflegen Inhalte in Directus; das Frontend liest die Daten und rendert Navigation, Seiten und News dynamisch. Ziel ist eine wartbare, leicht erweiterbare Web-Präsenz.</p>
+</div>
 
-## Kurz: Was dieses Repo macht
+## Schneller Start (lokal)
 
-Dieses Repository trennt Content-Management (Directus) und Präsentation (Frontend). Redakteure pflegen Inhalte in Directus; das Frontend liest die Daten zur Laufzeit und rendert Seiten, Navigation und News dynamisch.
-
-## Schnellstart (lokal)
-
-1. Directus starten:
+1. Directus (im Ordner `cms`):
 
 ```powershell
 cd cms
 docker compose up -d
 ```
 
-2. Frontend vorbereiten und starten:
+2. Frontend starten:
+
+```powershell
+cd frontend
+Copy-Item .env.example .env.local
+npm install
+npm run dev
+```
+
+Hinweis: Siehe `frontend/.env.example` für benötigte `VITE_`-Variablen.
+
+## Wichtige Env-Variablen
+
+- `VITE_API_BASE_URL` — Directus-API (z. B. `http://localhost:8055`)
+- `VITE_DIRECTUS_ASSETS_PATH` — Asset-Pfad (Default: `/assets`)
+- `VITE_HOME_SLUG` — Startseiten-Slug (Default: `home`)
+
+<!-- Banner & Badges -->
+<p align="center">
+	<img alt="ASV Loxstedt" src="https://img.shields.io/badge/ASV%20Loxstedt-Website-2b90d9?style=flat-square" />
+	<img alt="status" src="https://img.shields.io/badge/status-active-brightgreen?style=flat-square" />
+	<img alt="license" src="https://img.shields.io/badge/license-GPLv3-blue?style=flat-square" />
+	<img alt="tech" src="https://img.shields.io/badge/tech-React%20%2B%20TypeScript-blue?logo=react&style=flat-square" />
+	<img alt="cms" src="https://img.shields.io/badge/cms-Directus-ff69b4?style=flat-square&logo=directus" />
+</p>
+
+# ASV Loxstedt — Website
+
+Eine schlanke, wartbare Codebasis für die Vereins-Website: Headless-CMS (Directus) zur Inhaltspflege und modernes React + TypeScript Frontend (Vite) zur Ausgabe.
+
+> Kurzübersicht
+
+- **Directus (CMS):** `cms/`
+- **Frontend (Vite + React + TypeScript):** `frontend/`
+- **Snapshot:** `cms/database/snapshot.json`
+
+---
+
+## Vorschau
+
+![Frontend Vorschau](cms/uploads/f2fae195-b718-4a24-80bd-4bfb5530839c__e9dcbd6d37cf1a1351d2786febd96ceaf3ef6132.avif)
+
+---
+
+## Was ist dieses Projekt?
+
+Dieses Repository trennt Content (Directus) und Präsentation (Frontend). Redakteur:innen pflegen Inhalte in Directus; das Frontend liest die Daten dynamisch und rendert Seiten, Navigation und News.
+
+**Ziele:** einfache Wartbarkeit, klare Trennung von Inhalt/Präsentation, gute Developer-Experience.
+
+---
+
+## Schnellstart (lokal)
+
+1. Directus (im Ordner `cms`) starten:
+
+```powershell
+cd cms
+docker compose up -d
+```
+
+2. Frontend vorbereiten und lokal starten:
 
 ```powershell
 cd frontend
@@ -63,6 +127,13 @@ npm install
 npm run dev
 ```
 
+**Lokale URLs:**
+
+- Directus Admin: http://localhost:8055
+- Frontend Dev (Vite): http://localhost:5173
+
+---
+
 ## Wichtige Environment-Variablen (Frontend)
 
 - `VITE_API_BASE_URL` — Basis-URL zur Directus-API (Default: `http://localhost:8055`)
@@ -70,9 +141,11 @@ npm run dev
 - `VITE_HOME_SLUG` — Startseiten-Slug (Default: `home`)
 - `VITE_DIRECTUS_TOKEN` — Optional: read-only Token (NICHT ins VCS)
 
-Siehe `frontend/.env.example` und `frontend/src/config/env.ts` für Details.
+Siehe auch: `frontend/.env.example` und `frontend/src/config/env.ts`.
 
-## Genutzte Directus-Collections (vom Frontend erwartet)
+---
+
+## Erwartete Directus-Collections
 
 - `global_settings` (Singleton)
 - `navigation`
@@ -83,57 +156,58 @@ Siehe `frontend/.env.example` und `frontend/src/config/env.ts` für Details.
 - `persons`
 - `roles`
 
-## Frontend-Scripts (im Ordner `frontend`)
+---
+
+## Frontend: Scripts & Routing
 
 - `npm run dev` — Dev-Server (Vite + HMR)
-- `npm run build` — `tsc -b && vite build` (Erzeugt Produktions-Build)
+- `npm run build` — Produktions-Build
 - `npm run preview` — `vite preview` (lokale Vorschau)
 - `npm run lint` — ESLint
 
-## Routing (Frontend)
+Routing-Übersicht (siehe `frontend/src/routes/AppRouter.tsx`):
 
-- `/` → Startseite (lädt CMS-Seite mit Slug `home`)
+- `/` → Startseite
 - `/news` → News-Übersicht
 - `/news/:slug` → News-Detail
 - `/:slug` → generische CMS-Seiten
 - `*` → 404
 
-(Quellcode: `frontend/src/routes/AppRouter.tsx`)
+---
 
 ## Snapshot & Wiederherstellung
 
-- Snapshot: `cms/database/snapshot.json` (erstellt mit Directus v11.14.1)
-- Import (empfohlen): Directus Admin UI → Einstellungen → Import/Export → Snapshot importieren
+- Snapshot-Datei: `cms/database/snapshot.json` (nützlich für Demo-Instanzen)
 - Restore-Skripte: `cms/restore_snapshot.ps1`, `cms/restore_snapshot.sh`
 
-Clean Start (sqlite, lokal):
+Empfehlung: Snapshot über Directus Admin → Einstellungen → Import/Export importieren.
 
-```powershell
-cd cms
-docker compose down
-Move-Item cms\database\data.db cms\database\data.db.bak
-docker compose up -d
-# Danach Snapshot via Admin UI importieren
-```
+---
 
 ## Produktion
 
-- Directus: Produktionsbereit mit PostgreSQL + persistentem Objektspeicher (z. B. S3)
-- Frontend: `npm run build` liefert statische Dateien für Hosting (Netlify, Vercel, S3+CloudFront etc.)
+- Directus: Betrieb mit PostgreSQL + persistentem Objektspeicher (z. B. S3)
+- Frontend: Statisches Hosting (Netlify, Vercel, S3, etc.) nach `npm run build`
+
+---
 
 ## Hinweise für Developer
 
-- API-Abstraktion: `frontend/src/api/directus.ts` — zentrale Fetch-Logik und Fehlerbehandlung (`CmsApiError`)
-- RichText-Sanitizing: `frontend/src/components/ui/RichText.tsx` verwendet DOMPurify
-- Navigation-Baum: `frontend/src/features/navigation/navigation.utils.ts`
+- API-Abstraktion: `frontend/src/api/directus.ts` — zentrale Fetch-Logik
+- RichText: `frontend/src/components/ui/RichText.tsx` nutzt Sanitizing
+- Navigation: `frontend/src/features/navigation/navigation.utils.ts`
+
+---
 
 ## Mitwirken
 
-- PRs und Issues willkommen. Bitte Bereiche (`frontend/`, `cms/`) im PR-Titel nennen.
+- PRs und Issues willkommen — bitte Bereich (`frontend/` oder `cms/`) im PR-Titel angeben.
+
+---
 
 ## Lizenz
 
-GPL-3.0
+Dieses Projekt steht unter der GPL-3.0-Lizenz.
 
 ---
 
