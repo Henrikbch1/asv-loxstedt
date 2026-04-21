@@ -48,7 +48,11 @@ export function AppLayout() {
   return (
     <div className="app-shell">
       <Header
-        navigationItems={[...(navigationQuery.data ?? []), NEWS_NAV_ITEM]}
+        navigationItems={[
+            ...(navigationQuery.data ?? []).slice(0, 1),
+            NEWS_NAV_ITEM,
+            ...(navigationQuery.data ?? []).slice(1),
+          ]}
         settings={settingsQuery.data}
       />
       <main className="shell shell--main">
