@@ -175,30 +175,72 @@ export function NavigationMenu({
               <>
                 <div className="nav-item__desktop-only">{desktopBranch}</div>
                 <div className="nav-item__mobile-only">
-                  <button
-                    aria-controls={submenuId}
-                    aria-expanded={isExpanded}
-                    className={
-                      isExpanded
-                        ? "nav-branch-toggle nav-branch-toggle--open"
-                        : "nav-branch-toggle"
-                    }
-                    onClick={() => {
-                      setOpenKeys((currentKeys) =>
-                        currentKeys.includes(item.key)
-                          ? currentKeys.filter((key) => key !== item.key)
-                          : [...currentKeys, item.key],
-                      );
-                    }}
-                    type="button"
-                  >
-                    <span className="nav-branch-toggle__label">
-                      {item.label}
-                    </span>
-                    <span className="nav-branch-icon" aria-hidden="true">
-                      <ChevronIcon />
-                    </span>
-                  </button>
+                  {item.href ? (
+                    <div className="nav-branch-split">
+                      <NavLink
+                        className={({ isActive }) =>
+                          isActive
+                            ? "nav-link nav-branch-split__link nav-link--active"
+                            : "nav-link nav-branch-split__link"
+                        }
+                        onClick={onNavigate}
+                        to={item.href}
+                      >
+                        {item.label}
+                      </NavLink>
+                      <button
+                        aria-controls={submenuId}
+                        aria-expanded={isExpanded}
+                        aria-label={
+                          isExpanded
+                            ? "Untermenu schliessen"
+                            : "Untermenu oeffnen"
+                        }
+                        className={
+                          isExpanded
+                            ? "nav-branch-chevron nav-branch-chevron--open"
+                            : "nav-branch-chevron"
+                        }
+                        onClick={() => {
+                          setOpenKeys((currentKeys) =>
+                            currentKeys.includes(item.key)
+                              ? currentKeys.filter((key) => key !== item.key)
+                              : [...currentKeys, item.key],
+                          );
+                        }}
+                        type="button"
+                      >
+                        <span className="nav-branch-icon" aria-hidden="true">
+                          <ChevronIcon />
+                        </span>
+                      </button>
+                    </div>
+                  ) : (
+                    <button
+                      aria-controls={submenuId}
+                      aria-expanded={isExpanded}
+                      className={
+                        isExpanded
+                          ? "nav-branch-toggle nav-branch-toggle--open"
+                          : "nav-branch-toggle"
+                      }
+                      onClick={() => {
+                        setOpenKeys((currentKeys) =>
+                          currentKeys.includes(item.key)
+                            ? currentKeys.filter((key) => key !== item.key)
+                            : [...currentKeys, item.key],
+                        );
+                      }}
+                      type="button"
+                    >
+                      <span className="nav-branch-toggle__label">
+                        {item.label}
+                      </span>
+                      <span className="nav-branch-icon" aria-hidden="true">
+                        <ChevronIcon />
+                      </span>
+                    </button>
+                  )}
                 </div>
                 <NavigationMenu
                   depth={depth + 1}

@@ -18,11 +18,11 @@ export function Footer({ settings }: FooterProps) {
             </span>
             <p className="site-footer__title">
               Vereinsinhalte mit klarer Struktur und einer moderneren
-              Oberflaeche.
+              Oberfläche.
             </p>
             <p className="site-footer__content m-0 max-w-xl">
               News, Seiten und wichtige Vereinsinformationen werden zentral
-              gepflegt und hier in einer ruhigen, gruen-warmen Oberflaeche
+              gepflegt und hier in einer ruhigen, gruen-warmen Oberfläche
               ausgespielt.
             </p>
           </div>

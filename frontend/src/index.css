@@ -290,6 +290,42 @@ button {
   background: rgba(121, 185, 39, 0.12);
 }
 
+.nav-branch-split {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.nav-branch-split__link {
+  flex: 1;
+  justify-content: flex-start;
+}
+
+.nav-branch-chevron {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  padding: 0.6rem;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--color-brand-strong);
+  cursor: pointer;
+  transition:
+    background-color 140ms ease,
+    color 140ms ease;
+}
+
+.nav-branch-chevron:hover,
+.nav-branch-chevron:focus-visible {
+  background: rgba(121, 185, 39, 0.12);
+}
+
+.nav-branch-chevron--open .nav-branch-icon {
+  transform: rotate(180deg);
+}
+
 .nav-branch-icon {
   display: inline-flex;
   align-items: center;
