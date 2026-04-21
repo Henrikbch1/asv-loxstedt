@@ -723,10 +723,21 @@ button {
   display: flex;
   flex-wrap: wrap;
   gap: 0.6rem;
+  align-items: center;
   font-size: 0.88rem;
 }
 
 .news-card__meta span {
+  display: inline-flex;
+  align-items: center;
+}
+
+.news-card__date {
+  color: var(--color-muted);
+  font-weight: 600;
+}
+
+.news-card__badge {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;

@@ -19,7 +19,7 @@ export function NewsCard({ item }: NewsCardProps) {
   const detailHref = `/news/${item.id}`;
   const categoryName =
     item.category && typeof item.category === "object"
-      ? item.category.name
+      ? item.category.name?.trim() ?? null
       : null;
 
   return (
@@ -36,8 +36,10 @@ export function NewsCard({ item }: NewsCardProps) {
 
       <div className="news-card__body">
         <div className="news-card__meta">
-          {dateLabel ? <span>{dateLabel}</span> : null}
-          {categoryName ? <span>{categoryName}</span> : null}
+          {dateLabel ? <span className="news-card__date">{dateLabel}</span> : null}
+          {categoryName ? (
+            <span className="news-card__badge">{categoryName}</span>
+          ) : null}
         </div>
         <h2 className="m-0 text-xl font-semibold">
           <Link to={detailHref}>{item.title}</Link>

@@ -37,7 +37,7 @@ const newsFields = [
   "date",
   "text",
   "image",
-  "category",
+  "category.name",
 ] satisfies string[];
 
 const fallbackNewsFields = [

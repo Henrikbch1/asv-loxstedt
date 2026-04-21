@@ -38,7 +38,7 @@ export interface CmsPage extends PageSummary {
 }
 
 export interface Category {
-  id: CmsId;
+  id?: CmsId;
   name: string;
 }
 
