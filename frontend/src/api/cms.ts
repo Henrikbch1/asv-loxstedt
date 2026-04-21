@@ -28,7 +28,6 @@ const pageFields = [
   "hero_text",
   "show_title",
   "show_intro",
-  "related_role_groups",
 ] satisfies string[];
 
 const newsFields = [

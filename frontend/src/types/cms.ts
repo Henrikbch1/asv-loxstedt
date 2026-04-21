@@ -34,7 +34,6 @@ export interface CmsPage extends PageSummary {
   navigation_title?: string | null;
   show_title?: boolean | null;
   show_intro?: boolean | null;
-  related_role_groups?: DirectusRelation<unknown>[] | null;
 }
 
 export interface Category {
