@@ -146,9 +146,6 @@ export function Footer({ settings }: FooterProps) {
           <p className="whitespace-normal break-words">
             © {currentYear} - {settings?.site_name ?? settings?.club_name ?? ""}
           </p>
-          <p className="text-white/70 whitespace-normal">
-            Aktuelles, Termine und Vereinsinformationen
-          </p>
           <nav className="mt-2 text-sm">
             <Link to="/impressum" className="hover:underline mr-3">
               Impressum
