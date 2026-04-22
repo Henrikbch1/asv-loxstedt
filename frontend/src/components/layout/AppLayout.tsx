@@ -1,11 +1,12 @@
 import { Outlet } from "react-router-dom";
-import type { NavigationTreeNode } from "../../types/cms";
+import type { NavigationTreeNode } from "../../types/navigation";
 import {
   useGlobalSettingsQuery,
   useNavigationTreeQuery,
 } from "../../features/navigation/useNavigationQuery";
 import { ErrorState } from "../ui/ErrorState";
 import { LoadingState } from "../ui/LoadingState";
+import { routes } from "../../config/routes";
 import { Footer } from "./Footer";
 import { Header } from "./Header";
 
@@ -13,7 +14,7 @@ const NEWS_NAV_ITEM: NavigationTreeNode = {
   key: "label:news",
   sort: 9999,
   label: "News",
-  href: "/news",
+  href: routes.newsList,
   page: null,
   parentKey: null,
   children: [],
@@ -49,10 +50,10 @@ export function AppLayout() {
     <div className="app-shell">
       <Header
         navigationItems={[
-            ...(navigationQuery.data ?? []).slice(0, 1),
-            NEWS_NAV_ITEM,
-            ...(navigationQuery.data ?? []).slice(1),
-          ]}
+          ...(navigationQuery.data ?? []).slice(0, 1),
+          NEWS_NAV_ITEM,
+          ...(navigationQuery.data ?? []).slice(1),
+        ]}
         settings={settingsQuery.data}
       />
       <main className="shell shell--main">

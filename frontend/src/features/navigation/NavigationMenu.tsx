@@ -1,6 +1,7 @@
-import { useEffect, useId, useRef, useState } from "react";
+import { useId } from "react";
 import { NavLink } from "react-router-dom";
-import type { NavigationTreeNode } from "../../types/cms";
+import type { NavigationTreeNode } from "../../types/navigation";
+import { useNavigationMenuState } from "./useNavigationMenuState";
 
 interface NavigationMenuProps {
   items: NavigationTreeNode[];
@@ -8,8 +9,6 @@ interface NavigationMenuProps {
   expanded?: boolean;
   onNavigate?: () => void;
 }
-
-const DESKTOP_CLOSE_DELAY_MS = 180;
 
 function ChevronIcon() {
   return (
@@ -32,50 +31,18 @@ export function NavigationMenu({
   expanded = false,
   onNavigate,
 }: NavigationMenuProps) {
-  const [openKeys, setOpenKeys] = useState<string[]>([]);
-  const [desktopOpenKeys, setDesktopOpenKeys] = useState<string[]>([]);
+  const {
+    openKeys,
+    desktopOpenKeys,
+    toggleMobileKey,
+    openDesktopBranch,
+    closeDesktopBranch,
+  } = useNavigationMenuState();
   const idPrefix = useId();
-  const closeTimeoutsRef = useRef<Record<string, number>>({});
-
-  useEffect(() => {
-    const closeTimeouts = closeTimeoutsRef.current;
-
-    return () => {
-      Object.values(closeTimeouts).forEach((timeoutId) => {
-        window.clearTimeout(timeoutId);
-      });
-    };
-  }, []);
 
   if (!items.length) {
     return null;
   }
-
-  const clearDesktopCloseTimeout = (itemKey: string) => {
-    const timeoutId = closeTimeoutsRef.current[itemKey];
-
-    if (timeoutId) {
-      window.clearTimeout(timeoutId);
-      delete closeTimeoutsRef.current[itemKey];
-    }
-  };
-
-  const openDesktopBranch = (itemKey: string) => {
-    clearDesktopCloseTimeout(itemKey);
-    setDesktopOpenKeys((currentKeys) =>
-      currentKeys.includes(itemKey) ? currentKeys : [...currentKeys, itemKey],
-    );
-  };
-
-  const closeDesktopBranch = (itemKey: string) => {
-    clearDesktopCloseTimeout(itemKey);
-    closeTimeoutsRef.current[itemKey] = window.setTimeout(() => {
-      setDesktopOpenKeys((currentKeys) =>
-        currentKeys.filter((key) => key !== itemKey),
-      );
-      delete closeTimeoutsRef.current[itemKey];
-    }, DESKTOP_CLOSE_DELAY_MS);
-  };
 
   const listClassName =
     depth === 0
@@ -202,11 +169,7 @@ export function NavigationMenu({
                             : "nav-branch-chevron"
                         }
                         onClick={() => {
-                          setOpenKeys((currentKeys) =>
-                            currentKeys.includes(item.key)
-                              ? currentKeys.filter((key) => key !== item.key)
-                              : [...currentKeys, item.key],
-                          );
+                          toggleMobileKey(item.key);
                         }}
                         type="button"
                       >
@@ -225,11 +188,7 @@ export function NavigationMenu({
                           : "nav-branch-toggle"
                       }
                       onClick={() => {
-                        setOpenKeys((currentKeys) =>
-                          currentKeys.includes(item.key)
-                            ? currentKeys.filter((key) => key !== item.key)
-                            : [...currentKeys, item.key],
-                        );
+                        toggleMobileKey(item.key);
                       }}
                       type="button"
                     >
