@@ -732,14 +732,13 @@ button {
 }
 
 .news-card__media {
-  aspect-ratio: 4 / 3;
   overflow: hidden;
 }
 
 .news-card__media img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  display: block;
   transition: transform 220ms ease;
 }
 
@@ -875,12 +874,17 @@ button {
 }
 
 .news-detail__media {
+  /* no fixed aspect-ratio: image sizes by its own proportions */
   min-height: 0;
-  aspect-ratio: 4 / 5;
+  background: var(--color-surface-strong);
 }
 
 .news-detail__media img {
+  width: 100%;
+  height: auto;
   min-height: 0;
+  object-fit: contain;
+  display: block;
 }
 
 /* ─── News Feed (list view) ─────────────────────────────────── */
@@ -927,7 +931,6 @@ button {
 .news-list-item__thumbnail--top {
   display: block;
   width: 100%;
-  aspect-ratio: 16 / 9;
   border-radius: var(--radius-sm);
   overflow: hidden;
   margin-bottom: 0.85rem;
@@ -935,8 +938,7 @@ button {
 
 .news-list-item__thumbnail--top img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
   display: block;
 }
 
@@ -1009,18 +1011,15 @@ button {
 .news-list-item__thumbnail--right {
   flex-shrink: 0;
   width: 180px;
-  aspect-ratio: 4 / 3;
   border-radius: var(--radius-sm);
   overflow: hidden;
-  background: var(--color-surface-strong);
   position: relative;
   z-index: 1;
 }
 
 .news-list-item__thumbnail--right img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
   display: block;
   transition: transform 220ms ease;
 }
@@ -1077,8 +1076,11 @@ button {
 }
 
 .lightbox__image {
+  display: block;
   max-width: 100%;
-  max-height: 90dvh;
+  max-height: 100%;
+  width: auto;
+  height: auto;
   border-radius: var(--radius-md);
   object-fit: contain;
   cursor: default;
@@ -1121,7 +1123,7 @@ button {
   position: relative;
   display: block;
   width: 100%;
-  height: 100%;
+  height: auto;
   padding: 0;
   border: 0;
   background: none;
