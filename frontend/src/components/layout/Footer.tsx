@@ -29,7 +29,7 @@ export function Footer({ settings }: FooterProps) {
   const zoomLevel = 15;
   const mapType = "k";
   const language = "de";
-  // WICHTIG: Der Pfad /maps muss in die URL
+  
   const baseUrl = "https://www.google.com/maps";
 
   // 2. Die URL zusammenbauen
@@ -54,15 +54,15 @@ export function Footer({ settings }: FooterProps) {
               gepflegt und hier in einer ruhigen, gruen-warmen Oberfläche
               ausgespielt.
             </p>
-          </div>
-          <div className="site-footer__panel break-words whitespace-normal text-left">
-            <span className="meta-text text-white/70">Kontakt Daten</span>
             <RichText
               className="rich-text site-footer__richtext prose prose-invert prose-sm max-w-none text-white whitespace-normal"
               html={settings?.footer_note}
             />
+          </div>
+          <div className="site-footer__panel break-words whitespace-normal text-left">
+            <span className="meta-text text-white/70">Kontakt Daten</span>
 
-            {(settings?.club_name ||
+            {(settings?.site_name ||
               settings?.street ||
               settings?.postal_code ||
               settings?.city ||
