@@ -2,7 +2,7 @@ import { useSearchParams } from "react-router-dom";
 import { EmptyState } from "../components/ui/EmptyState";
 import { ErrorState } from "../components/ui/ErrorState";
 import { LoadingState } from "../components/ui/LoadingState";
-import { NewsCard } from "../features/news/NewsCard";
+import { NewsListItem } from "../features/news/NewsListItem";
 import { usePublicNewsListQuery } from "../features/news/useNewsQueries";
 import { useSiteTitle } from "../hooks/useSiteTitle";
 import { NEWS_PAGE_SIZE } from "../config/constants";
@@ -55,11 +55,15 @@ export function NewsListPage() {
         </p>
       </div>
 
-      <div className="news-grid">
-        {newsQuery.data.data.map((item) => (
-          <NewsCard item={item} key={item.id} />
-        ))}
-      </div>
+      <ul className="news-feed">
+        {[...newsQuery.data.data]
+          .sort((a, b) => (b.date ?? "").localeCompare(a.date ?? ""))
+          .map((item) => (
+            <li key={item.id}>
+              <NewsListItem item={item} />
+            </li>
+          ))}
+      </ul>
 
       {totalPages > 1 ? (
         <div className="grid grid-cols-3 items-center gap-2 pt-4">
