@@ -12,6 +12,7 @@ export function Footer({ settings }: FooterProps) {
     settings?.postal_code,
     settings?.city,
   ]
+
     .filter(Boolean)
     .join(" ");
   const mapsUrl = addressString
@@ -19,8 +20,21 @@ export function Footer({ settings }: FooterProps) {
         addressString,
       )}`
     : undefined;
+  /*
+    MAP CONFIGURATION:
+    - zoomLevel: Sets the magnification. 1 (world) to 21 (street level). 15-17 recommended.
+    - mapType:   Sets the view mode. 'm' = Standard Roadmap, 'k' = Satellite imagery.
+    - language:  Sets the UI language (e.g., 'en' for English, 'de' for German).
+    */
+  const zoomLevel = 15;
+  const mapType = "k";
+  const language = "de";
+  // WICHTIG: Der Pfad /maps muss in die URL
+  const baseUrl = "https://www.google.com/maps";
+
+  // 2. Die URL zusammenbauen
   const mapsEmbedUrl = addressString
-    ? `https://www.google.com/maps?q=${encodeURIComponent(addressString)}&t=k&output=embed`
+    ? `${baseUrl}?q=${encodeURIComponent(addressString)}&t=${mapType}&z=${zoomLevel}&hl=${language}&output=embed`
     : undefined;
 
   return (
