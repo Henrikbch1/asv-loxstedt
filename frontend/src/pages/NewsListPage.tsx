@@ -33,7 +33,7 @@ export function NewsListPage() {
       <EmptyState
         ctaLabel="Zur Startseite"
         ctaTo="/"
-        message="Sobald neue veroeffentlichte Eintraege vorhanden sind, erscheinen sie hier automatisch."
+        message="Sobald neue veroeffentlichte Einträge vorhanden sind, erscheinen sie hier automatisch."
         title="Noch keine News vorhanden"
       />
     );
