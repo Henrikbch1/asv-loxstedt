@@ -51,7 +51,7 @@ export function NewsDetailPage() {
     expandDirectusRelation<Category>(newsQuery.data.category)?.name ?? null;
 
   return (
-    <article className="content-page">
+    <article className="content-page news-detail">
       <header className="page-hero page-hero--content">
         <div className="page-hero__copy">
           <span className="eyebrow">News-Detail</span>
@@ -60,21 +60,33 @@ export function NewsDetailPage() {
             {[dateLabel, categoryName].filter(Boolean).join(" · ")}
           </p>
         </div>
-        {imageUrl ? (
-          <div className="page-hero__media">
-            <img
-              className="w-full h-full object-cover"
-              alt={getCmsAssetLabel(newsQuery.data.image)}
-              src={imageUrl}
-            />
-          </div>
-        ) : null}
       </header>
 
-      <RichText
-        className="rich-text content-page__body prose prose-lg"
-        html={newsQuery.data.text}
-      />
+      <section
+        className={`news-detail__layout${imageUrl ? " news-detail__layout--has-media" : ""}`}
+      >
+        <RichText
+          className="rich-text content-page__body news-detail__main prose prose-lg"
+          html={newsQuery.data.text}
+        />
+
+        {imageUrl ? (
+          <aside
+            className="news-detail__media-column"
+            aria-label="Beitragsbild"
+          >
+            <div className="news-detail__media-card">
+              <div className="page-hero__media news-detail__media">
+                <img
+                  className="w-full h-full object-cover"
+                  alt={getCmsAssetLabel(newsQuery.data.image)}
+                  src={imageUrl}
+                />
+              </div>
+            </div>
+          </aside>
+        ) : null}
+      </section>
     </article>
   );
 }
