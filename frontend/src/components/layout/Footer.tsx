@@ -29,10 +29,9 @@ export function Footer({ settings }: FooterProps) {
   const zoomLevel = 15;
   const mapType = "k";
   const language = "de";
-  
-  const baseUrl = "https://www.google.com/maps";
 
-  // 2. Die URL zusammenbauen
+  const baseUrl = "https://www.google.com/maps";
+  // build google maps url
   const mapsEmbedUrl = addressString
     ? `${baseUrl}?q=${encodeURIComponent(addressString)}&t=${mapType}&z=${zoomLevel}&hl=${language}&output=embed`
     : undefined;
@@ -49,18 +48,18 @@ export function Footer({ settings }: FooterProps) {
               Vereinsinhalte mit klarer Struktur und einer moderneren
               Oberfläche.
             </p>
-            <p className="site-footer__content m-0 max-w-xl">
+            <p className="site-footer__content m-0 max-w-xl5">
               News, Seiten und wichtige Vereinsinformationen werden zentral
               gepflegt und hier in einer ruhigen, gruen-warmen Oberfläche
               ausgespielt.
             </p>
             <RichText
-              className="rich-text site-footer__richtext prose prose-invert prose-sm max-w-none text-white whitespace-normal"
+              className="rich-text site-footer__richtext prose prose-invert prose-sm max-w-none whitespace-normal"
               html={settings?.footer_note}
             />
           </div>
           <div className="site-footer__panel break-words whitespace-normal text-left">
-            <span className="meta-text text-white/70">Kontakt Daten</span>
+            <span className="meta-text ">Kontakt Daten</span>
 
             {(settings?.site_name ||
               settings?.street ||
@@ -68,7 +67,7 @@ export function Footer({ settings }: FooterProps) {
               settings?.city ||
               settings?.phone) && (
               <div className="site-footer__contact mt-4 break-words whitespace-normal text-left">
-                {settings?.club_name ? (
+                {(settings?.site_name ?? settings.club_name) ? (
                   <div className="font-semibold">{settings.club_name}</div>
                 ) : null}
 
@@ -105,7 +104,7 @@ export function Footer({ settings }: FooterProps) {
                       href={mapsUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-3 text-white/90 hover:underline"
+                      className="inline-flex items-center gap-3 text-white/9000 hover:underline"
                       aria-label={`Anfahrt: ${addressString}`}
                     >
                       <span className="map-icon" aria-hidden="true">
