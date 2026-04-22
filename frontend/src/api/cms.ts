@@ -92,6 +92,8 @@ export async function getGlobalSettings(
         "postal_code",
         "city",
         "phone",
+        "imprint",
+        "data_protection",
       ],
     },
     signal,
