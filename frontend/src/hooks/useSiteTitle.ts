@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useGlobalSettingsQuery } from "../features/navigation/useNavigationQuery";
+import { useGlobalSettingsQuery } from "./useGlobalSettingsQuery";
 
 export function useSiteTitle(pageTitle?: string) {
   const settingsQuery = useGlobalSettingsQuery();
