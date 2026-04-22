@@ -6,7 +6,7 @@ import { NotFoundState } from "../components/ui/NotFoundState";
 import { RichText } from "../components/ui/RichText";
 import { usePublicNewsByIdQuery } from "../features/news/useNewsQueries";
 import { CmsApiError } from "../api/directus";
-import { getCmsAssetLabel, getCmsAssetUrl } from "../utils/assets";
+import { getCmsAssetLabel, getNewsDetailUrl } from "../utils/assets";
 import { formatDate } from "../utils/date";
 import { useSiteTitle } from "../hooks/useSiteTitle";
 import { ImageLightbox } from "../components/ui/ImageLightbox";
@@ -44,11 +44,7 @@ export function NewsDetailPage() {
     );
   }
 
-  const imageUrl = getCmsAssetUrl(newsQuery.data.image, {
-    fit: "cover",
-    height: 900,
-    width: 1600,
-  });
+  const imageUrl = getNewsDetailUrl(newsQuery.data.image);
   const dateLabel = formatDate(newsQuery.data.date);
   const categoryName =
     expandDirectusRelation<Category>(newsQuery.data.category)?.name ?? null;
