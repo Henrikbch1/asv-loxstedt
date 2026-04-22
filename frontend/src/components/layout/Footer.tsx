@@ -1,4 +1,5 @@
 import { RichText } from "../ui/RichText";
+import { Link } from "react-router-dom";
 import type { GlobalSettings } from "../../types/cms";
 
 interface FooterProps {
@@ -148,6 +149,14 @@ export function Footer({ settings }: FooterProps) {
           <p className="text-white/70 whitespace-normal">
             Aktuelles, Termine und Vereinsinformationen
           </p>
+          <nav className="mt-2 text-sm">
+            <Link to="/impressum" className="hover:underline mr-3">
+              Impressum
+            </Link>{" | "}
+            <Link to="/datenschutz" className="hover:underline">
+              Datenschutz
+            </Link>
+          </nav>
         </div>
       </div>
     </footer>
