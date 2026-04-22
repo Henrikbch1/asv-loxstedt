@@ -904,8 +904,8 @@ button {
 .news-list-item {
   position: relative;
   display: flex;
-  align-items: flex-start;
-  gap: 1.25rem;
+  flex-direction: column;
+  gap: 0;
   padding: 1.25rem 0.5rem;
   transition: background-color 140ms ease;
   border-radius: var(--radius-sm);
@@ -921,6 +921,30 @@ button {
   inset: 0;
   border-radius: var(--radius-sm);
   z-index: 0;
+}
+
+/* Mobile-only top image (hidden on desktop) */
+.news-list-item__thumbnail--top {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  margin-bottom: 0.85rem;
+}
+
+.news-list-item__thumbnail--top img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Row: body + desktop-right thumbnail */
+.news-list-item__row {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
 }
 
 .news-list-item__body {
@@ -981,10 +1005,11 @@ button {
   overflow: hidden;
 }
 
-.news-list-item__thumbnail {
+/* Desktop right thumbnail (hidden on mobile) */
+.news-list-item__thumbnail--right {
   flex-shrink: 0;
-  width: 120px;
-  height: 90px;
+  width: 180px;
+  aspect-ratio: 4 / 3;
   border-radius: var(--radius-sm);
   overflow: hidden;
   background: var(--color-surface-strong);
@@ -992,7 +1017,7 @@ button {
   z-index: 1;
 }
 
-.news-list-item__thumbnail img {
+.news-list-item__thumbnail--right img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -1000,15 +1025,136 @@ button {
   transition: transform 220ms ease;
 }
 
-.news-list-item:hover .news-list-item__thumbnail img {
+.news-list-item:hover .news-list-item__thumbnail--right img {
   transform: scale(1.04);
 }
 
-@media (max-width: 480px) {
-  .news-list-item__thumbnail {
-    width: 80px;
-    height: 60px;
+/* Mobile: show top image, hide right thumbnail */
+@media (max-width: 600px) {
+  .news-list-item__thumbnail--top {
+    display: block;
   }
+
+  .news-list-item__thumbnail--right {
+    display: none;
+  }
+}
+
+/* Desktop: hide top image, show right thumbnail */
+@media (min-width: 601px) {
+  .news-list-item__thumbnail--top {
+    display: none;
+  }
+
+  .news-list-item__thumbnail--right {
+    display: block;
+  }
+}
+
+/* ─── Lightbox ───────────────────────────────────────────────── */
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.88);
+  backdrop-filter: blur(6px);
+  cursor: zoom-out;
+  padding: 1rem;
+  animation: lightbox-in 180ms ease;
+}
+
+@keyframes lightbox-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.lightbox__image {
+  max-width: 100%;
+  max-height: 90dvh;
+  border-radius: var(--radius-md);
+  object-fit: contain;
+  cursor: default;
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.6);
+}
+
+.lightbox__close {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 101;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  cursor: pointer;
+  transition:
+    background-color 140ms ease,
+    transform 140ms ease;
+}
+
+.lightbox__close:hover {
+  background: rgba(255, 255, 255, 0.22);
+  transform: scale(1.08);
+}
+
+.lightbox__close svg {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+/* ─── Detail media button ────────────────────────────────────── */
+
+.news-detail__media-btn {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: zoom-in;
+  border-radius: inherit;
+  overflow: hidden;
+}
+
+.news-detail__media-hint {
+  position: absolute;
+  bottom: 0.6rem;
+  right: 0.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.45);
+  color: #fff;
+  opacity: 0;
+  transition: opacity 180ms ease;
+  pointer-events: none;
+}
+
+.news-detail__media-btn:hover .news-detail__media-hint,
+.news-detail__media-btn:focus-visible .news-detail__media-hint {
+  opacity: 1;
+}
+
+.news-detail__media-hint svg {
+  width: 1rem;
+  height: 1rem;
 }
 
 /* ─── Board list ─────────────────────────────────────────────── */

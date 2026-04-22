@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { ErrorState } from "../components/ui/ErrorState";
 import { LoadingState } from "../components/ui/LoadingState";
@@ -8,12 +9,14 @@ import { CmsApiError } from "../api/directus";
 import { getCmsAssetLabel, getCmsAssetUrl } from "../utils/assets";
 import { formatDate } from "../utils/date";
 import { useSiteTitle } from "../hooks/useSiteTitle";
+import { ImageLightbox } from "../components/ui/ImageLightbox";
 import { expandDirectusRelation } from "../utils/directus";
 import type { Category } from "../types/domain";
 
 export function NewsDetailPage() {
   const { id = "" } = useParams();
   const newsQuery = usePublicNewsByIdQuery(id);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
   useSiteTitle(newsQuery.data?.title);
 
   if (!id) {
@@ -77,16 +80,46 @@ export function NewsDetailPage() {
           >
             <div className="news-detail__media-card">
               <div className="page-hero__media news-detail__media">
-                <img
-                  className="w-full h-full object-cover"
-                  alt={getCmsAssetLabel(newsQuery.data.image)}
-                  src={imageUrl}
-                />
+                <button
+                  aria-label="Bild in Vollbild öffnen"
+                  className="news-detail__media-btn"
+                  type="button"
+                  onClick={() => setLightboxOpen(true)}
+                >
+                  <img
+                    className="w-full h-full object-cover"
+                    alt={getCmsAssetLabel(newsQuery.data.image)}
+                    src={imageUrl}
+                  />
+                  <span className="news-detail__media-hint" aria-hidden="true">
+                    <svg
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M4 8V4h4M20 8V4h-4M4 16v4h4M20 16v4h-4"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </span>
+                </button>
               </div>
             </div>
           </aside>
         ) : null}
       </section>
+
+      {lightboxOpen && imageUrl ? (
+        <ImageLightbox
+          alt={getCmsAssetLabel(newsQuery.data.image)}
+          src={imageUrl}
+          onClose={() => setLightboxOpen(false)}
+        />
+      ) : null}
     </article>
   );
 }
