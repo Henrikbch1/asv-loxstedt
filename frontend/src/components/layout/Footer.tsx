@@ -7,6 +7,21 @@ interface FooterProps {
 
 export function Footer({ settings }: FooterProps) {
   const currentYear = new Date().getFullYear();
+  const addressString = [
+    settings?.street,
+    settings?.postal_code,
+    settings?.city,
+  ]
+    .filter(Boolean)
+    .join(" ");
+  const mapsUrl = addressString
+    ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+        addressString,
+      )}`
+    : undefined;
+  const mapsEmbedUrl = addressString
+    ? `https://www.google.com/maps?q=${encodeURIComponent(addressString)}&t=k&output=embed`
+    : undefined;
 
   return (
     <footer className="site-footer">
@@ -28,7 +43,7 @@ export function Footer({ settings }: FooterProps) {
           </div>
           <div className="site-footer__panel break-words whitespace-normal text-left">
             <span className="meta-text text-white/70">
-              Weitere Informationen
+              Kontakt Daten
             </span>
             <RichText
               className="rich-text site-footer__richtext prose prose-invert prose-sm max-w-none text-white whitespace-normal"
@@ -47,15 +62,69 @@ export function Footer({ settings }: FooterProps) {
 
                 {settings?.street || settings?.postal_code || settings?.city ? (
                   <address className="not-italic mt-1 whitespace-normal">
-                    {settings?.street ? <div>{settings.street}</div> : null}
-                    {settings?.postal_code || settings?.city ? (
-                      <div>
-                        {settings?.postal_code ?? ""}
-                        {settings?.postal_code && settings?.city ? " " : ""}
-                        {settings?.city ?? ""}
-                      </div>
-                    ) : null}
+                    {mapsUrl ? (
+                      <a
+                        href={mapsUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-3 text-white/90 hover:underline"
+                        aria-label={`Anfahrt: ${addressString}`}
+                      >
+                        <div className="leading-tight">
+                          {settings?.street ? (
+                            <div>{settings.street}</div>
+                          ) : null}
+                          {settings?.postal_code || settings?.city ? (
+                            <div>
+                              {settings?.postal_code ?? ""}
+                              {settings?.postal_code && settings?.city
+                                ? " "
+                                : ""}
+                              {settings?.city ?? ""}
+                            </div>
+                          ) : null}
+                        </div>
+                        <span className="map-icon" aria-hidden="true">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            className="w-4 h-4"
+                          >
+                            <path d="M12 2a7 7 0 00-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 00-7-7zm0 9.5A2.5 2.5 0 1114.5 9 2.5 2.5 0 0112 11.5z" />
+                          </svg>
+                        </span>
+                      </a>
+                    ) : (
+                      <>
+                        {settings?.street ? <div>{settings.street}</div> : null}
+                        {settings?.postal_code || settings?.city ? (
+                          <div>
+                            {settings?.postal_code ?? ""}
+                            {settings?.postal_code && settings?.city ? " " : ""}
+                            {settings?.city ?? ""}
+                          </div>
+                        ) : null}
+                      </>
+                    )}
                   </address>
+                ) : null}
+
+                {mapsEmbedUrl ? (
+                  <div
+                    className="mt-3 rounded overflow-hidden"
+                    style={{ maxWidth: 600 }}
+                  >
+                    <iframe
+                      title={`Karte: ${addressString}`}
+                      src={mapsEmbedUrl}
+                      width="100%"
+                      height="200"
+                      style={{ border: 0 }}
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                    />
+                  </div>
                 ) : null}
 
                 {settings?.phone ? (
