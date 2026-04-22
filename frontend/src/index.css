@@ -429,7 +429,7 @@ button {
 }
 
 .site-footer__content {
-  color: rgba(248, 248, 242, 0.74);
+  color: rgba(248, 248, 242, 0.82);
 }
 
 .site-footer__panel {
@@ -466,7 +466,7 @@ button {
 .site-footer__richtext.rich-text h4,
 .site-footer__richtext.rich-text strong,
 .site-footer__richtext.rich-text em {
-  color: inherit;
+  color: rgba(248, 248, 242, 0.82);
 }
 
 .site-footer__richtext.rich-text li::marker {
@@ -475,6 +475,10 @@ button {
 
 .site-footer__richtext a {
   color: #ffffff;
+}
+
+.site-footer .meta-text {
+  color: var(--color-accent);
 }
 
 .page-hero {
