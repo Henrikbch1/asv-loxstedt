@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import type { NewsItem } from "../../types/domain";
-import { getCmsAssetLabel, getCmsAssetUrl } from "../../utils/assets";
+import { getCmsAssetLabel, getNewsPreviewUrl } from "../../utils/assets";
 import { formatDate } from "../../utils/date";
 import { getExcerpt } from "../../utils/text";
 import { routes } from "../../config/routes";
@@ -12,11 +12,7 @@ interface NewsCardProps {
 }
 
 export function NewsCard({ item }: NewsCardProps) {
-  const imageUrl = getCmsAssetUrl(item.image, {
-    fit: "cover",
-    width: 900,
-    height: 640,
-  });
+  const imageUrl = getNewsPreviewUrl(item.image);
   const excerpt = getExcerpt(item.text);
   const dateLabel = formatDate(item.date);
   const detailHref = routes.newsDetail(item.id);

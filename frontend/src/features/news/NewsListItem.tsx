@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import type { NewsItem } from "../../types/domain";
-import { getCmsAssetUrl, getCmsAssetLabel } from "../../utils/assets";
+import { getCmsAssetLabel, getNewsPreviewUrl } from "../../utils/assets";
 import { formatDate } from "../../utils/date";
 import { getExcerpt } from "../../utils/text";
 import { routes } from "../../config/routes";
@@ -17,11 +17,7 @@ export function NewsListItem({ item }: NewsListItemProps) {
   const preview = getExcerpt(item.text, 200);
   const categoryName =
     expandDirectusRelation<Category>(item.category)?.name?.trim() ?? null;
-  const imageUrl = getCmsAssetUrl(item.image, {
-    fit: "cover",
-    width: 400,
-    height: 300,
-  });
+  const imageUrl = getNewsPreviewUrl(item.image);
 
   return (
     <article
