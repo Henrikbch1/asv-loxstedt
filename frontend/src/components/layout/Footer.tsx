@@ -60,8 +60,13 @@ export function Footer({ settings }: FooterProps) {
 
                 {settings?.phone ? (
                   <div className="mt-2">
-                    <a className="underline" href={`tel:${settings.phone}`}>
-                      Telefon: {settings.phone}
+                    <span>Telefon: </span>
+                    <a
+                      className="underline"
+                      href={`tel:${settings.phone}`}
+                      aria-label={`Telefon ${settings.phone}`}
+                    >
+                      {settings.phone}
                     </a>
                   </div>
                 ) : null}
