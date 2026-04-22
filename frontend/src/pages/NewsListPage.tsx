@@ -62,32 +62,42 @@ export function NewsListPage() {
       </div>
 
       {totalPages > 1 ? (
-        <div className="flex items-center justify-center gap-4 pt-4">
-          <button
-            className="button button--ghost"
-            disabled={!hasPrev}
-            onClick={() => {
-              setSearchParams({ page: String(page - 1) });
-              window.scrollTo({ top: 0, behavior: "smooth" });
-            }}
-            type="button"
-          >
-            ← Zurück
-          </button>
-          <span className="meta-text">
-            Seite {page} von {totalPages}
-          </span>
-          <button
-            className="button button--ghost"
-            disabled={!hasNext}
-            onClick={() => {
-              setSearchParams({ page: String(page + 1) });
-              window.scrollTo({ top: 0, behavior: "smooth" });
-            }}
-            type="button"
-          >
-            Weiter →
-          </button>
+        <div className="grid grid-cols-3 items-center gap-2 pt-4">
+          <div className="flex justify-center">
+            {hasPrev && (
+              <button
+                className="button button--ghost"
+                onClick={() => {
+                  setSearchParams({ page: String(page - 1) });
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
+                type="button"
+              >
+                ← Zurück
+              </button>
+            )}
+          </div>
+
+          <div className="flex justify-center">
+            <span className="meta-text">
+              Seite {page} von {totalPages}
+            </span>
+          </div>
+
+          <div className="flex justify-center">
+            {hasNext && (
+              <button
+                className="button button--ghost"
+                onClick={() => {
+                  setSearchParams({ page: String(page + 1) });
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
+                type="button"
+              >
+                Weiter →
+              </button>
+            )}
+          </div>
         </div>
       ) : null}
     </section>
