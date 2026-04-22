@@ -1,17 +1,16 @@
 import { CmsApiError, fetchDirectus } from "./directus";
+import type { CmsPage, GlobalSettings, NewsItem, Role } from "../types/domain";
 import type {
-  CmsPage,
-  GlobalSettings,
   NavigationRecord,
   NavigationRecordRaw,
-  NewsItem,
-  Role,
-} from "../types/cms";
+} from "../types/navigation";
 import type {
   DirectusListResponse,
   DirectusSingletonResponse,
 } from "../types/directus";
 import { findCmsPageByPath } from "../utils/cmsPagePaths";
+import { NEWS_PAGE_SIZE } from "../config/constants";
+import { normalizeNavigationRecord, compareNewsItems } from "./transformers";
 
 const pageSummaryFields = ["id", "title", "slug", "navigation_title"];
 
@@ -47,57 +46,6 @@ const fallbackNewsFields = [
   "text",
   "image",
 ] satisfies string[];
-
-function getNavigationKey(label: string, slug?: string | null): string {
-  return slug ? `page:${slug}` : `label:${label.trim().toLowerCase()}`;
-}
-
-function normalizeNavigationRecord(
-  item: NavigationRecordRaw,
-): NavigationRecord {
-  const page =
-    item.page && typeof item.page === "object" && "slug" in item.page
-      ? item.page
-      : null;
-
-  const parentKey =
-    item.parent && typeof item.parent === "object"
-      ? getNavigationKey(
-          item.parent.label,
-          item.parent.page && typeof item.parent.page === "object"
-            ? item.parent.page.slug
-            : null,
-        )
-      : null;
-
-  return {
-    key: getNavigationKey(item.label, page?.slug),
-    sort: item.sort,
-    label: item.label,
-    page,
-    parentKey,
-  };
-}
-
-function getNewsTimestamp(newsItem: NewsItem): number {
-  if (!newsItem.date) {
-    return Number.NEGATIVE_INFINITY;
-  }
-
-  const timestamp = Date.parse(newsItem.date);
-
-  return Number.isNaN(timestamp) ? Number.NEGATIVE_INFINITY : timestamp;
-}
-
-function compareNewsItems(a: NewsItem, b: NewsItem): number {
-  const dateDiff = getNewsTimestamp(b) - getNewsTimestamp(a);
-
-  if (dateDiff !== 0) {
-    return dateDiff;
-  }
-
-  return String(b.id).localeCompare(String(a.id), "de-DE", { numeric: true });
-}
 
 async function fetchPublicNewsResponse<T>(
   path: string,
@@ -199,8 +147,6 @@ export async function getPublicPages(signal?: AbortSignal): Promise<CmsPage[]> {
 
   return response.data;
 }
-
-const NEWS_PAGE_SIZE = 5;
 
 export async function getPublicNewsList(
   page = 1,
