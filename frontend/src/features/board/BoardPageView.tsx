@@ -2,10 +2,11 @@ import { Fragment } from "react";
 import { RichText } from "../../components/ui/RichText";
 import { LoadingState } from "../../components/ui/LoadingState";
 import { ErrorState } from "../../components/ui/ErrorState";
-import type { CmsPage, Category, Person } from "../../types/cms";
+import type { CmsPage, Category, Person } from "../../types/domain";
 import { getCmsAssetLabel, getCmsAssetUrl } from "../../utils/assets";
 import { useSiteTitle } from "../../hooks/useSiteTitle";
 import { useBoardRolesQuery } from "./useBoardQueries";
+import { expandDirectusRelation } from "../../utils/directus";
 
 interface BoardPageViewProps {
   page: CmsPage;
@@ -47,19 +48,12 @@ export function BoardPageView({ page }: BoardPageViewProps) {
         {sortedRoles.length > 0 ? (
           <ul className="board-list">
             {sortedRoles.map((role, index) => {
-              const person =
-                role.person_link && typeof role.person_link === "object"
-                  ? (role.person_link as Person)
-                  : null;
-              const category =
-                role.category && typeof role.category === "object"
-                  ? (role.category as Category)
-                  : null;
+              const person = expandDirectusRelation<Person>(role.person_link);
+              const category = expandDirectusRelation<Category>(role.category);
               const prevRole = index > 0 ? sortedRoles[index - 1] : null;
-              const prevCategory =
-                prevRole?.category && typeof prevRole.category === "object"
-                  ? (prevRole.category as Category)
-                  : null;
+              const prevCategory = expandDirectusRelation<Category>(
+                prevRole?.category ?? null,
+              );
               const showCategoryMarker = category?.name !== prevCategory?.name;
               const fullName = [person?.firstname, person?.lastname]
                 .filter(Boolean)

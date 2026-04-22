@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
-import type { NewsItem } from "../../types/cms";
+import type { NewsItem } from "../../types/domain";
 import { getCmsAssetLabel, getCmsAssetUrl } from "../../utils/assets";
 import { formatDate } from "../../utils/date";
 import { getExcerpt } from "../../utils/text";
+import { routes } from "../../config/routes";
+import { expandDirectusRelation } from "../../utils/directus";
+import type { Category } from "../../types/domain";
 
 interface NewsCardProps {
   item: NewsItem;
@@ -16,11 +19,9 @@ export function NewsCard({ item }: NewsCardProps) {
   });
   const excerpt = getExcerpt(item.text);
   const dateLabel = formatDate(item.date);
-  const detailHref = `/news/${item.id}`;
+  const detailHref = routes.newsDetail(item.id);
   const categoryName =
-    item.category && typeof item.category === "object"
-      ? (item.category.name?.trim() ?? null)
-      : null;
+    expandDirectusRelation<Category>(item.category)?.name?.trim() ?? null;
 
   return (
     <article className="news-card group">

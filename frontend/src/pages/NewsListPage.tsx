@@ -5,8 +5,7 @@ import { LoadingState } from "../components/ui/LoadingState";
 import { NewsCard } from "../features/news/NewsCard";
 import { usePublicNewsListQuery } from "../features/news/useNewsQueries";
 import { useSiteTitle } from "../hooks/useSiteTitle";
-
-const PAGE_SIZE = 5;
+import { NEWS_PAGE_SIZE } from "../config/constants";
 
 export function NewsListPage() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -41,7 +40,7 @@ export function NewsListPage() {
   }
 
   const totalCount = newsQuery.data.meta?.filter_count ?? 0;
-  const totalPages = Math.ceil(totalCount / PAGE_SIZE);
+  const totalPages = Math.ceil(totalCount / NEWS_PAGE_SIZE);
   const hasPrev = page > 1;
   const hasNext = page < totalPages;
 

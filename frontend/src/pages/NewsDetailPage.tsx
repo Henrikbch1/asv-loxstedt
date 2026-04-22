@@ -8,6 +8,8 @@ import { CmsApiError } from "../api/directus";
 import { getCmsAssetLabel, getCmsAssetUrl } from "../utils/assets";
 import { formatDate } from "../utils/date";
 import { useSiteTitle } from "../hooks/useSiteTitle";
+import { expandDirectusRelation } from "../utils/directus";
+import type { Category } from "../types/domain";
 
 export function NewsDetailPage() {
   const { id = "" } = useParams();
@@ -46,9 +48,7 @@ export function NewsDetailPage() {
   });
   const dateLabel = formatDate(newsQuery.data.date);
   const categoryName =
-    newsQuery.data.category && typeof newsQuery.data.category === "object"
-      ? newsQuery.data.category.name
-      : null;
+    expandDirectusRelation<Category>(newsQuery.data.category)?.name ?? null;
 
   return (
     <article className="content-page">
