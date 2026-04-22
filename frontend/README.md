@@ -1,26 +1,32 @@
-# ASV Loxstedt — Frontend
+# Frontend — ASV Loxstedt
 
-React + TypeScript Frontend (Vite). Inhalte stammen aus Directus (Headless CMS). Ziel: datengetriebene Seiten, Navigation und News ohne manuelle Frontend-Registrierung.
+<p align="center">
+	<img alt="frontend tech" src="https://img.shields.io/badge/tech-React%20%2B%20TypeScript-blue?logo=react&style=flat-square" />
+	<img alt="vite" src="https://img.shields.io/badge/bundler-Vite-646cff?style=flat-square&logo=vite" />
+	<img alt="directus" src="https://img.shields.io/badge/cms-Directus-ff69b4?style=flat-square&logo=directus" />
+</p>
+
+React + TypeScript (Vite) Frontend, das Inhalte aus Directus rendert: Seiten, Navigation, News.
 
 ## Schnellstart (lokal)
 
-1. Directus starten:
+1. Directus starten (aus Projekt-Root):
 
 ```powershell
-cd ..\cms
+cd cms
 docker compose up -d
 ```
 
-2. Frontend:
+2. Frontend starten:
 
 ```powershell
 cd frontend
-Copy-Item .env.example .env.local
+Copy-Item .env.example .env.local   # PowerShell
 npm install
 npm run dev
 ```
 
-(Bash):
+oder (Bash):
 
 ```bash
 cd frontend
@@ -31,58 +37,36 @@ npm run dev
 
 Standardmäßig erwartet das Frontend Directus unter `http://localhost:8055`.
 
-## Environment (siehe frontend/.env.example)
+## Wichtige Umgebungsvariablen
 
 - `VITE_API_BASE_URL` (default `http://localhost:8055`)
 - `VITE_DIRECTUS_ASSETS_PATH` (default `/assets`)
 - `VITE_HOME_SLUG` (default `home`)
-- `VITE_DIRECTUS_TOKEN` (optional — nur read-only Token; niemals in Git einchecken)
+- `VITE_DIRECTUS_TOKEN` (optional — read-only Token)
 
-## Scripts (frontend/package.json)
+Siehe [frontend/.env.example](frontend/.env.example) für Details.
 
-- `npm run dev` — Dev-Server (Vite + HMR)
-- `npm run build` — `tsc -b && vite build` (Produktions-Build)
+## Scripts
+
+- `npm run dev` — Dev-Server (Vite)
+- `npm run build` — Produktions-Build
 - `npm run preview` — `vite preview`
 - `npm run lint` — ESLint
 
-## Architektur & wichtige Orte
+## Wichtige Dateien
 
-- `src/api/directus.ts` — zentrale Fetch- und Fehlerlogik (`CmsApiError`)
-- `src/api/cms.ts` — API-Funktionen / Endpunkte (z. B. `/items/global_settings`, `/items/navigation`, `/items/pages`, `/items/news`)
-- `src/components/ui/RichText.tsx` — HTML-Sanitizing (DOMPurify)
-- `src/utils/assets.ts` — Asset-URL-Erzeugung und Bildparameter
+- `frontend/src/api/directus.ts` — zentrale Fetch-/Fehlerlogik
+- `frontend/src/api/cms.ts` — CMS-API-Funktionen
+- `frontend/src/routes/AppRouter.tsx` — Routing
+- `frontend/src/components/ui/RichText.tsx` — sichere RichText-Ausgabe
 
-## Routing
-
-- `/` → Startseite (lädt CMS-Seite mit Slug `home`)
-- `/news` → News-Übersicht
-- `/news/:slug` → News-Detail
-- `/:slug` → generische CMS-Seite
-- `*` → 404
-
-(Quellcode: `frontend/src/routes/AppRouter.tsx`)
-
-## API & Collections
-
-Wichtige Directus-Endpunkte und Collections, die das Frontend nutzt:
-
-- `GET /items/global_settings` — Singleton mit `site_name`, `logo`, `footer_text`
-- `GET /items/navigation` — Navigationseinträge
-- `GET /items/pages` — CMS-Seiten (By-Slug)
-- `GET /items/news` — News-Liste / News-By-Slug
-
-Erwartete Collections:
+## Erwartete Directus-Collections
 
 - `global_settings`, `navigation`, `pages`, `news`, `downloads`, `categories`, `persons`, `roles`
 
-## Sicherheit
+## Hinweise
 
-- Falls `VITE_DIRECTUS_TOKEN` verwendet wird: nur read-only Token und `.env.local` nicht commiten.
+- Nutze `VITE_DIRECTUS_TOKEN` nur für read-only Zugriffe und nie ins VCS einchecken.
+- Falls du Inhalte testen willst: `cms/database/snapshot.json` oder Directus Import/Export verwenden.
 
-## Anpassungspunkte
-
-- `src/config/env.ts` — Default-URLs / Asset-Pfad
-- `src/features/navigation/navigation.utils.ts` — Navigation-Tree-Logik
-- `src/features/cms-pages/CmsPageView.tsx` — generische Seitendarstellung
-
-Bei Bedarf kann ich ein kurzes Beispiele-Setup (curl / fetch) liefern, um die wichtigsten Endpunkte schnell zu testen.
+Bei Bedarf passe ich die README weiter an (Screenshots, Deploy-Anleitung, CI).
