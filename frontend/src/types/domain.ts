@@ -16,6 +16,8 @@ export interface GlobalSettings {
   site_name?: string | null;
   logo?: DirectusFileReference | null;
   footer_note?: string | null;
+  imprint?: string | null;
+  data_protection?: string | null;
   club_name?: string | null;
   street?: string | null;
   postal_code?: string | null;
