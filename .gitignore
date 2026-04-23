@@ -13,3 +13,6 @@ cms/uploads/*
 # Extensions
 !cms/extensions/
 cms/extensions/.gitkeepstyle.css
+
+# Testing coverage
+coverage/
