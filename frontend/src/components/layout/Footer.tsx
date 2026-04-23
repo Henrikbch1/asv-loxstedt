@@ -96,6 +96,7 @@ export function Footer({ settings }: FooterProps) {
                     <span>Telefon: </span>
                     <a
                       href={`tel:${settings.phone}`}
+                      className="hover:underline"
                       aria-label={`Telefon ${settings.phone}`}
                     >
                       {settings.phone}
