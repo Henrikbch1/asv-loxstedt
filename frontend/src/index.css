@@ -146,7 +146,7 @@ button {
 .brand__text {
   display: inline-block;
   max-width: calc(100vw - 11.5rem);
-  font-size: clamp(1.02rem, 0.9rem + 0.52vw, 1.32rem);
+  font-size: clamp(1.06rem, 0.94rem + 0.56vw, 1.38rem);
   font-weight: 600;
   letter-spacing: clamp(0.005em, 0.01em + 0.03vw, 0.02em);
   text-transform: none;
@@ -1359,8 +1359,15 @@ button {
   /* Keep site name on one line and scale text to fit smaller screens */
   .brand__text {
     max-width: calc(100vw - 10.75rem);
-    font-size: clamp(0.98rem, 0.88rem + 0.4vw, 1.18rem);
+    font-size: clamp(1.02rem, 0.9rem + 0.44vw, 1.24rem);
     letter-spacing: clamp(0.005em, 0.01em + 0.02vw, 0.018em);
+  }
+}
+
+@media (min-width: 641px) and (max-width: 700px) {
+  .brand__text {
+    max-width: calc(100vw - 10.1rem);
+    font-size: clamp(1.06rem, 0.94rem + 0.48vw, 1.2rem);
   }
 }
 
@@ -1390,7 +1397,7 @@ button {
 
   .brand__text {
     max-width: calc(100vw - 9.8rem);
-    font-size: clamp(0.94rem, 0.84rem + 0.34vw, 1.06rem);
+    font-size: clamp(1.02rem, 0.9rem + 0.46vw, 1.16rem);
   }
 
   .brand__logo {
@@ -1427,7 +1434,7 @@ button {
 
   .brand__text {
     max-width: calc(100vw - 8.9rem);
-    font-size: clamp(0.9rem, 0.8rem + 0.3vw, 1rem);
+    font-size: clamp(0.98rem, 0.86rem + 0.4vw, 1.1rem);
   }
 
   .brand__logo {
@@ -1487,7 +1494,7 @@ button {
 
   .brand__text {
     max-width: calc(100vw - 8.25rem);
-    font-size: clamp(0.86rem, 0.78rem + 0.26vw, 0.94rem);
+    font-size: clamp(0.94rem, 0.84rem + 0.34vw, 1.02rem);
     letter-spacing: 0.01em;
   }
 
@@ -1526,6 +1533,14 @@ button {
   }
 }
 
+@media (max-width: 420px) {
+  .brand__text {
+    max-width: calc(100vw - 8rem);
+    font-size: clamp(1.02rem, 0.9rem + 0.42vw, 1.1rem);
+    letter-spacing: 0.008em;
+  }
+}
+
 @media (max-width: 360px) {
   .shell {
     width: calc(100vw - 0.75rem);
@@ -1534,6 +1549,11 @@ button {
   .site-navigation {
     left: 0.375rem;
     right: 0.375rem;
+  }
+
+  .brand__text {
+    max-width: calc(100vw - 7.85rem);
+    font-size: clamp(1rem, 0.9rem + 0.36vw, 1.06rem);
   }
 
   .page-hero,
