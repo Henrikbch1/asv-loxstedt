@@ -403,6 +403,13 @@ button {
   border-top: 1px solid rgba(121, 185, 39, 0.14);
 }
 
+/* Pagination: hide pagination text on very small screens to keep buttons compact */
+@media (max-width: 380px) {
+  .pagination-text {
+    display: none;
+  }
+}
+
 .site-footer::before {
   content: '';
   position: absolute;

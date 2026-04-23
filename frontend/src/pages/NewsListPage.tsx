@@ -77,14 +77,15 @@ export function NewsListPage() {
                 }}
                 type="button"
               >
-                ← Zurück
+                <span aria-hidden="true">←</span>
+                <span className="pagination-text"> Zurück</span>
               </button>
             )}
           </div>
 
           <div className="flex justify-center">
             <span className="meta-text">
-              Seite {page} von {totalPages}
+               {page} von {totalPages}
             </span>
           </div>
 
@@ -98,7 +99,8 @@ export function NewsListPage() {
                 }}
                 type="button"
               >
-                Weiter →
+                <span className="pagination-text">Weiter </span>
+                <span aria-hidden="true">→</span>
               </button>
             )}
           </div>
