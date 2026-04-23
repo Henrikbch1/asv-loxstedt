@@ -11,6 +11,7 @@ import {
   getNewsPreviewUrl,
   getNewsDetailUrl,
 } from './assets';
+import type { DirectusFileReference, DirectusFile } from '../types/directus';
 
 describe('assets utils', () => {
   it('build assets URL with params', () => {
@@ -18,15 +19,19 @@ describe('assets utils', () => {
     expect(url).toBe('https://api.example.com/assets/123?fit=inside&width=900');
   });
   it('returns sensible labels', () => {
-    expect(getCmsAssetLabel(null as unknown)).toBe('CMS asset');
-    expect(
-      getCmsAssetLabel({ id: '1', filename_download: 'file.jpg' } as unknown),
-    ).toBe('file.jpg');
+    const emptyAsset: DirectusFileReference = null;
+    const file: DirectusFile = { id: '1', filename_download: 'file.jpg' };
+
+    expect(getCmsAssetLabel(emptyAsset)).toBe('CMS asset');
+    expect(getCmsAssetLabel(file)).toBe('file.jpg');
   });
 
   it('type guard works', () => {
-    expect(isExpandedDirectusFile({ id: '1' } as unknown)).toBe(true);
-    expect(isExpandedDirectusFile('1' as unknown)).toBe(false);
+    const expanded: DirectusFileReference = { id: '1' };
+    const idRef: DirectusFileReference = '1';
+
+    expect(isExpandedDirectusFile(expanded)).toBe(true);
+    expect(isExpandedDirectusFile(idRef)).toBe(false);
   });
 
   it('preview/detail helpers compose params', () => {
