@@ -1,4 +1,4 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import type { NavigationTreeNode } from '../../types/navigation';
 import {
   useGlobalSettingsQuery,
@@ -21,6 +21,8 @@ const NEWS_NAV_ITEM: NavigationTreeNode = {
 };
 
 export function AppLayout() {
+  const location = useLocation();
+  const isHome = location.pathname === '/';
   const settingsQuery = useGlobalSettingsQuery();
   const navigationQuery = useNavigationTreeQuery();
 
@@ -59,6 +61,18 @@ export function AppLayout() {
       <main className="shell shell--main">
         <Outlet />
       </main>
+      {isHome && (
+        <div className="shell py-8">
+          <iframe
+            title="Google Calendar Agenda"
+            src="https://calendar.google.com/calendar/embed?height=600&wkst=2&ctz=Europe%2FBerlin&mode=AGENDA&showPrint=0&showTz=0&title&showCalendars=0&showDate=0&showNav=0&showTitle=0&showTabs=0&src=NmY2YjYyNWY4M2Y5YzgxY2I1Mzc2ZjhjZjIyZGNmMTJkODY0MTQ4MjEzY2IwNTY4N2UxMzI3NmVmMDdiMmYzNUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%230b8043"
+            className="w-full"
+            style={{ border: 0, height: '600px' }}
+            frameBorder={0}
+            scrolling="no"
+          />
+        </div>
+      )}
       <Footer settings={settingsQuery.data} />
     </div>
   );
