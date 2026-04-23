@@ -5,7 +5,7 @@
 /* Preserve design tokens and local variables (kept after Tailwind base) */
 :root {
   color-scheme: light;
-  font-family: "Space Grotesk", "Aptos", "Segoe UI", sans-serif;
+  font-family: 'Space Grotesk', 'Aptos', 'Segoe UI', sans-serif;
   line-height: 1.5;
   font-weight: 400;
   --color-ink: #1f241c;
@@ -404,7 +404,7 @@ button {
 }
 
 .site-footer::before {
-  content: "";
+  content: '';
   position: absolute;
   inset: 0 0 auto 0;
   height: 4px;
@@ -501,7 +501,7 @@ button {
 }
 
 .page-hero::after {
-  content: "";
+  content: '';
   position: absolute;
   right: -6%;
   bottom: -18%;

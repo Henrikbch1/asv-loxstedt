@@ -25,15 +25,11 @@ function DefaultPageView({ page }: CmsPageViewProps) {
 
   return (
     <article className="content-page">
-      <header className="page-hero page-hero--content">
-        <div className="page-hero__copy">
-          <span className="eyebrow">Seite</span>
-          <h1>{page.title}</h1>
-        </div>
+      <header className="section-heading">
+        <span className="eyebrow">Seite</span>
+        <h1>{page.title}</h1>
         {imageUrl ? (
-          <div className="page-hero__media">
-            <img alt={getCmsAssetLabel(page.featured_image)} src={imageUrl} />
-          </div>
+          <img alt={getCmsAssetLabel(page.featured_image)} src={imageUrl} />
         ) : null}
       </header>
 
