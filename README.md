@@ -5,23 +5,25 @@
 	<img alt="status" src="https://img.shields.io/badge/status-active-brightgreen?style=flat-square" />
 	<img alt="tech" src="https://img.shields.io/badge/tech-React%20%2B%20TypeScript-blue?logo=react&style=flat-square" />
 	<img alt="cms" src="https://img.shields.io/badge/cms-Directus-ff69b4?style=flat-square&logo=directus" />
-	<img alt="license" src="https://img.shields.io/badge/license-GPLv3-blue?style=flat-square" />
 </p>
 
-Aktualisierte, kompakte Anleitung für Entwickler und Redakteure.
+Kurzanleitung für Entwickler und Redakteure (Deutsch).
 
-Kurz: Headless CMS (Directus) im Ordner `cms/` und React + TypeScript Frontend in `frontend/`.
+Repository-Aufbau (wichtig):
 
-## Schnellstart (lokal)
+- `cms/` — Directus-Konfiguration und Docker Compose
+- `frontend/` — React + TypeScript Frontend (Vite)
 
-1. Directus starten (im Ordner `cms`):
+## Lokale Entwicklung (Schnellstart)
+
+1) Directus starten (im Ordner `cms`):
 
 ```powershell
 cd cms
 docker compose up -d
 ```
 
-2. Frontend starten:
+2) Frontend vorbereiten und starten:
 
 ```powershell
 cd frontend
@@ -39,66 +41,42 @@ npm install
 npm run dev
 ```
 
-Standard-Lokale URLs:
+Standard-URLs:
 
 - Directus Admin: http://localhost:8055
 - Frontend Dev (Vite): http://localhost:5173
 
----
+## Wichtige Dateien
 
-<p align="center">
-	<img alt="Frontend preview" src="cms/uploads/f2fae195-b718-4a24-80bd-4bfb5530839c__e9dcbd6d37cf1a1351d2786febd96ceaf3ef6132.avif" width="840" style="border-radius:8px" />
-</p>
+- Snapshot: `cms/database/snapshot.json`
+- Restore-Skripte: `cms/restore_snapshot.ps1`, `cms/restore_snapshot.sh`
+- Frontend-Env-Beispiel: [frontend/.env.example](frontend/.env.example)
 
-## Wichtige Environment-Variablen (Frontend)
+## Frontend - Environment-Variablen
 
 - `VITE_API_BASE_URL` — Basis-URL zur Directus-API (z. B. `http://localhost:8055`)
 - `VITE_DIRECTUS_ASSETS_PATH` — Pfad für Assets (Standard: `/assets`)
 - `VITE_HOME_SLUG` — Startseiten-Slug (Standard: `home`)
 - `VITE_DIRECTUS_TOKEN` — Optional: read-only Token (niemals in Git einchecken)
 
-Die Beispieldatei: [frontend/.env.example](frontend/.env.example)
+## Testing
 
-## Snapshot & Restore
-
-- Snapshot-Datei: `cms/database/snapshot.json`
-- Restore-Skripte: `cms/restore_snapshot.ps1`, `cms/restore_snapshot.sh`
-
-Import/Export ist auch über die Directus-Admin-Oberfläche möglich.
-
-## Erwartete Directus-Collections
-
-- `global_settings` (Singleton)
-- `navigation`
-- `pages`
-- `news`
-- `downloads`
-- `categories`
-- `persons`
-- `roles`
-
-## Frontend: wichtige Orte & Befehle
-
-- API-Wrapper: `frontend/src/api/directus.ts`
-- CMS-Endpunkte: `frontend/src/api/cms.ts`
-- Routing: [frontend/src/routes/AppRouter.tsx](frontend/src/routes/AppRouter.tsx)
-- RichText-Komponente: `frontend/src/components/ui/RichText.tsx`
-
-Scripts (im Ordner `frontend`):
-
-- `npm run dev` — Dev-Server (Vite)
-- `npm run build` — Produktions-Build
-- `npm run preview` — `vite preview`
-- `npm run lint` — ESLint
+- E2E-Tests mit Cypress befinden sich im Ordner `frontend/cypress`.
+- Dev-Server starten und dann `npx cypress open` im `frontend`-Ordner ausführen.
 
 ## Produktion
 
-- Directus: betreiben mit PostgreSQL + persistentem Objektspeicher (z. B. S3)
-- Frontend: Static Hosting nach `npm run build`
+- Directus: produktiv mit PostgreSQL + persistentem Objektspeicher betreiben (z. B. S3).
+- Frontend: `npm run build` im `frontend`-Ordner erzeugt statische Assets zum Deploy.
 
 ## Mitwirken
 
-- PRs und Issues willkommen — Bereich (`frontend/` oder `cms/`) im PR-Titel angeben.
+- Issues und PRs sind willkommen. Bitte im PR-Titel angeben, ob die Änderung `frontend/` oder `cms/` betrifft.
+- Code-Style: ESLint + Prettier (siehe `frontend/` Konfiguration).
+
+## Kontakt
+
+Bei Fragen: Projektmaintainer kontaktieren (siehe `package.json` im `frontend/` Ordner).
 
 ---
 
