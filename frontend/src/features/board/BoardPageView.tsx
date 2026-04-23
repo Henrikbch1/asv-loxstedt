@@ -30,7 +30,7 @@ export function BoardPageView({ page }: BoardPageViewProps) {
     <article className="content-page">
       <header className="page-hero page-hero--content">
         <div className="page-hero__copy">
-          <span className="eyebrow">Seite</span>
+          <span className="eyebrow">Unser</span>
           <h1>{page.title}</h1>
         </div>
         {imageUrl ? (
