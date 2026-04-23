@@ -16,14 +16,14 @@ Repository-Aufbau (wichtig):
 
 ## Lokale Entwicklung (Schnellstart)
 
-1) Directus starten (im Ordner `cms`):
+1. Directus starten (im Ordner `cms`):
 
 ```powershell
 cd cms
 docker compose up -d
 ```
 
-2) Frontend vorbereiten und starten:
+2. Frontend vorbereiten und starten:
 
 ```powershell
 cd frontend
