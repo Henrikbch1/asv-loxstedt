@@ -12,7 +12,27 @@ cms/uploads/*
 
 # Extensions
 !cms/extensions/
-cms/extensions/.gitkeepstyle.css
+cms/extensions/.gitkeep
+
+# Frontend / Cypress / Dev artifacts
+# frontend build & deps (frontend has its own .gitignore but keep root safe)
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+
+# Cypress artefacts (frontend tests)
+frontend/cypress/videos/
+frontend/cypress/screenshots/
+frontend/cypress/reports/
+
+# Local env / secrets
+frontend/cypress.env.json
+frontend/.env.local
+
+# Coverage / test output
+frontend/coverage/
+.nyc_output/
+coverage/
 
 # Testing coverage
 coverage/
