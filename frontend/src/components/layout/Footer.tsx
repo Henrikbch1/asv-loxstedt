@@ -45,19 +45,23 @@ export function Footer({ settings }: FooterProps) {
             <span className="eyebrow inline-block text-sm font-bold text-white/90">
               {settings?.site_name ?? ''}
             </span>
-            <p className="site-footer__title">
-              Vereinsinhalte mit klarer Struktur und einer moderneren
-              Oberfläche.
-            </p>
-            <p className="site-footer__content m-0 max-w-xl5">
-              News, Seiten und wichtige Vereinsinformationen werden zentral
-              gepflegt und hier in einer ruhigen, gruen-warmen Oberfläche
-              ausgespielt.
-            </p>
-            <RichText
-              className="rich-text site-footer__richtext prose prose-invert prose-sm max-w-none whitespace-normal"
-              html={settings?.footer_note}
-            />
+            <br></br>
+            {mapsEmbedUrl ? (
+              <div
+                className="mt-3 rounded overflow-hidden"
+                style={{ maxWidth: 600 }}
+              >
+                <iframe
+                  title={`Karte: ${addressString}`}
+                  src={mapsEmbedUrl}
+                  width="100%"
+                  height="200"
+                  style={{ border: 0 }}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+              </div>
+            ) : null}
           </div>
           <div className="site-footer__panel break-words whitespace-normal text-left">
             <span className="meta-text ">Kontakt Daten</span>
@@ -122,22 +126,10 @@ export function Footer({ settings }: FooterProps) {
                   </div>
                 ) : null}
 
-                {mapsEmbedUrl ? (
-                  <div
-                    className="mt-3 rounded overflow-hidden"
-                    style={{ maxWidth: 600 }}
-                  >
-                    <iframe
-                      title={`Karte: ${addressString}`}
-                      src={mapsEmbedUrl}
-                      width="100%"
-                      height="200"
-                      style={{ border: 0 }}
-                      loading="lazy"
-                      referrerPolicy="no-referrer-when-downgrade"
-                    />
-                  </div>
-                ) : null}
+                <RichText
+                  className="rich-text site-footer__richtext prose prose-invert prose-sm max-w-none whitespace-normal"
+                  html={settings?.footer_note}
+                />
               </div>
             )}
           </div>
