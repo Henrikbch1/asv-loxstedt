@@ -1,13 +1,13 @@
-import { ErrorState } from "../components/ui/ErrorState";
-import { LoadingState } from "../components/ui/LoadingState";
-import { NotFoundState } from "../components/ui/NotFoundState";
-import { RichText } from "../components/ui/RichText";
-import { useGlobalSettingsQuery } from "../hooks/useGlobalSettingsQuery";
-import { useSiteTitle } from "../hooks/useSiteTitle";
+import { ErrorState } from '../components/ui/ErrorState';
+import { LoadingState } from '../components/ui/LoadingState';
+import { NotFoundState } from '../components/ui/NotFoundState';
+import { RichText } from '../components/ui/RichText';
+import { useGlobalSettingsQuery } from '../hooks/useGlobalSettingsQuery';
+import { useSiteTitle } from '../hooks/useSiteTitle';
 
 export function ImpressumPage() {
   const settingsQuery = useGlobalSettingsQuery();
-  useSiteTitle("Impressum");
+  useSiteTitle('Impressum');
 
   if (settingsQuery.isPending) {
     return <LoadingState />;

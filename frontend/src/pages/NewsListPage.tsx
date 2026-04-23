@@ -1,17 +1,17 @@
-import { useSearchParams } from "react-router-dom";
-import { EmptyState } from "../components/ui/EmptyState";
-import { ErrorState } from "../components/ui/ErrorState";
-import { LoadingState } from "../components/ui/LoadingState";
-import { NewsListItem } from "../features/news/NewsListItem";
-import { usePublicNewsListQuery } from "../features/news/useNewsQueries";
-import { useSiteTitle } from "../hooks/useSiteTitle";
-import { NEWS_PAGE_SIZE } from "../config/constants";
+import { useSearchParams } from 'react-router-dom';
+import { EmptyState } from '../components/ui/EmptyState';
+import { ErrorState } from '../components/ui/ErrorState';
+import { LoadingState } from '../components/ui/LoadingState';
+import { NewsListItem } from '../features/news/NewsListItem';
+import { usePublicNewsListQuery } from '../features/news/useNewsQueries';
+import { useSiteTitle } from '../hooks/useSiteTitle';
+import { NEWS_PAGE_SIZE } from '../config/constants';
 
 export function NewsListPage() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const page = Math.max(1, Number(searchParams.get("page") ?? 1));
+  const page = Math.max(1, Number(searchParams.get('page') ?? 1));
   const newsQuery = usePublicNewsListQuery(page);
-  useSiteTitle("Aktuelle Meldungen");
+  useSiteTitle('Aktuelle Meldungen');
 
   if (newsQuery.isPending) {
     return <LoadingState title="News werden geladen" />;
@@ -57,7 +57,7 @@ export function NewsListPage() {
 
       <ul className="news-feed">
         {[...newsQuery.data.data]
-          .sort((a, b) => (b.date ?? "").localeCompare(a.date ?? ""))
+          .sort((a, b) => (b.date ?? '').localeCompare(a.date ?? ''))
           .map((item) => (
             <li key={item.id}>
               <NewsListItem item={item} />
@@ -73,7 +73,7 @@ export function NewsListPage() {
                 className="button button--ghost"
                 onClick={() => {
                   setSearchParams({ page: String(page - 1) });
-                  window.scrollTo({ top: 0, behavior: "smooth" });
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
                 type="button"
               >
@@ -94,7 +94,7 @@ export function NewsListPage() {
                 className="button button--ghost"
                 onClick={() => {
                   setSearchParams({ page: String(page + 1) });
-                  window.scrollTo({ top: 0, behavior: "smooth" });
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
                 type="button"
               >

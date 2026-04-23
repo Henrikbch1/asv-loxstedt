@@ -1,5 +1,5 @@
-import type { CmsId, DirectusRelation } from "./directus";
-import type { PageSummary } from "./domain";
+import type { CmsId, DirectusRelation } from './directus';
+import type { PageSummary } from './domain';
 
 export interface NavigationRecordRaw {
   sort: number | null;
@@ -9,7 +9,7 @@ export interface NavigationRecordRaw {
     | CmsId
     | {
         label: string;
-        page: DirectusRelation<Pick<PageSummary, "title" | "slug">>;
+        page: DirectusRelation<Pick<PageSummary, 'title' | 'slug'>>;
       }
     | null;
 }

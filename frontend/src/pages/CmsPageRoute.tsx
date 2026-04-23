@@ -1,13 +1,13 @@
-import { useParams } from "react-router-dom";
-import { ErrorState } from "../components/ui/ErrorState";
-import { LoadingState } from "../components/ui/LoadingState";
-import { NotFoundState } from "../components/ui/NotFoundState";
-import { CmsPageView } from "../features/cms-pages/CmsPageView";
-import { usePublicPageByPathQuery } from "../features/cms-pages/useCmsPageQueries";
+import { useParams } from 'react-router-dom';
+import { ErrorState } from '../components/ui/ErrorState';
+import { LoadingState } from '../components/ui/LoadingState';
+import { NotFoundState } from '../components/ui/NotFoundState';
+import { CmsPageView } from '../features/cms-pages/CmsPageView';
+import { usePublicPageByPathQuery } from '../features/cms-pages/useCmsPageQueries';
 
 export function CmsPageRoute() {
   const params = useParams();
-  const path = params["*"] ?? "";
+  const path = params['*'] ?? '';
   const pageQuery = usePublicPageByPathQuery(path);
 
   if (!path) {

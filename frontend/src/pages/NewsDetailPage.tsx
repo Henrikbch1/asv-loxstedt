@@ -1,20 +1,20 @@
-import { useState } from "react";
-import { useParams } from "react-router-dom";
-import { ErrorState } from "../components/ui/ErrorState";
-import { LoadingState } from "../components/ui/LoadingState";
-import { NotFoundState } from "../components/ui/NotFoundState";
-import { RichText } from "../components/ui/RichText";
-import { usePublicNewsByIdQuery } from "../features/news/useNewsQueries";
-import { CmsApiError } from "../api/directus";
-import { getCmsAssetLabel, getNewsDetailUrl } from "../utils/assets";
-import { formatDate } from "../utils/date";
-import { useSiteTitle } from "../hooks/useSiteTitle";
-import { ImageLightbox } from "../components/ui/ImageLightbox";
-import { expandDirectusRelation } from "../utils/directus";
-import type { Category } from "../types/domain";
+import { useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { ErrorState } from '../components/ui/ErrorState';
+import { LoadingState } from '../components/ui/LoadingState';
+import { NotFoundState } from '../components/ui/NotFoundState';
+import { RichText } from '../components/ui/RichText';
+import { usePublicNewsByIdQuery } from '../features/news/useNewsQueries';
+import { CmsApiError } from '../api/directus';
+import { getCmsAssetLabel, getNewsDetailUrl } from '../utils/assets';
+import { formatDate } from '../utils/date';
+import { useSiteTitle } from '../hooks/useSiteTitle';
+import { ImageLightbox } from '../components/ui/ImageLightbox';
+import { expandDirectusRelation } from '../utils/directus';
+import type { Category } from '../types/domain';
 
 export function NewsDetailPage() {
-  const { id = "" } = useParams();
+  const { id = '' } = useParams();
   const newsQuery = usePublicNewsByIdQuery(id);
   const [lightboxOpen, setLightboxOpen] = useState(false);
   useSiteTitle(newsQuery.data?.title);
@@ -56,13 +56,13 @@ export function NewsDetailPage() {
           <span className="eyebrow">News-Detail</span>
           <h1>{newsQuery.data.title}</h1>
           <p className="meta-text">
-            {[dateLabel, categoryName].filter(Boolean).join(" · ")}
+            {[dateLabel, categoryName].filter(Boolean).join(' · ')}
           </p>
         </div>
       </header>
 
       <section
-        className={`news-detail__layout${imageUrl ? " news-detail__layout--has-media" : ""}`}
+        className={`news-detail__layout${imageUrl ? ' news-detail__layout--has-media' : ''}`}
       >
         <RichText
           className="rich-text content-page__body news-detail__main prose prose-lg"

@@ -1,4 +1,4 @@
-import type { DirectusRelation } from "../types/directus";
+import type { DirectusRelation } from '../types/directus';
 
 /**
  * Gibt das expandierte Objekt zurück, wenn eine Directus-Relation bereits aufgelöst wurde,
@@ -7,7 +7,7 @@ import type { DirectusRelation } from "../types/directus";
 export function expandDirectusRelation<T extends object>(
   relation: DirectusRelation<T>,
 ): T | null {
-  if (relation && typeof relation === "object") {
+  if (relation && typeof relation === 'object') {
     return relation as T;
   }
 

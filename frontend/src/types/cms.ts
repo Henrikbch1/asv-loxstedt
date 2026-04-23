@@ -9,10 +9,10 @@ export type {
   DownloadItem,
   Person,
   Role,
-} from "./domain";
+} from './domain';
 
 export type {
   NavigationRecordRaw,
   NavigationRecord,
   NavigationTreeNode,
-} from "./navigation";
+} from './navigation';

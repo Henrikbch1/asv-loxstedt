@@ -1,9 +1,9 @@
-import { useQuery } from "@tanstack/react-query";
-import { getNavigation, getPublicPages } from "../../api/cms";
-import { queryKeys } from "../../api/queryKeys";
-import { buildNavigationTree } from "./navigation.utils";
+import { useQuery } from '@tanstack/react-query';
+import { getNavigation, getPublicPages } from '../../api/cms';
+import { queryKeys } from '../../api/queryKeys';
+import { buildNavigationTree } from './navigation.utils';
 
-export { useGlobalSettingsQuery } from "../../hooks/useGlobalSettingsQuery";
+export { useGlobalSettingsQuery } from '../../hooks/useGlobalSettingsQuery';
 
 export function useNavigationQuery() {
   return useQuery({

@@ -1,50 +1,50 @@
-import { CmsApiError, fetchDirectus } from "./directus";
-import type { CmsPage, GlobalSettings, NewsItem, Role } from "../types/domain";
+import { CmsApiError, fetchDirectus } from './directus';
+import type { CmsPage, GlobalSettings, NewsItem, Role } from '../types/domain';
 import type {
   NavigationRecord,
   NavigationRecordRaw,
-} from "../types/navigation";
+} from '../types/navigation';
 import type {
   DirectusListResponse,
   DirectusSingletonResponse,
-} from "../types/directus";
-import { findCmsPageByPath } from "../utils/cmsPagePaths";
-import { NEWS_PAGE_SIZE } from "../config/constants";
-import { normalizeNavigationRecord, compareNewsItems } from "./transformers";
+} from '../types/directus';
+import { findCmsPageByPath } from '../utils/cmsPagePaths';
+import { NEWS_PAGE_SIZE } from '../config/constants';
+import { normalizeNavigationRecord, compareNewsItems } from './transformers';
 
-const pageSummaryFields = ["id", "title", "slug", "navigation_title"];
+const pageSummaryFields = ['id', 'title', 'slug', 'navigation_title'];
 
 const pageFields = [
-  "id",
-  "title",
-  "slug",
-  "navigation_title",
-  "content",
-  "intro",
-  "featured_image",
-  "parent_page",
-  "template",
-  "hero_title",
-  "hero_text",
-  "show_title",
-  "show_intro",
+  'id',
+  'title',
+  'slug',
+  'navigation_title',
+  'content',
+  'intro',
+  'featured_image',
+  'parent_page',
+  'template',
+  'hero_title',
+  'hero_text',
+  'show_title',
+  'show_intro',
 ] satisfies string[];
 
 const newsFields = [
-  "id",
-  "title",
-  "date",
-  "text",
-  "image",
-  "category.name",
+  'id',
+  'title',
+  'date',
+  'text',
+  'image',
+  'category.name',
 ] satisfies string[];
 
 const fallbackNewsFields = [
-  "id",
-  "title",
-  "date",
-  "text",
-  "image",
+  'id',
+  'title',
+  'date',
+  'text',
+  'image',
 ] satisfies string[];
 
 async function fetchPublicNewsResponse<T>(
@@ -61,7 +61,7 @@ async function fetchPublicNewsResponse<T>(
       signal,
     });
   } catch (error) {
-    if (!(error instanceof CmsApiError) || error.code !== "FORBIDDEN") {
+    if (!(error instanceof CmsApiError) || error.code !== 'FORBIDDEN') {
       throw error;
     }
 
@@ -80,20 +80,20 @@ export async function getGlobalSettings(
 ): Promise<GlobalSettings> {
   const response = await fetchDirectus<
     DirectusSingletonResponse<GlobalSettings>
-  >("/items/global_settings", {
+  >('/items/global_settings', {
     query: {
       fields: [
-        "id",
-        "site_name",
-        "logo",
-        "club_name",
-        "footer_note",
-        "street",
-        "postal_code",
-        "city",
-        "phone",
-        "imprint",
-        "data_protection",
+        'id',
+        'site_name',
+        'logo',
+        'club_name',
+        'footer_note',
+        'street',
+        'postal_code',
+        'city',
+        'phone',
+        'imprint',
+        'data_protection',
       ],
     },
     signal,
@@ -107,18 +107,18 @@ export async function getNavigation(
 ): Promise<NavigationRecord[]> {
   const response = await fetchDirectus<
     DirectusListResponse<NavigationRecordRaw>
-  >("/items/navigation", {
+  >('/items/navigation', {
     query: {
       fields: [
-        "sort",
-        "label",
-        "parent",
-        "parent.label",
-        "parent.page.slug",
-        "parent.page.title",
+        'sort',
+        'label',
+        'parent',
+        'parent.label',
+        'parent.page.slug',
+        'parent.page.title',
         ...pageSummaryFields.map((field) => `page.${field}`),
       ],
-      sort: ["sort", "label"],
+      sort: ['sort', 'label'],
     },
     signal,
   });
@@ -137,11 +137,11 @@ export async function getPublicPageByPath(
 
 export async function getPublicPages(signal?: AbortSignal): Promise<CmsPage[]> {
   const response = await fetchDirectus<DirectusListResponse<CmsPage>>(
-    "/items/pages",
+    '/items/pages',
     {
       query: {
         fields: pageFields,
-        sort: ["title"],
+        sort: ['title'],
       },
       signal,
     },
@@ -157,12 +157,12 @@ export async function getPublicNewsList(
   const response = await fetchPublicNewsResponse<
     DirectusListResponse<NewsItem>
   >(
-    "/items/news",
+    '/items/news',
     {
-      sort: ["-date", "-id"],
+      sort: ['-date', '-id'],
       limit: NEWS_PAGE_SIZE,
       page,
-      meta: "filter_count",
+      meta: 'filter_count',
     },
     signal,
   );
@@ -186,20 +186,20 @@ export async function getPublicNewsById(
 
 export async function getBoardRoles(signal?: AbortSignal): Promise<Role[]> {
   const response = await fetchDirectus<DirectusListResponse<Role>>(
-    "/items/roles",
+    '/items/roles',
     {
       query: {
         fields: [
-          "id",
-          "sort",
-          "role",
-          "email",
-          "is_vacant",
-          "category.name",
-          "person_link.firstname",
-          "person_link.lastname",
+          'id',
+          'sort',
+          'role',
+          'email',
+          'is_vacant',
+          'category.name',
+          'person_link.firstname',
+          'person_link.lastname',
         ],
-        sort: ["sort"],
+        sort: ['sort'],
         limit: -1,
       },
       signal,

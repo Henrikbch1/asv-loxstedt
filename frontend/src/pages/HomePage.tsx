@@ -1,19 +1,19 @@
-import { Link } from "react-router-dom";
-import { appConfig } from "../config/env";
-import { ErrorState } from "../components/ui/ErrorState";
-import { LoadingState } from "../components/ui/LoadingState";
-import { CmsPageView } from "../features/cms-pages/CmsPageView";
-import { usePublicPageByPathQuery } from "../features/cms-pages/useCmsPageQueries";
-import { NewsCard } from "../features/news/NewsCard";
-import { usePublicNewsListQuery } from "../features/news/useNewsQueries";
-import { useSiteTitle } from "../hooks/useSiteTitle";
+import { Link } from 'react-router-dom';
+import { appConfig } from '../config/env';
+import { ErrorState } from '../components/ui/ErrorState';
+import { LoadingState } from '../components/ui/LoadingState';
+import { CmsPageView } from '../features/cms-pages/CmsPageView';
+import { usePublicPageByPathQuery } from '../features/cms-pages/useCmsPageQueries';
+import { NewsCard } from '../features/news/NewsCard';
+import { usePublicNewsListQuery } from '../features/news/useNewsQueries';
+import { useSiteTitle } from '../hooks/useSiteTitle';
 
 export function HomePage() {
   const homePageQuery = usePublicPageByPathQuery(appConfig.defaultHomeSlug);
   const newsQuery = usePublicNewsListQuery(1);
   const homeTitle = homePageQuery.data
     ? homePageQuery.data.title
-    : "Startseite";
+    : 'Startseite';
   useSiteTitle(homeTitle);
 
   if (homePageQuery.isPending) {

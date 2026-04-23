@@ -1,8 +1,8 @@
-import type { CmsPage } from "../types/cms";
-import type { CmsId, DirectusRelation } from "../types/directus";
+import type { CmsPage } from '../types/cms';
+import type { CmsId, DirectusRelation } from '../types/directus';
 
 function normalizePathSegment(value: string | null | undefined): string | null {
-  const normalizedValue = value?.trim().replace(/^\/+|\/+$/g, "") ?? "";
+  const normalizedValue = value?.trim().replace(/^\/+|\/+$/g, '') ?? '';
 
   return normalizedValue.length > 0 ? normalizedValue : null;
 }
@@ -14,7 +14,7 @@ function getRelationId<T extends { id: CmsId }>(
     return null;
   }
 
-  if (typeof relation === "object" && "id" in relation) {
+  if (typeof relation === 'object' && 'id' in relation) {
     return relation.id;
   }
 
@@ -28,7 +28,7 @@ function warnPathIssue(message: string, details: Record<string, unknown>) {
 }
 
 export function normalizeCmsPagePath(path: string): string {
-  return path.trim().replace(/^\/+|\/+$/g, "");
+  return path.trim().replace(/^\/+|\/+$/g, '');
 }
 
 export function buildCmsPagePathMap(pages: CmsPage[]): Map<string, string> {
@@ -49,7 +49,7 @@ export function buildCmsPagePathMap(pages: CmsPage[]): Map<string, string> {
     }
 
     if (visitedPageIds.has(pageId)) {
-      warnPathIssue("Cycle detected while resolving CMS page path.", {
+      warnPathIssue('Cycle detected while resolving CMS page path.', {
         pageId: page.id,
         slug: page.slug,
       });
@@ -60,7 +60,7 @@ export function buildCmsPagePathMap(pages: CmsPage[]): Map<string, string> {
     const ownSegment = normalizePathSegment(page.slug);
 
     if (!ownSegment) {
-      warnPathIssue("Skipping CMS page with empty slug while resolving path.", {
+      warnPathIssue('Skipping CMS page with empty slug while resolving path.', {
         pageId: page.id,
       });
       pathCache.set(pageId, null);
@@ -77,7 +77,7 @@ export function buildCmsPagePathMap(pages: CmsPage[]): Map<string, string> {
 
       if (!parentPage) {
         warnPathIssue(
-          "Skipping CMS page because parent_page could not be resolved.",
+          'Skipping CMS page because parent_page could not be resolved.',
           {
             pageId: page.id,
             parentId,
@@ -118,7 +118,7 @@ export function buildCmsPagePathMap(pages: CmsPage[]): Map<string, string> {
     const existingPageId = seenPaths.get(pagePath);
 
     if (existingPageId && existingPageId !== String(page.id)) {
-      warnPathIssue("Duplicate CMS page path detected.", {
+      warnPathIssue('Duplicate CMS page path detected.', {
         duplicatePath: pagePath,
         pageId: page.id,
         existingPageId,

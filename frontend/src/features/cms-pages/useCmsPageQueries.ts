@@ -1,10 +1,10 @@
-import { useQuery } from "@tanstack/react-query";
-import { getPublicPages } from "../../api/cms";
-import { queryKeys } from "../../api/queryKeys";
+import { useQuery } from '@tanstack/react-query';
+import { getPublicPages } from '../../api/cms';
+import { queryKeys } from '../../api/queryKeys';
 import {
   findCmsPageByPath,
   normalizeCmsPagePath,
-} from "../../utils/cmsPagePaths";
+} from '../../utils/cmsPagePaths';
 
 export function usePublicPagesQuery() {
   return useQuery({

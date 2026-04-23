@@ -1,12 +1,12 @@
-import { Fragment } from "react";
-import { RichText } from "../../components/ui/RichText";
-import { LoadingState } from "../../components/ui/LoadingState";
-import { ErrorState } from "../../components/ui/ErrorState";
-import type { CmsPage, Category, Person } from "../../types/domain";
-import { getCmsAssetLabel, getCmsAssetUrl } from "../../utils/assets";
-import { useSiteTitle } from "../../hooks/useSiteTitle";
-import { useBoardRolesQuery } from "./useBoardQueries";
-import { expandDirectusRelation } from "../../utils/directus";
+import { Fragment } from 'react';
+import { RichText } from '../../components/ui/RichText';
+import { LoadingState } from '../../components/ui/LoadingState';
+import { ErrorState } from '../../components/ui/ErrorState';
+import type { CmsPage, Category, Person } from '../../types/domain';
+import { getCmsAssetLabel, getCmsAssetUrl } from '../../utils/assets';
+import { useSiteTitle } from '../../hooks/useSiteTitle';
+import { useBoardRolesQuery } from './useBoardQueries';
+import { expandDirectusRelation } from '../../utils/directus';
 
 interface BoardPageViewProps {
   page: CmsPage;
@@ -16,7 +16,7 @@ export function BoardPageView({ page }: BoardPageViewProps) {
   useSiteTitle(page.title);
 
   const imageUrl = getCmsAssetUrl(page.featured_image, {
-    fit: "cover",
+    fit: 'cover',
     width: 1600,
   });
 
@@ -57,7 +57,7 @@ export function BoardPageView({ page }: BoardPageViewProps) {
               const showCategoryMarker = category?.name !== prevCategory?.name;
               const fullName = [person?.firstname, person?.lastname]
                 .filter(Boolean)
-                .join(" ");
+                .join(' ');
 
               return (
                 <Fragment key={String(role.id)}>
@@ -71,7 +71,7 @@ export function BoardPageView({ page }: BoardPageViewProps) {
                     {role.is_vacant ? (
                       <p className="board-card__vacant">Zurzeit unbesetzt</p>
                     ) : (
-                      <p className="board-card__name">{fullName || "—"}</p>
+                      <p className="board-card__name">{fullName || '—'}</p>
                     )}
                     {!role.is_vacant && role.email ? (
                       <a

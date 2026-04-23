@@ -1,7 +1,7 @@
-import { useId } from "react";
-import { NavLink } from "react-router-dom";
-import type { NavigationTreeNode } from "../../types/navigation";
-import { useNavigationMenuState } from "./useNavigationMenuState";
+import { useId } from 'react';
+import { NavLink } from 'react-router-dom';
+import type { NavigationTreeNode } from '../../types/navigation';
+import { useNavigationMenuState } from './useNavigationMenuState';
 
 interface NavigationMenuProps {
   items: NavigationTreeNode[];
@@ -46,10 +46,10 @@ export function NavigationMenu({
 
   const listClassName =
     depth === 0
-      ? "nav-list"
+      ? 'nav-list'
       : expanded
-        ? "nav-list nav-list--sub nav-list--sub-open"
-        : "nav-list nav-list--sub";
+        ? 'nav-list nav-list--sub nav-list--sub-open'
+        : 'nav-list nav-list--sub';
 
   return (
     <ul className={listClassName}>
@@ -62,7 +62,7 @@ export function NavigationMenu({
         const content = item.href ? (
           <NavLink
             className={({ isActive }) =>
-              isActive ? "nav-link nav-link--active" : "nav-link"
+              isActive ? 'nav-link nav-link--active' : 'nav-link'
             }
             onClick={onNavigate}
             to={item.href}
@@ -77,8 +77,8 @@ export function NavigationMenu({
           <NavLink
             className={({ isActive }) =>
               isActive
-                ? "nav-link nav-link--desktop nav-link--branch-desktop nav-link--active"
-                : "nav-link nav-link--desktop nav-link--branch-desktop"
+                ? 'nav-link nav-link--desktop nav-link--branch-desktop nav-link--active'
+                : 'nav-link nav-link--desktop nav-link--branch-desktop'
             }
             onClick={onNavigate}
             to={item.href}
@@ -102,14 +102,14 @@ export function NavigationMenu({
             className={
               hasChildren
                 ? [
-                    "nav-item",
-                    "nav-item--branch",
-                    isExpanded ? "nav-item--open" : "",
-                    isDesktopExpanded ? "nav-item--desktop-open" : "",
+                    'nav-item',
+                    'nav-item--branch',
+                    isExpanded ? 'nav-item--open' : '',
+                    isDesktopExpanded ? 'nav-item--desktop-open' : '',
                   ]
                     .filter(Boolean)
-                    .join(" ")
-                : "nav-item"
+                    .join(' ')
+                : 'nav-item'
             }
             key={item.key}
             onBlur={
@@ -147,8 +147,8 @@ export function NavigationMenu({
                       <NavLink
                         className={({ isActive }) =>
                           isActive
-                            ? "nav-link nav-branch-split__link nav-link--active"
-                            : "nav-link nav-branch-split__link"
+                            ? 'nav-link nav-branch-split__link nav-link--active'
+                            : 'nav-link nav-branch-split__link'
                         }
                         onClick={onNavigate}
                         to={item.href}
@@ -160,13 +160,13 @@ export function NavigationMenu({
                         aria-expanded={isExpanded}
                         aria-label={
                           isExpanded
-                            ? "Untermenu schliessen"
-                            : "Untermenu oeffnen"
+                            ? 'Untermenu schliessen'
+                            : 'Untermenu oeffnen'
                         }
                         className={
                           isExpanded
-                            ? "nav-branch-chevron nav-branch-chevron--open"
-                            : "nav-branch-chevron"
+                            ? 'nav-branch-chevron nav-branch-chevron--open'
+                            : 'nav-branch-chevron'
                         }
                         onClick={() => {
                           toggleMobileKey(item.key);
@@ -184,8 +184,8 @@ export function NavigationMenu({
                       aria-expanded={isExpanded}
                       className={
                         isExpanded
-                          ? "nav-branch-toggle nav-branch-toggle--open"
-                          : "nav-branch-toggle"
+                          ? 'nav-branch-toggle nav-branch-toggle--open'
+                          : 'nav-branch-toggle'
                       }
                       onClick={() => {
                         toggleMobileKey(item.key);

@@ -1,11 +1,11 @@
-import DOMPurify from "dompurify";
+import DOMPurify from 'dompurify';
 
 interface RichTextProps {
   html: string | null | undefined;
   className?: string;
 }
 
-export function RichText({ html, className = "prose" }: RichTextProps) {
+export function RichText({ html, className = 'prose' }: RichTextProps) {
   if (!html) {
     return null;
   }

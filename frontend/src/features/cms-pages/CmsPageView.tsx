@@ -1,15 +1,15 @@
-import { RichText } from "../../components/ui/RichText";
-import type { CmsPage } from "../../types/cms";
-import { getCmsAssetLabel, getCmsAssetUrl } from "../../utils/assets";
-import { useSiteTitle } from "../../hooks/useSiteTitle";
-import { BoardPageView } from "../board/BoardPageView";
+import { RichText } from '../../components/ui/RichText';
+import type { CmsPage } from '../../types/cms';
+import { getCmsAssetLabel, getCmsAssetUrl } from '../../utils/assets';
+import { useSiteTitle } from '../../hooks/useSiteTitle';
+import { BoardPageView } from '../board/BoardPageView';
 
 interface CmsPageViewProps {
   page: CmsPage;
 }
 
 export function CmsPageView({ page }: CmsPageViewProps) {
-  if (page.template === "board") {
+  if (page.template === 'board') {
     return <BoardPageView page={page} />;
   }
 
@@ -19,7 +19,7 @@ export function CmsPageView({ page }: CmsPageViewProps) {
 function DefaultPageView({ page }: CmsPageViewProps) {
   useSiteTitle(page.title);
   const imageUrl = getCmsAssetUrl(page.featured_image, {
-    fit: "cover",
+    fit: 'cover',
     width: 1600,
   });
 

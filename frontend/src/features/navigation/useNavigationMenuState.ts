@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from "react";
-import { DESKTOP_CLOSE_DELAY_MS } from "../../config/constants";
+import { useEffect, useRef, useState } from 'react';
+import { DESKTOP_CLOSE_DELAY_MS } from '../../config/constants';
 
 export interface NavigationMenuState {
   openKeys: string[];

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 interface NotFoundStateProps {
   title?: string;
@@ -6,8 +6,8 @@ interface NotFoundStateProps {
 }
 
 export function NotFoundState({
-  title = "Seite nicht gefunden",
-  message = "Der angeforderte Inhalt ist nicht vorhanden oder nicht veroeffentlicht.",
+  title = 'Seite nicht gefunden',
+  message = 'Der angeforderte Inhalt ist nicht vorhanden oder nicht veroeffentlicht.',
 }: NotFoundStateProps) {
   return (
     <section className="state-card state-card--not-found justify-items-center text-center">

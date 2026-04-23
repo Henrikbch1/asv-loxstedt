@@ -1,8 +1,8 @@
 import type {
   NavigationRecord,
   NavigationRecordRaw,
-} from "../types/navigation";
-import type { NewsItem } from "../types/domain";
+} from '../types/navigation';
+import type { NewsItem } from '../types/domain';
 
 export function getNavigationKey(label: string, slug?: string | null): string {
   return slug ? `page:${slug}` : `label:${label.trim().toLowerCase()}`;
@@ -12,15 +12,15 @@ export function normalizeNavigationRecord(
   item: NavigationRecordRaw,
 ): NavigationRecord {
   const page =
-    item.page && typeof item.page === "object" && "slug" in item.page
+    item.page && typeof item.page === 'object' && 'slug' in item.page
       ? item.page
       : null;
 
   const parentKey =
-    item.parent && typeof item.parent === "object"
+    item.parent && typeof item.parent === 'object'
       ? getNavigationKey(
           item.parent.label,
-          item.parent.page && typeof item.parent.page === "object"
+          item.parent.page && typeof item.parent.page === 'object'
             ? item.parent.page.slug
             : null,
         )
@@ -52,5 +52,5 @@ export function compareNewsItems(a: NewsItem, b: NewsItem): number {
     return dateDiff;
   }
 
-  return String(b.id).localeCompare(String(a.id), "de-DE", { numeric: true });
+  return String(b.id).localeCompare(String(a.id), 'de-DE', { numeric: true });
 }

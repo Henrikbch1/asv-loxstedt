@@ -1,12 +1,12 @@
-import { appConfig } from "../config/env";
-import type { DirectusFile, DirectusFileReference } from "../types/directus";
+import { appConfig } from '../config/env';
+import type { DirectusFile, DirectusFileReference } from '../types/directus';
 
 function getAssetId(asset: DirectusFileReference): string | null {
   if (!asset) {
     return null;
   }
 
-  if (typeof asset === "string" || typeof asset === "number") {
+  if (typeof asset === 'string' || typeof asset === 'number') {
     return String(asset);
   }
 
@@ -24,7 +24,7 @@ export function getCmsAssetUrl(
   }
 
   const url = new URL(
-    `${appConfig.assetsPath.replace(/^\/?/, "")}/${assetId}`,
+    `${appConfig.assetsPath.replace(/^\/?/, '')}/${assetId}`,
     `${appConfig.apiBaseUrl}/`,
   );
 
@@ -38,17 +38,17 @@ export function getCmsAssetUrl(
 }
 
 export function getCmsAssetLabel(asset: DirectusFileReference): string {
-  if (!asset || typeof asset === "string" || typeof asset === "number") {
-    return "CMS asset";
+  if (!asset || typeof asset === 'string' || typeof asset === 'number') {
+    return 'CMS asset';
   }
 
-  return asset.title || asset.filename_download || "CMS asset";
+  return asset.title || asset.filename_download || 'CMS asset';
 }
 
 export function isExpandedDirectusFile(
   asset: DirectusFileReference,
 ): asset is DirectusFile {
-  return Boolean(asset && typeof asset === "object" && "id" in asset);
+  return Boolean(asset && typeof asset === 'object' && 'id' in asset);
 }
 
 /**
@@ -57,7 +57,7 @@ export function isExpandedDirectusFile(
  * Dimensions match the largest preview frame (900×675 = 4:3).
  */
 export function getNewsPreviewUrl(asset: DirectusFileReference): string | null {
-  return getCmsAssetUrl(asset, { fit: "inside", width: 900, height: 675 });
+  return getCmsAssetUrl(asset, { fit: 'inside', width: 900, height: 675 });
 }
 
 /**
@@ -66,5 +66,5 @@ export function getNewsPreviewUrl(asset: DirectusFileReference): string | null {
  * aspect ratio at high resolution — no server-side crop applied.
  */
 export function getNewsDetailUrl(asset: DirectusFileReference): string | null {
-  return getCmsAssetUrl(asset, { fit: "inside", width: 1600, height: 1600 });
+  return getCmsAssetUrl(asset, { fit: 'inside', width: 1600, height: 1600 });
 }

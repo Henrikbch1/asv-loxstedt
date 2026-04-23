@@ -1,8 +1,8 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import type { GlobalSettings, NavigationTreeNode } from "../../types/cms";
-import { getCmsAssetLabel, getCmsAssetUrl } from "../../utils/assets";
-import { NavigationMenu } from "../../features/navigation/NavigationMenu";
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import type { GlobalSettings, NavigationTreeNode } from '../../types/cms';
+import { getCmsAssetLabel, getCmsAssetUrl } from '../../utils/assets';
+import { NavigationMenu } from '../../features/navigation/NavigationMenu';
 
 interface HeaderProps {
   settings?: GlobalSettings | null;
@@ -57,13 +57,13 @@ export function Header({ settings, navigationItems }: HeaderProps) {
               src={logoUrl}
             />
           ) : null}
-          <span className="brand__text">{settings?.site_name ?? ""}</span>
+          <span className="brand__text">{settings?.site_name ?? ''}</span>
         </Link>
 
         <button
           aria-controls="site-navigation"
           aria-expanded={isOpen}
-          aria-label={isOpen ? "Navigation schliessen" : "Navigation oeffnen"}
+          aria-label={isOpen ? 'Navigation schliessen' : 'Navigation oeffnen'}
           className="nav-toggle inline-flex items-center justify-center text-sm font-semibold text-text"
           onClick={() => setIsOpen((open) => !open)}
           type="button"
@@ -75,14 +75,14 @@ export function Header({ settings, navigationItems }: HeaderProps) {
 
         <nav
           className={
-            isOpen ? "site-navigation site-navigation--open" : "site-navigation"
+            isOpen ? 'site-navigation site-navigation--open' : 'site-navigation'
           }
           id="site-navigation"
         >
           <NavigationMenu
             items={navigationItems}
             onNavigate={() => setIsOpen(false)}
-            key={isOpen ? "navigation-open" : "navigation-closed"}
+            key={isOpen ? 'navigation-open' : 'navigation-closed'}
           />
         </nav>
       </div>

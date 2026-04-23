@@ -1,19 +1,19 @@
-import { Outlet } from "react-router-dom";
-import type { NavigationTreeNode } from "../../types/navigation";
+import { Outlet } from 'react-router-dom';
+import type { NavigationTreeNode } from '../../types/navigation';
 import {
   useGlobalSettingsQuery,
   useNavigationTreeQuery,
-} from "../../features/navigation/useNavigationQuery";
-import { ErrorState } from "../ui/ErrorState";
-import { LoadingState } from "../ui/LoadingState";
-import { routes } from "../../config/routes";
-import { Footer } from "./Footer";
-import { Header } from "./Header";
+} from '../../features/navigation/useNavigationQuery';
+import { ErrorState } from '../ui/ErrorState';
+import { LoadingState } from '../ui/LoadingState';
+import { routes } from '../../config/routes';
+import { Footer } from './Footer';
+import { Header } from './Header';
 
 const NEWS_NAV_ITEM: NavigationTreeNode = {
-  key: "label:news",
+  key: 'label:news',
   sort: 9999,
-  label: "News",
+  label: 'News',
   href: routes.newsList,
   page: null,
   parentKey: null,

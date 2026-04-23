@@ -4,8 +4,8 @@ interface LoadingStateProps {
 }
 
 export function LoadingState({
-  title = "Inhalte werden geladen",
-  message = "Bitte einen Moment Geduld.",
+  title = 'Inhalte werden geladen',
+  message = 'Bitte einen Moment Geduld.',
 }: LoadingStateProps) {
   return (
     <section

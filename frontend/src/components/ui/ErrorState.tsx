@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 interface ErrorStateProps {
   title?: string;
@@ -9,9 +9,9 @@ interface ErrorStateProps {
 }
 
 export function ErrorState({
-  title = "Inhalte konnten nicht geladen werden",
-  message = "Bitte versuche es in kurzer Zeit erneut.",
-  retryLabel = "Erneut versuchen",
+  title = 'Inhalte konnten nicht geladen werden',
+  message = 'Bitte versuche es in kurzer Zeit erneut.',
+  retryLabel = 'Erneut versuchen',
   onRetry,
   homeLink = true,
 }: ErrorStateProps) {

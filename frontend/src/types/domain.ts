@@ -2,7 +2,7 @@ import type {
   CmsId,
   DirectusFileReference,
   DirectusRelation,
-} from "./directus";
+} from './directus';
 
 export interface PageSummary {
   id: CmsId;

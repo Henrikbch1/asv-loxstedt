@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 interface EmptyStateProps {
   title: string;
@@ -18,7 +18,10 @@ export function EmptyState({
       <h2 className="text-2xl font-semibold">{title}</h2>
       <p className="text-muted">{message}</p>
       {ctaLabel && ctaTo ? (
-        <Link className="button button--primary inline-flex items-center px-4 py-2 rounded-full mt-2" to={ctaTo}>
+        <Link
+          className="button button--primary inline-flex items-center px-4 py-2 rounded-full mt-2"
+          to={ctaTo}
+        >
           {ctaLabel}
         </Link>
       ) : null}

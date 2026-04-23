@@ -1,4 +1,4 @@
-import { appConfig } from "../config/env";
+import { appConfig } from '../config/env';
 
 type QueryPrimitive = string | number | boolean;
 interface QueryObject {
@@ -32,7 +32,7 @@ export class CmsApiError extends Error {
 
   constructor(message: string, statusCode: number, code?: string) {
     super(message);
-    this.name = "CmsApiError";
+    this.name = 'CmsApiError';
     this.statusCode = statusCode;
     this.code = code;
   }
@@ -48,11 +48,11 @@ function appendQueryValue(
   }
 
   if (Array.isArray(value)) {
-    searchParams.set(key, value.map((item) => String(item)).join(","));
+    searchParams.set(key, value.map((item) => String(item)).join(','));
     return;
   }
 
-  if (typeof value === "object") {
+  if (typeof value === 'object') {
     Object.entries(value).forEach(([nestedKey, nestedValue]) => {
       appendQueryValue(searchParams, `${key}[${nestedKey}]`, nestedValue);
     });
@@ -82,7 +82,7 @@ export async function fetchDirectus<T>(
 ): Promise<T> {
   const response = await fetch(buildUrl(path, options.query), {
     headers: {
-      Accept: "application/json",
+      Accept: 'application/json',
       ...(appConfig.apiToken
         ? { Authorization: `Bearer ${appConfig.apiToken}` }
         : {}),
@@ -98,7 +98,7 @@ export async function fetchDirectus<T>(
     const firstError = payload?.errors?.[0];
 
     throw new CmsApiError(
-      firstError?.message ?? "The CMS request failed.",
+      firstError?.message ?? 'The CMS request failed.',
       response.status,
       firstError?.extensions?.code,
     );

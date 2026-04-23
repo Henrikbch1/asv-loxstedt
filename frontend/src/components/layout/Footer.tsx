@@ -1,6 +1,6 @@
-import { RichText } from "../ui/RichText";
-import { Link } from "react-router-dom";
-import type { GlobalSettings } from "../../types/cms";
+import { RichText } from '../ui/RichText';
+import { Link } from 'react-router-dom';
+import type { GlobalSettings } from '../../types/cms';
 
 interface FooterProps {
   settings?: GlobalSettings | null;
@@ -15,7 +15,7 @@ export function Footer({ settings }: FooterProps) {
   ]
 
     .filter(Boolean)
-    .join(" ");
+    .join(' ');
   const mapsUrl = addressString
     ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
         addressString,
@@ -28,10 +28,10 @@ export function Footer({ settings }: FooterProps) {
     - language:  Sets the UI language (e.g., 'en' for English, 'de' for German).
     */
   const zoomLevel = 15;
-  const mapType = "k";
-  const language = "de";
+  const mapType = 'k';
+  const language = 'de';
 
-  const baseUrl = "https://www.google.com/maps";
+  const baseUrl = 'https://www.google.com/maps';
   // build google maps url
   const mapsEmbedUrl = addressString
     ? `${baseUrl}?q=${encodeURIComponent(addressString)}&t=${mapType}&z=${zoomLevel}&hl=${language}&output=embed`
@@ -43,7 +43,7 @@ export function Footer({ settings }: FooterProps) {
         <div className="site-footer__inner grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
           <div className="grid gap-4 text-left">
             <span className="eyebrow inline-block text-sm font-bold text-white/90">
-              {settings?.site_name ?? ""}
+              {settings?.site_name ?? ''}
             </span>
             <p className="site-footer__title">
               Vereinsinhalte mit klarer Struktur und einer moderneren
@@ -78,9 +78,9 @@ export function Footer({ settings }: FooterProps) {
                       {settings?.street ? <div>{settings.street}</div> : null}
                       {settings?.postal_code || settings?.city ? (
                         <div>
-                          {settings?.postal_code ?? ""}
-                          {settings?.postal_code && settings?.city ? " " : ""}
-                          {settings?.city ?? ""}
+                          {settings?.postal_code ?? ''}
+                          {settings?.postal_code && settings?.city ? ' ' : ''}
+                          {settings?.city ?? ''}
                         </div>
                       ) : null}
                     </div>
@@ -144,12 +144,13 @@ export function Footer({ settings }: FooterProps) {
         </div>
         <div className="site-footer__tail text-center flex flex-col items-center gap-1 whitespace-normal break-words mt-8">
           <p className="whitespace-normal break-words">
-            © {currentYear} - {settings?.site_name ?? settings?.club_name ?? ""}
+            © {currentYear} - {settings?.site_name ?? settings?.club_name ?? ''}
           </p>
           <nav className="mt-2 text-sm">
             <Link to="/impressum" className="hover:underline mr-3">
               Impressum
-            </Link>{" | "}
+            </Link>
+            {' | '}
             <Link to="/datenschutz" className="hover:underline">
               Datenschutz
             </Link>

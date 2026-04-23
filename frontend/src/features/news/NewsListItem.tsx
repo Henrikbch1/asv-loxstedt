@@ -1,11 +1,11 @@
-import { Link } from "react-router-dom";
-import type { NewsItem } from "../../types/domain";
-import { getCmsAssetLabel, getNewsPreviewUrl } from "../../utils/assets";
-import { formatDate } from "../../utils/date";
-import { getExcerpt } from "../../utils/text";
-import { routes } from "../../config/routes";
-import { expandDirectusRelation } from "../../utils/directus";
-import type { Category } from "../../types/domain";
+import { Link } from 'react-router-dom';
+import type { NewsItem } from '../../types/domain';
+import { getCmsAssetLabel, getNewsPreviewUrl } from '../../utils/assets';
+import { formatDate } from '../../utils/date';
+import { getExcerpt } from '../../utils/text';
+import { routes } from '../../config/routes';
+import { expandDirectusRelation } from '../../utils/directus';
+import type { Category } from '../../types/domain';
 
 interface NewsListItemProps {
   item: NewsItem;
@@ -21,7 +21,7 @@ export function NewsListItem({ item }: NewsListItemProps) {
 
   return (
     <article
-      className={`news-list-item${imageUrl ? " news-list-item--has-image" : ""}`}
+      className={`news-list-item${imageUrl ? ' news-list-item--has-image' : ''}`}
     >
       {/* invisible full-card link overlay */}
       <Link

@@ -1,5 +1,5 @@
-import { useEffect, useCallback } from "react";
-import { createPortal } from "react-dom";
+import { useEffect, useCallback } from 'react';
+import { createPortal } from 'react-dom';
 
 interface ImageLightboxProps {
   src: string;
@@ -10,17 +10,17 @@ interface ImageLightboxProps {
 export function ImageLightbox({ src, alt, onClose }: ImageLightboxProps) {
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
+      if (e.key === 'Escape') onClose();
     },
     [onClose],
   );
 
   useEffect(() => {
-    document.addEventListener("keydown", handleKeyDown);
-    document.body.style.overflow = "hidden";
+    document.addEventListener('keydown', handleKeyDown);
+    document.body.style.overflow = 'hidden';
     return () => {
-      document.removeEventListener("keydown", handleKeyDown);
-      document.body.style.overflow = "";
+      document.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = '';
     };
   }, [handleKeyDown]);
 

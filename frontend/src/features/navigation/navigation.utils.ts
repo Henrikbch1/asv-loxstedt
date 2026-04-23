@@ -2,8 +2,8 @@ import type {
   CmsPage,
   NavigationRecord,
   NavigationTreeNode,
-} from "../../types/cms";
-import { buildCmsPagePathMap, getCmsPageHref } from "../../utils/cmsPagePaths";
+} from '../../types/cms';
+import { buildCmsPagePathMap, getCmsPageHref } from '../../utils/cmsPagePaths';
 
 function isValidNavigationItem(item: NavigationRecord): boolean {
   return Boolean(item.page?.slug);
@@ -17,7 +17,7 @@ function compareNavigation(a: NavigationRecord, b: NavigationRecord): number {
     return sortDiff;
   }
 
-  return a.label.localeCompare(b.label, "de-DE");
+  return a.label.localeCompare(b.label, 'de-DE');
 }
 
 export function buildNavigationTree(
@@ -27,7 +27,7 @@ export function buildNavigationTree(
   const validItems = items
     .filter(isValidNavigationItem)
     .sort(compareNavigation);
-  const nodes = new Map<NavigationRecord["key"], NavigationTreeNode>();
+  const nodes = new Map<NavigationRecord['key'], NavigationTreeNode>();
   const pagePathsById = buildCmsPagePathMap(pages);
 
   validItems.forEach((item) => {
