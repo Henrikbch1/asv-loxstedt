@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { ScrollToTop } from "./ScrollToTop";
 import { AppLayout } from "../components/layout/AppLayout";
 import { CmsPageRoute } from "../pages/CmsPageRoute";
 import { HomePage } from "../pages/HomePage";
@@ -11,6 +12,7 @@ import { routePatterns } from "../config/routes";
 export function AppRouter() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Routes>
         <Route element={<AppLayout />}>
           <Route element={<HomePage />} path={routePatterns.home} />
