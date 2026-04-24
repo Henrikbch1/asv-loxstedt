@@ -2,11 +2,44 @@ import { useId } from 'react';
 import { NavLink } from 'react-router-dom';
 import type { NavigationTreeNode } from '../../types/navigation';
 import { useNavigationMenuState } from './useNavigationMenuState';
+import { cn } from '../../lib/cn';
+
+const styles = {
+  list: 'flex flex-col gap-1 md:flex-row md:items-center md:gap-0.5',
+  listSub:
+    'hidden flex-col gap-0.5 pl-4 md:absolute md:left-0 md:top-full md:z-50 md:min-w-[200px] md:rounded-md md:border md:border-border md:bg-panel-strong md:p-2 md:pl-0 md:shadow-soft',
+  listSubOpen: 'flex',
+  listSubDesktopOpen: 'md:flex',
+  item: 'relative',
+  itemBranch: 'relative',
+  itemOpen: '',
+  itemDesktopOpen: '',
+  link: 'block rounded-md px-3 py-2 text-sm font-medium text-text transition-colors hover:bg-surface-strong hover:text-black',
+  linkActive: 'bg-surface-strong text-black font-semibold',
+  linkDesktop:
+    'hidden items-center gap-1 rounded-md px-3 py-2 text-sm font-medium text-text transition-colors hover:bg-surface-strong hover:text-black md:inline-flex',
+  linkMuted: 'cursor-default text-muted',
+  linkLabel: '',
+  branchIcon: 'h-3 w-3 transition-transform',
+  branchIconOpen: 'rotate-180',
+  branchSplit: 'flex items-center gap-0',
+  branchSplitLink: 'flex-1',
+  branchChevron:
+    'flex items-center justify-center rounded-md p-2 text-muted transition-colors hover:bg-surface-strong',
+  branchChevronOpen: 'text-black',
+  branchToggle:
+    'flex w-full items-center justify-between gap-2 rounded-md px-3 py-2 text-left text-sm font-medium text-text transition-colors hover:bg-surface-strong',
+  branchToggleOpen: 'bg-surface-strong text-black',
+  branchToggleLabel: '',
+  desktopOnly: 'hidden md:block',
+  mobileOnly: 'md:hidden',
+} as const;
 
 interface NavigationMenuProps {
   items: NavigationTreeNode[];
   depth?: number;
   expanded?: boolean;
+  desktopExpanded?: boolean;
   onNavigate?: () => void;
 }
 
@@ -29,6 +62,7 @@ export function NavigationMenu({
   items,
   depth = 0,
   expanded = false,
+  desktopExpanded = false,
   onNavigate,
 }: NavigationMenuProps) {
   const {
@@ -46,10 +80,12 @@ export function NavigationMenu({
 
   const listClassName =
     depth === 0
-      ? 'nav-list'
-      : expanded
-        ? 'nav-list nav-list--sub nav-list--sub-open'
-        : 'nav-list nav-list--sub';
+      ? styles.list
+      : cn(
+          styles.listSub,
+          expanded && styles.listSubOpen,
+          desktopExpanded && styles.listSubDesktopOpen,
+        );
 
   return (
     <ul className={listClassName}>
@@ -62,7 +98,7 @@ export function NavigationMenu({
         const content = item.href ? (
           <NavLink
             className={({ isActive }) =>
-              isActive ? 'nav-link nav-link--active' : 'nav-link'
+              cn(styles.link, isActive && styles.linkActive)
             }
             onClick={onNavigate}
             to={item.href}
@@ -70,28 +106,28 @@ export function NavigationMenu({
             {item.label}
           </NavLink>
         ) : (
-          <span className="nav-link nav-link--muted">{item.label}</span>
+          <span className={cn(styles.link, styles.linkMuted)}>
+            {item.label}
+          </span>
         );
 
         const desktopBranch = item.href ? (
           <NavLink
             className={({ isActive }) =>
-              isActive
-                ? 'nav-link nav-link--desktop nav-link--branch-desktop nav-link--active'
-                : 'nav-link nav-link--desktop nav-link--branch-desktop'
+              cn(styles.linkDesktop, isActive && styles.linkActive)
             }
             onClick={onNavigate}
             to={item.href}
           >
-            <span className="nav-link__label">{item.label}</span>
-            <span className="nav-branch-icon" aria-hidden="true">
+            <span className={styles.linkLabel}>{item.label}</span>
+            <span className={styles.branchIcon} aria-hidden="true">
               <ChevronIcon />
             </span>
           </NavLink>
         ) : (
-          <span className="nav-link nav-link--desktop nav-link--branch-desktop nav-link--muted">
-            <span className="nav-link__label">{item.label}</span>
-            <span className="nav-branch-icon" aria-hidden="true">
+          <span className={cn(styles.linkDesktop, styles.linkMuted)}>
+            <span className={styles.linkLabel}>{item.label}</span>
+            <span className={styles.branchIcon} aria-hidden="true">
               <ChevronIcon />
             </span>
           </span>
@@ -99,18 +135,12 @@ export function NavigationMenu({
 
         return (
           <li
-            className={
-              hasChildren
-                ? [
-                    'nav-item',
-                    'nav-item--branch',
-                    isExpanded ? 'nav-item--open' : '',
-                    isDesktopExpanded ? 'nav-item--desktop-open' : '',
-                  ]
-                    .filter(Boolean)
-                    .join(' ')
-                : 'nav-item'
-            }
+            className={cn(
+              styles.item,
+              hasChildren && styles.itemBranch,
+              hasChildren && isExpanded && styles.itemOpen,
+              hasChildren && isDesktopExpanded && styles.itemDesktopOpen,
+            )}
             key={item.key}
             onBlur={
               hasChildren
@@ -140,15 +170,17 @@ export function NavigationMenu({
           >
             {hasChildren ? (
               <>
-                <div className="nav-item__desktop-only">{desktopBranch}</div>
-                <div className="nav-item__mobile-only">
+                <div className={styles.desktopOnly}>{desktopBranch}</div>
+                <div className={styles.mobileOnly}>
                   {item.href ? (
-                    <div className="nav-branch-split">
+                    <div className={styles.branchSplit}>
                       <NavLink
                         className={({ isActive }) =>
-                          isActive
-                            ? 'nav-link nav-branch-split__link nav-link--active'
-                            : 'nav-link nav-branch-split__link'
+                          cn(
+                            styles.link,
+                            styles.branchSplitLink,
+                            isActive && styles.linkActive,
+                          )
                         }
                         onClick={onNavigate}
                         to={item.href}
@@ -163,17 +195,22 @@ export function NavigationMenu({
                             ? 'Untermenu schliessen'
                             : 'Untermenu oeffnen'
                         }
-                        className={
-                          isExpanded
-                            ? 'nav-branch-chevron nav-branch-chevron--open'
-                            : 'nav-branch-chevron'
-                        }
+                        className={cn(
+                          styles.branchChevron,
+                          isExpanded && styles.branchChevronOpen,
+                        )}
                         onClick={() => {
                           toggleMobileKey(item.key);
                         }}
                         type="button"
                       >
-                        <span className="nav-branch-icon" aria-hidden="true">
+                        <span
+                          className={cn(
+                            styles.branchIcon,
+                            isExpanded && styles.branchIconOpen,
+                          )}
+                          aria-hidden="true"
+                        >
                           <ChevronIcon />
                         </span>
                       </button>
@@ -182,20 +219,25 @@ export function NavigationMenu({
                     <button
                       aria-controls={submenuId}
                       aria-expanded={isExpanded}
-                      className={
-                        isExpanded
-                          ? 'nav-branch-toggle nav-branch-toggle--open'
-                          : 'nav-branch-toggle'
-                      }
+                      className={cn(
+                        styles.branchToggle,
+                        isExpanded && styles.branchToggleOpen,
+                      )}
                       onClick={() => {
                         toggleMobileKey(item.key);
                       }}
                       type="button"
                     >
-                      <span className="nav-branch-toggle__label">
+                      <span className={styles.branchToggleLabel}>
                         {item.label}
                       </span>
-                      <span className="nav-branch-icon" aria-hidden="true">
+                      <span
+                        className={cn(
+                          styles.branchIcon,
+                          isExpanded && styles.branchIconOpen,
+                        )}
+                        aria-hidden="true"
+                      >
                         <ChevronIcon />
                       </span>
                     </button>
@@ -204,6 +246,7 @@ export function NavigationMenu({
                 <NavigationMenu
                   depth={depth + 1}
                   expanded={isExpanded}
+                  desktopExpanded={isDesktopExpanded}
                   items={item.children}
                   onNavigate={onNavigate}
                 />
