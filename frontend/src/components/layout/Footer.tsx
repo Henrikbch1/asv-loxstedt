@@ -1,8 +1,10 @@
-import { RichText } from '../ui/RichText';
-import { Link } from 'react-router-dom';
 import type { FooterData } from './model/footer.types';
 import { footerClasses } from './styles/footer.classes';
 import { FOOTER_TOKENS } from './styles/footer.tokens';
+import { FooterBrand } from './FooterBrand';
+import { FooterMap } from './FooterMap';
+import { FooterContact } from './FooterContact';
+import { FooterLegal } from './FooterLegal';
 
 const footerBackground = {
   background: FOOTER_TOKENS.gradients.background,
@@ -13,99 +15,32 @@ interface FooterProps {
 }
 
 export function Footer({ data }: FooterProps) {
-  const currentYear = new Date().getFullYear();
   const addressString =
     data?.addressLines && data.addressLines.length
       ? data.addressLines.filter(Boolean).join(' ')
       : undefined;
-  const mapsEmbedUrl = data?.mapsEmbedUrl;
 
   return (
     <footer className={footerClasses.layout.root} style={footerBackground}>
       <div className={footerClasses.layout.container}>
         <div className={footerClasses.layout.inner}>
           <div className="grid gap-4 text-left">
-            <span className={footerClasses.brand.title}>
-              {data?.displayName ?? ''}
-            </span>
-            {mapsEmbedUrl ? (
-              <div className={footerClasses.brand.mapWrap}>
-                <iframe
-                  title={`Karte: ${addressString ?? data?.displayName ?? 'Karte'}`}
-                  src={mapsEmbedUrl}
-                  width="100%"
-                  height={FOOTER_TOKENS.map.height}
-                  className={footerClasses.brand.mapIframe}
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                />
-              </div>
-            ) : null}
+            <FooterBrand displayName={data?.displayName} />
+            <FooterMap
+              mapsEmbedUrl={data?.mapsEmbedUrl}
+              addressString={addressString}
+            />
           </div>
-          <div className={footerClasses.contact.panel}>
-            <span className={footerClasses.contact.metaText}>Kontaktdaten</span>
 
-            {(data?.displayName ||
-              (data?.addressLines && data.addressLines.length) ||
-              data?.phone) && (
-              <div className={footerClasses.contact.wrapper}>
-                {data?.displayName ? (
-                  <div className={footerClasses.contact.clubName}>
-                    {data.displayName}
-                  </div>
-                ) : null}
-
-                {data?.addressLines && data.addressLines.length ? (
-                  <address className={footerClasses.contact.address}>
-                    <div>
-                      {data.addressLines.map((line, idx) => (
-                        <div key={idx}>{line}</div>
-                      ))}
-                    </div>
-                  </address>
-                ) : null}
-
-                {data?.phone ? (
-                  <div className={footerClasses.contact.phone}>
-                    <span>Telefon: </span>
-                    <a
-                      href={`tel:${data.phone}`}
-                      className={footerClasses.contact.phoneLink}
-                      aria-label={`Telefon ${data.phone}`}
-                    >
-                      {data.phone}
-                    </a>
-                  </div>
-                ) : null}
-              </div>
-            )}
-
-            {data?.footerNote ? (
-              <div className={footerClasses.contact.wrapper}>
-                <RichText
-                  className={footerClasses.contact.richText}
-                  html={data.footerNote}
-                />
-              </div>
-            ) : null}
-          </div>
+          <FooterContact
+            displayName={data?.displayName}
+            addressLines={data?.addressLines}
+            phone={data?.phone}
+            footerNote={data?.footerNote}
+          />
         </div>
-        <div className={footerClasses.layout.tail}>
-          <p className={footerClasses.legal.copyright}>
-            © {currentYear} - {data?.displayName ?? ''}
-          </p>
-          <nav className={footerClasses.legal.nav}>
-            <Link
-              to="/impressum"
-              className={`${footerClasses.legal.link} mr-3`}
-            >
-              Impressum
-            </Link>
-            <Link to="/datenschutz" className={footerClasses.legal.link}>
-              Datenschutz
-            </Link>
-          </nav>
-        </div>
+
+        <FooterLegal displayName={data?.displayName} />
       </div>
     </footer>
   );
