@@ -12,31 +12,13 @@ interface FooterProps {
   data?: FooterData | null;
 }
 
-export function Footer({ settings }: FooterProps) {
+export function Footer({ data }: FooterProps) {
   const currentYear = new Date().getFullYear();
   const addressString =
     data?.addressLines && data.addressLines.length
       ? data.addressLines.filter(Boolean).join(' ')
       : undefined;
-
-  const mapsUrl =
-    data?.mapsUrl ??
-    (data?.addressQuery
-      ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(data.addressQuery)}`
-      : addressString
-        ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(addressString)}`
-        : undefined);
-
-  const zoomLevel = FOOTER_TOKENS.map.zoom;
-  const mapType = FOOTER_TOKENS.map.type;
-  const language = FOOTER_TOKENS.map.language;
-
-  const baseUrl = 'https://www.google.com/maps';
-  const mapsEmbedUrl =
-    data?.mapsEmbedUrl ??
-    (addressString
-      ? `${baseUrl}?q=${encodeURIComponent(addressString)}&t=${mapType}&z=${zoomLevel}&hl=${language}&output=embed`
-      : undefined);
+  const mapsEmbedUrl = data?.mapsEmbedUrl;
 
   return (
     <footer className={footerClasses.layout.root} style={footerBackground}>
