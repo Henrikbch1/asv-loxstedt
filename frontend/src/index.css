@@ -461,6 +461,48 @@ button {
   color: #ffffff;
 }
 
+/* Ensure footer links show a visible underline on hover/focus */
+.site-footer a {
+  text-decoration-color: transparent;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+.site-footer a:hover,
+.site-footer a:focus {
+  text-decoration-line: underline;
+  text-decoration-color: #ffffff;
+}
+
+/* Fallback: draw an explicit underline with a pseudo-element so it's
+   visible even if `text-decoration` is suppressed by other rules. */
+footer a {
+  position: relative;
+  display: inline-block;
+}
+
+footer a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #ffffff;
+  bottom: -3px;
+  opacity: 0;
+  transform: translateY(2px);
+  transition:
+    opacity 150ms ease,
+    transform 150ms ease;
+  pointer-events: none;
+}
+
+footer a:hover::after,
+footer a:focus::after {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .site-footer .meta-text {
   color: var(--color-accent);
 }

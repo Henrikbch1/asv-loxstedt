@@ -5,9 +5,9 @@ import type { GlobalSettings } from '../../types/cms';
 const styles = {
   footer:
     'relative mt-8 border-t border-[rgba(121,185,39,0.14)] py-0 text-[#f6f7f2] before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-gradient-to-r before:from-brand before:to-accent',
-  container: 'mx-auto w-[min(1120px,calc(100vw-1.75rem))] py-8',
+  container: 'mx-auto w-[min(1120px,calc(100vw-1.75rem))] pt-16 pb-8',
   inner:
-    'grid grid-cols-1 items-start gap-6 rounded-lg border border-white/10 bg-white/[0.06] p-6 shadow-[0_18px_40px_rgba(0,0,0,0.18)] md:grid-cols-2',
+    'grid grid-cols-1 items-start gap-4 rounded-lg border border-white/10 bg-white/[0.06] p-4 shadow-[0_18px_40px_rgba(0,0,0,0.18)] md:grid-cols-2',
   eyebrow: 'mb-1 inline-block text-2xl font-bold text-white',
   mapWrap: 'mt-3 max-w-[600px] overflow-hidden rounded-md',
   mapIframe: 'w-full border-0',
@@ -26,7 +26,8 @@ const styles = {
   tail: 'mt-8 flex items-center justify-between gap-4 whitespace-normal break-words pb-6 text-white/70 text-sm',
   copyright: 'whitespace-normal break-words',
   legalNav: '',
-  legalLink: 'hover:underline',
+  legalLink:
+    'decoration-transparent decoration-4 underline-offset-2 hover:decoration-white/100 focus:decoration-white/100 hover:underline transition-colors duration-150',
 } as const;
 
 const footerBackground = {
@@ -68,7 +69,6 @@ export function Footer({ settings }: FooterProps) {
         <div className={styles.inner}>
           <div className="grid gap-4 text-left">
             <span className={styles.eyebrow}>{settings?.site_name ?? ''}</span>
-            <br />
             {mapsEmbedUrl ? (
               <div className={styles.mapWrap}>
                 <iframe
@@ -123,30 +123,6 @@ export function Footer({ settings }: FooterProps) {
                     </a>
                   </div>
                 ) : null}
-
-                {mapsUrl ? (
-                  <div className="mt-3">
-                    <a
-                      href={mapsUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={styles.mapsLink}
-                      aria-label={`Anfahrt: ${addressString}`}
-                    >
-                      <span aria-hidden="true">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          fill="currentColor"
-                          className={styles.mapIcon}
-                        >
-                          <path d="M12 2a7 7 0 00-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 00-7-7zm0 9.5A2.5 2.5 0 1114.5 9 2.5 2.5 0 0112 11.5z" />
-                        </svg>
-                      </span>
-                    </a>
-                  </div>
-                ) : null}
-
                 <RichText
                   className={styles.richtext}
                   html={settings?.footer_note}
