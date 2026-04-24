@@ -1,4 +1,11 @@
-import { Link } from 'react-router-dom';
+import { Button } from './Button';
+
+const styles = {
+  card: 'flex flex-col gap-3 rounded-lg border border-danger/20 bg-white p-6',
+  title: 'text-xl font-semibold text-black',
+  message: 'text-muted',
+  actions: 'mt-2 flex gap-3',
+} as const;
 
 interface ErrorStateProps {
   title?: string;
@@ -16,26 +23,19 @@ export function ErrorState({
   homeLink = true,
 }: ErrorStateProps) {
   return (
-    <section className="state-card state-card--error" role="alert">
-      <h2 className="text-xl font-semibold text-black">{title}</h2>
-      <p className="text-muted">{message}</p>
-      <div className="state-card__actions flex gap-3 mt-2">
+    <section className={styles.card} role="alert">
+      <h2 className={styles.title}>{title}</h2>
+      <p className={styles.message}>{message}</p>
+      <div className={styles.actions}>
         {onRetry ? (
-          <button
-            className="button button--primary inline-flex items-center px-4 py-2 rounded-full"
-            type="button"
-            onClick={onRetry}
-          >
+          <Button variant="primary" onClick={onRetry}>
             {retryLabel}
-          </button>
+          </Button>
         ) : null}
         {homeLink ? (
-          <Link
-            className="button button--ghost inline-flex items-center px-4 py-2 rounded-full"
-            to="/"
-          >
+          <Button as="link" to="/" variant="ghost">
             Zur Startseite
-          </Link>
+          </Button>
         ) : null}
       </div>
     </section>
