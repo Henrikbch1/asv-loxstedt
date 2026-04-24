@@ -1,7 +1,8 @@
+import { HEADER_TOKENS } from './header.tokens';
+
 export const layoutClasses = {
   root: 'relative sticky top-0 z-30 border-b border-border bg-panel-strong backdrop-blur-md',
-  inner:
-    'mx-auto flex w-[min(1120px,calc(100vw-1.75rem))] items-center justify-between gap-4 py-4',
+  inner: `mx-auto flex w-[min(${HEADER_TOKENS.layout.maxWidth},calc(100vw-1.75rem))] items-center justify-between gap-4 py-4`,
 } as const;
 
 export const brandClasses = {
