@@ -6,6 +6,20 @@ import { getExcerpt } from '../../utils/text';
 import { routes } from '../../config/routes';
 import { expandDirectusRelation } from '../../utils/directus';
 import type { Category } from '../../types/domain';
+import { Badge } from '../../components/ui/Badge';
+import { Button } from '../../components/ui/Button';
+
+const styles = {
+  card: 'group flex flex-col overflow-hidden rounded-lg border border-border bg-white shadow-card transition-shadow hover:shadow-soft',
+  media: 'overflow-hidden',
+  mediaImage:
+    'h-48 w-full object-cover transition-transform duration-200 ease-in-out group-hover:scale-105',
+  body: 'flex flex-1 flex-col gap-3 p-5',
+  meta: 'flex items-center gap-2 text-xs text-muted',
+  date: '',
+  title: 'm-0 text-xl font-semibold',
+  excerpt: 'text-muted',
+} as const;
 
 interface NewsCardProps {
   item: NewsItem;
@@ -20,36 +34,34 @@ export function NewsCard({ item }: NewsCardProps) {
     expandDirectusRelation<Category>(item.category)?.name?.trim() ?? null;
 
   return (
-    <article className="news-card group">
+    <article className={styles.card}>
       {imageUrl ? (
-        <Link className="news-card__media overflow-hidden" to={detailHref}>
+        <Link className={styles.media} to={detailHref}>
           <img
-            className="w-full h-full object-cover transition-transform duration-200 ease-in-out group-hover:scale-105"
+            className={styles.mediaImage}
             alt={getCmsAssetLabel(item.image)}
             src={imageUrl}
           />
         </Link>
       ) : null}
 
-      <div className="news-card__body">
-        <div className="news-card__meta">
-          {dateLabel ? (
-            <span className="news-card__date">{dateLabel}</span>
-          ) : null}
-          {categoryName ? (
-            <span className="news-card__badge">{categoryName}</span>
-          ) : null}
+      <div className={styles.body}>
+        <div className={styles.meta}>
+          {dateLabel ? <span className={styles.date}>{dateLabel}</span> : null}
+          {categoryName ? <Badge>{categoryName}</Badge> : null}
         </div>
-        <h2 className="m-0 text-xl font-semibold">
+        <h2 className={styles.title}>
           <Link to={detailHref}>{item.title}</Link>
         </h2>
-        {excerpt ? <p className="text-muted">{excerpt}</p> : null}
-        <Link
-          className="button button--ghost inline-flex items-center gap-2 justify-self-start"
+        {excerpt ? <p className={styles.excerpt}>{excerpt}</p> : null}
+        <Button
+          as="link"
           to={detailHref}
+          variant="ghost"
+          className="justify-self-start"
         >
           Weiterlesen
-        </Link>
+        </Button>
       </div>
     </article>
   );
