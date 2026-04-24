@@ -1,5 +1,4 @@
 import { footerClasses } from '../styles/footer.classes';
-import { FOOTER_TOKENS } from '../styles/footer.tokens';
 
 interface FooterMapProps {
   mapsEmbedUrl?: string | null;
@@ -16,8 +15,8 @@ export function FooterMap({ mapsEmbedUrl, addressString }: FooterMapProps) {
         aria-label={`Karte, ${addressString ?? 'Anfahrt'}`}
         src={mapsEmbedUrl}
         className={footerClasses.brand.mapIframe}
-        width="100%"
-        height={FOOTER_TOKENS.map.height}
+        loading="lazy"
+        referrerPolicy="no-referrer-when-downgrade"
         loading="lazy"
       />
     </div>
