@@ -44,7 +44,10 @@
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.57.0",
     "vite": "^8.0.1",
-    "vitest": "^4.1.5"
+    "vitest": "^4.1.5",
+    "@testing-library/react": "^14.0.0",
+    "@testing-library/jest-dom": "^6.0.0",
+    "tsup": "^6.5.0"
   },
   "description": "<p align=\"center\"> \t<img alt=\"frontend tech\" src=\"https://img.shields.io/badge/tech-React%20%2B%20TypeScript-blue?logo=react&style=flat-square\" /> \t<img alt=\"vite\" src=\"https://img.shields.io/badge/bundler-Vite-646cff?style=flat-square&logo=vite\" /> \t<img alt=\"directus\" src=\"https://img.shields.io/badge/cms-Directus-ff69b4?style=flat-square&logo=directus\" /> </p>",
   "main": "eslint.config.js",
