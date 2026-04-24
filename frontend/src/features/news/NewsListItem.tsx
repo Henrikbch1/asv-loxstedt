@@ -6,6 +6,23 @@ import { getExcerpt } from '../../utils/text';
 import { routes } from '../../config/routes';
 import { expandDirectusRelation } from '../../utils/directus';
 import type { Category } from '../../types/domain';
+import { Badge } from '../../components/ui/Badge';
+import { cn } from '../../lib/cn';
+
+const styles = {
+  item: 'relative rounded-lg border border-border bg-white p-4 transition-shadow hover:shadow-card',
+  itemHasImage: '',
+  link: 'absolute inset-0 z-0',
+  thumbnailTop: 'mb-3 overflow-hidden rounded-md md:hidden',
+  thumbnailRight:
+    'hidden shrink-0 overflow-hidden rounded-md md:block md:h-24 md:w-32',
+  row: 'flex items-start gap-4',
+  body: 'flex min-w-0 flex-1 flex-col gap-1',
+  meta: 'flex items-center gap-2 text-xs text-muted',
+  date: '',
+  title: 'text-lg font-semibold leading-snug',
+  preview: 'line-clamp-2 text-sm text-muted',
+} as const;
 
 interface NewsListItemProps {
   item: NewsItem;
@@ -20,53 +37,38 @@ export function NewsListItem({ item }: NewsListItemProps) {
   const imageUrl = getNewsPreviewUrl(item.image);
 
   return (
-    <article
-      className={`news-list-item${imageUrl ? ' news-list-item--has-image' : ''}`}
-    >
-      {/* invisible full-card link overlay */}
+    <article className={cn(styles.item, imageUrl && styles.itemHasImage)}>
       <Link
         aria-label={item.title}
-        className="news-list-item__link"
+        className={styles.link}
         tabIndex={-1}
         to={detailHref}
       />
 
-      {/* Mobile-only top image */}
       {imageUrl ? (
-        <div
-          className="news-list-item__thumbnail news-list-item__thumbnail--top"
-          aria-hidden="true"
-        >
+        <div className={styles.thumbnailTop} aria-hidden="true">
           <img alt={getCmsAssetLabel(item.image)} src={imageUrl} />
         </div>
       ) : null}
 
-      <div className="news-list-item__row">
-        <div className="news-list-item__body">
-          <div className="news-list-item__meta">
+      <div className={styles.row}>
+        <div className={styles.body}>
+          <div className={styles.meta}>
             {dateLabel ? (
-              <span className="news-list-item__date">{dateLabel}</span>
+              <span className={styles.date}>{dateLabel}</span>
             ) : null}
-            {categoryName ? (
-              <span className="news-card__badge">{categoryName}</span>
-            ) : null}
+            {categoryName ? <Badge>{categoryName}</Badge> : null}
           </div>
 
-          <h2 className="news-list-item__title">
+          <h2 className={styles.title}>
             <Link to={detailHref}>{item.title}</Link>
           </h2>
 
-          {preview ? (
-            <p className="news-list-item__preview">{preview}</p>
-          ) : null}
+          {preview ? <p className={styles.preview}>{preview}</p> : null}
         </div>
 
-        {/* Desktop-only right thumbnail */}
         {imageUrl ? (
-          <div
-            className="news-list-item__thumbnail news-list-item__thumbnail--right"
-            aria-hidden="true"
-          >
+          <div className={styles.thumbnailRight} aria-hidden="true">
             <img alt={getCmsAssetLabel(item.image)} src={imageUrl} />
           </div>
         ) : null}
