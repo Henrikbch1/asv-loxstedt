@@ -14,7 +14,7 @@ export const layoutClasses = {
   container: `mx-auto w-[min(${FOOTER_TOKENS.layout.maxWidth},calc(100vw-1.75rem))] pt-16 pb-8`,
   inner:
     'grid grid-cols-1 items-stretch gap-4 rounded-lg border border-white/10 bg-white/[0.06] p-4 shadow-[0_18px_40px_rgba(0,0,0,0.18)] lg:grid-cols-2',
-  tail: 'mt-8 flex items-center justify-between gap-4 whitespace-normal break-words pb-6 text-white/70 text-sm',
+  tail: 'mt-8 flex flex-col items-center gap-4 whitespace-normal break-words pb-6 text-white/70 text-sm text-center xl:flex-row lg:items-center lg:justify-between lg:text-left',
 } as const;
 
 export const brandClasses = {
