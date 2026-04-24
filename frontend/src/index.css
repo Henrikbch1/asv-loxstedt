@@ -814,10 +814,6 @@ footer a:focus::after {
   .state-card__actions > * {
     width: 100%;
   }
-
-  .news-card__body {
-    padding: 1rem;
-  }
 }
 
 @media (max-width: 440px) {
