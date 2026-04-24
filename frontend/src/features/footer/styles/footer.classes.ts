@@ -35,7 +35,7 @@ export const contactClasses = {
   mapsLink: 'mt-3 inline-flex items-center gap-3 text-white/90 hover:underline',
   mapIcon: 'h-4 w-4',
   richText:
-    'prose prose-invert prose-sm max-w-none whitespace-normal text-white/80',
+    'mt-4 prose prose-invert prose-sm max-w-none whitespace-normal text-white/80',
 } as const;
 
 export const legalClasses = {

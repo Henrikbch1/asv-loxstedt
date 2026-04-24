@@ -27,13 +27,6 @@ export function Footer({ settings, legalLinks }: FooterProps) {
     <footer className={footerClasses.layout.root} style={footerBackground}>
       <div className={footerClasses.layout.container}>
         <div className={footerClasses.layout.inner}>
-          <div className="grid gap-4 text-left">
-            <FooterMap
-              mapsEmbedUrl={data?.mapsEmbedUrl}
-              addressString={addressString}
-            />
-          </div>
-
           <FooterContact
             displayName={data?.displayName}
             siteName={settings?.site_name}
@@ -41,6 +34,13 @@ export function Footer({ settings, legalLinks }: FooterProps) {
             phone={data?.phone}
             footerNote={data?.footerNote}
           />
+
+          <div className="grid gap-4 text-left">
+            <FooterMap
+              mapsEmbedUrl={data?.mapsEmbedUrl}
+              addressString={addressString}
+            />
+          </div>
         </div>
 
         <FooterLegal
