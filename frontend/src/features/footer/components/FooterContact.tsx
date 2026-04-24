@@ -1,5 +1,5 @@
-import { RichText } from '../ui/RichText';
-import { footerClasses } from './styles/footer.classes';
+import { RichText } from '../../components/ui/RichText';
+import { footerClasses } from '../styles/footer.classes';
 
 interface FooterContactProps {
   displayName?: string | null;

@@ -1,5 +1,5 @@
-import { footerClasses } from './styles/footer.classes';
-import { FOOTER_TOKENS } from './styles/footer.tokens';
+import { footerClasses } from '../styles/footer.classes';
+import { FOOTER_TOKENS } from '../styles/footer.tokens';
 
 interface FooterMapProps {
   mapsEmbedUrl?: string | null;

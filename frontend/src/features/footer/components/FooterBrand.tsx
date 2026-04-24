@@ -1,4 +1,4 @@
-import { footerClasses } from './styles/footer.classes';
+import { footerClasses } from '../styles/footer.classes';
 
 interface FooterBrandProps {
   displayName?: string | null;

@@ -7,7 +7,7 @@ import {
 import { ErrorState } from '../ui/ErrorState';
 import { LoadingState } from '../ui/LoadingState';
 import { routes } from '../../config/routes';
-import { Footer } from './Footer';
+import { Footer } from '@/features/footer';
 import { Header } from './Header';
 
 const styles = {

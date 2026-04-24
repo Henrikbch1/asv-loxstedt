@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { footerClasses } from './styles/footer.classes';
+import { footerClasses } from '../styles/footer.classes';
 
 interface FooterLegalProps {
   displayName?: string | null;
