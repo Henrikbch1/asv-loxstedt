@@ -1,7 +1,8 @@
-import type { NewsItem } from '../../types/domain';
-import { getCmsAssetLabel, getNewsFullUrl } from '../../utils/assets';
-import { formatDate } from '../../utils/date';
-import { cn } from '../../lib/cn';
+import './news.css';
+import type { NewsItem } from '../../../types/domain';
+import { getCmsAssetLabel, getNewsDetailUrl } from '../../../utils/assets';
+import { formatDate } from '../../../utils/date';
+import { cn } from '../../../lib/cn';
 import { newsClasses } from '../styles/news.classes';
 
 interface NewsDetailProps {
@@ -10,15 +11,13 @@ interface NewsDetailProps {
 
 export function NewsDetail({ item }: NewsDetailProps) {
   const dateLabel = formatDate(item.date);
+  const imageUrl = getNewsDetailUrl(item.image);
 
   return (
     <article className={cn(newsClasses.card.root, 'prose')}>
-      {item.image ? (
+      {imageUrl ? (
         <div className={newsClasses.card.media}>
-          <img
-            alt={getCmsAssetLabel(item.image)}
-            src={getNewsFullUrl(item.image)}
-          />
+          <img alt={getCmsAssetLabel(item.image)} src={imageUrl} />
         </div>
       ) : null}
 

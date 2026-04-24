@@ -17,7 +17,6 @@ export function FooterMap({ mapsEmbedUrl, addressString }: FooterMapProps) {
         className={footerClasses.brand.mapIframe}
         loading="lazy"
         referrerPolicy="no-referrer-when-downgrade"
-        loading="lazy"
       />
     </div>
   );

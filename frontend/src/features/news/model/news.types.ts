@@ -1,4 +1,4 @@
-import type { NewsItem } from '../../types/domain';
+import type { NewsItem } from '../../../types/domain';
 
 export type { NewsItem };
 
