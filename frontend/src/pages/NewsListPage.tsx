@@ -2,10 +2,21 @@ import { useSearchParams } from 'react-router-dom';
 import { EmptyState } from '../components/ui/EmptyState';
 import { ErrorState } from '../components/ui/ErrorState';
 import { LoadingState } from '../components/ui/LoadingState';
+import { SectionHeading } from '../components/ui/SectionHeading';
+import { Button } from '../components/ui/Button';
 import { NewsListItem } from '../features/news/NewsListItem';
 import { usePublicNewsListQuery } from '../features/news/useNewsQueries';
 import { useSiteTitle } from '../hooks/useSiteTitle';
 import { NEWS_PAGE_SIZE } from '../config/constants';
+
+const styles = {
+  section: 'flex flex-col gap-6 py-8',
+  newsFeed: 'flex flex-col gap-4',
+  pagination: 'grid grid-cols-3 items-center gap-2 pt-4',
+  paginationCenter: 'flex justify-center',
+  paginationMeta: 'text-sm text-muted',
+  paginationText: 'hidden sm:inline',
+} as const;
 
 export function NewsListPage() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -45,17 +56,14 @@ export function NewsListPage() {
   const hasNext = page < totalPages;
 
   return (
-    <section className="section-stack py-8">
-      <div className="section-heading">
-        <span className="eyebrow">News</span>
-        <h1>Aktuelle Meldungen</h1>
-        <p>
-          Hier findest du aktuelle Meldungen, Berichte und Hinweise aus dem
-          Vereinsleben.
-        </p>
-      </div>
+    <section className={styles.section}>
+      <SectionHeading
+        eyebrow="News"
+        title="Aktuelle Meldungen"
+        description="Hier findest du aktuelle Meldungen, Berichte und Hinweise aus dem Vereinsleben."
+      />
 
-      <ul className="news-feed">
+      <ul className={styles.newsFeed}>
         {[...newsQuery.data.data]
           .sort((a, b) => (b.date ?? '').localeCompare(a.date ?? ''))
           .map((item) => (
@@ -66,42 +74,40 @@ export function NewsListPage() {
       </ul>
 
       {totalPages > 1 ? (
-        <div className="grid grid-cols-3 items-center gap-2 pt-4">
-          <div className="flex justify-center">
+        <div className={styles.pagination}>
+          <div className={styles.paginationCenter}>
             {hasPrev && (
-              <button
-                className="button button--ghost"
+              <Button
+                variant="ghost"
                 onClick={() => {
                   setSearchParams({ page: String(page - 1) });
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
-                type="button"
               >
                 <span aria-hidden="true">←</span>
-                <span className="pagination-text"> Zurück</span>
-              </button>
+                <span className={styles.paginationText}> Zurück</span>
+              </Button>
             )}
           </div>
 
-          <div className="flex justify-center">
-            <span className="meta-text">
-               {page} von {totalPages}
+          <div className={styles.paginationCenter}>
+            <span className={styles.paginationMeta}>
+              {page} von {totalPages}
             </span>
           </div>
 
-          <div className="flex justify-center">
+          <div className={styles.paginationCenter}>
             {hasNext && (
-              <button
-                className="button button--ghost"
+              <Button
+                variant="ghost"
                 onClick={() => {
                   setSearchParams({ page: String(page + 1) });
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
-                type="button"
               >
-                <span className="pagination-text">Weiter </span>
+                <span className={styles.paginationText}>Weiter </span>
                 <span aria-hidden="true">→</span>
-              </button>
+              </Button>
             )}
           </div>
         </div>
