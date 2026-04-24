@@ -68,7 +68,7 @@ export function Footer({ settings }: FooterProps) {
       <div className={styles.container}>
         <div className={styles.inner}>
           <div className="grid gap-4 text-left">
-            <span className={styles.eyebrow}>{settings?.site_name ?? ''}</span>
+            <span className={styles.eyebrow}>{settings?.site_name ?? settings?.club_name ?? ''}</span>
             {mapsEmbedUrl ? (
               <div className={styles.mapWrap}>
                 <iframe
@@ -84,16 +84,17 @@ export function Footer({ settings }: FooterProps) {
             ) : null}
           </div>
           <div className={styles.panel}>
-            <span className={styles.metaText}>Kontakt Daten</span>
+            <span className={styles.metaText}>Kontaktdaten</span>
 
             {(settings?.site_name ||
+              settings?.club_name ||
               settings?.street ||
               settings?.postal_code ||
               settings?.city ||
               settings?.phone) && (
               <div className={styles.contact}>
-                {(settings?.site_name ?? settings?.club_name) ? (
-                  <div className={styles.clubName}>{settings?.club_name}</div>
+                {settings?.site_name || settings?.club_name ? (
+                  <div className={styles.clubName}>{settings?.site_name ?? settings?.club_name}</div>
                 ) : null}
 
                 {settings?.street || settings?.postal_code || settings?.city ? (
@@ -123,12 +124,14 @@ export function Footer({ settings }: FooterProps) {
                     </a>
                   </div>
                 ) : null}
-                <RichText
-                  className={styles.richtext}
-                  html={settings?.footer_note}
-                />
               </div>
             )}
+
+            {settings?.footer_note ? (
+              <div className={styles.contact}>
+                <RichText className={styles.richtext} html={settings.footer_note} />
+              </div>
+            ) : null}
           </div>
         </div>
         <div className={styles.tail}>
