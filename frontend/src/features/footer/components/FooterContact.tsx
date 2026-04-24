@@ -1,5 +1,6 @@
-import { RichText } from '../../components/ui/RichText';
+import { RichText } from '../../../components/ui/RichText';
 import { footerClasses } from '../styles/footer.classes';
+import { FooterContact as FooterContactUI } from '../ui/FooterContact';
 
 interface FooterContactProps {
   displayName?: string | null;
@@ -17,38 +18,23 @@ export function FooterContact({
   const hasContact =
     displayName || (addressLines && addressLines.length) || phone;
 
+  const contact = {
+    name: displayName ?? undefined,
+    address:
+      addressLines && addressLines.length ? addressLines.join('\n') : undefined,
+    phone: phone ?? undefined,
+  };
+
   return (
     <div className={footerClasses.contact.panel}>
       <span className={footerClasses.contact.metaText}>Kontaktdaten</span>
 
       {hasContact && (
         <div className={footerClasses.contact.wrapper}>
-          {displayName ? (
-            <div className={footerClasses.contact.clubName}>{displayName}</div>
-          ) : null}
-
-          {addressLines && addressLines.length ? (
-            <address className={footerClasses.contact.address}>
-              <div>
-                {addressLines.map((line, idx) => (
-                  <div key={idx}>{line}</div>
-                ))}
-              </div>
-            </address>
-          ) : null}
-
-          {phone ? (
-            <div className={footerClasses.contact.phone}>
-              <span>Telefon: </span>
-              <a
-                href={`tel:${phone}`}
-                className={footerClasses.contact.phoneLink}
-                aria-label={`Telefon ${phone}`}
-              >
-                {phone}
-              </a>
-            </div>
-          ) : null}
+          <FooterContactUI
+            contact={contact}
+            className={footerClasses.contact.wrapper}
+          />
         </div>
       )}
 

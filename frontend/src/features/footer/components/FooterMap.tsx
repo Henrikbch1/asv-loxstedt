@@ -1,5 +1,6 @@
 import { footerClasses } from '../styles/footer.classes';
 import { FOOTER_TOKENS } from '../styles/footer.tokens';
+import { FooterMap as FooterMapUI } from '../ui/FooterMap';
 
 interface FooterMapProps {
   mapsEmbedUrl?: string | null;
@@ -9,17 +10,13 @@ interface FooterMapProps {
 export function FooterMap({ mapsEmbedUrl, addressString }: FooterMapProps) {
   if (!mapsEmbedUrl) return null;
 
+  const map = {
+    embedUrl: mapsEmbedUrl ?? undefined,
+  };
+
   return (
     <div className={footerClasses.brand.mapWrap}>
-      <iframe
-        title={`Karte: ${addressString ?? 'Karte'}`}
-        src={mapsEmbedUrl}
-        width="100%"
-        height={FOOTER_TOKENS.map.height}
-        className={footerClasses.brand.mapIframe}
-        loading="lazy"
-        referrerPolicy="no-referrer-when-downgrade"
-      />
+      <FooterMapUI map={map} className={footerClasses.brand.mapIframe} />
     </div>
   );
 }

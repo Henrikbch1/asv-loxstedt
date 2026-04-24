@@ -1,6 +1,36 @@
 import type { GlobalSettings } from '../../types/domain';
 import type { FooterData } from './footer.types';
 import { FOOTER_TOKENS } from '../styles/footer.tokens';
+import type { FooterData as PackageFooterData } from '../package-spec';
+
+/**
+ * Mappt GlobalSettings -> Paket-kompatible FooterData (package-spec FooterData)
+ */
+export function mapGlobalSettingsToPackageFooterData(
+  settings?: GlobalSettings | null,
+): PackageFooterData | null {
+  const mapped = mapGlobalSettingsToFooterData(settings);
+  if (!mapped) return null;
+
+  const contact = {
+    name: mapped.displayName || undefined,
+    address: mapped.addressLines?.length
+      ? mapped.addressLines.join('\n')
+      : undefined,
+    phone: mapped.phone ?? undefined,
+  };
+
+  const map = mapped.mapsEmbedUrl
+    ? { embedUrl: mapped.mapsEmbedUrl }
+    : undefined;
+
+  return {
+    contact,
+    map,
+    copyright: `© ${new Date().getFullYear()} - ${mapped.displayName ?? ''}`,
+    extras: { addressQuery: mapped.addressQuery },
+  } as PackageFooterData;
+}
 
 export function mapGlobalSettingsToFooterData(
   settings?: GlobalSettings | null,
