@@ -28,7 +28,7 @@ export function NewsListPage() {
     return <LoadingState title="News werden geladen" />;
   }
 
-  if (newsQuery.isError) {
+  if (newsQuery.isError) {Fa
     return (
       <ErrorState
         message="Die News-Uebersicht konnte nicht geladen werden."

@@ -1,4 +1,4 @@
-import type { GlobalSettings } from '../../types/domain';
+import type { GlobalSettings } from '../../../types/domain';
 import type { FooterLegalLink } from '../model/footer.types';
 import { footerClasses } from '../styles/footer.classes';
 import { FOOTER_TOKENS } from '../styles/footer.tokens';
