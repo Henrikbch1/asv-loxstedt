@@ -8,7 +8,7 @@ import { ErrorState } from '../ui/ErrorState';
 import { LoadingState } from '../ui/LoadingState';
 import { routes } from '../../config/routes';
 import { Footer } from '@/features/footer';
-import { Header } from './Header';
+import { Header } from '@/features/header';
 
 const styles = {
   shell: 'min-h-screen flex flex-col',
