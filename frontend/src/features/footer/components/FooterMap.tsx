@@ -12,6 +12,7 @@ export function FooterMap({ mapsEmbedUrl, addressString }: FooterMapProps) {
 
   const map = {
     embedUrl: mapsEmbedUrl ?? undefined,
+    addressString: addressString ?? undefined,
   };
 
   return (

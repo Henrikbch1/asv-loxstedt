@@ -15,7 +15,8 @@ export function FooterMap({ map, className }: Props) {
   return (
     <div className={className}>
       <iframe
-        title={`Karte`}
+        title={`Karte — ${map.addressString ?? 'Anfahrt'}`}
+        aria-label={`Karte, ${map.addressString ?? 'Anfahrt'}`}
         src={src}
         width="100%"
         height={map.zoom ? 300 : 250}

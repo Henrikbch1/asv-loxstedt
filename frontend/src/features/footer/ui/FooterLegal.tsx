@@ -18,12 +18,23 @@ export function FooterLegal({
     <div className={className}>
       {copyright ? <p>{copyright}</p> : null}
       {legalLinks && legalLinks.length ? (
-        <nav>
-          {legalLinks.map((l, i) => (
-            <span key={i} style={{ marginRight: 8 }}>
-              {renderLink ? renderLink(l) : <a href={l.to}>{l.label}</a>}
-            </span>
-          ))}
+        <nav aria-label="Rechtliche Informationen">
+          <ul
+            style={{
+              listStyle: 'none',
+              padding: 0,
+              margin: 0,
+              display: 'flex',
+              gap: 8,
+              alignItems: 'center',
+            }}
+          >
+            {legalLinks.map((l, i) => (
+              <li key={i}>
+                {renderLink ? renderLink(l) : <a href={l.to}>{l.label}</a>}
+              </li>
+            ))}
+          </ul>
         </nav>
       ) : null}
     </div>

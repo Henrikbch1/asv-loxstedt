@@ -27,24 +27,20 @@ export function FooterContact({
 
   return (
     <div className={footerClasses.contact.panel}>
-      <span className={footerClasses.contact.metaText}>Kontaktdaten</span>
+      <h2 className={footerClasses.contact.metaText}>Kontaktdaten</h2>
 
       {hasContact && (
-        <div className={footerClasses.contact.wrapper}>
-          <FooterContactUI
-            contact={contact}
-            className={footerClasses.contact.wrapper}
-          />
-        </div>
+        <FooterContactUI
+          contact={contact}
+          className={footerClasses.contact.wrapper}
+        />
       )}
 
       {footerNote ? (
-        <div className={footerClasses.contact.wrapper}>
-          <RichText
-            className={footerClasses.contact.richText}
-            html={footerNote}
-          />
-        </div>
+        <RichText
+          className={footerClasses.contact.richText}
+          html={footerNote}
+        />
       ) : null}
     </div>
   );

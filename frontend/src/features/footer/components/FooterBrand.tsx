@@ -5,5 +5,5 @@ interface FooterBrandProps {
 }
 
 export function FooterBrand({ displayName }: FooterBrandProps) {
-  return <span className={footerClasses.brand.title}>{displayName ?? ''}</span>;
+  return <h3 className={footerClasses.brand.title}>{displayName ?? ''}</h3>;
 }

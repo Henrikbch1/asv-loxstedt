@@ -24,12 +24,12 @@ export function FooterContact({ contact, className }: Props) {
       {phone ? (
         <div>
           <span>Telefon: </span>
-          <a href={`tel:${phone}`}>{phone}</a>
+          <a href={`tel:${phone}`} aria-label={`Telefon: ${phone}`}>{phone}</a>
         </div>
       ) : null}
       {email ? (
         <div>
-          <a href={`mailto:${email}`}>{email}</a>
+          <a href={`mailto:${email}`} aria-label={`E-Mail: ${email}`}>{email}</a>
         </div>
       ) : null}
       {openingHours && openingHours.length ? (
