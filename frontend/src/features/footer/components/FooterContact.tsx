@@ -4,6 +4,7 @@ import { FooterContact as FooterContactUI } from '../ui/FooterContact';
 
 interface FooterContactProps {
   displayName?: string | null;
+  siteName?: string | null;
   addressLines?: string[] | null;
   phone?: string | null;
   footerNote?: string | null;
@@ -11,15 +12,16 @@ interface FooterContactProps {
 
 export function FooterContact({
   displayName,
+  siteName,
   addressLines,
   phone,
   footerNote,
 }: FooterContactProps) {
   const hasContact =
-    displayName || (addressLines && addressLines.length) || phone;
+    siteName || displayName || (addressLines && addressLines.length) || phone;
 
   const contact = {
-    name: displayName ?? undefined,
+    siteName: siteName ?? undefined,
     address:
       addressLines && addressLines.length ? addressLines.join('\n') : undefined,
     phone: phone ?? undefined,
