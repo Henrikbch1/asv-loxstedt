@@ -1,6 +1,15 @@
 import { useEffect, useCallback } from 'react';
 import { createPortal } from 'react-dom';
 
+const styles = {
+  overlay:
+    'fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4',
+  close:
+    'absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20',
+  closeIcon: 'h-6 w-6',
+  image: 'max-h-[90vh] max-w-full rounded-lg object-contain',
+} as const;
+
 interface ImageLightboxProps {
   src: string;
   alt: string;
@@ -28,17 +37,18 @@ export function ImageLightbox({ src, alt, onClose }: ImageLightboxProps) {
     <div
       aria-label="Bild schließen"
       aria-modal="true"
-      className="lightbox"
+      className={styles.overlay}
       role="dialog"
       onClick={onClose}
     >
       <button
         aria-label="Schließen"
-        className="lightbox__close"
+        className={styles.close}
         type="button"
         onClick={onClose}
       >
         <svg
+          className={styles.closeIcon}
           fill="none"
           stroke="currentColor"
           strokeWidth={2}
@@ -54,7 +64,7 @@ export function ImageLightbox({ src, alt, onClose }: ImageLightboxProps) {
       </button>
       <img
         alt={alt}
-        className="lightbox__image"
+        className={styles.image}
         src={src}
         onClick={(e) => e.stopPropagation()}
       />
