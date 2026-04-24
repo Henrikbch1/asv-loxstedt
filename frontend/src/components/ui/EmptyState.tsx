@@ -1,4 +1,10 @@
-import { Link } from 'react-router-dom';
+import { Button } from './Button';
+
+const styles = {
+  card: 'flex flex-col items-center gap-4 rounded-lg bg-surface p-8 text-center shadow-card',
+  title: 'text-2xl font-semibold',
+  message: 'text-muted',
+} as const;
 
 interface EmptyStateProps {
   title: string;
@@ -14,16 +20,13 @@ export function EmptyState({
   ctaTo,
 }: EmptyStateProps) {
   return (
-    <section className="state-card state-card--empty p-8 rounded-lg bg-surface shadow-card text-center flex flex-col items-center gap-4">
-      <h2 className="text-2xl font-semibold">{title}</h2>
-      <p className="text-muted">{message}</p>
+    <section className={styles.card}>
+      <h2 className={styles.title}>{title}</h2>
+      <p className={styles.message}>{message}</p>
       {ctaLabel && ctaTo ? (
-        <Link
-          className="button button--primary inline-flex items-center px-4 py-2 rounded-full mt-2"
-          to={ctaTo}
-        >
+        <Button as="link" to={ctaTo} variant="primary" className="mt-2">
           {ctaLabel}
-        </Link>
+        </Button>
       ) : null}
     </section>
   );
