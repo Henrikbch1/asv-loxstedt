@@ -1,6 +1,6 @@
 import { RichText } from '../ui/RichText';
 import { Link } from 'react-router-dom';
-import type { GlobalSettings } from '../../types/cms';
+import type { FooterData } from './model/footer.types';
 import { footerClasses } from './styles/footer.classes';
 import { FOOTER_TOKENS } from './styles/footer.tokens';
 
@@ -9,32 +9,34 @@ const footerBackground = {
 } as const;
 
 interface FooterProps {
-  settings?: GlobalSettings | null;
+  data?: FooterData | null;
 }
 
 export function Footer({ settings }: FooterProps) {
   const currentYear = new Date().getFullYear();
-  const addressString = [
-    settings?.street,
-    settings?.postal_code,
-    settings?.city,
-  ]
-    .filter(Boolean)
-    .join(' ');
-  const mapsUrl = addressString
-    ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-        addressString,
-      )}`
-    : undefined;
+  const addressString =
+    data?.addressLines && data.addressLines.length
+      ? data.addressLines.filter(Boolean).join(' ')
+      : undefined;
+
+  const mapsUrl =
+    data?.mapsUrl ??
+    (data?.addressQuery
+      ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(data.addressQuery)}`
+      : addressString
+        ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(addressString)}`
+        : undefined);
 
   const zoomLevel = FOOTER_TOKENS.map.zoom;
   const mapType = FOOTER_TOKENS.map.type;
   const language = FOOTER_TOKENS.map.language;
 
   const baseUrl = 'https://www.google.com/maps';
-  const mapsEmbedUrl = addressString
-    ? `${baseUrl}?q=${encodeURIComponent(addressString)}&t=${mapType}&z=${zoomLevel}&hl=${language}&output=embed`
-    : undefined;
+  const mapsEmbedUrl =
+    data?.mapsEmbedUrl ??
+    (addressString
+      ? `${baseUrl}?q=${encodeURIComponent(addressString)}&t=${mapType}&z=${zoomLevel}&hl=${language}&output=embed`
+      : undefined);
 
   return (
     <footer className={footerClasses.layout.root} style={footerBackground}>
@@ -42,12 +44,12 @@ export function Footer({ settings }: FooterProps) {
         <div className={footerClasses.layout.inner}>
           <div className="grid gap-4 text-left">
             <span className={footerClasses.brand.title}>
-              {settings?.site_name ?? settings?.club_name ?? ''}
+              {data?.displayName ?? ''}
             </span>
             {mapsEmbedUrl ? (
               <div className={footerClasses.brand.mapWrap}>
                 <iframe
-                  title={`Karte: ${addressString}`}
+                  title={`Karte: ${addressString ?? data?.displayName ?? 'Karte'}`}
                   src={mapsEmbedUrl}
                   width="100%"
                   height={FOOTER_TOKENS.map.height}
@@ -61,54 +63,46 @@ export function Footer({ settings }: FooterProps) {
           <div className={footerClasses.contact.panel}>
             <span className={footerClasses.contact.metaText}>Kontaktdaten</span>
 
-            {(settings?.site_name ||
-              settings?.club_name ||
-              settings?.street ||
-              settings?.postal_code ||
-              settings?.city ||
-              settings?.phone) && (
+            {(data?.displayName ||
+              (data?.addressLines && data.addressLines.length) ||
+              data?.phone) && (
               <div className={footerClasses.contact.wrapper}>
-                {settings?.site_name || settings?.club_name ? (
+                {data?.displayName ? (
                   <div className={footerClasses.contact.clubName}>
-                    {settings?.site_name ?? settings?.club_name}
+                    {data.displayName}
                   </div>
                 ) : null}
 
-                {settings?.street || settings?.postal_code || settings?.city ? (
+                {data?.addressLines && data.addressLines.length ? (
                   <address className={footerClasses.contact.address}>
                     <div>
-                      {settings?.street ? <div>{settings.street}</div> : null}
-                      {settings?.postal_code || settings?.city ? (
-                        <div>
-                          {settings?.postal_code ?? ''}
-                          {settings?.postal_code && settings?.city ? ' ' : ''}
-                          {settings?.city ?? ''}
-                        </div>
-                      ) : null}
+                      {data.addressLines.map((line, idx) => (
+                        <div key={idx}>{line}</div>
+                      ))}
                     </div>
                   </address>
                 ) : null}
 
-                {settings?.phone ? (
+                {data?.phone ? (
                   <div className={footerClasses.contact.phone}>
                     <span>Telefon: </span>
                     <a
-                      href={`tel:${settings.phone}`}
+                      href={`tel:${data.phone}`}
                       className={footerClasses.contact.phoneLink}
-                      aria-label={`Telefon ${settings.phone}`}
+                      aria-label={`Telefon ${data.phone}`}
                     >
-                      {settings.phone}
+                      {data.phone}
                     </a>
                   </div>
                 ) : null}
               </div>
             )}
 
-            {settings?.footer_note ? (
+            {data?.footerNote ? (
               <div className={footerClasses.contact.wrapper}>
                 <RichText
                   className={footerClasses.contact.richText}
-                  html={settings.footer_note}
+                  html={data.footerNote}
                 />
               </div>
             ) : null}
@@ -116,7 +110,7 @@ export function Footer({ settings }: FooterProps) {
         </div>
         <div className={footerClasses.layout.tail}>
           <p className={footerClasses.legal.copyright}>
-            © {currentYear} - {settings?.site_name ?? settings?.club_name ?? ''}
+            © {currentYear} - {data?.displayName ?? ''}
           </p>
           <nav className={footerClasses.legal.nav}>
             <Link
