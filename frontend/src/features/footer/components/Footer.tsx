@@ -6,6 +6,7 @@ import { mapGlobalSettingsToFooterData } from '../model/footer.mapper';
 import { FooterMap } from './FooterMap';
 import { FooterContact } from './FooterContact';
 import { FooterLegal } from './FooterLegal';
+import '../footer.css';
 
 const footerBackground = {
   background: FOOTER_TOKENS.gradients.background,
