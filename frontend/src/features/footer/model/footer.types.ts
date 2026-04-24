@@ -8,3 +8,8 @@ export interface FooterData {
   mapsUrl?: string;
   mapsEmbedUrl?: string;
 }
+
+export interface FooterLegalLink {
+  label: string;
+  to: string;
+}

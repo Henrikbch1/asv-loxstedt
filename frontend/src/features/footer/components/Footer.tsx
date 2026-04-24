@@ -1,4 +1,4 @@
-import type { FooterData } from '../model/footer.types';
+import type { FooterData, FooterLegalLink } from '../model/footer.types';
 import type { GlobalSettings } from '../../types/domain';
 import { footerClasses } from '../styles/footer.classes';
 import { FOOTER_TOKENS } from '../styles/footer.tokens';
@@ -15,9 +15,10 @@ const footerBackground = {
 interface FooterProps {
   settings?: GlobalSettings | null;
   data?: FooterData | null;
+  legalLinks?: FooterLegalLink[] | null;
 }
 
-export function Footer({ settings, data }: FooterProps) {
+export function Footer({ settings, data, legalLinks }: FooterProps) {
   const mapped = data ?? mapGlobalSettingsToFooterData(settings);
 
   const addressString =
@@ -45,7 +46,10 @@ export function Footer({ settings, data }: FooterProps) {
           />
         </div>
 
-        <FooterLegal displayName={mapped?.displayName} />
+        <FooterLegal
+          displayName={mapped?.displayName}
+          legalLinks={legalLinks}
+        />
       </div>
     </footer>
   );
