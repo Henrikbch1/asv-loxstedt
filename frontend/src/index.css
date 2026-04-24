@@ -1,31 +1,12 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+@config "../tailwind.config.cjs";
 
-/* Preserve design tokens and local variables (kept after Tailwind base) */
+/* Design tokens kept as CSS custom properties for non-Tailwind usage */
 :root {
   color-scheme: light;
   font-family: 'Space Grotesk', 'Aptos', 'Segoe UI', sans-serif;
   line-height: 1.5;
   font-weight: 400;
-  --color-ink: #1f241c;
-  --color-muted: #5f6758;
-  --color-surface: #f8f9f4;
-  --color-surface-soft: #f4f6ef;
-  --color-surface-strong: #e9efdd;
-  --color-panel: rgba(248, 249, 244, 0.84);
-  --color-panel-strong: rgba(255, 255, 251, 0.9);
-  --color-border: rgba(121, 185, 39, 0.16);
-  --color-border-strong: rgba(95, 147, 31, 0.24);
-  --color-brand: #79b927;
-  --color-brand-strong: #5f931f;
-  --color-accent: #d7b84b;
-  --color-danger: #b42318;
-  --shadow-soft: 0 24px 60px rgba(17, 17, 17, 0.11);
-  --shadow-card: 0 16px 34px rgba(17, 17, 17, 0.08);
-  --radius-lg: 28px;
-  --radius-md: 18px;
-  --radius-sm: 12px;
 }
 
 * {
@@ -86,17 +67,6 @@ button {
 
 #root {
   min-height: 100vh;
-}
-
-.app-shell {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-.shell {
-  width: min(1120px, calc(100vw - 1.75rem));
-  margin: 0 auto;
 }
 
 .shell--main {
