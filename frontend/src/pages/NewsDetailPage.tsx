@@ -4,6 +4,8 @@ import { ErrorState } from '../components/ui/ErrorState';
 import { LoadingState } from '../components/ui/LoadingState';
 import { NotFoundState } from '../components/ui/NotFoundState';
 import { RichText } from '../components/ui/RichText';
+import { PageHero } from '../components/ui/PageHero';
+import { ContentPage } from '../components/ui/ContentPage';
 import { usePublicNewsByIdQuery } from '../features/news/useNewsQueries';
 import { CmsApiError } from '../api/directus';
 import { getCmsAssetLabel, getNewsDetailUrl } from '../utils/assets';
@@ -12,6 +14,21 @@ import { useSiteTitle } from '../hooks/useSiteTitle';
 import { ImageLightbox } from '../components/ui/ImageLightbox';
 import { expandDirectusRelation } from '../utils/directus';
 import type { Category } from '../types/domain';
+import { cn } from '../lib/cn';
+
+const styles = {
+  layout: 'flex flex-col gap-8',
+  layoutHasMedia: 'lg:flex-row',
+  main: 'prose prose-lg max-w-none flex-1',
+  mediaColumn: 'shrink-0 lg:w-80',
+  mediaCard: 'overflow-hidden rounded-lg shadow-card',
+  mediaBtn:
+    'group relative block w-full cursor-pointer overflow-hidden border-0 bg-transparent p-0',
+  mediaImage: 'h-full w-full object-cover',
+  mediaHint:
+    'absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 transition-opacity group-hover:opacity-100',
+  mediaHintIcon: 'h-8 w-8 text-white',
+} as const;
 
 export function NewsDetailPage() {
   const { id = '' } = useParams();
@@ -50,45 +67,37 @@ export function NewsDetailPage() {
     expandDirectusRelation<Category>(newsQuery.data.category)?.name ?? null;
 
   return (
-    <article className="content-page news-detail">
-      <header className="page-hero page-hero--content">
-        <div className="page-hero__copy">
-          <span className="eyebrow">News-Detail</span>
-          <h1>{newsQuery.data.title}</h1>
-          <p className="meta-text">
-            {[dateLabel, categoryName].filter(Boolean).join(' · ')}
-          </p>
-        </div>
-      </header>
+    <ContentPage>
+      <PageHero
+        eyebrow="News-Detail"
+        title={newsQuery.data.title}
+        meta={[dateLabel, categoryName].filter(Boolean).join(' · ')}
+      />
 
-      <section
-        className={`news-detail__layout${imageUrl ? ' news-detail__layout--has-media' : ''}`}
-      >
+      <section className={cn(styles.layout, imageUrl && styles.layoutHasMedia)}>
         <RichText
-          className="rich-text content-page__body news-detail__main prose prose-lg"
+          className={cn(ContentPage.bodyClass, styles.main)}
           html={newsQuery.data.text}
         />
 
         {imageUrl ? (
-          <aside
-            className="news-detail__media-column"
-            aria-label="Beitragsbild"
-          >
-            <div className="news-detail__media-card">
-              <div className="page-hero__media news-detail__media">
+          <aside className={styles.mediaColumn} aria-label="Beitragsbild">
+            <div className={styles.mediaCard}>
+              <div>
                 <button
                   aria-label="Bild in Vollbild öffnen"
-                  className="news-detail__media-btn"
+                  className={styles.mediaBtn}
                   type="button"
                   onClick={() => setLightboxOpen(true)}
                 >
                   <img
-                    className="w-full h-full object-cover"
+                    className={styles.mediaImage}
                     alt={getCmsAssetLabel(newsQuery.data.image)}
                     src={imageUrl}
                   />
-                  <span className="news-detail__media-hint" aria-hidden="true">
+                  <span className={styles.mediaHint} aria-hidden="true">
                     <svg
+                      className={styles.mediaHintIcon}
                       fill="none"
                       stroke="currentColor"
                       strokeWidth={2}
@@ -116,6 +125,6 @@ export function NewsDetailPage() {
           onClose={() => setLightboxOpen(false)}
         />
       ) : null}
-    </article>
+    </ContentPage>
   );
 }
