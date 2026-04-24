@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import { footerClasses } from '../styles/footer.classes';
-import { FooterLegal as FooterLegalUI } from '../ui/FooterLegal';
 import type { FooterLegalLink } from '../model/footer.types';
 
 interface FooterLegalProps {
@@ -16,21 +15,22 @@ export function FooterLegal({ displayName, legalLinks }: FooterLegalProps) {
     { label: 'Datenschutz', to: '/datenschutz' },
   ];
 
-  const linksToRender =
-    legalLinks && legalLinks.length ? legalLinks : defaultLinks;
+  const links = legalLinks?.length ? legalLinks : defaultLinks;
 
   return (
     <div className={footerClasses.layout.tail}>
-      <FooterLegalUI
-        legalLinks={linksToRender}
-        copyright={`© ${currentYear} - ${displayName ?? ''}`}
-        className={footerClasses.legal.nav}
-        renderLink={(l) => (
-          <Link to={l.to} className={`${footerClasses.legal.link}`}>
-            {l.label}
-          </Link>
-        )}
-      />
+      <p>{`© ${currentYear} - ${displayName ?? ''}`}</p>
+      <nav aria-label="Rechtliche Informationen">
+        <ul className="flex list-none gap-2 items-center m-0 p-0">
+          {links.map((link, i) => (
+            <li key={i}>
+              <Link to={link.to} className={footerClasses.legal.link}>
+                {link.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
     </div>
   );
 }

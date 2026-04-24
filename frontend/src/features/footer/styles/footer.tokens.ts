@@ -1,8 +1,5 @@
 export const FOOTER_TOKENS = {
   map: {
-    zoom: 15,
-    type: 'k',
-    language: 'de',
     height: 200,
   },
   layout: {
