@@ -1,4 +1,10 @@
-import { Link } from 'react-router-dom';
+import { Button } from './Button';
+
+const styles = {
+  card: 'flex flex-col items-center justify-center gap-3 text-center',
+  eyebrow: 'text-xs font-bold uppercase tracking-wider text-brand',
+  message: 'text-muted',
+} as const;
 
 interface NotFoundStateProps {
   title?: string;
@@ -10,13 +16,13 @@ export function NotFoundState({
   message = 'Der angeforderte Inhalt ist nicht vorhanden oder nicht veroeffentlicht.',
 }: NotFoundStateProps) {
   return (
-    <section className="state-card state-card--not-found justify-items-center text-center">
-      <span className="eyebrow">404</span>
+    <section className={styles.card}>
+      <span className={styles.eyebrow}>404</span>
       <h1>{title}</h1>
-      <p>{message}</p>
-      <Link className="button button--primary" to="/">
+      <p className={styles.message}>{message}</p>
+      <Button as="link" to="/" variant="primary">
         Zur Startseite
-      </Link>
+      </Button>
     </section>
   );
 }
