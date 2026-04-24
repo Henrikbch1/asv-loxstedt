@@ -1,4 +1,6 @@
 import { RichText } from '../../components/ui/RichText';
+import { SectionHeading } from '../../components/ui/SectionHeading';
+import { ContentPage } from '../../components/ui/ContentPage';
 import type { CmsPage } from '../../types/cms';
 import { getCmsAssetLabel, getCmsAssetUrl } from '../../utils/assets';
 import { useSiteTitle } from '../../hooks/useSiteTitle';
@@ -24,16 +26,18 @@ function DefaultPageView({ page }: CmsPageViewProps) {
   });
 
   return (
-    <article className="content-page">
-      <header className="section-heading">
-        <span className="eyebrow">Seite</span>
-        <h1>{page.title}</h1>
+    <ContentPage>
+      <SectionHeading eyebrow="Seite" title={page.title}>
         {imageUrl ? (
-          <img alt={getCmsAssetLabel(page.featured_image)} src={imageUrl} />
+          <img
+            alt={getCmsAssetLabel(page.featured_image)}
+            className="mt-4 rounded-lg"
+            src={imageUrl}
+          />
         ) : null}
-      </header>
+      </SectionHeading>
 
-      <RichText className="rich-text content-page__body" html={page.content} />
-    </article>
+      <RichText className={ContentPage.bodyClass} html={page.content} />
+    </ContentPage>
   );
 }
