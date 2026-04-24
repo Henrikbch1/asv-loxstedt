@@ -1,7 +1,9 @@
+import { FOOTER_TOKENS } from './footer.tokens';
+
 export const footerClasses = {
   layout: {
     root: 'relative mt-8 border-t border-[rgba(121,185,39,0.14)] py-0 text-[#f6f7f2] before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-gradient-to-r before:from-brand before:to-accent',
-    container: 'mx-auto w-[min(1120px,calc(100vw-1.75rem))] pt-16 pb-8',
+    container: `mx-auto w-[min(${FOOTER_TOKENS.layout.maxWidth},calc(100vw-1.75rem))] pt-16 pb-8`,
     inner:
       'grid grid-cols-1 items-start gap-4 rounded-lg border border-white/10 bg-white/[0.06] p-4 shadow-[0_18px_40px_rgba(0,0,0,0.18)] md:grid-cols-2',
     tail: 'mt-8 flex items-center justify-between gap-4 whitespace-normal break-words pb-6 text-white/70 text-sm',

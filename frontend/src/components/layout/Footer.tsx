@@ -2,10 +2,10 @@ import { RichText } from '../ui/RichText';
 import { Link } from 'react-router-dom';
 import type { GlobalSettings } from '../../types/cms';
 import { footerClasses } from './styles/footer.classes';
+import { FOOTER_TOKENS } from './styles/footer.tokens';
 
 const footerBackground = {
-  background:
-    'linear-gradient(180deg, rgba(121, 185, 39, 0.12), rgba(17, 17, 17, 0.84)), #111111',
+  background: FOOTER_TOKENS.gradients.background,
 } as const;
 
 interface FooterProps {
@@ -27,9 +27,9 @@ export function Footer({ settings }: FooterProps) {
       )}`
     : undefined;
 
-  const zoomLevel = 15;
-  const mapType = 'k';
-  const language = 'de';
+  const zoomLevel = FOOTER_TOKENS.map.zoom;
+  const mapType = FOOTER_TOKENS.map.type;
+  const language = FOOTER_TOKENS.map.language;
 
   const baseUrl = 'https://www.google.com/maps';
   const mapsEmbedUrl = addressString
@@ -50,7 +50,7 @@ export function Footer({ settings }: FooterProps) {
                   title={`Karte: ${addressString}`}
                   src={mapsEmbedUrl}
                   width="100%"
-                  height="200"
+                  height={FOOTER_TOKENS.map.height}
                   className={footerClasses.brand.mapIframe}
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
