@@ -30,7 +30,7 @@ const NEWS_NAV_ITEM: NavigationTreeNode = {
 
 export function AppLayout() {
   const location = useLocation();
-  const isHome = location.pathname === '/';
+  const isHome = location.pathname === routes.home;
   const settingsQuery = useGlobalSettingsQuery();
   const navigationQuery = useNavigationTreeQuery();
 
