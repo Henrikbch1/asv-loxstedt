@@ -3,4 +3,3 @@ export { CalendarEmbed } from './components/CalendarEmbed';
 export { useCalendar } from './useCalendar';
 export { mapSettingsToCalendarData } from './model/calendar.mapper';
 export type { CalendarProps, CalendarData } from './model/calendar.types';
-

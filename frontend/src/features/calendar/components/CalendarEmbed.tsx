@@ -2,7 +2,8 @@ import React from 'react';
 import type { CalendarProps } from '../model/calendar.types';
 
 const DEFAULT_WRAPPER = 'mx-auto w-[min(1120px,calc(100vw-1.75rem))] py-8';
-const DEFAULT_CALENDAR_ID = '6f6b625f83f9c81cb5376f8cf22dcf12d864148213cb05687e13276ef07b2f35@group.calendar.google.com';
+const DEFAULT_CALENDAR_ID =
+  '6f6b625f83f9c81cb5376f8cf22dcf12d864148213cb05687e13276ef07b2f35@group.calendar.google.com';
 
 export function CalendarEmbed({
   calendarId,
@@ -37,7 +38,18 @@ export function CalendarEmbed({
     });
 
     return `https://calendar.google.com/calendar/embed?${params.toString()}`;
-  }, [src, calendarId, mode, height, tz, color, showCalendars, showDate, showNav, showTitle]);
+  }, [
+    src,
+    calendarId,
+    mode,
+    height,
+    tz,
+    color,
+    showCalendars,
+    showDate,
+    showNav,
+    showTitle,
+  ]);
 
   return (
     <div className={className ?? DEFAULT_WRAPPER}>
