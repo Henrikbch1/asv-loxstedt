@@ -3,6 +3,7 @@ import { getCmsAssetLabel, getNewsDetailUrl } from '../../../utils/assets';
 import { formatDate } from '../../../utils/date';
 import { cn } from '../../../lib/cn';
 import { newsClasses } from '../styles/news.classes';
+import { BackButton } from '../../../components/ui/BackButton';
 
 interface NewsDetailProps {
   item: NewsItem;
@@ -14,6 +15,9 @@ export function NewsDetail({ item }: NewsDetailProps) {
 
   return (
     <article className={cn(newsClasses.card.root, 'prose')}>
+      <div className="p-4">
+        <BackButton />
+      </div>
       {imageUrl ? (
         <div className={newsClasses.card.media}>
           <img alt={getCmsAssetLabel(item.image)} src={imageUrl} />

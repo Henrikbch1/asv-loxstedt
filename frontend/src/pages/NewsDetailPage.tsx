@@ -11,6 +11,7 @@ import { CmsApiError } from '../api/directus';
 import { getCmsAssetLabel, getNewsDetailUrl } from '../utils/assets';
 import { formatDate } from '../utils/date';
 import { useSiteTitle } from '../hooks/useSiteTitle';
+import { BackButton } from '../components/ui/BackButton';
 import { ImageLightbox } from '../components/ui/ImageLightbox';
 import { expandDirectusRelation } from '../utils/directus';
 import type { Category } from '../types/domain';
@@ -73,6 +74,10 @@ export function NewsDetailPage() {
         title={newsQuery.data.title}
         meta={[dateLabel, categoryName].filter(Boolean).join(' · ')}
       />
+
+      <div className="p-4">
+        <BackButton />
+      </div>
 
       <section className={cn(styles.layout, imageUrl && styles.layoutHasMedia)}>
         <RichText
