@@ -22,6 +22,7 @@ const styles = {
   date: '',
   title: 'text-lg font-semibold leading-snug',
   preview: 'line-clamp-2 text-sm text-muted',
+  icon: 'ml-3 flex items-center text-muted',
 } as const;
 
 interface NewsListItemProps {
@@ -72,6 +73,23 @@ export function NewsListItem({ item }: NewsListItemProps) {
             <img alt={getCmsAssetLabel(item.image)} src={imageUrl} />
           </div>
         ) : null}
+
+        <div className={styles.icon} aria-hidden="true">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={2}
+            className="h-5 w-5"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M9 5l7 7-7 7"
+            />
+          </svg>
+        </div>
       </div>
     </article>
   );
