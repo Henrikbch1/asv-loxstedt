@@ -1,5 +1,4 @@
 import type { NewsItem } from '../../../types/domain';
-import './news.css';
 import { NewsCard } from '../NewsCard';
 import { NewsListItem } from '../NewsListItem';
 import { newsClasses } from '../styles/news.classes';

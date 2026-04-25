@@ -1,4 +1,3 @@
-import './news.css';
 import type { NewsItem } from '../../../types/domain';
 import { getCmsAssetLabel, getNewsDetailUrl } from '../../../utils/assets';
 import { formatDate } from '../../../utils/date';
