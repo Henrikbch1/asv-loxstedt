@@ -7,7 +7,7 @@ import { cn } from '../../lib/cn';
 const styles = {
   list: 'flex flex-col gap-1 md:flex-row md:items-center md:gap-0.5',
   listSub:
-    'hidden flex-col gap-0.5 pl-4 md:absolute md:left-0 md:top-full md:z-50 md:min-w-[200px] md:rounded-md md:border md:border-border md:bg-panel-strong md:p-2 md:pl-0 md:shadow-soft',
+    'hidden flex-col gap-0.5 pl-4 md:absolute md:left-0 md:top-full md:z-50 md:min-w-[180px] md:rounded-md md:border md:border-border md:bg-panel-strong md:pl-0 md:shadow-soft',
   listSubOpen: 'flex',
   listSubDesktopOpen: 'md:flex',
   item: 'relative',
