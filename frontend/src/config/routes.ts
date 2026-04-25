@@ -1,5 +1,5 @@
 export const routes = {
-  home: '/',
+  home: '/home',
   newsList: '/news',
   impressum: '/impressum',
   datenschutz: '/datenschutz',
@@ -8,7 +8,7 @@ export const routes = {
 
 /** Routen-Muster für React Router */
 export const routePatterns = {
-  home: '/',
+  home: '/home',
   newsList: '/news',
   newsDetail: '/news/:id',
   impressum: '/impressum',

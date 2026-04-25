@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { ScrollToTop } from './ScrollToTop';
 import { AppLayout } from '../components/layout/AppLayout';
 import { CmsPageRoute } from '../pages/CmsPageRoute';
@@ -15,6 +15,7 @@ export function AppRouter() {
       <ScrollToTop />
       <Routes>
         <Route element={<AppLayout />}>
+          <Route index element={<Navigate replace to={routePatterns.home} />} />
           <Route element={<HomePage />} path={routePatterns.home} />
           <Route element={<NewsListPage />} path={routePatterns.newsList} />
           <Route element={<NewsDetailPage />} path={routePatterns.newsDetail} />
