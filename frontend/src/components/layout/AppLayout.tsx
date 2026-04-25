@@ -9,6 +9,7 @@ import { LoadingState } from '../ui/LoadingState';
 import { routes } from '../../config/routes';
 import { Footer } from '@/features/footer';
 import { Header } from '@/features/header';
+import { Calendar } from '@/features/calendar';
 
 const styles = {
   shell: 'min-h-screen flex flex-col',
@@ -69,17 +70,7 @@ export function AppLayout() {
       <main className={styles.main}>
         <Outlet />
       </main>
-      {isHome && (
-        <div className={styles.calendarSection}>
-          <iframe
-            title="Google Calendar Agenda"
-            src="https://calendar.google.com/calendar/embed?height=600&wkst=2&ctz=Europe%2FBerlin&mode=AGENDA&showPrint=0&showTz=0&title&showCalendars=0&showDate=0&showNav=0&showTitle=0&showTabs=0&src=NmY2YjYyNWY4M2Y5YzgxY2I1Mzc2ZjhjZjIyZGNmMTJkODY0MTQ4MjEzY2IwNTY4N2UxMzI3NmVmMDdiMmYzNUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%230b8043"
-            className={styles.calendarIframe}
-            frameBorder={0}
-            scrolling="no"
-          />
-        </div>
-      )}
+      {isHome && <Calendar settings={settingsQuery.data} />}
       <Footer settings={settingsQuery.data} />
     </div>
   );
