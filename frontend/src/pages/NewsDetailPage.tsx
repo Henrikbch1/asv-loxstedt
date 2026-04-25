@@ -17,8 +17,8 @@ import type { Category } from '../types/domain';
 import { cn } from '../lib/cn';
 
 const styles = {
-  layout: 'flex flex-col gap-8',
-  layoutHasMedia: 'lg:flex-row',
+  layout: 'grid gap-8',
+  layoutHasMedia: 'lg:grid lg:grid-cols-[minmax(0,1.4fr)_minmax(260px,0.72fr)]',
   main: 'prose prose-lg max-w-none flex-1',
   mediaColumn: 'shrink-0 lg:w-80',
   mediaCard: 'overflow-hidden rounded-lg shadow-card',

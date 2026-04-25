@@ -31,7 +31,7 @@ function DefaultPageView({ page }: CmsPageViewProps) {
         {imageUrl ? (
           <img
             alt={getCmsAssetLabel(page.featured_image)}
-            className="mt-4 rounded-lg"
+            className="mt-6 rounded-lg"
             src={imageUrl}
           />
         ) : null}

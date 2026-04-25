@@ -3,6 +3,7 @@ import { EmptyState } from '../components/ui/EmptyState';
 import { ErrorState } from '../components/ui/ErrorState';
 import { LoadingState } from '../components/ui/LoadingState';
 import { SectionHeading } from '../components/ui/SectionHeading';
+import { ContentPage } from '../components/ui/ContentPage';
 import { Button } from '../components/ui/Button';
 import { NewsListItem } from '../features/news/NewsListItem';
 import { usePublicNewsListQuery } from '../features/news/useNewsQueries';
@@ -10,7 +11,7 @@ import { useSiteTitle } from '../hooks/useSiteTitle';
 import { NEWS_PAGE_SIZE } from '../config/constants';
 
 const styles = {
-  section: 'flex flex-col gap-6 py-8',
+  section: 'grid gap-8',
   newsFeed: 'flex flex-col gap-4',
   pagination: 'grid grid-cols-3 items-center gap-2 pt-4',
   paginationCenter: 'flex justify-center',
@@ -56,7 +57,7 @@ export function NewsListPage() {
   const hasNext = page < totalPages;
 
   return (
-    <section className={styles.section}>
+    <ContentPage>
       <SectionHeading
         eyebrow="News"
         title="Aktuelle Meldungen"
@@ -112,6 +113,6 @@ export function NewsListPage() {
           </div>
         </div>
       ) : null}
-    </section>
+    </ContentPage>
   );
 }
