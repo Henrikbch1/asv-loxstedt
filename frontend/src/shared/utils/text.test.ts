@@ -3,8 +3,8 @@ import { stripHtml, getExcerpt } from './text';
 
 // Mock a minimal DOMParser and `window` so stripHtml behaves like in browser
 beforeAll(() => {
-  (global as any).window = {};
-  (global as any).DOMParser = class {
+  (global as unknown as Record<string, unknown>)['window'] = {};
+  (global as unknown as Record<string, unknown>)['DOMParser'] = class {
     parseFromString(html: string) {
       return {
         body: {
@@ -19,8 +19,8 @@ beforeAll(() => {
 });
 
 afterAll(() => {
-  delete (global as any).window;
-  delete (global as any).DOMParser;
+  delete (global as unknown as Record<string, unknown>)['window'];
+  delete (global as unknown as Record<string, unknown>)['DOMParser'];
 });
 
 describe('text utils', () => {

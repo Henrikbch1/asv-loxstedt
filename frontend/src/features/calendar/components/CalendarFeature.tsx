@@ -9,7 +9,7 @@ interface CalendarFeatureProps extends Partial<CalendarProps> {
 
 export function CalendarFeature({ settings, ...rest }: CalendarFeatureProps) {
   const { calendarId } = useCalendar();
-  const mapped = mapSettingsToCalendarData(settings as any) ?? { calendarId };
+  const mapped = mapSettingsToCalendarData(settings) ?? { calendarId };
 
   return <CalendarEmbed {...mapped} {...(rest as CalendarProps)} />;
 }

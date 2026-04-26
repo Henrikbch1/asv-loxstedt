@@ -21,7 +21,7 @@ describe('cmsPagePaths utils', () => {
         title: 'About',
         slug: 'about',
         content: null,
-        featured_image: null as any,
+        featured_image: null,
         parent_page: null,
       },
       {
@@ -29,7 +29,7 @@ describe('cmsPagePaths utils', () => {
         title: 'Team',
         slug: 'team',
         content: null,
-        featured_image: null as any,
+        featured_image: null,
         parent_page: 1,
       },
       {
@@ -37,7 +37,7 @@ describe('cmsPagePaths utils', () => {
         title: 'EmptySlug',
         slug: '',
         content: null,
-        featured_image: null as any,
+        featured_image: null,
         parent_page: null,
       },
     ];
@@ -55,7 +55,7 @@ describe('cmsPagePaths utils', () => {
         title: 'A',
         slug: 'a',
         content: null,
-        featured_image: null as any,
+        featured_image: null,
         parent_page: null,
       },
       {
@@ -63,7 +63,7 @@ describe('cmsPagePaths utils', () => {
         title: 'B',
         slug: 'b',
         content: null,
-        featured_image: null as any,
+        featured_image: null,
         parent_page: 'a',
       },
     ];
@@ -80,13 +80,13 @@ describe('cmsPagePaths utils', () => {
         title: 'Root',
         slug: 'root',
         content: null,
-        featured_image: null as any,
+        featured_image: null,
         parent_page: null,
       },
     ];
     const map = buildCmsPagePathMap(pages);
     expect(getCmsPageHref(1, map)).toBe('/root');
-    expect(getCmsPageHref('nonexistent' as any, map)).toBeNull();
+    expect(getCmsPageHref('nonexistent', map)).toBeNull();
   });
 
   it('handles cycles by excluding pages involved in cycles', () => {
@@ -97,7 +97,7 @@ describe('cmsPagePaths utils', () => {
         title: 'One',
         slug: 'one',
         content: null,
-        featured_image: null as any,
+        featured_image: null,
         parent_page: 2,
       },
       {
@@ -105,7 +105,7 @@ describe('cmsPagePaths utils', () => {
         title: 'Two',
         slug: 'two',
         content: null,
-        featured_image: null as any,
+        featured_image: null,
         parent_page: 1,
       },
     ];
