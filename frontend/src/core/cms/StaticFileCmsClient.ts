@@ -1,6 +1,14 @@
 import type { ICmsClient } from './ICmsClient';
-import type { CmsPage, GlobalSettings, NewsItem, Role } from '@/shared/types/domain';
-import type { NavigationRecord, NavigationRecordRaw } from '@/shared/types/navigation';
+import type {
+  CmsPage,
+  GlobalSettings,
+  NewsItem,
+  Role,
+} from '@/shared/types/domain';
+import type {
+  NavigationRecord,
+  NavigationRecordRaw,
+} from '@/shared/types/navigation';
 import type { DirectusListResponse } from '@/shared/types/directus';
 import { findCmsPageByPath } from '@/shared/utils/cmsPagePaths';
 import { normalizeNavigationRecord, compareNewsItems } from './transformers';
@@ -25,7 +33,10 @@ export class StaticFileCmsClient implements ICmsClient {
   }
 
   async getNavigation(signal?: AbortSignal): Promise<NavigationRecord[]> {
-    const raw = await fetchJson<NavigationRecordRaw[]>('navigation.json', signal);
+    const raw = await fetchJson<NavigationRecordRaw[]>(
+      'navigation.json',
+      signal,
+    );
     return raw.map(normalizeNavigationRecord);
   }
 

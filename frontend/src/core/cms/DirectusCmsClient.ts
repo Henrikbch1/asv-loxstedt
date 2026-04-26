@@ -1,6 +1,11 @@
 import { CmsApiError, fetchDirectus } from './directus';
 import type { ICmsClient } from './ICmsClient';
-import type { CmsPage, GlobalSettings, NewsItem, Role } from '@/shared/types/domain';
+import type {
+  CmsPage,
+  GlobalSettings,
+  NewsItem,
+  Role,
+} from '@/shared/types/domain';
 import type {
   NavigationRecord,
   NavigationRecordRaw,

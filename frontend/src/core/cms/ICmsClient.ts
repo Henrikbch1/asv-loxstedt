@@ -1,4 +1,9 @@
-import type { CmsPage, GlobalSettings, NewsItem, Role } from '@/shared/types/domain';
+import type {
+  CmsPage,
+  GlobalSettings,
+  NewsItem,
+  Role,
+} from '@/shared/types/domain';
 import type { NavigationRecord } from '@/shared/types/navigation';
 import type { DirectusListResponse } from '@/shared/types/directus';
 
