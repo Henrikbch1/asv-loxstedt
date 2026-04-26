@@ -20,7 +20,20 @@ const NEWS_NAV_ITEM: NavigationTreeNode = {
 export function buildHeaderNavItems(
   tree: NavigationTreeNode[],
 ): NavigationTreeNode[] {
+  // If the News feature is disabled, do nothing.
   if (!featureConfig.news.enabled) return tree;
+
+  // If the CMS already provides a News navigation entry (by href, key or label),
+  // respect the CMS and do not inject a duplicate. This prevents the core
+  // navigation from hard-wiring an optional feature into the layout.
+  const hasNews = tree.some(
+    (n) =>
+      n.href === routes.newsList ||
+      n.key === NEWS_NAV_ITEM.key ||
+      (typeof n.label === 'string' && n.label.trim().toLowerCase() === 'news'),
+  );
+
+  if (hasNews) return tree;
 
   if (tree.length === 0) return [NEWS_NAV_ITEM];
 

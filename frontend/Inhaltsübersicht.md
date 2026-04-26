@@ -18,13 +18,13 @@
 
 Diese Inhalte können **nicht** über das CMS geändert werden:
 
-| Bereich                   | Details                                                        |
-| ------------------------- | -------------------------------------------------------------- |
-| Google-Kalender-Iframe    | Kalender-URL inkl. eingebetteter Kalender-ID (`AppLayout.tsx`) |
-| News-Pagination           | 5 Einträge pro Seite (`constants.ts`)                          |
-| „News"-Navigationseintrag | Wird automatisch vom Frontend in die Navigation eingefügt      |
-| Fehler- und Ladetext      | z. B. „Die Seite konnte nicht geladen werden"                  |
-| Google Maps Konfiguration | Zoom, Kartentyp, Sprache im Footer (`footer.mapper.ts`)        |
+| Bereich                   | Details                                                                                                                  |
+| ------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| Google-Kalender-Iframe    | Kalender-URL inkl. eingebetteter Kalender-ID (`AppLayout.tsx`)                                                           |
+| News-Pagination           | 5 Einträge pro Seite (`constants.ts`)                                                                                    |
+| „News"-Navigationseintrag | Normalerweise im CMS anlegen; falls nicht vorhanden fügt das Frontend ihn nur hinzu, wenn das News-Feature aktiviert ist |
+| Fehler- und Ladetext      | z. B. „Die Seite konnte nicht geladen werden"                                                                            |
+| Google Maps Konfiguration | Zoom, Kartentyp, Sprache im Footer (`footer.mapper.ts`)                                                                  |
 
 ---
 
@@ -74,7 +74,7 @@ Definiert die Hauptnavigation im Header:
 | `sort`   | Reihenfolge in der Navigation               |
 | `parent` | Elternelement für Dropdown-Untermenüs       |
 
-> Der „News"-Eintrag wird automatisch vom Frontend eingefügt – **kein CMS-Eintrag nötig**.
+> Der „News"-Eintrag sollte im CMS angelegt werden, wenn die Position kontrolliert werden soll. Falls er nicht existiert, fügt das Frontend ihn nur hinzu, sofern das News-Feature aktiviert ist.
 
 ### `news`
 
