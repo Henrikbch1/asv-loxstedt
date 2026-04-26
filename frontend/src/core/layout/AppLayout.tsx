@@ -1,37 +1,23 @@
 import { Outlet, useLocation } from 'react-router-dom';
-import type { NavigationTreeNode } from '@/shared/types/navigation';
 import {
   useGlobalSettingsQuery,
   useNavigationTreeQuery,
 } from '@/core/navigation/useNavigationQuery';
+import { buildHeaderNavItems } from '@/core/navigation/navigation.service';
+import { shouldShowCalendar } from '@/core/routing/routeResolver';
 import { ErrorState } from '../ui/ErrorState';
 import { LoadingState } from '../ui/LoadingState';
-import { routes } from '@/core/config/routes';
 import { Footer } from '@/core/footer';
-import { Header } from '@/core/layout/header';
+import { Header } from '@/core/layout/header/index';
 import { Calendar } from '@/features/calendar';
 
 const styles = {
   shell: 'min-h-screen flex flex-col',
-  container: 'mx-auto w-[min(1120px,calc(100vw-1.75rem))]',
   main: 'mx-auto w-[min(1120px,calc(100vw-1.75rem))] flex-1 pt-9 pb-20',
-  calendarSection: 'mx-auto w-[min(1120px,calc(100vw-1.75rem))] py-8',
-  calendarIframe: 'w-full border-0 h-[600px]',
 } as const;
 
-const NEWS_NAV_ITEM: NavigationTreeNode = {
-  key: 'label:news',
-  sort: 9999,
-  label: 'News',
-  href: routes.newsList,
-  page: null,
-  parentKey: null,
-  children: [],
-};
-
 export function AppLayout() {
-  const location = useLocation();
-  const isHome = location.pathname === routes.home;
+  const { pathname } = useLocation();
   const settingsQuery = useGlobalSettingsQuery();
   const navigationQuery = useNavigationTreeQuery();
 
@@ -60,17 +46,13 @@ export function AppLayout() {
   return (
     <div className={styles.shell}>
       <Header
-        navigationItems={[
-          ...(navigationQuery.data ?? []).slice(0, 1),
-          NEWS_NAV_ITEM,
-          ...(navigationQuery.data ?? []).slice(1),
-        ]}
+        navigationItems={buildHeaderNavItems(navigationQuery.data ?? [])}
         settings={settingsQuery.data}
       />
       <main className={styles.main}>
         <Outlet />
       </main>
-      {isHome && <Calendar settings={settingsQuery.data} />}
+      {shouldShowCalendar(pathname) && <Calendar settings={settingsQuery.data} />}
       <Footer settings={settingsQuery.data} />
     </div>
   );
