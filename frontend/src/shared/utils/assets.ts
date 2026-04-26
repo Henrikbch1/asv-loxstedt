@@ -23,6 +23,13 @@ export function getCmsAssetUrl(
     return null;
   }
 
+  // In static mode asset files live under staticAssetsBasePath (e.g. /mock-assets).
+  // Image transformation params are not supported in static mode and are dropped.
+  if (appConfig.cmsMode === 'static') {
+    const base = appConfig.staticAssetsBasePath.replace(/\/+$/, '');
+    return `${base}/${assetId}`;
+  }
+
   const url = new URL(
     `${appConfig.assetsPath.replace(/^\/?/, '')}/${assetId}`,
     `${appConfig.apiBaseUrl}/`,

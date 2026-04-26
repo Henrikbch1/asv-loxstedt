@@ -1,0 +1,195 @@
+[
+  {
+    "id": 1,
+    "sort": null,
+    "role": "1. Vorsitzender",
+    "email": "1.Vorsitzender@asv-loxstedt.de",
+    "is_vacant": false,
+    "category": {
+      "name": "Vorsitz"
+    },
+    "person_link": {
+      "firstname": "Dominick",
+      "lastname": "Bohling"
+    }
+  },
+  {
+    "id": 2,
+    "sort": null,
+    "role": "2. Vorsitzender",
+    "email": "2.Vorsitzender@asv-loxstedt.de",
+    "is_vacant": false,
+    "category": {
+      "name": "Vorsitz"
+    },
+    "person_link": {
+      "firstname": "Stefan",
+      "lastname": "Rückert"
+    }
+  },
+  {
+    "id": 3,
+    "sort": null,
+    "role": "1. Kassenwart",
+    "email": "Kassenwart@asv-loxstedt.de",
+    "is_vacant": false,
+    "category": {
+      "name": "Kasse"
+    },
+    "person_link": {
+      "firstname": "Marko",
+      "lastname": "Heuer"
+    }
+  },
+  {
+    "id": 4,
+    "sort": null,
+    "role": "2. Kassenwart",
+    "email": null,
+    "is_vacant": false,
+    "category": {
+      "name": "Kasse"
+    },
+    "person_link": {
+      "firstname": "Reinhard",
+      "lastname": "Zey"
+    }
+  },
+  {
+    "id": 5,
+    "sort": null,
+    "role": "1. Schriftwart",
+    "email": "Schriftfuehrer@asv-loxstedt.de",
+    "is_vacant": false,
+    "category": {
+      "name": "Schrift"
+    },
+    "person_link": {
+      "firstname": "Jürgen",
+      "lastname": "Bohling"
+    }
+  },
+  {
+    "id": 6,
+    "sort": null,
+    "role": "1. Gewässerwart",
+    "email": "Gewaesserwart@asv-loxstedt.de",
+    "is_vacant": false,
+    "category": {
+      "name": "Gewässer"
+    },
+    "person_link": {
+      "firstname": "Moritz",
+      "lastname": "Wohlers"
+    }
+  },
+  {
+    "id": 7,
+    "sort": null,
+    "role": "2. Gewässerwart",
+    "email": null,
+    "is_vacant": false,
+    "category": {
+      "name": "Gewässer"
+    },
+    "person_link": {
+      "firstname": "Jakob",
+      "lastname": "Brant"
+    }
+  },
+  {
+    "id": 8,
+    "sort": null,
+    "role": "3. Gewässerwart",
+    "email": null,
+    "is_vacant": false,
+    "category": {
+      "name": "Gewässer"
+    },
+    "person_link": {
+      "firstname": "Mario",
+      "lastname": "Sarrazin-Jahn"
+    }
+  },
+  {
+    "id": 9,
+    "sort": null,
+    "role": "1. Sportwart",
+    "email": "Sportwart@asv-loxstedt.de",
+    "is_vacant": false,
+    "category": {
+      "name": "Sport"
+    },
+    "person_link": {
+      "firstname": "Christoph",
+      "lastname": "Piecha"
+    }
+  },
+  {
+    "id": 10,
+    "sort": null,
+    "role": "2. Sportwart",
+    "email": null,
+    "is_vacant": true,
+    "category": {
+      "name": "Sport"
+    },
+    "person_link": null
+  },
+  {
+    "id": 11,
+    "sort": null,
+    "role": "3. Sportwart (Seniorenwart)",
+    "email": "3.Sportwart-Senioren@asv-loxstedt.de",
+    "is_vacant": false,
+    "category": {
+      "name": "Sport"
+    },
+    "person_link": {
+      "firstname": "Karl-Heinz",
+      "lastname": "Liedtke"
+    }
+  },
+  {
+    "id": 12,
+    "sort": null,
+    "role": "1. Jugendwart",
+    "email": "Jugendwart@asv-loxstedt.de",
+    "is_vacant": false,
+    "category": {
+      "name": "Jugend"
+    },
+    "person_link": {
+      "firstname": "Timo",
+      "lastname": "Sander"
+    }
+  },
+  {
+    "id": 13,
+    "sort": null,
+    "role": "2. Jugendwart",
+    "email": null,
+    "is_vacant": false,
+    "category": {
+      "name": "Jugend"
+    },
+    "person_link": {
+      "firstname": "Henrik",
+      "lastname": "Büchner"
+    }
+  },
+  {
+    "id": 15,
+    "sort": null,
+    "role": "Vorsitzender Ehrenrat",
+    "email": "Ehrenrat@asv-loxstedt.de",
+    "is_vacant": false,
+    "category": {
+      "name": "Ehrenrat"
+    },
+    "person_link": {
+      "firstname": "Piotr",
+      "lastname": "Poltorak"
+    }
+  }
+]

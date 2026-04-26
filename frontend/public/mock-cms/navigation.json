@@ -1,0 +1,199 @@
+[
+  {
+    "sort": null,
+    "label": "Arbeitsdienst",
+    "parent": {
+      "label": "Mitgliedschaft",
+      "page": {
+        "slug": "mitgliedschaft",
+        "title": "Mitgliedschaft"
+      }
+    },
+    "page": {
+      "id": 14,
+      "title": "Arbeitsdienst",
+      "slug": "arbeitsdienst",
+      "navigation_title": null
+    }
+  },
+  {
+    "sort": 1,
+    "label": "Home",
+    "parent": null,
+    "page": {
+      "id": 1,
+      "title": "Start",
+      "slug": "home",
+      "navigation_title": null
+    }
+  },
+  {
+    "sort": 2,
+    "label": "Verein",
+    "parent": null,
+    "page": {
+      "id": 4,
+      "title": "Verein",
+      "slug": "verein",
+      "navigation_title": null
+    }
+  },
+  {
+    "sort": 3,
+    "label": "Über uns",
+    "parent": {
+      "label": "Verein",
+      "page": {
+        "slug": "verein",
+        "title": "Verein"
+      }
+    },
+    "page": {
+      "id": 2,
+      "title": "Über uns",
+      "slug": "ueber-uns",
+      "navigation_title": null
+    }
+  },
+  {
+    "sort": 4,
+    "label": "Vorstand",
+    "parent": {
+      "label": "Verein",
+      "page": {
+        "slug": "verein",
+        "title": "Verein"
+      }
+    },
+    "page": {
+      "id": 6,
+      "title": "Vorstand",
+      "slug": "vorstand",
+      "navigation_title": "Vorstad"
+    }
+  },
+  {
+    "sort": 5,
+    "label": "Jugend",
+    "parent": {
+      "label": "Verein",
+      "page": {
+        "slug": "verein",
+        "title": "Verein"
+      }
+    },
+    "page": {
+      "id": 3,
+      "title": "Jugend",
+      "slug": "jugend",
+      "navigation_title": "Jugend"
+    }
+  },
+  {
+    "sort": 6,
+    "label": "Verhaltensregeln",
+    "parent": {
+      "label": "Mitgliedschaft",
+      "page": {
+        "slug": "mitgliedschaft",
+        "title": "Mitgliedschaft"
+      }
+    },
+    "page": {
+      "id": 7,
+      "title": "Verhaltensregeln",
+      "slug": "verhaltensregeln",
+      "navigation_title": "Verhaltensregeln 111"
+    }
+  },
+  {
+    "sort": 7,
+    "label": "Mitgliedschaft",
+    "parent": null,
+    "page": {
+      "id": 5,
+      "title": "Mitgliedschaft",
+      "slug": "mitgliedschaft",
+      "navigation_title": null
+    }
+  },
+  {
+    "sort": 8,
+    "label": "Beiträge",
+    "parent": {
+      "label": "Mitgliedschaft",
+      "page": {
+        "slug": "mitgliedschaft",
+        "title": "Mitgliedschaft"
+      }
+    },
+    "page": {
+      "id": 9,
+      "title": "Beiträge",
+      "slug": "beitraege",
+      "navigation_title": null
+    }
+  },
+  {
+    "sort": 9,
+    "label": "Aufnahme",
+    "parent": {
+      "label": "Mitgliedschaft",
+      "page": {
+        "slug": "mitgliedschaft",
+        "title": "Mitgliedschaft"
+      }
+    },
+    "page": {
+      "id": 10,
+      "title": "Aufnahme",
+      "slug": "aufnahme",
+      "navigation_title": "Aufnahme"
+    }
+  },
+  {
+    "sort": 10,
+    "label": "Gewässer",
+    "parent": null,
+    "page": {
+      "id": 11,
+      "title": "Gewässer",
+      "slug": "gewaesser",
+      "navigation_title": "Gewässer"
+    }
+  },
+  {
+    "sort": 11,
+    "label": "Stoteler See",
+    "parent": {
+      "label": "Gewässer",
+      "page": {
+        "slug": "gewaesser",
+        "title": "Gewässer"
+      }
+    },
+    "page": {
+      "id": 12,
+      "title": "Stotler See",
+      "slug": "stoteler-see",
+      "navigation_title": null
+    }
+  },
+  {
+    "sort": 12,
+    "label": "Lune",
+    "parent": {
+      "label": "Gewässer",
+      "page": {
+        "slug": "gewaesser",
+        "title": "Gewässer"
+      }
+    },
+    "page": {
+      "id": 13,
+      "title": "Lune & Neue Lune",
+      "slug": "lune",
+      "navigation_title": null
+    }
+  }
+]

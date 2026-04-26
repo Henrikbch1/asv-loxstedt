@@ -1,0 +1,30 @@
+[
+  {
+    "id": 8,
+    "name": "Ehrenrat"
+  },
+  {
+    "id": 5,
+    "name": "Gewässer"
+  },
+  {
+    "id": 1,
+    "name": "Jugend"
+  },
+  {
+    "id": 3,
+    "name": "Kasse"
+  },
+  {
+    "id": 6,
+    "name": "Schrift"
+  },
+  {
+    "id": 4,
+    "name": "Sport"
+  },
+  {
+    "id": 2,
+    "name": "Vorsitz"
+  }
+]

@@ -1,4 +1,4 @@
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, HashRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { ScrollToTop } from './ScrollToTop';
 import { AppLayout } from '../layout/AppLayout';
 import { CmsPageRoute } from '../pages/CmsPageRoute';
@@ -8,10 +8,14 @@ import { NewsListPage } from '../pages/NewsListPage';
 import { ImpressumPage } from '../pages/ImpressumPage';
 import { DatenschutzPage } from '../pages/DatenschutzPage';
 import { routePatterns } from '@/core/config/routes';
+import { appConfig } from '@/core/config/env';
+
+// Use HashRouter for static/GitHub Pages mode so deep links work without server rewrites.
+const Router = appConfig.cmsMode === 'static' ? HashRouter : BrowserRouter;
 
 export function AppRouter() {
   return (
-    <BrowserRouter>
+    <Router>
       <ScrollToTop />
       <Routes>
         <Route element={<AppLayout />}>
@@ -27,6 +31,6 @@ export function AppRouter() {
           <Route element={<CmsPageRoute />} path={routePatterns.cmsPage} />
         </Route>
       </Routes>
-    </BrowserRouter>
+    </Router>
   );
 }

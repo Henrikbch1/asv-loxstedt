@@ -1,4 +1,3 @@
-import React from 'react';
 import { CalendarEmbed } from './CalendarEmbed';
 import { useCalendar } from '../useCalendar';
 import { mapSettingsToCalendarData } from '../model/calendar.mapper';
