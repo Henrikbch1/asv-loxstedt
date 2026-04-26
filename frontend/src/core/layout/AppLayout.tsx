@@ -52,7 +52,9 @@ export function AppLayout() {
       <main className={styles.main}>
         <Outlet />
       </main>
-      {shouldShowCalendar(pathname) && <Calendar settings={settingsQuery.data} />}
+      {shouldShowCalendar(pathname) && (
+        <Calendar settings={settingsQuery.data} />
+      )}
       <Footer settings={settingsQuery.data} />
     </div>
   );
