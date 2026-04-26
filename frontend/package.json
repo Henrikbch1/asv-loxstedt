@@ -51,9 +51,13 @@
     "vite": "^5.4.6",
     "vitest": "^1.6.0"
   },
-  "description": "<p align=\"center\"> \t<img alt=\"frontend tech\" src=\"https://img.shields.io/badge/tech-React%20%2B%20TypeScript-blue?logo=react&style=flat-square\" /> \t<img alt=\"vite\" src=\"https://img.shields.io/badge/bundler-Vite-646cff?style=flat-square&logo=vite\" /> \t<img alt=\"directus\" src=\"https://img.shields.io/badge/cms-Directus-ff69b4?style=flat-square&logo=directus\" /> </p>",
+  "description": "React + TypeScript frontend powered by Vite",
   "main": "eslint.config.js",
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "engines": {
+    "node": ">=18 <21"
+  },
+  "packageManager": "npm@10"
 }
