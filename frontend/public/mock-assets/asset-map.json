@@ -1,0 +1,20 @@
+{
+  "68e54685-c887-4737-b651-5a774247fbf2": {
+    "id": "68e54685-c887-4737-b651-5a774247fbf2",
+    "filename": "ASV_Loxstest_Logo.png",
+    "path": "public/mock-assets/ASV_Loxstest_Logo.png",
+    "contentType": "image/png"
+  },
+  "dd1243ef-b08c-41e1-9c37-cc8e157bf11f": {
+    "id": "dd1243ef-b08c-41e1-9c37-cc8e157bf11f",
+    "filename": "tiefenkarte_1_.jpg",
+    "path": "public/mock-assets/tiefenkarte_1_.jpg",
+    "contentType": "image/jpeg"
+  },
+  "df49420c-0106-4772-8d4a-87f348bb643d": {
+    "id": "df49420c-0106-4772-8d4a-87f348bb643d",
+    "filename": "picture-2600.jpg",
+    "path": "public/mock-assets/picture-2600.jpg",
+    "contentType": "image/jpeg"
+  }
+}
