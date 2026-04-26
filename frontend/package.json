@@ -7,11 +7,6 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "build:demo": "tsc && vite build --mode demo",
-    "export:mock-cms": "node scripts/export-mock-cms.mjs",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
-    "format": "prettier --write \"src/**/*.{ts,tsx,css,json}\"",
-    "test": "vitest",
     "preview": "vite preview"
   },
   "dependencies": {
