@@ -1,3 +1,115 @@
+#!/usr/bin/env node
+import fs from 'fs/promises';
+import path from 'path';
+
+const ROOT = new URL('../../', import.meta.url).pathname.replace(/\\/g, '/');
+const MOCK_DIR = path.join(ROOT, 'public', 'mock-cms');
+const OUT_DIR = path.join(ROOT, 'public', 'mock-assets');
+const MAP_FILE = path.join(OUT_DIR, 'asset-map.json');
+
+const DIRECTUS_URL = process.env.DIRECTUS_URL || process.env.VITE_DIRECTUS_URL || 'http://localhost:8055';
+const DIRECTUS_TOKEN = process.env.DIRECTUS_TOKEN || '';
+
+const uuidRegex = /[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/ig;
+
+async function readJsonFiles(dir) {
+  const names = await fs.readdir(dir);
+  return Promise.all(
+    names.filter(n => n.endsWith('.json')).map(async n => ({ name: n, content: JSON.parse(await fs.readFile(path.join(dir, n), 'utf8')) }))
+  );
+}
+
+function collectUuids(obj) {
+  const ids = new Set();
+  const walk = v => {
+    if (!v) return;
+    if (typeof v === 'string') {
+      let m;
+      while ((m = uuidRegex.exec(v)) !== null) ids.add(m[0]);
+      return;
+    }
+    if (Array.isArray(v)) return v.forEach(walk);
+    if (typeof v === 'object') return Object.values(v).forEach(walk);
+  };
+  walk(obj);
+  return ids;
+}
+
+async function ensureOutDir() {
+  try {
+    await fs.mkdir(OUT_DIR, { recursive: true });
+  } catch (e) {
+    // ignore
+  }
+}
+
+async function fetchJson(url) {
+  const headers = DIRECTUS_TOKEN ? { Authorization: `Bearer ${DIRECTUS_TOKEN}` } : {};
+  const res = await fetch(url, { headers });
+  if (!res.ok) throw new Error(`Fetch failed ${url} -> ${res.status}`);
+  return res.json();
+}
+
+async function downloadBinary(url, dest) {
+  const headers = DIRECTUS_TOKEN ? { Authorization: `Bearer ${DIRECTUS_TOKEN}` } : {};
+  const res = await fetch(url, { headers });
+  if (!res.ok) throw new Error(`Download failed ${url} -> ${res.status}`);
+  const buffer = await res.arrayBuffer();
+  await fs.writeFile(dest, Buffer.from(buffer));
+}
+
+function filenameFromMeta(meta, id) {
+  if (!meta) return id;
+  return meta.filename_download || meta.title || meta.filename || id;
+}
+
+async function main() {
+  console.log('Reading mock JSON files from', MOCK_DIR);
+  const files = await readJsonFiles(MOCK_DIR);
+  const allIds = new Set();
+  for (const f of files) {
+    const ids = collectUuids(f.content);
+    ids.forEach(i => allIds.add(i));
+  }
+
+  if (allIds.size === 0) {
+    console.log('No UUID-like asset IDs found in mock JSON files.');
+    return;
+  }
+
+  console.log(`Found ${allIds.size} unique IDs. Preparing to fetch from Directus at ${DIRECTUS_URL}`);
+  await ensureOutDir();
+
+  const map = {};
+  const ids = Array.from(allIds);
+  const concurrency = 4;
+
+  for (let i = 0; i < ids.length; i += concurrency) {
+    const batch = ids.slice(i, i + concurrency);
+    await Promise.all(batch.map(async id => {
+      try {
+        const metaUrl = `${DIRECTUS_URL.replace(/\/$/, '')}/files/${id}`;
+        const meta = await fetchJson(metaUrl).catch(() => null);
+        const filename = filenameFromMeta(meta?.data || meta, id);
+        const ext = path.extname(filename) || '';
+        const outName = `${id}${ext}`;
+        const outPath = path.join(OUT_DIR, outName);
+        const assetUrl = `${DIRECTUS_URL.replace(/\/$/, '')}/assets/${id}?download=true`;
+        await downloadBinary(assetUrl, outPath);
+        map[id] = { file: outName, source: assetUrl, meta: meta?.data || meta || null };
+        console.log('Downloaded', id, '->', outName);
+      } catch (err) {
+        console.warn('Failed to download', id, err.message);
+        map[id] = { error: err.message };
+      }
+    }));
+  }
+
+  await fs.writeFile(MAP_FILE, JSON.stringify(map, null, 2), 'utf8');
+  console.log('Wrote asset map to', MAP_FILE);
+}
+
+main().catch(err => { console.error(err); process.exit(1); });
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
