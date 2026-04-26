@@ -1,9 +1,9 @@
-import type { NewsItem } from '../../../types/domain';
-import { getCmsAssetLabel, getNewsDetailUrl } from '../../../utils/assets';
-import { formatDate } from '../../../utils/date';
-import { cn } from '../../../lib/cn';
+import type { NewsItem } from '@/shared/types/domain';
+import { getCmsAssetLabel, getNewsDetailUrl } from '@/shared/utils/assets';
+import { formatDate } from '@/shared/utils/date';
+import { cn } from '@/shared/lib/cn';
 import { newsClasses } from '../styles/news.classes';
-import { BackButton } from '../../../components/ui/BackButton';
+import { BackButton } from '@/core/ui/BackButton';
 
 interface NewsDetailProps {
   item: NewsItem;

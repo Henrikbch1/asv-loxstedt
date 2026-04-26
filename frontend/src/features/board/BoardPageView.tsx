@@ -1,15 +1,15 @@
 import { Fragment } from 'react';
-import { RichText } from '../../components/ui/RichText';
-import { LoadingState } from '../../components/ui/LoadingState';
-import { ErrorState } from '../../components/ui/ErrorState';
-import { PageHero } from '../../components/ui/PageHero';
-import { ContentPage } from '../../components/ui/ContentPage';
-import { Badge } from '../../components/ui/Badge';
-import type { CmsPage, Category, Person } from '../../types/domain';
-import { getCmsAssetLabel, getCmsAssetUrl } from '../../utils/assets';
-import { useSiteTitle } from '../../hooks/useSiteTitle';
+import { RichText } from '@/core/ui/RichText';
+import { LoadingState } from '@/core/ui/LoadingState';
+import { ErrorState } from '@/core/ui/ErrorState';
+import { PageHero } from '@/core/ui/PageHero';
+import { ContentPage } from '@/core/ui/ContentPage';
+import { Badge } from '@/core/ui/Badge';
+import type { CmsPage, Category, Person } from '@/shared/types/domain';
+import { getCmsAssetLabel, getCmsAssetUrl } from '@/shared/utils/assets';
+import { useSiteTitle } from '@/core/settings/useSiteTitle';
 import { useBoardRolesQuery } from './useBoardQueries';
-import { expandDirectusRelation } from '../../utils/directus';
+import { expandDirectusRelation } from '@/shared/utils/directus';
 
 const styles = {
   boardList: 'mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3',

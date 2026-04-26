@@ -1,13 +1,13 @@
 import { Link } from 'react-router-dom';
-import type { NewsItem } from '../../types/domain';
-import { getCmsAssetLabel, getNewsPreviewUrl } from '../../utils/assets';
-import { formatDate } from '../../utils/date';
-import { getExcerpt } from '../../utils/text';
-import { routes } from '../../config/routes';
-import { expandDirectusRelation } from '../../utils/directus';
-import type { Category } from '../../types/domain';
-import { Badge } from '../../components/ui/Badge';
-import { Button } from '../../components/ui/Button';
+import type { NewsItem } from '@/shared/types/domain';
+import { getCmsAssetLabel, getNewsPreviewUrl } from '@/shared/utils/assets';
+import { formatDate } from '@/shared/utils/date';
+import { getExcerpt } from '@/shared/utils/text';
+import { routes } from '@/core/config/routes';
+import { expandDirectusRelation } from '@/shared/utils/directus';
+import type { Category } from '@/shared/types/domain';
+import { Badge } from '@/core/ui/Badge';
+import { Button } from '@/core/ui/Button';
 
 const styles = {
   card: 'group flex flex-col overflow-hidden rounded-lg border border-border bg-white shadow-card transition-shadow hover:shadow-soft',

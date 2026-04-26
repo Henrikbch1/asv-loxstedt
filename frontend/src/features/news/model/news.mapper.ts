@@ -1,4 +1,4 @@
-import type { NewsItem } from '../../../types/domain';
+import type { NewsItem } from '@/shared/types/domain';
 
 export function mapCmsNewsToNewsItem(raw: any): NewsItem | null {
   if (!raw || typeof raw !== 'object') return null;

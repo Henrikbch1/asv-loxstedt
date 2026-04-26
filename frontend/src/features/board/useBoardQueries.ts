@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
-import { getBoardRoles } from '../../api/cms';
-import { queryKeys } from '../../api/queryKeys';
+import { getBoardRoles } from '@/core/cms/cms';
+import { queryKeys } from '@/core/cms/queryKeys';
 
 export function useBoardRolesQuery() {
   return useQuery({
