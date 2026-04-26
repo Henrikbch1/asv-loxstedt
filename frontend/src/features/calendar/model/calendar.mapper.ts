@@ -9,7 +9,11 @@ export function mapSettingsToCalendarData(settings: any): CalendarData | null {
 
   if (!calendarId) return null;
 
-  return { calendarId };
+  const showCalendars = Boolean(
+    settings?.showCalendars ?? settings?.calendar_showCalendars,
+  );
+  const showTabs = Boolean(settings?.showTabs ?? settings?.calendar_showTabs);
+  return { calendarId, showCalendars, showTabs };
 }
 
 export default mapSettingsToCalendarData;

@@ -16,6 +16,7 @@ export function CalendarEmbed({
   showDate = false,
   showNav = false,
   showTitle = false,
+  showTabs = false,
   className,
 }: CalendarProps) {
   const iframeSrc = React.useMemo(() => {
@@ -32,7 +33,7 @@ export function CalendarEmbed({
       showDate: showDate ? '1' : '0',
       showNav: showNav ? '1' : '0',
       showTitle: showTitle ? '1' : '0',
-      showTabs: '0',
+      showTabs: showTabs ? '1' : '0',
       src: id,
       color,
     });
@@ -49,7 +50,10 @@ export function CalendarEmbed({
     showDate,
     showNav,
     showTitle,
+    showTabs,
   ]);
+
+  // no external Open-in-Google button; the embed iframe controls display
 
   return (
     <div className={className ?? DEFAULT_WRAPPER}>

@@ -9,11 +9,10 @@ export type CalendarProps = {
   showDate?: boolean;
   showNav?: boolean;
   showTitle?: boolean;
+  showTabs?: boolean;
   className?: string;
 };
 
 export type CalendarData = {
   calendarId?: string;
 } & Partial<CalendarProps>;
-
-export default CalendarProps;
