@@ -17,6 +17,12 @@ jobs:
         with:
           node-version: 18
           cache: npm
+      - name: Debug Node & npm versions
+        run: |
+          echo "Node version:";
+          node -v;
+          echo "npm version:";
+          npm -v;
       - run: npm ci
       - run: npm run build
         env:
