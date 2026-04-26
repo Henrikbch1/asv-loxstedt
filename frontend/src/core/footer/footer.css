@@ -1,0 +1,41 @@
+/* Keep only non-`@apply` rules here. The utility-based layout is provided
+   by the Tailwind class strings in `footer.classes.ts`. */
+.site-footer .meta-text {
+  color: var(--color-accent);
+}
+
+/* Scoped pseudo-element fallback for footer links */
+.site-footer a {
+  position: relative;
+  display: inline-block;
+}
+
+.site-footer a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #ffffff;
+  bottom: -3px;
+  opacity: 0;
+  transform: translateY(2px);
+  transition:
+    opacity 150ms ease,
+    transform 150ms ease;
+  pointer-events: none;
+}
+
+.site-footer a:hover::after,
+.site-footer a:focus::after {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.site-footer::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-brand), var(--color-accent));
+}

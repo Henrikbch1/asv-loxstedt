@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
-import { getPublicNewsById, getPublicNewsList } from '../../api/cms';
-import { queryKeys } from '../../api/queryKeys';
+import { getPublicNewsById, getPublicNewsList } from '@/core/cms/cms';
+import { queryKeys } from '@/core/cms/queryKeys';
 
 export function usePublicNewsListQuery(page: number) {
   return useQuery({
