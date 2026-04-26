@@ -5,6 +5,7 @@ import type { CmsPage } from '@/shared/types/cms';
 import { getCmsAssetLabel, getCmsAssetUrl } from '@/shared/utils/assets';
 import { useSiteTitle } from '@/core/settings/useSiteTitle';
 import { BoardPageView } from '@/features/board/BoardPageView';
+import { featureConfig } from '@/core/config/feature-config';
 
 interface CmsPageViewProps {
   page: CmsPage;
@@ -12,6 +13,12 @@ interface CmsPageViewProps {
 
 export function CmsPageView({ page }: CmsPageViewProps) {
   if (page.template === 'board') {
+    if (!featureConfig.board.enabled) {
+      // Feature disabled: fall back to default page rendering so the
+      // starter project doesn't need to remove CMS content.
+      return <DefaultPageView page={page} />;
+    }
+
     return <BoardPageView page={page} />;
   }
 
