@@ -1,4 +1,4 @@
-import React from 'react';
+import type { MouseEvent } from 'react';
 import { routes } from '@/core/config/routes';
 
 interface BackButtonProps {
@@ -16,7 +16,7 @@ export function BackButton({
     'inline-flex items-center gap-2 rounded-2xl px-4 py-2 text-sm font-semibold bg-brand text-white hover:bg-brand-strong focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand ' +
     className;
 
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const handleClick = (e: MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     try {
       // Try SPA navigation if available
