@@ -1,15 +1,19 @@
-import type {
-  CmsPage,
-  NavigationRecord,
-  NavigationTreeNode,
-} from '@/shared/types/cms';
-import { buildCmsPagePathMap, getCmsPageHref } from '@/shared/utils/cmsPagePaths';
+import type { RawNavigationRecord } from '@/shared/types/navigation';
+import type { RawPage } from '@/shared/types/domain';
+import type { NavigationItem } from '@/core/cms/types';
+import {
+  buildCmsPagePathMap,
+  getCmsPageHref,
+} from '@/shared/utils/cmsPagePaths';
 
-function isValidNavigationItem(item: NavigationRecord): boolean {
+function isValidRawNavigationItem(item: RawNavigationRecord): boolean {
   return Boolean(item.page?.slug);
 }
 
-function compareNavigation(a: NavigationRecord, b: NavigationRecord): number {
+function compareBySort(
+  a: { sort: number | null; label: string },
+  b: { sort: number | null; label: string },
+): number {
   const sortDiff =
     (a.sort ?? Number.MAX_SAFE_INTEGER) - (b.sort ?? Number.MAX_SAFE_INTEGER);
 
@@ -21,24 +25,24 @@ function compareNavigation(a: NavigationRecord, b: NavigationRecord): number {
 }
 
 export function buildNavigationTree(
-  items: NavigationRecord[],
-  pages: CmsPage[],
-): NavigationTreeNode[] {
-  const validItems = items
-    .filter(isValidNavigationItem)
-    .sort(compareNavigation);
-  const nodes = new Map<NavigationRecord['key'], NavigationTreeNode>();
+  items: RawNavigationRecord[],
+  pages: RawPage[],
+): NavigationItem[] {
+  const validItems = items.filter(isValidRawNavigationItem).sort(compareBySort);
+  const nodes = new Map<string, NavigationItem>();
   const pagePathsById = buildCmsPagePathMap(pages);
 
   validItems.forEach((item) => {
     nodes.set(item.key, {
-      ...item,
+      key: item.key,
+      label: item.label,
+      sort: item.sort,
       href: item.page ? getCmsPageHref(item.page.id, pagePathsById) : null,
       children: [],
     });
   });
 
-  const roots: NavigationTreeNode[] = [];
+  const roots: NavigationItem[] = [];
 
   validItems.forEach((item) => {
     const node = nodes.get(item.key);
@@ -52,7 +56,7 @@ export function buildNavigationTree(
 
       if (parentNode) {
         parentNode.children.push(node);
-        parentNode.children.sort(compareNavigation);
+        parentNode.children.sort(compareBySort);
         return;
       }
     }

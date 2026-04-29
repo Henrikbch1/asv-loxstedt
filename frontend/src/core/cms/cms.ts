@@ -1,16 +1,32 @@
 import { CmsApiError, fetchDirectus } from './directus';
-import type { CmsPage, GlobalSettings, NewsItem, Role } from '@/shared/types/domain';
 import type {
-  NavigationRecord,
-  NavigationRecordRaw,
-} from '@/shared/types/navigation';
+  RawPage,
+  RawGlobalSettings,
+  NewsItem,
+  Role,
+} from '@/shared/types/domain';
+import type { NavigationRecordRaw } from '@/shared/types/navigation';
 import type {
   DirectusListResponse,
   DirectusSingletonResponse,
 } from '@/shared/types/directus';
+import type {
+  Page,
+  SiteSettings,
+  LegalPages,
+  NavigationItem,
+} from '@/core/cms/types';
 import { findCmsPageByPath } from '@/shared/utils/cmsPagePaths';
 import { NEWS_PAGE_SIZE } from '@/core/config/constants';
-import { normalizeNavigationRecord, compareNewsItems } from './transformers';
+import { appConfig } from '@/core/config/env';
+import {
+  normalizeNavigationRecord,
+  compareNewsItems,
+  mapRawPageToPage,
+  mapRawGlobalSettingsToSiteSettings,
+  mapRawGlobalSettingsToLegalPages,
+} from './transformers';
+import { buildNavigationTree } from '@/core/navigation/navigation.utils';
 
 const pageSummaryFields = ['id', 'title', 'slug', 'navigation_title'];
 
@@ -75,11 +91,26 @@ async function fetchPublicNewsResponse<T>(
   }
 }
 
+async function fetchRawPages(signal?: AbortSignal): Promise<RawPage[]> {
+  const response = await fetchDirectus<DirectusListResponse<RawPage>>(
+    '/items/pages',
+    {
+      query: {
+        fields: pageFields,
+        sort: ['title'],
+      },
+      signal,
+    },
+  );
+
+  return response.data;
+}
+
 export async function getGlobalSettings(
   signal?: AbortSignal,
-): Promise<GlobalSettings> {
+): Promise<SiteSettings> {
   const response = await fetchDirectus<
-    DirectusSingletonResponse<GlobalSettings>
+    DirectusSingletonResponse<RawGlobalSettings>
   >('/items/global_settings', {
     query: {
       fields: [
@@ -99,55 +130,71 @@ export async function getGlobalSettings(
     signal,
   });
 
-  return response.data;
+  return mapRawGlobalSettingsToSiteSettings(
+    response.data,
+    appConfig.apiBaseUrl,
+  );
 }
 
-export async function getNavigation(
-  signal?: AbortSignal,
-): Promise<NavigationRecord[]> {
+export async function getLegalPages(signal?: AbortSignal): Promise<LegalPages> {
   const response = await fetchDirectus<
-    DirectusListResponse<NavigationRecordRaw>
-  >('/items/navigation', {
+    DirectusSingletonResponse<RawGlobalSettings>
+  >('/items/global_settings', {
     query: {
-      fields: [
-        'sort',
-        'label',
-        'parent',
-        'parent.label',
-        'parent.page.slug',
-        'parent.page.title',
-        ...pageSummaryFields.map((field) => `page.${field}`),
-      ],
-      sort: ['sort', 'label'],
+      fields: ['imprint', 'data_protection'],
     },
     signal,
   });
 
-  return response.data.map(normalizeNavigationRecord);
+  return mapRawGlobalSettingsToLegalPages(response.data);
+}
+
+export async function getNavigation(
+  signal?: AbortSignal,
+): Promise<NavigationItem[]> {
+  const [navResponse, rawPages] = await Promise.all([
+    fetchDirectus<DirectusListResponse<NavigationRecordRaw>>(
+      '/items/navigation',
+      {
+        query: {
+          fields: [
+            'sort',
+            'label',
+            'parent',
+            'parent.label',
+            'parent.page.slug',
+            'parent.page.title',
+            ...pageSummaryFields.map((field) => `page.${field}`),
+          ],
+          sort: ['sort', 'label'],
+        },
+        signal,
+      },
+    ),
+    fetchRawPages(signal),
+  ]);
+
+  const rawNavItems = navResponse.data.map(normalizeNavigationRecord);
+
+  return buildNavigationTree(rawNavItems, rawPages);
 }
 
 export async function getPublicPageByPath(
   path: string,
   signal?: AbortSignal,
-): Promise<CmsPage | null> {
-  const pages = await getPublicPages(signal);
+): Promise<Page | null> {
+  const rawPages = await fetchRawPages(signal);
+  const rawPage = findCmsPageByPath(path, rawPages);
 
-  return findCmsPageByPath(path, pages);
+  if (!rawPage) return null;
+
+  return mapRawPageToPage(rawPage, appConfig.apiBaseUrl);
 }
 
-export async function getPublicPages(signal?: AbortSignal): Promise<CmsPage[]> {
-  const response = await fetchDirectus<DirectusListResponse<CmsPage>>(
-    '/items/pages',
-    {
-      query: {
-        fields: pageFields,
-        sort: ['title'],
-      },
-      signal,
-    },
-  );
+export async function getPublicPages(signal?: AbortSignal): Promise<Page[]> {
+  const rawPages = await fetchRawPages(signal);
 
-  return response.data;
+  return rawPages.map((raw) => mapRawPageToPage(raw, appConfig.apiBaseUrl));
 }
 
 export async function getPublicNewsList(
