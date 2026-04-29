@@ -5,8 +5,9 @@ import { ErrorState } from '@/core/ui/ErrorState';
 import { PageHero } from '@/core/ui/PageHero';
 import { ContentPage } from '@/core/ui/ContentPage';
 import { Badge } from '@/core/ui/Badge';
-import type { CmsPage, Category, Person } from '@/shared/types/domain';
-import { getCmsAssetLabel, getCmsAssetUrl } from '@/shared/utils/assets';
+import type { Category, Person } from '@/shared/types/domain';
+import type { Page } from '@/core/cms/types';
+import { getCmsAssetUrl } from '@/shared/utils/assets';
 import { useSiteTitle } from '@/core/settings/useSiteTitle';
 import { useBoardRolesQuery } from './useBoardQueries';
 import { expandDirectusRelation } from '@/shared/utils/directus';
@@ -23,13 +24,13 @@ const styles = {
 } as const;
 
 interface BoardPageViewProps {
-  page: CmsPage;
+  page: Page;
 }
 
 export function BoardPageView({ page }: BoardPageViewProps) {
   useSiteTitle(page.title);
 
-  const imageUrl = getCmsAssetUrl(page.featured_image, {
+  const imageUrl = getCmsAssetUrl(page.featuredImage?.id ?? null, {
     fit: 'cover',
     width: 1600,
   });
@@ -46,7 +47,7 @@ export function BoardPageView({ page }: BoardPageViewProps) {
         eyebrow="Unser"
         title={page.title}
         imageUrl={imageUrl}
-        imageAlt={getCmsAssetLabel(page.featured_image)}
+        imageAlt={page.featuredImage?.title ?? 'Vorstand'}
       />
 
       <RichText className={ContentPage.bodyClass} html={page.content} />

@@ -4,15 +4,15 @@ import { NotFoundState } from '@/core/ui/NotFoundState';
 import { RichText } from '@/core/ui/RichText';
 import { SectionHeading } from '@/core/ui/SectionHeading';
 import { ContentPage } from '@/core/ui/ContentPage';
-import { useGlobalSettingsQuery } from '@/core/settings/useGlobalSettingsQuery';
 import { useSiteTitle } from '@/core/settings/useSiteTitle';
+import { useLegalPagesQuery } from './useCmsPageQueries';
 
 const styles = {
   section: 'flex flex-col gap-6',
 } as const;
 
 interface LegalPageProps {
-  field: 'data_protection' | 'imprint';
+  field: 'dataProtection' | 'imprint';
   title: string;
   eyebrow?: string;
 }
@@ -22,25 +22,25 @@ export function LegalPage({
   title,
   eyebrow = 'Rechtliches',
 }: LegalPageProps) {
-  const settingsQuery = useGlobalSettingsQuery();
+  const legalQuery = useLegalPagesQuery();
   useSiteTitle(title);
 
-  if (settingsQuery.isPending) {
+  if (legalQuery.isPending) {
     return <LoadingState />;
   }
 
-  if (settingsQuery.isError) {
+  if (legalQuery.isError) {
     return (
       <ErrorState
         message={`${title} konnte nicht geladen werden.`}
         onRetry={() => {
-          void settingsQuery.refetch();
+          void legalQuery.refetch();
         }}
       />
     );
   }
 
-  const content = settingsQuery.data?.[field] ?? null;
+  const content = legalQuery.data?.[field] ?? null;
 
   if (!content) {
     return <NotFoundState />;

@@ -1,14 +1,14 @@
 import { RichText } from '@/core/ui/RichText';
 import { SectionHeading } from '@/core/ui/SectionHeading';
 import { ContentPage } from '@/core/ui/ContentPage';
-import type { CmsPage } from '@/shared/types/cms';
-import { getCmsAssetLabel, getCmsAssetUrl } from '@/shared/utils/assets';
+import type { Page } from '@/core/cms/types';
+import { getCmsAssetUrl } from '@/shared/utils/assets';
 import { useSiteTitle } from '@/core/settings/useSiteTitle';
 import { BoardPageView } from '@/features/board/BoardPageView';
 import { featureConfig } from '@/core/config/feature-config';
 
 interface CmsPageViewProps {
-  page: CmsPage;
+  page: Page;
 }
 
 export function CmsPageView({ page }: CmsPageViewProps) {
@@ -27,7 +27,7 @@ export function CmsPageView({ page }: CmsPageViewProps) {
 
 function DefaultPageView({ page }: CmsPageViewProps) {
   useSiteTitle(page.title);
-  const imageUrl = getCmsAssetUrl(page.featured_image, {
+  const imageUrl = getCmsAssetUrl(page.featuredImage?.id ?? null, {
     fit: 'cover',
     width: 1600,
   });
@@ -37,7 +37,7 @@ function DefaultPageView({ page }: CmsPageViewProps) {
       <SectionHeading eyebrow="Seite" title={page.title}>
         {imageUrl ? (
           <img
-            alt={getCmsAssetLabel(page.featured_image)}
+            alt={page.featuredImage?.title ?? 'Seite Bild'}
             className="mt-6 rounded-lg"
             src={imageUrl}
           />
