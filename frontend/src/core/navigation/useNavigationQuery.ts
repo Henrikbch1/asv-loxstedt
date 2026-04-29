@@ -1,7 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
-import { getNavigation, getPublicPages } from '@/core/cms/cms';
+import { getNavigation } from '@/core/cms/cms';
 import { queryKeys } from '@/core/cms/queryKeys';
-import { buildNavigationTree } from './navigation.utils';
 
 export { useGlobalSettingsQuery } from '@/core/settings/useGlobalSettingsQuery';
 
@@ -15,13 +14,6 @@ export function useNavigationQuery() {
 export function useNavigationTreeQuery() {
   return useQuery({
     queryKey: queryKeys.navigationTree,
-    queryFn: async ({ signal }) => {
-      const [navigationItems, pages] = await Promise.all([
-        getNavigation(signal),
-        getPublicPages(signal),
-      ]);
-
-      return buildNavigationTree(navigationItems, pages);
-    },
+    queryFn: ({ signal }) => getNavigation(signal),
   });
 }

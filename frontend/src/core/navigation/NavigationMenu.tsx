@@ -1,6 +1,6 @@
 import { useId } from 'react';
 import { NavLink } from 'react-router-dom';
-import type { NavigationTreeNode } from '@/shared/types/navigation';
+import type { NavigationItem } from '@/core/cms/types';
 import { useNavigationMenuState } from './useNavigationMenuState';
 import { cn } from '@/shared/lib/cn';
 
@@ -36,7 +36,7 @@ const styles = {
 } as const;
 
 interface NavigationMenuProps {
-  items: NavigationTreeNode[];
+  items: NavigationItem[];
   depth?: number;
   expanded?: boolean;
   desktopExpanded?: boolean;

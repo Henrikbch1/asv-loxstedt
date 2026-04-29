@@ -1,14 +1,12 @@
 import { routes } from '@/core/config/routes';
 import { featureConfig } from '@/core/config/feature-config';
-import type { NavigationTreeNode } from '@/shared/types/navigation';
+import type { NavigationItem } from '@/core/cms/types';
 
-const NEWS_NAV_ITEM: NavigationTreeNode = {
+const NEWS_NAV_ITEM: NavigationItem = {
   key: 'label:news',
   sort: 9999,
   label: 'News',
   href: routes.newsList,
-  page: null,
-  parentKey: null,
   children: [],
 };
 
@@ -17,9 +15,7 @@ const NEWS_NAV_ITEM: NavigationTreeNode = {
  * returned from the CMS. Respects `featureConfig.news.enabled` so the
  * starter project can disable News entirely.
  */
-export function buildHeaderNavItems(
-  tree: NavigationTreeNode[],
-): NavigationTreeNode[] {
+export function buildHeaderNavItems(tree: NavigationItem[]): NavigationItem[] {
   // If the News feature is disabled, do nothing.
   if (!featureConfig.news.enabled) return tree;
 
@@ -30,7 +26,7 @@ export function buildHeaderNavItems(
     (n) =>
       n.href === routes.newsList ||
       n.key === NEWS_NAV_ITEM.key ||
-      (typeof n.label === 'string' && n.label.trim().toLowerCase() === 'news'),
+      n.label.trim().toLowerCase() === 'news',
   );
 
   if (hasNews) return tree;
