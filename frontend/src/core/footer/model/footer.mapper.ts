@@ -1,4 +1,4 @@
-import type { GlobalSettings } from '@/shared/types/domain';
+import type { SiteSettings } from '@/core/cms/types';
 import type { FooterData } from './footer.types';
 
 interface MapEmbedConfig {
@@ -13,27 +13,29 @@ const DEFAULT_MAP_CONFIG: MapEmbedConfig = {
   language: 'de',
 };
 
-export function mapGlobalSettingsToFooterData(
-  settings?: GlobalSettings | null,
+export function mapSiteSettingsToFooterData(
+  settings?: SiteSettings | null,
   mapConfig: MapEmbedConfig = DEFAULT_MAP_CONFIG,
 ): FooterData | null {
   if (!settings) return null;
 
-  const displayName = settings.club_name ?? settings.site_name ?? '';
+  const displayName = settings.clubName ?? settings.siteName ?? '';
 
   const addressLines = [
-    settings.street?.trim(),
-    [settings.postal_code, settings.city].filter(Boolean).join(' ').trim() ||
-      undefined,
+    settings.contact.street?.trim(),
+    [settings.contact.postalCode, settings.contact.city]
+      .filter(Boolean)
+      .join(' ')
+      .trim() || undefined,
   ].filter(Boolean) as string[];
 
   const addressQuery = addressLines.length
     ? addressLines.filter(Boolean).join(' ')
     : undefined;
 
-  const phone = settings.phone ?? undefined;
+  const phone = settings.contact.phone ?? undefined;
 
-  const footerNote = settings.footer_note ?? undefined;
+  const footerNote = settings.footerNote ?? undefined;
 
   const mapsUrl = addressQuery
     ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
@@ -57,3 +59,6 @@ export function mapGlobalSettingsToFooterData(
     mapsEmbedUrl,
   };
 }
+
+/** @deprecated Use mapSiteSettingsToFooterData */
+export const mapGlobalSettingsToFooterData = mapSiteSettingsToFooterData;

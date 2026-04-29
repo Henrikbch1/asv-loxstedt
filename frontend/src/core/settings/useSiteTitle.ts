@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
-import { useGlobalSettingsQuery } from './useGlobalSettingsQuery';
+import { useSiteSettingsQuery } from './useSiteSettingsQuery';
 
 export function useSiteTitle(pageTitle?: string) {
-  const settingsQuery = useGlobalSettingsQuery();
+  const settingsQuery = useSiteSettingsQuery();
   const site =
-    settingsQuery.data?.club_name ??
-    settingsQuery.data?.site_name ??
+    settingsQuery.data?.clubName ??
+    settingsQuery.data?.siteName ??
     'ASV Loxstedt';
 
   useEffect(() => {

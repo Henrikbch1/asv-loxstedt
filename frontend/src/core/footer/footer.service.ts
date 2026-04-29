@@ -1,5 +1,5 @@
-import { useGlobalSettingsQuery } from '@/core/settings/useGlobalSettingsQuery';
-import { mapGlobalSettingsToFooterData } from './model/footer.mapper';
+import { useSiteSettingsQuery } from '@/core/settings/useSiteSettingsQuery';
+import { mapSiteSettingsToFooterData } from './model/footer.mapper';
 import type { FooterData } from './model/footer.types';
 
 export interface UseFooterDataResult {
@@ -14,10 +14,10 @@ export interface UseFooterDataResult {
  * Keeps footer data preparation out of layout components.
  */
 export function useFooterData(): UseFooterDataResult {
-  const query = useGlobalSettingsQuery();
+  const query = useSiteSettingsQuery();
 
   return {
-    data: mapGlobalSettingsToFooterData(query.data),
+    data: mapSiteSettingsToFooterData(query.data),
     isPending: query.isPending,
     isError: query.isError,
   };

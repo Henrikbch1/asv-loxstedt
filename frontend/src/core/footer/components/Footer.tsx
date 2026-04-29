@@ -1,8 +1,8 @@
-import type { GlobalSettings } from '@/shared/types/domain';
+import type { SiteSettings } from '@/core/cms/types';
 import type { FooterLegalLink } from '../model/footer.types';
 import { footerClasses } from '../styles/footer.classes';
 import { FOOTER_TOKENS } from '../styles/footer.tokens';
-import { mapGlobalSettingsToFooterData } from '../model/footer.mapper';
+import { mapSiteSettingsToFooterData } from '../model/footer.mapper';
 import { FooterMap } from './FooterMap';
 import { FooterContact } from './FooterContact';
 import { FooterLegal } from './FooterLegal';
@@ -13,12 +13,12 @@ const footerBackground = {
 } as const;
 
 interface FooterProps {
-  settings?: GlobalSettings | null;
+  settings?: SiteSettings | null;
   legalLinks?: FooterLegalLink[] | null;
 }
 
 export function Footer({ settings, legalLinks }: FooterProps) {
-  const data = mapGlobalSettingsToFooterData(settings);
+  const data = mapSiteSettingsToFooterData(settings);
 
   const addressString = data?.addressLines?.length
     ? data.addressLines.filter(Boolean).join(' ')
@@ -30,7 +30,7 @@ export function Footer({ settings, legalLinks }: FooterProps) {
         <div className={footerClasses.layout.inner}>
           <FooterContact
             displayName={data?.displayName}
-            siteName={settings?.site_name}
+            siteName={settings?.siteName}
             addressLines={data?.addressLines}
             phone={data?.phone}
             footerNote={data?.footerNote}
@@ -45,7 +45,7 @@ export function Footer({ settings, legalLinks }: FooterProps) {
         </div>
 
         <FooterLegal
-          displayName={settings?.site_name ?? data?.displayName}
+          displayName={settings?.siteName ?? data?.displayName}
           legalLinks={legalLinks}
         />
       </div>
