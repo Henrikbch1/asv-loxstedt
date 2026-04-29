@@ -1,5 +1,8 @@
-// Re-exports for backward compatibility — import directly from domain.ts or navigation.ts
+// Re-exports — prefer Raw* names for new code; aliases kept for backward compat
 export type {
+  RawPageSummary,
+  RawGlobalSettings,
+  RawPage,
   PageSummary,
   GlobalSettings,
   CmsPage,
@@ -13,6 +16,8 @@ export type {
 
 export type {
   NavigationRecordRaw,
+  RawNavigationRecord,
+  RawNavigationTreeNode,
   NavigationRecord,
   NavigationTreeNode,
 } from './navigation';

@@ -1,28 +1,34 @@
 import type { CmsId, DirectusRelation } from './directus';
-import type { PageSummary } from './domain';
+import type { RawPageSummary } from './domain';
 
 export interface NavigationRecordRaw {
   sort: number | null;
   label: string;
-  page: DirectusRelation<PageSummary>;
+  page: DirectusRelation<RawPageSummary>;
   parent?:
     | CmsId
     | {
         label: string;
-        page: DirectusRelation<Pick<PageSummary, 'title' | 'slug'>>;
+        page: DirectusRelation<Pick<RawPageSummary, 'title' | 'slug'>>;
       }
     | null;
 }
 
-export interface NavigationRecord {
+export interface RawNavigationRecord {
   key: string;
   sort: number | null;
   label: string;
-  page: PageSummary | null;
+  page: RawPageSummary | null;
   parentKey: string | null;
 }
 
-export interface NavigationTreeNode extends NavigationRecord {
+/** @deprecated Use RawNavigationRecord */
+export type NavigationRecord = RawNavigationRecord;
+
+export interface RawNavigationTreeNode extends RawNavigationRecord {
   href: string | null;
-  children: NavigationTreeNode[];
+  children: RawNavigationTreeNode[];
 }
+
+/** @deprecated Use RawNavigationTreeNode */
+export type NavigationTreeNode = RawNavigationTreeNode;
