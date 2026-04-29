@@ -26,6 +26,7 @@ export interface RawGlobalSettings {
   postal_code?: string | null;
   city?: string | null;
   phone?: string | null;
+  calendar_id?: string | null;
 }
 
 /** @deprecated Use RawGlobalSettings */

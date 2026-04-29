@@ -1,7 +1,8 @@
 import React from 'react';
-import type { CalendarProps } from '../model/calendar.types';
+import type { CalendarEmbedProps } from '../model/calendar.types';
+import { calendarClasses } from '../styles/calendar.classes';
+import { CALENDAR_TOKENS } from '../styles/calendar.tokens';
 
-const DEFAULT_WRAPPER = 'mx-auto w-[min(1120px,calc(100vw-1.75rem))] py-8';
 const DEFAULT_CALENDAR_ID =
   '6f6b625f83f9c81cb5376f8cf22dcf12d864148213cb05687e13276ef07b2f35@group.calendar.google.com';
 
@@ -9,16 +10,16 @@ export function CalendarEmbed({
   calendarId,
   src,
   mode = 'AGENDA',
-  height = 600,
+  height = CALENDAR_TOKENS.sizes.defaultHeight,
   tz = 'Europe/Berlin',
-  color = '#0b8043',
+  color = CALENDAR_TOKENS.colors.primary,
   showCalendars = false,
   showDate = false,
   showNav = false,
   showTitle = false,
   showTabs = false,
   className,
-}: CalendarProps) {
+}: CalendarEmbedProps) {
   const iframeSrc = React.useMemo(() => {
     if (src) return src;
     const id = calendarId ?? DEFAULT_CALENDAR_ID;
@@ -53,14 +54,12 @@ export function CalendarEmbed({
     showTabs,
   ]);
 
-  // no external Open-in-Google button; the embed iframe controls display
-
   return (
-    <div className={className ?? DEFAULT_WRAPPER}>
+    <div className={className ?? calendarClasses.layout.root}>
       <iframe
         title="Google Calendar"
         src={iframeSrc}
-        className="w-full border-0"
+        className={calendarClasses.layout.iframe}
         style={{ height }}
         frameBorder={0}
         scrolling="no"
@@ -68,5 +67,3 @@ export function CalendarEmbed({
     </div>
   );
 }
-
-export default CalendarEmbed;

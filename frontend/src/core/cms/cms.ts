@@ -231,6 +231,25 @@ export async function getPublicNewsById(
   return response.data;
 }
 
+export async function getCalendarSettings(
+  signal?: AbortSignal,
+): Promise<RawGlobalSettings> {
+  try {
+    const response = await fetchDirectus<
+      DirectusSingletonResponse<RawGlobalSettings>
+    >('/items/global_settings', {
+      query: { fields: ['calendar_id'] },
+      signal,
+    });
+    return response.data;
+  } catch (error) {
+    if (error instanceof CmsApiError && error.code === 'FORBIDDEN') {
+      return {};
+    }
+    throw error;
+  }
+}
+
 export async function getBoardRoles(signal?: AbortSignal): Promise<Role[]> {
   const response = await fetchDirectus<DirectusListResponse<Role>>(
     '/items/roles',

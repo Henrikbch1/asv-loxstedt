@@ -1,4 +1,8 @@
-export type CalendarProps = {
+export interface CalendarSettings {
+  calendarId: string;
+}
+
+export interface CalendarEmbedProps {
   calendarId?: string;
   src?: string;
   mode?: 'AGENDA' | 'MONTH' | 'WEEK' | 'DAY';
@@ -11,8 +15,4 @@ export type CalendarProps = {
   showTitle?: boolean;
   showTabs?: boolean;
   className?: string;
-};
-
-export type CalendarData = {
-  calendarId?: string;
-} & Partial<CalendarProps>;
+}

@@ -11,9 +11,6 @@ export interface SiteSettings {
     phone?: string | null;
   };
   footerNote?: string | null;
-  calendar?: {
-    id?: string | null;
-  };
 }
 
 export interface LegalPages {

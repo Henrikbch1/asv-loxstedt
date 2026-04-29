@@ -1,19 +1,10 @@
-import type { CalendarData } from './calendar.types';
+import type { RawGlobalSettings } from '@/shared/types/domain';
+import type { CalendarSettings } from './calendar.types';
 
-// Map global settings (CMS response) to CalendarData used by the feature.
-export function mapSettingsToCalendarData(settings: any): CalendarData | null {
-  if (!settings) return null;
-
-  // Example mapping: try to read a calendarId from settings.calendar_id
-  const calendarId = settings?.calendar_id ?? settings?.calendarId ?? null;
-
+export function mapRawSettingsToCalendarSettings(
+  raw: RawGlobalSettings,
+): CalendarSettings | null {
+  const calendarId = raw.calendar_id ?? null;
   if (!calendarId) return null;
-
-  const showCalendars = Boolean(
-    settings?.showCalendars ?? settings?.calendar_showCalendars,
-  );
-  const showTabs = Boolean(settings?.showTabs ?? settings?.calendar_showTabs);
-  return { calendarId, showCalendars, showTabs };
+  return { calendarId };
 }
-
-export default mapSettingsToCalendarData;
