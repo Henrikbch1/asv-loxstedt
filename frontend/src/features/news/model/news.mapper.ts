@@ -1,4 +1,14 @@
-import type { NewsItem } from '@/shared/types/domain';
+import type { NewsItem, RawNewsSettings } from '@/shared/types/domain';
+import type { NewsSettings } from './news.types';
+import { NEWS_PAGE_SIZE } from '@/core/config/constants';
+
+export function mapRawSettingsToNewsSettings(
+  raw: RawNewsSettings,
+): NewsSettings {
+  return {
+    itemsPerPage: raw.items_per_page ?? NEWS_PAGE_SIZE,
+  };
+}
 
 export function mapCmsNewsToNewsItem(raw: any): NewsItem | null {
   if (!raw || typeof raw !== 'object') return null;

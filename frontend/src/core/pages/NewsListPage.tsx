@@ -5,8 +5,11 @@ import { LoadingState } from '@/core/ui/LoadingState';
 import { SectionHeading } from '@/core/ui/SectionHeading';
 import { ContentPage } from '@/core/ui/ContentPage';
 import { Button } from '@/core/ui/Button';
-import { NewsListItem } from '@/features/news/NewsListItem';
-import { usePublicNewsListQuery } from '@/features/news/useNewsQueries';
+import {
+  NewsListItem,
+  usePublicNewsListQuery,
+  useNewsSettingsQuery,
+} from '@/features/news';
 import { useSiteTitle } from '@/core/settings/useSiteTitle';
 import { NEWS_PAGE_SIZE } from '@/core/config/constants';
 
@@ -22,7 +25,9 @@ const styles = {
 export function NewsListPage() {
   const [searchParams, setSearchParams] = useSearchParams();
   const page = Math.max(1, Number(searchParams.get('page') ?? 1));
-  const newsQuery = usePublicNewsListQuery(page);
+  const { data: settings } = useNewsSettingsQuery();
+  const pageSize = settings?.itemsPerPage ?? NEWS_PAGE_SIZE;
+  const newsQuery = usePublicNewsListQuery(page, pageSize);
   useSiteTitle('Aktuelle Meldungen');
 
   if (newsQuery.isPending) {
@@ -52,7 +57,7 @@ export function NewsListPage() {
   }
 
   const totalCount = newsQuery.data.meta?.filter_count ?? 0;
-  const totalPages = Math.ceil(totalCount / NEWS_PAGE_SIZE);
+  const totalPages = Math.ceil(totalCount / pageSize);
   const hasPrev = page > 1;
   const hasNext = page < totalPages;
 

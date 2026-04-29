@@ -6,7 +6,7 @@ import { NotFoundState } from '@/core/ui/NotFoundState';
 import { RichText } from '@/core/ui/RichText';
 import { PageHero } from '@/core/ui/PageHero';
 import { ContentPage } from '@/core/ui/ContentPage';
-import { usePublicNewsByIdQuery } from '@/features/news/useNewsQueries';
+import { usePublicNewsByIdQuery } from '@/features/news';
 import { CmsApiError } from '@/core/cms/directus';
 import { getCmsAssetLabel, getNewsDetailUrl } from '@/shared/utils/assets';
 import { formatDate } from '@/shared/utils/date';

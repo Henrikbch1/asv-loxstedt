@@ -3,6 +3,7 @@ import type {
   RawPage,
   RawGlobalSettings,
   RawCalendarSettings,
+  RawNewsSettings,
   RawFeature,
   NewsItem,
   Role,
@@ -199,8 +200,28 @@ export async function getPublicPages(signal?: AbortSignal): Promise<Page[]> {
   return rawPages.map((raw) => mapRawPageToPage(raw, appConfig.apiBaseUrl));
 }
 
+export async function getNewsSettings(
+  signal?: AbortSignal,
+): Promise<RawNewsSettings> {
+  try {
+    const response = await fetchDirectus<
+      DirectusSingletonResponse<RawNewsSettings>
+    >('/items/news_settings', {
+      query: { fields: ['items_per_page'] },
+      signal,
+    });
+    return response.data;
+  } catch (error) {
+    if (error instanceof CmsApiError && error.code === 'FORBIDDEN') {
+      return {};
+    }
+    throw error;
+  }
+}
+
 export async function getPublicNewsList(
   page = 1,
+  pageSize = NEWS_PAGE_SIZE,
   signal?: AbortSignal,
 ): Promise<DirectusListResponse<NewsItem>> {
   const response = await fetchPublicNewsResponse<
@@ -209,7 +230,7 @@ export async function getPublicNewsList(
     '/items/news',
     {
       sort: ['-date', '-id'],
-      limit: NEWS_PAGE_SIZE,
+      limit: pageSize,
       page,
       meta: 'filter_count',
     },

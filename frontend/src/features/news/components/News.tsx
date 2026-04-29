@@ -1,6 +1,6 @@
 import type { NewsItem } from '@/shared/types/domain';
-import { NewsCard } from '../NewsCard';
-import { NewsListItem } from '../NewsListItem';
+import { NewsCard } from './NewsCard';
+import { NewsListItem } from './NewsListItem';
 import { newsClasses } from '../styles/news.classes';
 
 interface NewsProps {

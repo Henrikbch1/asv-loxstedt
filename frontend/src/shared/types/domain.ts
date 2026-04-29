@@ -32,6 +32,10 @@ export interface RawCalendarSettings {
   calendar_id?: string | null;
 }
 
+export interface RawNewsSettings {
+  items_per_page?: number | null;
+}
+
 export interface RawFeature {
   key: string;
   enabled: boolean | null;
