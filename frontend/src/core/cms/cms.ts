@@ -2,6 +2,8 @@ import { CmsApiError, fetchDirectus } from './directus';
 import type {
   RawPage,
   RawGlobalSettings,
+  RawCalendarSettings,
+  RawFeature,
   NewsItem,
   Role,
 } from '@/shared/types/domain';
@@ -233,11 +235,11 @@ export async function getPublicNewsById(
 
 export async function getCalendarSettings(
   signal?: AbortSignal,
-): Promise<RawGlobalSettings> {
+): Promise<RawCalendarSettings> {
   try {
     const response = await fetchDirectus<
-      DirectusSingletonResponse<RawGlobalSettings>
-    >('/items/global_settings', {
+      DirectusSingletonResponse<RawCalendarSettings>
+    >('/items/calendar_settings', {
       query: { fields: ['calendar_id'] },
       signal,
     });
@@ -245,6 +247,33 @@ export async function getCalendarSettings(
   } catch (error) {
     if (error instanceof CmsApiError && error.code === 'FORBIDDEN') {
       return {};
+    }
+    throw error;
+  }
+}
+
+export async function getFeatureEnabled(
+  key: string,
+  fallback: boolean,
+  signal?: AbortSignal,
+): Promise<boolean> {
+  try {
+    const response = await fetchDirectus<DirectusListResponse<RawFeature>>(
+      '/items/features',
+      {
+        query: {
+          fields: ['key', 'enabled'],
+          filter: { key: { _eq: key } },
+          limit: 1,
+        },
+        signal,
+      },
+    );
+    const feature = response.data[0];
+    return feature?.enabled ?? fallback;
+  } catch (error) {
+    if (error instanceof CmsApiError && error.code === 'FORBIDDEN') {
+      return fallback;
     }
     throw error;
   }
