@@ -26,7 +26,15 @@ export interface RawGlobalSettings {
   postal_code?: string | null;
   city?: string | null;
   phone?: string | null;
+}
+
+export interface RawCalendarSettings {
   calendar_id?: string | null;
+}
+
+export interface RawFeature {
+  key: string;
+  enabled: boolean | null;
 }
 
 /** @deprecated Use RawGlobalSettings */
