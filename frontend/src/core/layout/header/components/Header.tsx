@@ -1,13 +1,14 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import type { GlobalSettings, NavigationTreeNode } from '@/shared/types/cms';
-import { getCmsAssetLabel, getCmsAssetUrl } from '@/shared/utils/assets';
+import type { NavigationTreeNode } from '@/shared/types/cms';
+import type { SiteSettings } from '@/core/cms/types';
+import { getCmsAssetUrl } from '@/shared/utils/assets';
 import { NavigationMenu } from '@/core/navigation/NavigationMenu';
 import { cn } from '@/shared/lib/cn';
 import { headerClasses } from '../styles/header.classes';
 
 export interface HeaderProps {
-  settings?: GlobalSettings | null;
+  settings?: SiteSettings | null;
   navigationItems: NavigationTreeNode[];
 }
 
@@ -42,7 +43,7 @@ function CloseIcon() {
 export function Header({ settings, navigationItems }: HeaderProps) {
   const [isOpen, setIsOpen] = useState(false);
   const logo = settings?.logo ?? null;
-  const logoUrl = getCmsAssetUrl(logo, { width: 160 });
+  const logoUrl = logo ? getCmsAssetUrl(logo.id, { width: 160 }) : null;
 
   return (
     <header className={headerClasses.layout.root}>
@@ -54,13 +55,13 @@ export function Header({ settings, navigationItems }: HeaderProps) {
         >
           {logoUrl ? (
             <img
-              alt={getCmsAssetLabel(logo)}
+              alt={logo?.title ?? 'Logo'}
               className={headerClasses.brand.logo}
               src={logoUrl}
             />
           ) : null}
           <span className={headerClasses.brand.text}>
-            {settings?.site_name ?? ''}
+            {settings?.siteName ?? ''}
           </span>
         </Link>
 
