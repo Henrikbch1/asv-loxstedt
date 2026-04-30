@@ -1,10 +1,10 @@
 import { useSearchParams } from 'react-router-dom';
-import { EmptyState } from '@/core/ui/EmptyState';
-import { ErrorState } from '@/core/ui/ErrorState';
-import { LoadingState } from '@/core/ui/LoadingState';
-import { SectionHeading } from '@/core/ui/SectionHeading';
-import { ContentPage } from '@/core/ui/ContentPage';
-import { Button } from '@/core/ui/Button';
+import { EmptyState } from '@/shared/ui/EmptyState';
+import { ErrorState } from '@/shared/ui/ErrorState';
+import { LoadingState } from '@/shared/ui/LoadingState';
+import { SectionHeading } from '@/shared/ui/SectionHeading';
+import { ContentPage } from '@/shared/ui/ContentPage';
+import { Button } from '@/shared/ui/Button';
 import { NewsListItem } from '@/features/news/NewsListItem';
 import { usePublicNewsListQuery } from '@/features/news/useNewsQueries';
 import { useSiteTitle } from '@/core/settings/useSiteTitle';

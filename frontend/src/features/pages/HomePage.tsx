@@ -1,8 +1,8 @@
 import { appConfig } from '@/core/config/env';
-import { ErrorState } from '@/core/ui/ErrorState';
-import { LoadingState } from '@/core/ui/LoadingState';
-import { CmsPageView } from './CmsPageView';
-import { usePublicPageByPathQuery } from './useCmsPageQueries';
+import { ErrorState } from '@/shared/ui/ErrorState';
+import { LoadingState } from '@/shared/ui/LoadingState';
+import { CmsPageView } from '@/core/pages/CmsPageView';
+import { usePublicPageByPathQuery } from '@/core/pages/useCmsPageQueries';
 import { useSiteTitle } from '@/core/settings/useSiteTitle';
 
 export function HomePage() {
