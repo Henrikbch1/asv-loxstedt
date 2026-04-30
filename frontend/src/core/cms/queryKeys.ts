@@ -7,4 +7,5 @@ export const queryKeys = {
   newsList: (page: number) => ['news', 'list', page] as const,
   newsById: (id: string | number) => ['news', 'detail', String(id)] as const,
   boardRoles: ['board', 'roles'] as const,
+  downloads: ['downloads'] as const,
 } as const;

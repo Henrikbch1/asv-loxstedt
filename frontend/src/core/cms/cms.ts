@@ -12,3 +12,4 @@ export {
   getPublicNewsById,
   getBoardRoles,
 } from './api/pageApi';
+export { getPublicDownloads } from './api/downloadsApi';

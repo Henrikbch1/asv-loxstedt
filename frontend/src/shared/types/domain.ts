@@ -58,8 +58,9 @@ export type NewsItem = NewsItemSummary;
 export interface DownloadItem {
   id: CmsId;
   title: string;
+  description: string | null;
   file: DirectusFileReference;
-  categories: DirectusRelation<Category>[] | null;
+  category: DirectusRelation<Category> | null;
 }
 
 export interface Person {

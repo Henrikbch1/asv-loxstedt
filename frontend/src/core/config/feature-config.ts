@@ -23,6 +23,9 @@ export const featureConfig = {
   board: {
     enabled: parseEnvBool(env.VITE_FEATURE_BOARD, true),
   },
+  downloads: {
+    enabled: parseEnvBool(env.VITE_FEATURE_DOWNLOADS, true),
+  },
 } as const;
 
 export type FeatureConfig = typeof featureConfig;

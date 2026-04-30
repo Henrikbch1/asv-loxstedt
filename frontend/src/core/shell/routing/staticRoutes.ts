@@ -1,6 +1,7 @@
 export const routes = {
   home: '/home',
   newsList: '/news',
+  downloads: '/downloads',
   impressum: '/impressum',
   datenschutz: '/datenschutz',
   newsDetail: (id: string | number) => `/news/${id}`,
@@ -11,6 +12,7 @@ export const routePatterns = {
   home: '/home',
   newsList: '/news',
   newsDetail: '/news/:id',
+  downloads: '/downloads',
   impressum: '/impressum',
   datenschutz: '/datenschutz',
   cmsPage: '*',

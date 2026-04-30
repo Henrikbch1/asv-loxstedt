@@ -7,6 +7,7 @@ import { NewsDetailPage } from '@/features/news/routes/NewsDetailPage';
 import { NewsListPage } from '@/features/news/routes/NewsListPage';
 import { ImpressumPage } from '@/core/pages/ImpressumPage';
 import { DatenschutzPage } from '@/core/pages/DatenschutzPage';
+import { DownloadsPage } from '@/features/downloads/routes/DownloadsPage';
 import { routePatterns } from '@/core/shell/routing/staticRoutes';
 
 export function AppRouter() {
@@ -19,6 +20,7 @@ export function AppRouter() {
           <Route element={<HomePage />} path={routePatterns.home} />
           <Route element={<NewsListPage />} path={routePatterns.newsList} />
           <Route element={<NewsDetailPage />} path={routePatterns.newsDetail} />
+          <Route element={<DownloadsPage />} path={routePatterns.downloads} />
           <Route element={<ImpressumPage />} path={routePatterns.impressum} />
           <Route
             element={<DatenschutzPage />}
