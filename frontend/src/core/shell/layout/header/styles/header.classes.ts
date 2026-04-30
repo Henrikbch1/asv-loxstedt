@@ -13,13 +13,13 @@ export const brandClasses = {
 
 export const toggleClasses = {
   button:
-    'inline-flex items-center justify-center rounded-md p-2 text-sm font-semibold text-text md:hidden',
+    'inline-flex items-center justify-center rounded-md p-2 text-sm font-semibold text-text xl:hidden',
   icon: 'h-6 w-6',
 } as const;
 
 export const navClasses = {
-  base: 'hidden md:flex md:items-center md:gap-1',
-  open: 'absolute left-0 right-0 top-full z-40 flex flex-col gap-2 border-b border-border bg-panel-strong p-4 md:static md:inset-auto md:flex-row md:border-0 md:bg-transparent md:p-0',
+  base: 'hidden xl:flex xl:items-center xl:gap-1',
+  open: 'absolute left-0 right-0 top-full z-40 flex flex-col gap-2 border-b border-border bg-panel-strong p-4 xl:static xl:inset-auto xl:flex-row xl:border-0 xl:bg-transparent xl:p-0',
 } as const;
 
 export const headerClasses = {

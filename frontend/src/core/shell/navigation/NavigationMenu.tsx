@@ -5,11 +5,11 @@ import { useNavigationMenuState } from './useNavigationMenuState';
 import { cn } from '@/shared/lib/cn';
 
 const styles = {
-  list: 'flex flex-col gap-1 md:flex-row md:items-center md:gap-0.5',
+  list: 'flex flex-col gap-1 xl:flex-row xl:items-center xl:gap-0.5',
   listSub:
-    'hidden flex-col gap-0.5 pl-4 md:absolute md:left-0 md:top-full md:z-50 md:min-w-[180px] md:rounded-md md:border md:border-border md:bg-panel-strong md:pl-0 md:shadow-soft',
+    'hidden flex-col gap-0.5 pl-4 xl:absolute xl:left-0 xl:top-full xl:z-50 xl:min-w-[180px] xl:rounded-md xl:border xl:border-border xl:bg-panel-strong xl:pl-0 xl:shadow-soft',
   listSubOpen: 'flex',
-  listSubDesktopOpen: 'md:flex',
+  listSubDesktopOpen: 'xl:flex',
   item: 'relative',
   itemBranch: 'relative',
   itemOpen: '',
@@ -17,7 +17,7 @@ const styles = {
   link: 'block rounded-md px-3 py-2 text-sm font-medium text-text transition-colors hover:bg-surface-strong hover:text-black',
   linkActive: 'bg-surface-strong text-black font-semibold',
   linkDesktop:
-    'hidden items-center gap-1 rounded-md px-3 py-2 text-sm font-medium text-text transition-colors hover:bg-surface-strong hover:text-black md:inline-flex',
+    'hidden items-center gap-1 rounded-md px-3 py-2 text-sm font-medium text-text transition-colors hover:bg-surface-strong hover:text-black xl:inline-flex',
   linkMuted: 'cursor-default text-muted',
   linkLabel: '',
   branchIcon: 'h-3 w-3 transition-transform',
@@ -31,8 +31,8 @@ const styles = {
     'flex w-full items-center justify-between gap-2 rounded-md px-3 py-2 text-left text-sm font-medium text-text transition-colors hover:bg-surface-strong',
   branchToggleOpen: 'bg-surface-strong text-black',
   branchToggleLabel: '',
-  desktopOnly: 'hidden md:block',
-  mobileOnly: 'md:hidden',
+  desktopOnly: 'hidden xl:block',
+  mobileOnly: 'xl:hidden',
 } as const;
 
 interface NavigationMenuProps {
