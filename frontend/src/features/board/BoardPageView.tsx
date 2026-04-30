@@ -1,10 +1,10 @@
 import { Fragment } from 'react';
-import { RichText } from '@/core/ui/RichText';
-import { LoadingState } from '@/core/ui/LoadingState';
-import { ErrorState } from '@/core/ui/ErrorState';
-import { PageHero } from '@/core/ui/PageHero';
-import { ContentPage } from '@/core/ui/ContentPage';
-import { Badge } from '@/core/ui/Badge';
+import { RichText } from '@/shared/ui/RichText';
+import { LoadingState } from '@/shared/ui/LoadingState';
+import { ErrorState } from '@/shared/ui/ErrorState';
+import { PageHero } from '@/shared/ui/PageHero';
+import { ContentPage } from '@/shared/ui/ContentPage';
+import { Badge } from '@/shared/ui/Badge';
 import type { CmsPage, Category, Person } from '@/shared/types/domain';
 import { getCmsAssetLabel, getCmsAssetUrl } from '@/shared/utils/assets';
 import { useSiteTitle } from '@/core/settings/useSiteTitle';

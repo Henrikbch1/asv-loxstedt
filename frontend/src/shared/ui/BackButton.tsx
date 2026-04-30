@@ -1,5 +1,5 @@
 import type { MouseEvent } from 'react';
-import { routes } from '@/core/config/routes';
+import { routes } from '@/core/shell/routing/staticRoutes';
 
 interface BackButtonProps {
   to?: string;

@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
-import { ErrorState } from '@/core/ui/ErrorState';
-import { LoadingState } from '@/core/ui/LoadingState';
-import { NotFoundState } from '@/core/ui/NotFoundState';
+import { ErrorState } from '@/shared/ui/ErrorState';
+import { LoadingState } from '@/shared/ui/LoadingState';
+import { NotFoundState } from '@/shared/ui/NotFoundState';
 import { CmsPageView } from './CmsPageView';
 import { usePublicPageByPathQuery } from './useCmsPageQueries';
 
