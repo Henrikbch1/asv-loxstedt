@@ -1,6 +1,6 @@
 import type { CmsPage } from '@/shared/types/cms';
 import { TemplateRenderer } from '@/core/templates/TemplateRenderer';
-import { featureConfig } from '@/core/config/feature-config';
+import { useFeaturesConfig } from '@/core/config/FeaturesContext';
 import { BoardPageView } from '@/features/board/BoardPageView';
 import { DownloadsPageView } from '@/features/downloads/DownloadsPageView';
 
@@ -9,15 +9,17 @@ interface CmsPageViewProps {
 }
 
 export function CmsPageView({ page }: CmsPageViewProps) {
+  const features = useFeaturesConfig();
+
   if (page.template === 'board') {
-    if (!featureConfig.board.enabled) {
+    if (!features.board) {
       return <TemplateRenderer page={{ ...page, template: 'default' }} />;
     }
     return <BoardPageView page={page} />;
   }
 
   if (page.template === 'downloads') {
-    if (!featureConfig.downloads.enabled) {
+    if (!features.downloads) {
       return <TemplateRenderer page={{ ...page, template: 'default' }} />;
     }
     return <DownloadsPageView page={page} />;

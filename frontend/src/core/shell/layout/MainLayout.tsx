@@ -5,6 +5,7 @@ import {
 } from '@/core/shell/navigation/useNavigationQuery';
 import { buildHeaderNavItems } from '@/core/shell/navigation/buildNavTree';
 import { shouldShowCalendar } from '@/core/shell/routing/routeResolver';
+import { useFeaturesConfig } from '@/core/config/FeaturesContext';
 import { ErrorState } from '@/shared/ui/ErrorState';
 import { LoadingState } from '@/shared/ui/LoadingState';
 import { Footer } from '@/core/shell/layout/footer';
@@ -18,6 +19,7 @@ const styles = {
 
 export function AppLayout() {
   const { pathname } = useLocation();
+  const features = useFeaturesConfig();
   const settingsQuery = useGlobalSettingsQuery();
   const navigationQuery = useNavigationTreeQuery();
 
@@ -46,13 +48,13 @@ export function AppLayout() {
   return (
     <div className={styles.shell}>
       <Header
-        navigationItems={buildHeaderNavItems(navigationQuery.data ?? [])}
+        navigationItems={buildHeaderNavItems(navigationQuery.data ?? [], features.news)}
         settings={settingsQuery.data}
       />
       <main className={styles.main}>
         <Outlet />
       </main>
-      {shouldShowCalendar(pathname) && (
+      {shouldShowCalendar(pathname, features.calendar) && (
         <Calendar settings={settingsQuery.data} />
       )}
       <Footer settings={settingsQuery.data} />

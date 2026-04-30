@@ -5,7 +5,7 @@ import { getCmsAssetLabel, getCmsAssetUrl } from '@/shared/utils/assets';
 import { NavigationMenu } from '@/core/shell/navigation/NavigationMenu';
 import { cn } from '@/shared/lib/cn';
 import { headerClasses } from '../styles/header.classes';
-import { featureConfig } from '@/core/config/feature-config';
+import { useFeaturesConfig } from '@/core/config/FeaturesContext';
 import { routes } from '@/core/shell/routing/staticRoutes';
 
 export interface HeaderProps {
@@ -43,6 +43,7 @@ function CloseIcon() {
 
 export function Header({ settings, navigationItems }: HeaderProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const features = useFeaturesConfig();
   const logo = settings?.logo ?? null;
   const logoUrl = getCmsAssetUrl(logo, { width: 160 });
 
@@ -91,7 +92,7 @@ export function Header({ settings, navigationItems }: HeaderProps) {
             onNavigate={() => setIsOpen(false)}
             key={isOpen ? 'navigation-open' : 'navigation-closed'}
           />
-          {featureConfig.downloads.enabled ? (
+          {features.downloads ? (
             <NavLink
               className={({ isActive }) =>
                 cn(

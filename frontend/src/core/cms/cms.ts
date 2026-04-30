@@ -13,3 +13,4 @@ export {
   getBoardRoles,
 } from './api/pageApi';
 export { getPublicDownloads } from './api/downloadsApi';
+export { getFeatures } from './api/featuresApi';
