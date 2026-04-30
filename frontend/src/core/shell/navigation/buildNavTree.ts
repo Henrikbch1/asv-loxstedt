@@ -1,4 +1,4 @@
-import { routes } from '@/core/config/routes';
+import { routes } from '@/core/shell/routing/staticRoutes';
 import { featureConfig } from '@/core/config/feature-config';
 import type { NavigationTreeNode } from '@/shared/types/navigation';
 

@@ -1,20 +1,20 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { ScrollToTop } from './ScrollToTop';
-import { AppLayout } from '../layout/AppLayout';
-import { CmsPageRoute } from '../pages/CmsPageRoute';
-import { HomePage } from '../pages/HomePage';
-import { NewsDetailPage } from '../pages/NewsDetailPage';
-import { NewsListPage } from '../pages/NewsListPage';
-import { ImpressumPage } from '../pages/ImpressumPage';
-import { DatenschutzPage } from '../pages/DatenschutzPage';
-import { routePatterns } from '@/core/config/routes';
+import { AppLayout as MainLayout } from '@/core/shell/layout/MainLayout';
+import { CmsPageRoute } from '@/core/pages/CmsPageRoute';
+import { HomePage } from '@/features/pages/HomePage';
+import { NewsDetailPage } from '@/features/news/routes/NewsDetailPage';
+import { NewsListPage } from '@/features/news/routes/NewsListPage';
+import { ImpressumPage } from '@/core/pages/ImpressumPage';
+import { DatenschutzPage } from '@/core/pages/DatenschutzPage';
+import { routePatterns } from '@/core/shell/routing/staticRoutes';
 
 export function AppRouter() {
   return (
     <BrowserRouter>
       <ScrollToTop />
       <Routes>
-        <Route element={<AppLayout />}>
+        <Route element={<MainLayout />}>
           <Route index element={<Navigate replace to={routePatterns.home} />} />
           <Route element={<HomePage />} path={routePatterns.home} />
           <Route element={<NewsListPage />} path={routePatterns.newsList} />

@@ -1,4 +1,4 @@
-import { RichText } from '@/core/ui/RichText';
+import { RichText } from '@/shared/ui/RichText';
 import { footerClasses } from '../styles/footer.classes';
 
 interface FooterContactProps {

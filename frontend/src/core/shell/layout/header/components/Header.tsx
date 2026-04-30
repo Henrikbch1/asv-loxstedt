@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import type { GlobalSettings, NavigationTreeNode } from '@/shared/types/cms';
 import { getCmsAssetLabel, getCmsAssetUrl } from '@/shared/utils/assets';
-import { NavigationMenu } from '@/core/navigation/NavigationMenu';
+import { NavigationMenu } from '@/core/shell/navigation/NavigationMenu';
 import { cn } from '@/shared/lib/cn';
 import { headerClasses } from '../styles/header.classes';
 

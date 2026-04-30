@@ -2,13 +2,13 @@ import { Outlet, useLocation } from 'react-router-dom';
 import {
   useGlobalSettingsQuery,
   useNavigationTreeQuery,
-} from '@/core/navigation/useNavigationQuery';
-import { buildHeaderNavItems } from '@/core/navigation/navigation.service';
-import { shouldShowCalendar } from '@/core/routing/routeResolver';
-import { ErrorState } from '../ui/ErrorState';
-import { LoadingState } from '../ui/LoadingState';
-import { Footer } from '@/core/footer';
-import { Header } from '@/core/layout/header/index';
+} from '@/core/shell/navigation/useNavigationQuery';
+import { buildHeaderNavItems } from '@/core/shell/navigation/buildNavTree';
+import { shouldShowCalendar } from '@/core/shell/routing/routeResolver';
+import { ErrorState } from '@/shared/ui/ErrorState';
+import { LoadingState } from '@/shared/ui/LoadingState';
+import { Footer } from '@/core/shell/layout/footer';
+import { Header } from '@/core/shell/layout/header/index';
 import { Calendar } from '@/features/calendar';
 
 const styles = {

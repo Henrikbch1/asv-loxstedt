@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { getNavigation, getPublicPages } from '@/core/cms/cms';
 import { queryKeys } from '@/core/cms/queryKeys';
-import { buildNavigationTree } from './navigation.utils';
+import { buildNavigationTree } from './navGuards';
 
 export { useGlobalSettingsQuery } from '@/core/settings/useGlobalSettingsQuery';
 
