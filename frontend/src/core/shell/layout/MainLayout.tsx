@@ -48,7 +48,10 @@ export function AppLayout() {
   return (
     <div className={styles.shell}>
       <Header
-        navigationItems={buildHeaderNavItems(navigationQuery.data ?? [], features.news)}
+        navigationItems={buildHeaderNavItems(
+          navigationQuery.data ?? [],
+          features.news,
+        )}
         settings={settingsQuery.data}
       />
       <main className={styles.main}>
