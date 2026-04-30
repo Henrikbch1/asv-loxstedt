@@ -5,6 +5,34 @@
     "vendor": "sqlite",
     "collections": [
       {
+        "collection": "calendar_settings",
+        "meta": {
+          "accountability": "all",
+          "archive_app_filter": true,
+          "archive_field": null,
+          "archive_value": null,
+          "collapse": "open",
+          "collection": "calendar_settings",
+          "color": null,
+          "display_template": null,
+          "group": "features",
+          "hidden": false,
+          "icon": "settings",
+          "item_duplication_fields": null,
+          "note": null,
+          "preview_url": null,
+          "singleton": true,
+          "sort": 1,
+          "sort_field": null,
+          "translations": null,
+          "unarchive_value": null,
+          "versioning": false
+        },
+        "schema": {
+          "name": "calendar_settings"
+        }
+      },
+      {
         "collection": "categories",
         "meta": {
           "accountability": "all",
@@ -43,14 +71,14 @@
           "collection": "downloads",
           "color": null,
           "display_template": null,
-          "group": "pages",
+          "group": "features",
           "hidden": false,
           "icon": "download",
           "item_duplication_fields": null,
           "note": null,
           "preview_url": null,
           "singleton": false,
-          "sort": 3,
+          "sort": 4,
           "sort_field": "sort",
           "translations": null,
           "unarchive_value": null,
@@ -58,6 +86,34 @@
         },
         "schema": {
           "name": "downloads"
+        }
+      },
+      {
+        "collection": "features",
+        "meta": {
+          "accountability": "all",
+          "archive_app_filter": true,
+          "archive_field": null,
+          "archive_value": null,
+          "collapse": "open",
+          "collection": "features",
+          "color": null,
+          "display_template": null,
+          "group": null,
+          "hidden": false,
+          "icon": "extension",
+          "item_duplication_fields": null,
+          "note": null,
+          "preview_url": null,
+          "singleton": false,
+          "sort": 3,
+          "sort_field": null,
+          "translations": null,
+          "unarchive_value": null,
+          "versioning": false
+        },
+        "schema": {
+          "name": "features"
         }
       },
       {
@@ -78,7 +134,7 @@
           "note": null,
           "preview_url": null,
           "singleton": true,
-          "sort": 3,
+          "sort": 2,
           "sort_field": null,
           "translations": null,
           "unarchive_value": null,
@@ -134,7 +190,7 @@
           "note": null,
           "preview_url": null,
           "singleton": false,
-          "sort": 4,
+          "sort": 2,
           "sort_field": null,
           "translations": null,
           "unarchive_value": "draft",
@@ -142,6 +198,34 @@
         },
         "schema": {
           "name": "news"
+        }
+      },
+      {
+        "collection": "news_settings",
+        "meta": {
+          "accountability": "all",
+          "archive_app_filter": true,
+          "archive_field": null,
+          "archive_value": null,
+          "collapse": "open",
+          "collection": "news_settings",
+          "color": null,
+          "display_template": null,
+          "group": "features",
+          "hidden": false,
+          "icon": "settings",
+          "item_duplication_fields": null,
+          "note": null,
+          "preview_url": null,
+          "singleton": true,
+          "sort": 2,
+          "sort_field": null,
+          "translations": null,
+          "unarchive_value": null,
+          "versioning": false
+        },
+        "schema": {
+          "name": "news_settings"
         }
       },
       {
@@ -211,14 +295,14 @@
           "collection": "roles",
           "color": null,
           "display_template": "{{role}}",
-          "group": null,
+          "group": "features",
           "hidden": false,
-          "icon": null,
+          "icon": "account_circle",
           "item_duplication_fields": null,
           "note": null,
           "preview_url": null,
           "singleton": false,
-          "sort": 2,
+          "sort": 3,
           "sort_field": "sort",
           "translations": null,
           "unarchive_value": null,
@@ -230,6 +314,94 @@
       }
     ],
     "fields": [
+      {
+        "collection": "calendar_settings",
+        "field": "id",
+        "type": "integer",
+        "meta": {
+          "collection": "calendar_settings",
+          "conditions": null,
+          "display": null,
+          "display_options": null,
+          "field": "id",
+          "group": null,
+          "hidden": true,
+          "interface": "input",
+          "note": null,
+          "options": null,
+          "readonly": true,
+          "required": false,
+          "searchable": true,
+          "sort": 1,
+          "special": null,
+          "translations": null,
+          "validation": null,
+          "validation_message": null,
+          "width": "full"
+        },
+        "schema": {
+          "name": "id",
+          "table": "calendar_settings",
+          "data_type": "integer",
+          "default_value": null,
+          "max_length": null,
+          "numeric_precision": null,
+          "numeric_scale": null,
+          "is_nullable": false,
+          "is_unique": false,
+          "is_indexed": false,
+          "is_primary_key": true,
+          "is_generated": false,
+          "generation_expression": null,
+          "has_auto_increment": true,
+          "foreign_key_table": null,
+          "foreign_key_column": null
+        }
+      },
+      {
+        "collection": "calendar_settings",
+        "field": "calendar_id",
+        "type": "string",
+        "meta": {
+          "collection": "calendar_settings",
+          "conditions": null,
+          "display": null,
+          "display_options": null,
+          "field": "calendar_id",
+          "group": null,
+          "hidden": false,
+          "interface": "input",
+          "note": null,
+          "options": null,
+          "readonly": false,
+          "required": false,
+          "searchable": true,
+          "sort": 2,
+          "special": null,
+          "translations": null,
+          "validation": null,
+          "validation_message": null,
+          "width": "full"
+        },
+        "schema": {
+          "name": "calendar_id",
+          "table": "calendar_settings",
+          "data_type": "varchar",
+          "default_value": null,
+          "max_length": 255,
+          "numeric_precision": null,
+          "numeric_scale": null,
+          "is_nullable": true,
+          "is_unique": false,
+          "is_indexed": false,
+          "is_primary_key": false,
+          "is_generated": false,
+          "generation_expression": null,
+          "has_auto_increment": false,
+          "foreign_key_table": null,
+          "foreign_key_column": null
+        }
+      },
       {
         "collection": "categories",
         "field": "id",
@@ -708,7 +880,7 @@
           "readonly": false,
           "required": true,
           "searchable": true,
-          "sort": 8,
+          "sort": 9,
           "special": [
             "file"
           ],
@@ -738,27 +910,69 @@
       },
       {
         "collection": "downloads",
-        "field": "categories",
+        "field": "description",
+        "type": "text",
+        "meta": {
+          "collection": "downloads",
+          "conditions": null,
+          "display": null,
+          "display_options": null,
+          "field": "description",
+          "group": null,
+          "hidden": false,
+          "interface": "input-multiline",
+          "note": null,
+          "options": null,
+          "readonly": false,
+          "required": false,
+          "searchable": true,
+          "sort": 8,
+          "special": null,
+          "translations": null,
+          "validation": null,
+          "validation_message": null,
+          "width": "full"
+        },
+        "schema": {
+          "name": "description",
+          "table": "downloads",
+          "data_type": "text",
+          "default_value": null,
+          "max_length": null,
+          "numeric_precision": null,
+          "numeric_scale": null,
+          "is_nullable": true,
+          "is_unique": false,
+          "is_indexed": false,
+          "is_primary_key": false,
+          "is_generated": false,
+          "generation_expression": null,
+          "has_auto_increment": false,
+          "foreign_key_table": null,
+          "foreign_key_column": null
+        }
+      },
+      {
+        "collection": "downloads",
+        "field": "category",
         "type": "integer",
         "meta": {
           "collection": "downloads",
           "conditions": null,
-          "display": "related-values",
-          "display_options": {
-            "template": "{{name}}"
-          },
-          "field": "categories",
+          "display": null,
+          "display_options": null,
+          "field": "category",
           "group": null,
           "hidden": false,
           "interface": "select-dropdown-m2o",
           "note": null,
           "options": {
-            "template": "{{name}}"
+            "enableCreate": false
           },
           "readonly": false,
           "required": false,
           "searchable": true,
-          "sort": 9,
+          "sort": 10,
           "special": [
             "m2o"
           ],
@@ -768,7 +982,7 @@
           "width": "full"
         },
         "schema": {
-          "name": "categories",
+          "name": "category",
           "table": "downloads",
           "data_type": "integer",
           "default_value": null,
@@ -784,6 +998,143 @@
           "has_auto_increment": false,
           "foreign_key_table": "categories",
           "foreign_key_column": "id"
+        }
+      },
+      {
+        "collection": "features",
+        "field": "id",
+        "type": "integer",
+        "meta": {
+          "collection": "features",
+          "conditions": null,
+          "display": null,
+          "display_options": null,
+          "field": "id",
+          "group": null,
+          "hidden": true,
+          "interface": "input",
+          "note": null,
+          "options": null,
+          "readonly": true,
+          "required": false,
+          "searchable": true,
+          "sort": 1,
+          "special": null,
+          "translations": null,
+          "validation": null,
+          "validation_message": null,
+          "width": "full"
+        },
+        "schema": {
+          "name": "id",
+          "table": "features",
+          "data_type": "integer",
+          "default_value": null,
+          "max_length": null,
+          "numeric_precision": null,
+          "numeric_scale": null,
+          "is_nullable": false,
+          "is_unique": false,
+          "is_indexed": false,
+          "is_primary_key": true,
+          "is_generated": false,
+          "generation_expression": null,
+          "has_auto_increment": true,
+          "foreign_key_table": null,
+          "foreign_key_column": null
+        }
+      },
+      {
+        "collection": "features",
+        "field": "key",
+        "type": "string",
+        "meta": {
+          "collection": "features",
+          "conditions": null,
+          "display": null,
+          "display_options": null,
+          "field": "key",
+          "group": null,
+          "hidden": false,
+          "interface": "input",
+          "note": null,
+          "options": {
+            "iconLeft": "extension",
+            "placeholder": null
+          },
+          "readonly": false,
+          "required": false,
+          "searchable": true,
+          "sort": 2,
+          "special": null,
+          "translations": null,
+          "validation": null,
+          "validation_message": null,
+          "width": "full"
+        },
+        "schema": {
+          "name": "key",
+          "table": "features",
+          "data_type": "varchar",
+          "default_value": null,
+          "max_length": 255,
+          "numeric_precision": null,
+          "numeric_scale": null,
+          "is_nullable": true,
+          "is_unique": false,
+          "is_indexed": false,
+          "is_primary_key": false,
+          "is_generated": false,
+          "generation_expression": null,
+          "has_auto_increment": false,
+          "foreign_key_table": null,
+          "foreign_key_column": null
+        }
+      },
+      {
+        "collection": "features",
+        "field": "enabled",
+        "type": "boolean",
+        "meta": {
+          "collection": "features",
+          "conditions": null,
+          "display": null,
+          "display_options": null,
+          "field": "enabled",
+          "group": null,
+          "hidden": false,
+          "interface": "boolean",
+          "note": null,
+          "options": null,
+          "readonly": false,
+          "required": false,
+          "searchable": true,
+          "sort": 3,
+          "special": [
+            "cast-boolean"
+          ],
+          "translations": null,
+          "validation": null,
+          "validation_message": null,
+          "width": "full"
+        },
+        "schema": {
+          "name": "enabled",
+          "table": "features",
+          "data_type": "boolean",
+          "default_value": false,
+          "max_length": null,
+          "numeric_precision": null,
+          "numeric_scale": null,
+          "is_nullable": true,
+          "is_unique": false,
+          "is_indexed": false,
+          "is_primary_key": false,
+          "is_generated": false,
+          "generation_expression": null,
+          "has_auto_increment": false,
+          "foreign_key_table": null,
+          "foreign_key_column": null
         }
       },
       {
@@ -2113,6 +2464,96 @@
         }
       },
       {
+        "collection": "news_settings",
+        "field": "id",
+        "type": "integer",
+        "meta": {
+          "collection": "news_settings",
+          "conditions": null,
+          "display": null,
+          "display_options": null,
+          "field": "id",
+          "group": null,
+          "hidden": true,
+          "interface": "input",
+          "note": null,
+          "options": null,
+          "readonly": true,
+          "required": false,
+          "searchable": true,
+          "sort": 1,
+          "special": null,
+          "translations": null,
+          "validation": null,
+          "validation_message": null,
+          "width": "full"
+        },
+        "schema": {
+          "name": "id",
+          "table": "news_settings",
+          "data_type": "integer",
+          "default_value": null,
+          "max_length": null,
+          "numeric_precision": null,
+          "numeric_scale": null,
+          "is_nullable": false,
+          "is_unique": false,
+          "is_indexed": false,
+          "is_primary_key": true,
+          "is_generated": false,
+          "generation_expression": null,
+          "has_auto_increment": true,
+          "foreign_key_table": null,
+          "foreign_key_column": null
+        }
+      },
+      {
+        "collection": "news_settings",
+        "field": "items_per_page",
+        "type": "integer",
+        "meta": {
+          "collection": "news_settings",
+          "conditions": null,
+          "display": null,
+          "display_options": null,
+          "field": "items_per_page",
+          "group": null,
+          "hidden": false,
+          "interface": "input",
+          "note": null,
+          "options": {
+            "min": 1
+          },
+          "readonly": false,
+          "required": false,
+          "searchable": true,
+          "sort": 2,
+          "special": null,
+          "translations": null,
+          "validation": null,
+          "validation_message": null,
+          "width": "full"
+        },
+        "schema": {
+          "name": "items_per_page",
+          "table": "news_settings",
+          "data_type": "integer",
+          "default_value": 5,
+          "max_length": null,
+          "numeric_precision": null,
+          "numeric_scale": null,
+          "is_nullable": true,
+          "is_unique": false,
+          "is_indexed": false,
+          "is_primary_key": false,
+          "is_generated": false,
+          "generation_expression": null,
+          "has_auto_increment": false,
+          "foreign_key_table": null,
+          "foreign_key_column": null
+        }
+      },
+      {
         "collection": "pages",
         "field": "id",
         "type": "integer",
@@ -2714,7 +3155,8 @@
                 "value": "landing"
               },
               {
-                "text": "Ansprechpartner",
+                "icon": "groups",
+                "text": "Vorstand",
                 "value": "board"
               },
               {
@@ -3672,12 +4114,12 @@
       },
       {
         "collection": "downloads",
-        "field": "categories",
+        "field": "category",
         "related_collection": "categories",
         "meta": {
           "junction_field": null,
           "many_collection": "downloads",
-          "many_field": "categories",
+          "many_field": "category",
           "one_allowed_collections": null,
           "one_collection": "categories",
           "one_collection_field": null,
@@ -3687,12 +4129,12 @@
         },
         "schema": {
           "table": "downloads",
-          "column": "categories",
+          "column": "category",
           "foreign_key_table": "categories",
           "foreign_key_column": "id",
           "constraint_name": null,
           "on_update": "NO ACTION",
-          "on_delete": "SET NULL"
+          "on_delete": "NO ACTION"
         }
       },
       {
