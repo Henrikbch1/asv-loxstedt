@@ -6,8 +6,8 @@ export const layoutClasses = {
 } as const;
 
 export const brandClasses = {
-  root: 'inline-flex items-center gap-3 font-bold text-black',
-  logo: 'h-10 w-auto',
+  root: 'pl-3 inline-flex items-center gap-3 font-bold text-black',
+  logo: 'h-20 w-auto',
   text: 'text-lg leading-tight',
 } as const;
 
