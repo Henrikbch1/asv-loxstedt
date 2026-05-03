@@ -20,6 +20,9 @@ frontend/node_modules/
 frontend/dist/
 frontend/.env
 
+# JetBrains IDEA
+.idea/
+
 # Cypress artefacts (frontend tests)
 frontend/cypress/videos/
 frontend/cypress/screenshots/
