@@ -9,6 +9,7 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write \"src/**/*.{ts,tsx,css,json}\"",
+    "export:demo-cms": "node scripts/export-demo-cms.mjs",
     "test": "vitest",
     "preview": "vite preview"
   },
