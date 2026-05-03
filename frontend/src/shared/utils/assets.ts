@@ -32,7 +32,7 @@ export function getCmsAssetUrl(
       : appConfig.assetsPath;
   const baseUrl =
     appConfig.cmsMode === 'demo'
-      ? import.meta.env.BASE_URL
+      ? window.location.origin + import.meta.env.BASE_URL
       : `${appConfig.apiBaseUrl}/`;
   const url = new URL(`${assetsPath.replace(/^\/?/, '')}/${assetId}`, baseUrl);
 
