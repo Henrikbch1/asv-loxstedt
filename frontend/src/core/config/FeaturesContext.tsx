@@ -28,7 +28,8 @@ export function FeaturesProvider({ children }: { children: ReactNode }) {
   const flags: FeatureFlags = { ...defaultFlags };
   for (const item of data ?? []) {
     if (item.key in flags) {
-      (flags as Record<string, boolean>)[item.key] = item.enabled;
+      const key = item.key as keyof FeatureFlags;
+      flags[key] = item.enabled;
     }
   }
 
