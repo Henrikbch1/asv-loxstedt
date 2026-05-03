@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - demo-hosting-static-pages
   workflow_dispatch:
 
 permissions:
