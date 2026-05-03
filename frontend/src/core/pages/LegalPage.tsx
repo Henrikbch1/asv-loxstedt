@@ -1,9 +1,9 @@
-import { ErrorState } from '@/core/ui/ErrorState';
-import { LoadingState } from '@/core/ui/LoadingState';
-import { NotFoundState } from '@/core/ui/NotFoundState';
-import { RichText } from '@/core/ui/RichText';
-import { SectionHeading } from '@/core/ui/SectionHeading';
-import { ContentPage } from '@/core/ui/ContentPage';
+import { ErrorState } from '@/shared/ui/ErrorState';
+import { LoadingState } from '@/shared/ui/LoadingState';
+import { NotFoundState } from '@/shared/ui/NotFoundState';
+import { RichText } from '@/shared/ui/RichText';
+import { SectionHeading } from '@/shared/ui/SectionHeading';
+import { ContentPage } from '@/shared/ui/ContentPage';
 import { useGlobalSettingsQuery } from '@/core/settings/useGlobalSettingsQuery';
 import { useSiteTitle } from '@/core/settings/useSiteTitle';
 

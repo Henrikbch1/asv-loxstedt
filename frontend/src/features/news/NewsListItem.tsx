@@ -3,10 +3,10 @@ import type { NewsItem } from '@/shared/types/domain';
 import { getCmsAssetLabel, getNewsPreviewUrl } from '@/shared/utils/assets';
 import { formatDate } from '@/shared/utils/date';
 import { getExcerpt } from '@/shared/utils/text';
-import { routes } from '@/core/config/routes';
+import { routes } from '@/core/shell/routing/staticRoutes';
 import { expandDirectusRelation } from '@/shared/utils/directus';
 import type { Category } from '@/shared/types/domain';
-import { Badge } from '@/core/ui/Badge';
+import { Badge } from '@/shared/ui/Badge';
 import { cn } from '@/shared/lib/cn';
 
 const styles = {

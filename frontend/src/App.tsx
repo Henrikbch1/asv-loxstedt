@@ -1,7 +1,2 @@
-import { AppRouter } from './core/routing/AppRouter';
-
-function App() {
-  return <AppRouter />;
-}
-
-export default App;
+// Component moved to src/app/App.tsx – this file is kept as a redirect stub.
+export { default } from './app/App';

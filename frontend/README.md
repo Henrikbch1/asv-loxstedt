@@ -1,34 +1,47 @@
 # Frontend — ASV Loxstedt
 
 <p align="center">
-	<img alt="frontend tech" src="https://img.shields.io/badge/tech-React%20%2B%20TypeScript-blue?logo=react&style=flat-square" />
+	<img alt="frontend tech" src="https://img.shields.io/badge/tech-React%2019%20%2B%20TypeScript-blue?logo=react&style=flat-square" />
 	<img alt="vite" src="https://img.shields.io/badge/bundler-Vite-646cff?style=flat-square&logo=vite" />
+	<img alt="tailwind" src="https://img.shields.io/badge/styles-Tailwind%20v4-38bdf8?style=flat-square&logo=tailwindcss" />
 	<img alt="directus" src="https://img.shields.io/badge/cms-Directus-ff69b4?style=flat-square&logo=directus" />
 </p>
 
-React + TypeScript (Vite) Frontend, das Inhalte aus Directus rendert: Seiten, Navigation, News.
+React 19 + TypeScript + Vite Frontend für den ASV Loxstedt. Inhalte (Seiten, Navigation, News, Downloads, Vorstand, Kalender) werden über Directus als Headless CMS gepflegt.
+
+## Tech-Stack
+
+| Bereich    | Technologie                           |
+| ---------- | ------------------------------------- |
+| UI         | React 19, TypeScript                  |
+| Bundler    | Vite 8                                |
+| Styling    | Tailwind CSS v4.2                     |
+| Routing    | React Router v7                       |
+| Datenabruf | TanStack Query v5                     |
+| CMS        | Directus (selbst gehostet via Docker) |
+| Tests      | Vitest + Testing Library              |
 
 ## Schnellstart (lokal)
 
-1. Directus starten (aus Projekt-Root):
+**1. Directus starten** (aus dem Projekt-Root):
 
 ```powershell
 cd cms
 docker compose up -d
 ```
 
-2. Frontend starten:
+**2. Frontend starten:**
 
 ```powershell
+# PowerShell
 cd frontend
-Copy-Item .env.example .env.local   # PowerShell
+Copy-Item .env.example .env.local
 npm install
 npm run dev
 ```
 
-oder (Bash):
-
 ```bash
+# Bash
 cd frontend
 cp .env.example .env.local
 npm install
@@ -37,36 +50,63 @@ npm run dev
 
 Standardmäßig erwartet das Frontend Directus unter `http://localhost:8055`.
 
-## Wichtige Umgebungsvariablen
+## Umgebungsvariablen
 
-- `VITE_API_BASE_URL` (default `http://localhost:8055`)
-- `VITE_DIRECTUS_ASSETS_PATH` (default `/assets`)
-- `VITE_HOME_SLUG` (default `home`)
-- `VITE_DIRECTUS_TOKEN` (optional — read-only Token)
+Alle Variablen werden in [`.env.example`](.env.example) mit Defaults dokumentiert.
 
-Siehe [frontend/.env.example](frontend/.env.example) für Details.
+| Variable                    | Default                 | Beschreibung                                             |
+| --------------------------- | ----------------------- | -------------------------------------------------------- |
+| `VITE_API_BASE_URL`         | `http://localhost:8055` | Basis-URL der Directus-Instanz                           |
+| `VITE_DIRECTUS_ASSETS_PATH` | `/assets`               | Pfad für Directus-Assets                                 |
+| `VITE_HOME_SLUG`            | `home`                  | Slug der Startseite                                      |
+| `VITE_DIRECTUS_TOKEN`       | _(leer)_                | Read-only API-Token (nur wenn Public Access deaktiviert) |
+
+> `VITE_DIRECTUS_TOKEN` nie ins VCS einchecken.
 
 ## Scripts
 
-- `npm run dev` — Dev-Server (Vite)
-- `npm run build` — Produktions-Build
-- `npm run preview` — `vite preview`
-- `npm run lint` — ESLint
+| Befehl             | Beschreibung                      |
+| ------------------ | --------------------------------- |
+| `npm run dev`      | Dev-Server starten (Vite)         |
+| `npm run build`    | Produktions-Build (`tsc` + Vite)  |
+| `npm run preview`  | Build lokal vorschauen            |
+| `npm run test`     | Tests mit Vitest ausführen        |
+| `npm run lint`     | ESLint prüfen                     |
+| `npm run lint:fix` | ESLint-Fehler automatisch beheben |
+| `npm run format`   | Prettier auf `src/` anwenden      |
 
-## Wichtige Dateien
+## Projektstruktur
 
-- `frontend/src/api/directus.ts` — zentrale Fetch-/Fehlerlogik
-- `frontend/src/api/cms.ts` — CMS-API-Funktionen
-- `frontend/src/routes/AppRouter.tsx` — Routing
-- `frontend/src/components/ui/RichText.tsx` — sichere RichText-Ausgabe
+```
+src/
+├── app/            # App-Einstiegspunkt, Providers, Router
+├── core/           # Stabile Basis: CMS-Anbindung, Routing, Shell, Templates
+│   ├── cms/        # Directus-Adapter, API, Mapper, Schemas, Typen
+│   ├── config/     # Umgebungsvariablen, Konstanten, Defaults
+│   ├── shell/      # Header, Footer, Layout
+│   └── templates/  # Seiten-Templates (standard, board, downloads, …)
+├── features/       # Optionale, modular aktivierbare Features
+│   ├── board/      # Vorstand
+│   ├── calendar/   # Kalender
+│   ├── downloads/  # Downloads
+│   ├── news/       # News
+│   └── pages/      # CMS-gesteuerte Seiten
+└── shared/         # Wiederverwendbare UI-Komponenten, Utilities, Typen
+```
 
 ## Erwartete Directus-Collections
 
-- `global_settings`, `navigation`, `pages`, `news`, `downloads`, `categories`, `persons`, `roles`
+- `global_settings` — Footer, Kontaktdaten, Feature-Flags
+- `navigation` — Navigationsstruktur mit Dropdowns
+- `pages` — Alle CMS-Seiten (Slug, Template, Parent)
+- `news` — Nachrichtenbeiträge
+- `downloads` — Datei-Downloads
+- `persons` / `roles` — Vorstandsmitglieder
+
+Weitere Informationen zur CMS-Konfiguration: [Directus-Setup.md](Directus-Setup.md)
 
 ## Hinweise
 
-- Nutze `VITE_DIRECTUS_TOKEN` nur für read-only Zugriffe und nie ins VCS einchecken.
-- Falls du Inhalte testen willst: `cms/database/snapshot.json` oder Directus Import/Export verwenden.
-
-Bei Bedarf passe ich die README weiter an (Screenshots, Deploy-Anleitung, CI).
+- Eine Seite mit Slug `home` muss in Directus existieren, damit die Startseite Inhalte zeigt.
+- Testdaten: `cms/database/snapshot.json` in Directus importieren.
+- Pfad-Alias `@` zeigt auf `src/` (konfiguriert in `vite.config.ts`).

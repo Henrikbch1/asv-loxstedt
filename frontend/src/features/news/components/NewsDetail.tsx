@@ -3,7 +3,7 @@ import { getCmsAssetLabel, getNewsDetailUrl } from '@/shared/utils/assets';
 import { formatDate } from '@/shared/utils/date';
 import { cn } from '@/shared/lib/cn';
 import { newsClasses } from '../styles/news.classes';
-import { BackButton } from '@/core/ui/BackButton';
+import { BackButton } from '@/shared/ui/BackButton';
 
 interface NewsDetailProps {
   item: NewsItem;
