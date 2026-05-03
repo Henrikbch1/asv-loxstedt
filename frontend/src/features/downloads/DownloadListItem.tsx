@@ -9,7 +9,9 @@ const styles = {
   body: 'min-w-0 flex-1',
   title: 'font-semibold leading-snug text-black',
   description: 'mt-1 text-sm text-muted line-clamp-2',
-  link: 'mt-2 inline-flex items-center gap-1 text-sm font-medium text-brand-strong hover:underline',
+  actions: 'mt-2 flex items-center gap-3',
+  actionBtn:
+    'inline-flex items-center gap-1 text-sm font-medium text-brand-strong hover:underline',
 } as const;
 
 interface DownloadListItemProps {
@@ -51,31 +53,61 @@ export function DownloadListItem({ item }: DownloadListItemProps) {
           <p className={styles.description}>{item.description}</p>
         ) : null}
         {fileUrl ? (
-          <a
-            className={styles.link}
-            download
-            href={fileUrl}
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            <svg
-              aria-hidden="true"
-              fill="none"
-              height="14"
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              viewBox="0 0 24 24"
-              width="14"
-              xmlns="http://www.w3.org/2000/svg"
+          <div className={styles.actions}>
+            <a
+              className={styles.actionBtn}
+              href={fileUrl}
+              rel="noopener noreferrer"
+              target="_blank"
+              title="Vorschau öffnen"
             >
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-              <polyline points="7 10 12 15 17 10" />
-              <line x1="12" y1="15" x2="12" y2="3" />
-            </svg>
-            Herunterladen
-          </a>
+              <svg
+                aria-hidden="true"
+                fill="none"
+                height="14"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                viewBox="0 0 24 24"
+                width="14"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
+              Vorschau
+            </a>
+            <span className="text-border" aria-hidden="true">
+              |
+            </span>
+            <a
+              className={styles.actionBtn}
+              download
+              href={fileUrl}
+              rel="noopener noreferrer"
+              target="_blank"
+              title="Datei herunterladen"
+            >
+              <svg
+                aria-hidden="true"
+                fill="none"
+                height="14"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                viewBox="0 0 24 24"
+                width="14"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
+              </svg>
+              Herunterladen
+            </a>
+          </div>
         ) : null}
       </div>
     </li>
