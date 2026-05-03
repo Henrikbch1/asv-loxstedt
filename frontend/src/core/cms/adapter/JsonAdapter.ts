@@ -5,6 +5,11 @@ import type {
 
 import demoManifestRaw from '../../../../public/demo/cms.json?raw';
 
+type DemoFileEntry = {
+  path: string;
+  filename_download: string;
+};
+
 type DemoCmsManifest = {
   global_settings: DirectusSingletonResponse<unknown>;
   navigation: DirectusListResponse<unknown>;
@@ -13,6 +18,7 @@ type DemoCmsManifest = {
   downloads: DirectusListResponse<unknown>;
   features: DirectusListResponse<unknown>;
   roles: DirectusListResponse<unknown>;
+  files: Record<string, DemoFileEntry>;
 };
 
 const demoManifest = JSON.parse(demoManifestRaw) as DemoCmsManifest;
@@ -55,6 +61,11 @@ function resolveNewsById(
   );
 
   return item ? { data: item } : null;
+}
+
+export function getDemoFilePath(assetId: string): string | null {
+  const entry = demoManifest.files?.[assetId];
+  return entry?.path ?? null;
 }
 
 export async function fetchDemoDirectus<T>(path: string): Promise<T> {

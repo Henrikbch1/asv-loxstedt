@@ -1,4 +1,5 @@
 import { appConfig } from '@/core/config/env';
+import { getDemoFilePath } from '@/core/cms/adapter/JsonAdapter';
 import type {
   DirectusFile,
   DirectusFileReference,
@@ -26,14 +27,15 @@ export function getCmsAssetUrl(
     return null;
   }
 
-  const assetsPath =
-    appConfig.cmsMode === 'demo'
-      ? appConfig.demoAssetsPath
-      : appConfig.assetsPath;
-  const baseUrl =
-    appConfig.cmsMode === 'demo'
-      ? window.location.origin + import.meta.env.BASE_URL
-      : `${appConfig.apiBaseUrl}/`;
+  if (appConfig.cmsMode === 'demo') {
+    const filePath = getDemoFilePath(assetId);
+    if (!filePath) return null;
+    const base = window.location.origin + import.meta.env.BASE_URL;
+    return base.replace(/\/$/, '') + '/' + filePath.replace(/^\//, '');
+  }
+
+  const assetsPath = appConfig.assetsPath;
+  const baseUrl = `${appConfig.apiBaseUrl}/`;
   const url = new URL(`${assetsPath.replace(/^\/?/, '')}/${assetId}`, baseUrl);
 
   if (params) {

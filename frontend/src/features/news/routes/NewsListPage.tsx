@@ -7,6 +7,7 @@ import { ContentPage } from '@/shared/ui/ContentPage';
 import { Button } from '@/shared/ui/Button';
 import { NewsListItem } from '@/features/news/NewsListItem';
 import { usePublicNewsListQuery } from '@/features/news/useNewsQueries';
+import { compareNewsItems } from '@/core/cms/transformers';
 import { useSiteTitle } from '@/core/settings/useSiteTitle';
 import { NEWS_PAGE_SIZE } from '@/core/config/constants';
 
@@ -65,13 +66,11 @@ export function NewsListPage() {
       />
 
       <ul className={styles.newsFeed}>
-        {[...newsQuery.data.data]
-          .sort((a, b) => (b.date ?? '').localeCompare(a.date ?? ''))
-          .map((item) => (
-            <li key={item.id}>
-              <NewsListItem item={item} />
-            </li>
-          ))}
+        {[...newsQuery.data.data].sort(compareNewsItems).map((item) => (
+          <li key={item.id}>
+            <NewsListItem item={item} />
+          </li>
+        ))}
       </ul>
 
       {totalPages > 1 ? (
