@@ -65,15 +65,16 @@ Alle Variablen werden in [`.env.example`](.env.example) mit Defaults dokumentier
 
 ## Scripts
 
-| Befehl             | Beschreibung                      |
-| ------------------ | --------------------------------- |
-| `npm run dev`      | Dev-Server starten (Vite)         |
-| `npm run build`    | Produktions-Build (`tsc` + Vite)  |
-| `npm run preview`  | Build lokal vorschauen            |
-| `npm run test`     | Tests mit Vitest ausführen        |
-| `npm run lint`     | ESLint prüfen                     |
-| `npm run lint:fix` | ESLint-Fehler automatisch beheben |
-| `npm run format`   | Prettier auf `src/` anwenden      |
+| Befehl                    | Beschreibung                                       |
+| ------------------------- | -------------------------------------------------- |
+| `npm run dev`             | Dev-Server starten (Vite)                          |
+| `npm run build`           | Produktions-Build (`tsc` + Vite)                   |
+| `npm run preview`         | Build lokal vorschauen                             |
+| `npm run test`            | Tests mit Vitest ausführen                         |
+| `npm run lint`            | ESLint prüfen                                      |
+| `npm run lint:fix`        | ESLint-Fehler automatisch beheben                  |
+| `npm run format`          | Prettier auf `src/` anwenden                       |
+| `npm run export:demo-cms` | Demo-JSON aus der lokalen Directus-DB neu erzeugen |
 
 ## Projektstruktur
 
@@ -109,4 +110,5 @@ Weitere Informationen zur CMS-Konfiguration: [Directus-Setup.md](Directus-Setup.
 
 - Eine Seite mit Slug `home` muss in Directus existieren, damit die Startseite Inhalte zeigt.
 - Testdaten: `cms/database/snapshot.json` in Directus importieren.
+- Demo-Daten: `npm run export:demo-cms` erzeugt `public/demo/cms.json` aus der lokalen Directus-Datenbank neu.
 - Pfad-Alias `@` zeigt auf `src/` (konfiguriert in `vite.config.ts`).

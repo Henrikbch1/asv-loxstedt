@@ -1,0 +1,943 @@
+{
+  "global_settings": {
+    "data": {
+      "id": 1,
+      "logo": {
+        "id": "68e54685-c887-4737-b651-5a774247fbf2",
+        "title": "Asv Loxstest Logo",
+        "filename_download": "ASV_Loxstest_Logo.png",
+        "type": "image/png",
+        "width": 1200,
+        "height": 1500
+      },
+      "site_name": "ASV Loxstedt \"Stoteler See\" e.V.",
+      "club_name": "ASV Loxstedt",
+      "street": "Schulstraße 29",
+      "postal_code": "27612",
+      "city": "Loxstedt",
+      "phone": "017680832246",
+      "footer_note": "Jeden dritten Dienstag im Monat findet ab 18:30 Uhr die Vorstandssitzung im Vereinsheim statt. Hier könnt ihr euch bei Fragen, Abgabe von Anträgen oder ähnlichem melden.",
+      "imprint": "<div>\n<h1><strong>Impressum</strong></h1>\n<h2>Angaben gem&auml;&szlig; &sect; 5 TMG</h2>\n<p><strong>ASV Loxstedt Stoteler See e.V.</strong><br>vertreten durch den<br><strong>1. Vorsitzenden Dominick Bohling</strong></p>\n<p>Eingetragen beim Amtsgericht Tostedt<br>im Vereinsregister unter der Nr.: <strong>VR 110074</strong></p>\n<hr>\n<h2>Kontakt</h2>\n<p>Telefon: 0176 / 808 322 46<br>E-Mail: 1.Vorsitzender@asv-loxstedt.de</p>\n<hr>\n<h2>Bankverbindung</h2>\n<p>ASV Loxstedt Stoteler See e.V.</p>\n<p>IBAN: DE31 2926 5747 3600 3395 00<br>BIC: GENODEF1BEV<br>Volksbank Elbe-Weser-Dreieck e.G.</p>\n<hr>\n<h2>Haftungshinweis</h2>\n<p>Trotz sorgf&auml;ltiger inhaltlicher Kontrolle &uuml;bernehmen wir keine Haftung f&uuml;r die Inhalte externer Links.<br>F&uuml;r den Inhalt der verlinkten Seiten sind ausschlie&szlig;lich deren Betreiber verantwortlich.</p>\n</div>",
+      "data_protection": "<div>\n<h1><strong>Datenschutzerkl&auml;rung</strong></h1>\n<h2>1. Verantwortliche Stelle</h2>\n<p>Im Sinne der Datenschutzgesetze, insbesondere der EU-Datenschutzgrundverordnung (DSGVO), ist:</p>\n<p><strong>ASV Loxstedt Stoteler See e.V.</strong><br>Telefon: 0176 / 808 322 46<br>E-Mail: 1.Vorsitzender@asv-loxstedt.de</p>\n<hr>\n<h2>2. Ihre Betroffenenrechte</h2>\n<p>Sie k&ouml;nnen jederzeit folgende Rechte aus&uuml;ben:</p>\n<ul>\n<li>Auskunft &uuml;ber Ihre bei uns gespeicherten Daten und deren Verarbeitung (Art. 15 DSGVO)</li>\n<li>Berichtigung unrichtiger personenbezogener Daten (Art. 16 DSGVO)</li>\n<li>L&ouml;schung Ihrer bei uns gespeicherten Daten (Art. 17 DSGVO)</li>\n<li>Einschr&auml;nkung der Datenverarbeitung (Art. 18 DSGVO)</li>\n<li>Widerspruch gegen die Verarbeitung Ihrer Daten (Art. 21 DSGVO)</li>\n<li>Daten&uuml;bertragbarkeit (Art. 20 DSGVO)</li>\n</ul>\n<p>Sofern Sie uns eine Einwilligung erteilt haben, k&ouml;nnen Sie diese jederzeit mit Wirkung f&uuml;r die Zukunft widerrufen.</p>\n<p>Beschwerden k&ouml;nnen Sie an die zust&auml;ndige Aufsichtsbeh&ouml;rde richten:<br>https://www.bfdi.bund.de/DE/Infothek/Anschriften_Links/anschriften_links-node.html</p>\n<hr>\n<h2>3. Erfassung allgemeiner Informationen beim Besuch unserer Website</h2>\n<p>Beim Zugriff auf unsere Website werden automatisch Informationen allgemeiner Natur erfasst (Server-Logfiles). Dies beinhaltet beispielsweise:</p>\n<ul>\n<li>Browsertyp</li>\n<li>verwendetes Betriebssystem</li>\n<li>Domainname Ihres Internet-Service-Providers</li>\n<li>IP-Adresse</li>\n</ul>\n<p>Diese Daten werden verarbeitet zur:</p>\n<ul>\n<li>Sicherstellung eines problemlosen Verbindungsaufbaus</li>\n<li>Sicherstellung der Nutzung der Website</li>\n<li>Auswertung der Systemsicherheit und Stabilit&auml;t</li>\n<li>administrativen Zwecken</li>\n</ul>\n<p>Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO</p>\n<p>Speicherdauer:<br>Die Daten werden gel&ouml;scht, sobald sie f&uuml;r den Zweck der Erhebung nicht mehr erforderlich sind.</p>\n<hr>\n<h2>4. Verwendung von Google Maps</h2>\n<p>Diese Website nutzt Google Maps (Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA).</p>\n<p>Rechtsgrundlage:<br>Einwilligung gem&auml;&szlig; Art. 6 Abs. 1 lit. a DSGVO</p>\n<p>Durch Nutzung k&ouml;nnen Daten an Google &uuml;bermittelt werden.<br>Weitere Informationen:<br>https://policies.google.com/privacy</p>\n<p>Die Verarbeitung kann in den USA erfolgen.</p>\n<hr>\n<h2>5. Eingebettete YouTube-Videos</h2>\n<p>Auf einigen Seiten sind YouTube-Videos eingebunden (YouTube LLC, 901 Cherry Ave., San Bruno, CA 94066, USA).</p>\n<p>Beim Aufruf einer Seite mit YouTube-Plugin wird eine Verbindung zu den YouTube-Servern hergestellt.</p>\n<p>Rechtsgrundlage:<br>Einwilligung gem&auml;&szlig; Art. 6 Abs. 1 lit. a DSGVO</p>\n<p>Weitere Informationen:<br>https://policies.google.com/privacy</p>\n<hr>\n<h2>6. SSL-Verschl&uuml;sselung</h2>\n<p>Zum Schutz Ihrer Daten verwenden wir eine SSL-Verschl&uuml;sselung &uuml;ber HTTPS entsprechend dem aktuellen Stand der Technik.</p>\n<hr>\n<h2>7. &Auml;nderung unserer Datenschutzbestimmungen</h2>\n<p>Wir behalten uns vor, diese Datenschutzerkl&auml;rung anzupassen, damit sie stets den aktuellen rechtlichen Anforderungen entspricht.</p>\n<hr>\n<h2>8. Fragen zum Datenschutz</h2>\n<p>Bei Fragen zum Datenschutz wenden Sie sich bitte an:</p>\n<p>E-Mail: 1.Vorsitzender@asv-loxstedt.de</p>\n</div>"
+    }
+  },
+  "navigation": {
+    "data": [
+      {
+        "id": 13,
+        "label": "Arbeitsdienst",
+        "page": {
+          "id": 14,
+          "title": "Arbeitsdienst",
+          "slug": "arbeitsdienst"
+        },
+        "parent": {
+          "label": "Mitgliedschaft",
+          "page": {
+            "id": 5,
+            "title": "Mitgliedschaft",
+            "slug": "mitgliedschaft"
+          }
+        },
+        "visible": 1
+      },
+      {
+        "id": 1,
+        "sort": 1,
+        "label": "Home",
+        "page": {
+          "id": 1,
+          "title": "Start",
+          "slug": "home"
+        },
+        "visible": 1
+      },
+      {
+        "id": 2,
+        "sort": 2,
+        "label": "Verein",
+        "page": {
+          "id": 4,
+          "title": "Verein",
+          "slug": "verein"
+        },
+        "visible": 1
+      },
+      {
+        "id": 5,
+        "sort": 3,
+        "label": "Über uns",
+        "page": {
+          "id": 2,
+          "title": "Über uns",
+          "slug": "ueber-uns"
+        },
+        "parent": {
+          "label": "Verein",
+          "page": {
+            "id": 4,
+            "title": "Verein",
+            "slug": "verein"
+          }
+        },
+        "visible": 1
+      },
+      {
+        "id": 4,
+        "sort": 4,
+        "label": "Vorstand",
+        "page": {
+          "id": 6,
+          "title": "Vorstand",
+          "slug": "vorstand",
+          "navigation_title": "Vorstad"
+        },
+        "parent": {
+          "label": "Verein",
+          "page": {
+            "id": 4,
+            "title": "Verein",
+            "slug": "verein"
+          }
+        },
+        "visible": 1
+      },
+      {
+        "id": 3,
+        "sort": 5,
+        "label": "Jugend",
+        "page": {
+          "id": 3,
+          "title": "Jugend",
+          "slug": "jugend",
+          "navigation_title": "Jugend"
+        },
+        "parent": {
+          "label": "Verein",
+          "page": {
+            "id": 4,
+            "title": "Verein",
+            "slug": "verein"
+          }
+        },
+        "visible": 1
+      },
+      {
+        "id": 6,
+        "sort": 6,
+        "label": "Verhaltensregeln",
+        "page": {
+          "id": 7,
+          "title": "Verhaltensregeln",
+          "slug": "verhaltensregeln",
+          "navigation_title": "Verhaltensregeln 111"
+        },
+        "parent": {
+          "label": "Mitgliedschaft",
+          "page": {
+            "id": 5,
+            "title": "Mitgliedschaft",
+            "slug": "mitgliedschaft"
+          }
+        },
+        "visible": 1
+      },
+      {
+        "id": 7,
+        "sort": 7,
+        "label": "Mitgliedschaft",
+        "page": {
+          "id": 5,
+          "title": "Mitgliedschaft",
+          "slug": "mitgliedschaft"
+        },
+        "visible": 1
+      },
+      {
+        "id": 8,
+        "sort": 8,
+        "label": "Beiträge",
+        "page": {
+          "id": 9,
+          "title": "Beiträge",
+          "slug": "beitraege"
+        },
+        "parent": {
+          "label": "Mitgliedschaft",
+          "page": {
+            "id": 5,
+            "title": "Mitgliedschaft",
+            "slug": "mitgliedschaft"
+          }
+        },
+        "visible": 1
+      },
+      {
+        "id": 9,
+        "sort": 9,
+        "label": "Aufnahme",
+        "page": {
+          "id": 10,
+          "title": "Aufnahme",
+          "slug": "aufnahme",
+          "navigation_title": "Aufnahme"
+        },
+        "parent": {
+          "label": "Mitgliedschaft",
+          "page": {
+            "id": 5,
+            "title": "Mitgliedschaft",
+            "slug": "mitgliedschaft"
+          }
+        },
+        "visible": 1
+      },
+      {
+        "id": 10,
+        "sort": 10,
+        "label": "Gewässer",
+        "page": {
+          "id": 11,
+          "title": "Gewässer",
+          "slug": "gewaesser",
+          "navigation_title": "Gewässer"
+        },
+        "visible": 1
+      },
+      {
+        "id": 11,
+        "sort": 11,
+        "label": "Stoteler See",
+        "page": {
+          "id": 12,
+          "title": "Stotler See",
+          "slug": "stoteler-see"
+        },
+        "parent": {
+          "label": "Gewässer",
+          "page": {
+            "id": 11,
+            "title": "Gewässer",
+            "slug": "gewaesser",
+            "navigation_title": "Gewässer"
+          }
+        },
+        "visible": 1
+      },
+      {
+        "id": 12,
+        "sort": 12,
+        "label": "Lune",
+        "page": {
+          "id": 13,
+          "title": "Lune & Neue Lune",
+          "slug": "lune"
+        },
+        "parent": {
+          "label": "Gewässer",
+          "page": {
+            "id": 11,
+            "title": "Gewässer",
+            "slug": "gewaesser",
+            "navigation_title": "Gewässer"
+          }
+        },
+        "visible": 1
+      }
+    ]
+  },
+  "pages": {
+    "data": [
+      {
+        "id": 14,
+        "status": "published",
+        "user_created": "f208a123-1898-4386-b8c1-55b6de700b4a",
+        "date_created": 1776858996950,
+        "user_updated": "f208a123-1898-4386-b8c1-55b6de700b4a",
+        "date_updated": 1777017325553,
+        "title": "Arbeitsdienst",
+        "content": "<p>Anmeldungen f&uuml;r Arbeitsdienste immer beim 1. Gew&auml;sserwart.&nbsp;</p>\n<p>Es kannst sich angemeldet werden &uuml;ber WhatsApp oder eMail.&nbsp;</p>",
+        "slug": "arbeitsdienst",
+        "parent_page": 5,
+        "template": "standard",
+        "show_title": 1,
+        "show_intro": 1
+      },
+      {
+        "id": 10,
+        "status": "published",
+        "user_created": "f208a123-1898-4386-b8c1-55b6de700b4a",
+        "date_created": 1776751239108,
+        "user_updated": "f208a123-1898-4386-b8c1-55b6de700b4a",
+        "date_updated": 1776751406025,
+        "title": "Aufnahme",
+        "content": "<h2 class=\"cm-h1\">Aufnahme</h2>\n<ul>\n<li>Erwachsene&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;120 &euro;</li>\n<li>Partnerschaft&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;60 &euro; (einzeln, wenn bereits der oder die Partner/inn bereits Mitglied ist)</li>\n<li>Partnerschaft&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 180 &euro; (gemeinsam)</li>\n<li>Jugendliche&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; -Keine-</li>\n</ul>",
+        "slug": "aufnahme",
+        "parent_page": 5,
+        "template": "standard",
+        "hero_title": "Aufnahme",
+        "hero_text": "Für die Aufnahme in den ASV Loxstedt „Stoteler See“ e.V. benötigen wir:\n\n- Zwei Passbilder\n- Einen Nachweis über die bestandene Fischerprüfung (falls vorhanden)\n- Den vollständig ausgefüllten Aufnahmeantrag mit Einzugsermächtigung für den Beitrag.\n\nUnterlagen müssen auf der Geschäftsstelle abgegeben werden.",
+        "navigation_title": "Aufnahme",
+        "show_title": 1,
+        "show_intro": 1
+      },
+      {
+        "id": 9,
+        "status": "published",
+        "user_created": "f208a123-1898-4386-b8c1-55b6de700b4a",
+        "date_created": 1776716127779,
+        "user_updated": "f208a123-1898-4386-b8c1-55b6de700b4a",
+        "date_updated": 1776939215854,
+        "title": "Beiträge",
+        "content": "<h2 class=\"cm-h1\">Mitglieder Jahresbeitr&auml;ge:</h2>\n<p>&nbsp;</p>\n<table style=\"border-collapse: collapse; width: 100%; height: 96px;\" border=\"1\"><colgroup><col style=\"width: 49.9316%;\"><col style=\"width: 49.9316%;\"></colgroup>\n<tbody>\n<tr style=\"height: 24px;\">\n<td style=\"height: 24px;\">Erwachsene</td>\n<td style=\"height: 24px;\">75 &euro;</td>\n</tr>\n<tr style=\"height: 24px;\">\n<td style=\"height: 24px;\">Jugendliche</td>\n<td style=\"height: 24px;\">28 &euro;</td>\n</tr>\n<tr style=\"height: 24px;\">\n<td style=\"height: 24px;\">Partnerschaft</td>\n<td style=\"height: 24px;\">112,50 &euro;</td>\n</tr>\n<tr style=\"height: 24px;\">\n<td style=\"height: 24px;\">Passivbeitrag</td>\n<td style=\"height: 24px;\">37,50 &euro;</td>\n</tr>\n</tbody>\n</table>\n<p>&nbsp;</p>\n<h2 class=\"cm-h1\">Strafgelder&nbsp;<br>Mitglieder m&uuml;ssen laut Satzung der Arbeitsdienstverpflichtung nachkommen.<br>F&uuml;r nicht geleisteten Arbeitsdienst ist ein Strafbeitrag zu zahlen, dessen H&ouml;he von der Mitgliederversammlung festgesetzt wird.<br>Ausgenommen von dieser Verpflichtung sind:</h2>\n<ul>\n<li>Mitglieder die zu Beginn eines laufenden Kalenderjahres das 60. Lebensjahr vollendet haben.</li>\n<li>Mitglieder die mit&nbsp;Vereins&auml;mtern betraut sind.</li>\n<li>Mitglieder mit amt. Schwerbehinderung ab 50% (nachweislich)</li>\n<li>Passive Mitglieder.</li>\n</ul>\n<h2 class=\"cm-h1\">Strafgelder f&uuml;r nicht geleisteten Arbeitsdienst:</h2>\n<ul>\n<li>Erwachsene&nbsp;&nbsp;&nbsp;&nbsp; 60,- &euro;</li>\n</ul>\n<h2 class=\"cm-h1\">Die Fangmeldungen sind bis sp&auml;testens 30.November eines Jahres in der Gesch&auml;ftstelle abzugeben.<br>Strafgelder f&uuml;r nicht abgegebene Fangmeldungen:</h2>\n<ul>\n<li>Erwachsene&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 40,- &euro;</li>\n<li>Jugendliche&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 15,- &euro;</li>\n</ul>\n<p>&nbsp;</p>\n<p>Bankverbindung:</p>\n<p>ASV Loxstedt Stoteler See e.V.</p>\n<p>IBAN: DE31 2926 5747 3600 3395 00</p>\n<p>BIC: GENODEF1BEV</p>\n<p>Volksbank Elbe-Weser-Dreieck eG</p>",
+        "slug": "beitraege",
+        "parent_page": 5,
+        "template": "standard",
+        "show_title": 1,
+        "show_intro": 1
+      },
+      {
+        "id": 11,
+        "status": "published",
+        "user_created": "f208a123-1898-4386-b8c1-55b6de700b4a",
+        "date_created": 1776761228030,
+        "user_updated": "f208a123-1898-4386-b8c1-55b6de700b4a",
+        "date_updated": 1777133443151,
+        "title": "Gewässer",
+        "content": "<div class=\"n6owBd awi2gc\" data-sfc-cp=\"\" data-sfc-root=\"c\" data-sfc-cb=\"\" data-hveid=\"CAEIAxAA\" data-complete=\"true\" data-processed=\"true\"><strong class=\"Yjhzub\" data-sfc-root=\"c\" data-sfc-cb=\"\" data-complete=\"true\" data-processed=\"true\">Angeln am Stoteler See &ndash; Ein Paradies vor der Haust&uuml;r</strong></div>\n<div class=\"n6owBd awi2gc\" data-sfc-cp=\"\" data-sfc-root=\"c\" data-sfc-cb=\"\" data-hveid=\"CAEIBBAA\" data-complete=\"true\" data-processed=\"true\">Der Stoteler See ist das Herzst&uuml;ck unseres Vereins. Mit einer Wasserfl&auml;che von rund 40 Hektar und Tiefen von bis zu 14 Metern bietet er sowohl Friedfisch- als auch Raubfischanglern ideale Bedingungen.</div>\n<ul class=\"KsbFXc U6u95\" data-sfc-root=\"c\" data-sfc-cb=\"\" data-complete=\"true\" data-processed=\"true\">\n<li class=\"Z1qcYe\" data-sfc-cp=\"\" data-sfc-root=\"c\" data-sfc-cb=\"\" data-hveid=\"CAEIBRAA\" data-complete=\"true\" data-sae=\"\"><span class=\"T286Pc\" data-sfc-cp=\"\" data-sfc-root=\"c\" data-sfc-cb=\"\" data-complete=\"true\"><strong class=\"Yjhzub\" data-sfc-root=\"c\" data-sfc-cb=\"\" data-complete=\"true\">Der Fischbestand:</strong>&nbsp;Freue dich auf kapitale Karpfen, Hechte, Zander, Aale, Schleien sowie verschiedene Wei&szlig;fischarten.</span></li>\n<li class=\"Z1qcYe\" data-sfc-cp=\"\" data-sfc-root=\"c\" data-sfc-cb=\"\" data-hveid=\"CAEIBRAB\" data-complete=\"true\" data-sae=\"\"><span class=\"T286Pc\" data-sfc-cp=\"\" data-sfc-root=\"c\" data-sfc-cb=\"\" data-complete=\"true\"><strong class=\"Yjhzub\" data-sfc-root=\"c\" data-sfc-cb=\"\" data-complete=\"true\">Die Uferbeschaffenheit:</strong>&nbsp;Naturbelassene Schilfg&uuml;rtel wechseln sich mit gut zug&auml;nglichen Angelpl&auml;tzen ab.</span></li>\n<li class=\"Z1qcYe\" data-sfc-cp=\"\" data-sfc-root=\"c\" data-sfc-cb=\"\" data-hveid=\"CAEIBRAC\" data-complete=\"true\" data-sae=\"\"><span class=\"T286Pc\" data-sfc-cp=\"\" data-sfc-root=\"c\" data-sfc-cb=\"\" data-complete=\"true\" aria-owns=\"action-menu-parent-container\"><strong class=\"Yjhzub\" data-sfc-root=\"c\" data-sfc-cb=\"\" data-complete=\"true\">Besonderheiten:</strong>&nbsp;Dank der ausgezeichneten Wasserqualit&auml;t und des nachhaltigen Besatzmanagements ist der See ein stabiles &Ouml;kosystem.</span></li>\n</ul>",
+        "slug": "gewaesser",
+        "template": "standard",
+        "hero_title": "Unsere Gewässer",
+        "hero_text": "Mit dem Stoteler See, der Neuen Lune und Abschnitte der alten Lune verfügen wir über erstklassige Angelgewässer.\n\nÜber das Auswahlmenü kann ein Einblick in unsere Gewässer genommen werden.",
+        "navigation_title": "Gewässer",
+        "show_title": 1,
+        "show_intro": 0
+      },
+      {
+        "id": 3,
+        "status": "published",
+        "user_created": "f208a123-1898-4386-b8c1-55b6de700b4a",
+        "date_created": 1776349278522,
+        "user_updated": "f208a123-1898-4386-b8c1-55b6de700b4a",
+        "date_updated": 1777544212583,
+        "title": "Jugend",
+        "content": "<ul class=\"KsbFXc U6u95\" data-sfc-root=\"c\" data-sfc-cb=\"\" data-complete=\"true\" data-processed=\"true\">\n<li class=\"dF3vjf\" data-sfc-root=\"c\" data-sfc-cb=\"\" data-hveid=\"CAEIDBAA\" data-complete=\"true\" data-sae=\"\"><span class=\"T286Pc\" data-sfc-cp=\"\" data-sfc-root=\"c\" data-sfc-cb=\"\" data-complete=\"true\"><strong class=\"Yjhzub\" data-sfc-root=\"c\" data-sfc-cb=\"\" data-complete=\"true\">Der perfekte Einstieg:</strong><br data-sfc-root=\"c\" data-sfc-pl=\"|[]\" data-sfc-cb=\"\" data-complete=\"true\">Kein eigenes Angelzeug? Kein Problem! Wir stellen hochwertiges Leihgeschirr zur Verf&uuml;gung, damit Neulinge sofort loslegen k&ouml;nnen.</span></li>\n<li class=\"dF3vjf\" data-sfc-root=\"c\" data-sfc-cb=\"\" data-hveid=\"CAEIDBAB\" data-complete=\"true\" data-sae=\"\"><span class=\"T286Pc\" data-sfc-cp=\"\" data-sfc-root=\"c\" data-sfc-cb=\"\" data-complete=\"true\"><strong class=\"Yjhzub\" data-sfc-root=\"c\" data-sfc-cb=\"\" data-complete=\"true\">Lernen von den Profis:</strong><br data-sfc-root=\"c\" data-sfc-pl=\"|[]\" data-sfc-cb=\"\" data-complete=\"true\">In regelm&auml;&szlig;igen Workshops vermitteln unsere erfahrenen Jugendwarte alles &uuml;ber Montagen, Methoden und Zielfische. Unsere Jugendwarte sind selbst leidenschaftliche Angler und geben ihre jahrelange Erfahrung direkt am Gew&auml;sser weiter.</span></li>\n<li class=\"dF3vjf\" data-sfc-root=\"c\" data-sfc-cb=\"\" data-hveid=\"CAEIDBAC\" data-complete=\"true\" data-sae=\"\"><span class=\"T286Pc\" data-sfc-cp=\"\" data-sfc-root=\"c\" data-sfc-cb=\"\" data-complete=\"true\"><strong class=\"Yjhzub\" data-sfc-root=\"c\" data-sfc-cb=\"\" data-complete=\"true\">Gemeinschaft &amp; Praxis:</strong><br data-sfc-root=\"c\" data-sfc-pl=\"|[]\" data-sfc-cb=\"\" data-complete=\"true\">&Uuml;ber die Sommermonate f&uuml;hren wir zahlreiche Hegefische durch. Danach sitzen wir oft gem&uuml;tlich zusammen, um zu fachsimpeln und die Kameradschaft zu pflegen.</span></li>\n<li class=\"dF3vjf\" data-sfc-root=\"c\" data-sfc-cb=\"\" data-hveid=\"CAEIDBAD\" data-complete=\"true\" data-sae=\"\"><span class=\"T286Pc\" data-sfc-cp=\"\" data-sfc-root=\"c\" data-sfc-cb=\"\" data-complete=\"true\" aria-owns=\"action-menu-parent-container\"><strong class=\"Yjhzub\" data-sfc-root=\"c\" data-sfc-cb=\"\" data-complete=\"true\">Der Weg zum Angelschein:</strong><br data-sfc-root=\"c\" data-sfc-pl=\"|[]\" data-sfc-cb=\"\" data-complete=\"true\">Ab 14 Jahren kannst du bei uns die Sportfischerpr&uuml;fung ablegen. Wir bieten sowohl den Vorbereitungskurs als auch die Pr&uuml;fung direkt im Verein an. Bei Interesse sprecht einfach unseren Vorstand an!</span></li>\n</ul>\n<div id=\"widgetcontainer_STRATP_cm4all_com_widgets_UroPhoto_47771798\" class=\"cm_widget_block      cm_widget cm4all_com_widgets_UroPhoto cm_widget_block_center cm-pixel-large cm-pixel-xlarge\">\n<div class=\"cm_widget_anchor\"><a id=\"widgetanchor_STRATP_cm4all_com_widgets_UroPhoto_47771798\" name=\"STRATP_cm4all_com_widgets_UroPhoto_47771798\"></a></div>\n<div id=\"uroPhotoOuterSTRATP_cm4all_com_widgets_UroPhoto_47771798\" data-uro-type=\"image\"><picture><source><source><source><source><source></picture></div>\n</div>",
+        "slug": "jugend",
+        "featured_image": {
+          "id": "df49420c-0106-4772-8d4a-87f348bb643d",
+          "title": "Picture 2600",
+          "filename_download": "picture-2600.jpg",
+          "type": "image/jpeg",
+          "width": 2600,
+          "height": 1134
+        },
+        "parent_page": 4,
+        "template": "standard",
+        "hero_title": "Leidenschaft von klein auf: Unsere starke Jugendgruppe",
+        "hero_text": "Mit über 35 aktiven Jugendlichen stellen die Nachwuchsangler fast 10 % unseres Vereins. Wir bieten den perfekten Einstieg in den Angelsport – vom Leih-Equipment bis zum Experten-Wissen.",
+        "navigation_title": "Jugend",
+        "show_title": 1,
+        "show_intro": 1
+      },
+      {
+        "id": 13,
+        "status": "published",
+        "user_created": "f208a123-1898-4386-b8c1-55b6de700b4a",
+        "date_created": 1776762250456,
+        "user_updated": "f208a123-1898-4386-b8c1-55b6de700b4a",
+        "date_updated": 1776762267163,
+        "title": "Lune & Neue Lune",
+        "content": "<p>Der ASV Loxstedt &bdquo;Stoteler See&ldquo; e. V. ist Mitp&auml;chter der Neuen Lune sowie der Lune III und IV.</p>\n<p>Alle Gew&auml;sserabschnitte eignen sich hervorragend zum Angeln auf die heimischen Fried- und Raubfische. Insbesondere Zander, Brassen und G&uuml;stern werden regelm&auml;&szlig;ig in beachtlichen Gr&ouml;&szlig;en an Land gezogen.</p>\n<p>Bedingt durch Zu- und Abw&auml;sserung kann es vor allem in der Neuen Lune zu Wasserstandsschwankungen und starken Str&ouml;mungen kommen. Beim Angeln hei&szlig;t es also, sich auf ver&auml;ndernde Situationen einzustellen, was das Ganze sehr spannend macht!</p>\n<p>Gerade f&uuml;r Angler, die nicht so gut zu Fu&szlig; sind, gibt es an der Lune sch&ouml;ne und bequem zu erreichende Angelstellen, die zudem auch Fangerfolg versprechen. Wer einige Meter Fu&szlig;marsch mit seinem Gep&auml;ck nicht scheut, kann in Neuenlande und &bdquo;An den Windr&auml;dern&rdquo; ruhige, abgelegene Angelstellen aufsuchen und dort eine sch&ouml;ne und erfolgreiche Zeit verbringen.</p>\n<p>Da an der Lune mehrere Vereine angesiedelt sind, ist es ratsam, vor einem Ansitz die Schauk&auml;sten an den Gew&auml;sserabschnitten zu beachten. Es kann n&auml;mlich vorkommen, dass ein Abschnitt wegen einer Vereinsveranstaltung oder Gew&auml;sserpflege gesperrt ist.</p>",
+        "slug": "lune",
+        "parent_page": 11,
+        "template": "standard",
+        "show_title": 1,
+        "show_intro": 1
+      },
+      {
+        "id": 5,
+        "status": "published",
+        "user_created": "f208a123-1898-4386-b8c1-55b6de700b4a",
+        "date_created": 1776406781579,
+        "user_updated": "f208a123-1898-4386-b8c1-55b6de700b4a",
+        "date_updated": 1776716000775,
+        "title": "Mitgliedschaft",
+        "slug": "mitgliedschaft",
+        "template": "standard",
+        "show_title": 1,
+        "show_intro": 1
+      },
+      {
+        "id": 1,
+        "status": "published",
+        "user_created": "f208a123-1898-4386-b8c1-55b6de700b4a",
+        "date_created": 1776349172480,
+        "user_updated": "f208a123-1898-4386-b8c1-55b6de700b4a",
+        "date_updated": 1777544293696,
+        "title": "Start",
+        "content": "<div class=\"otQkpb\" role=\"heading\" aria-level=\"3\" data-animation-nesting=\"\" data-sfc-cp=\"\" data-sfc-root=\"c\" data-sfc-cb=\"\" data-complete=\"true\" data-processed=\"true\" data-sae=\"\">\n<div class=\"otQkpb\" role=\"heading\" aria-level=\"3\" data-animation-nesting=\"\" data-sfc-cp=\"\" data-sfc-root=\"c\" data-sfc-cb=\"\" data-complete=\"true\" data-processed=\"true\" data-sae=\"\">Willkommen beim ASV Loxstedt &bdquo;Stoteler See&ldquo; e.V.</div>\n<div class=\"otQkpb\" role=\"heading\" aria-level=\"3\" data-animation-nesting=\"\" data-sfc-cp=\"\" data-sfc-root=\"c\" data-sfc-cb=\"\" data-complete=\"true\" data-processed=\"true\" data-sae=\"\">&nbsp;</div>\n<div class=\"n6owBd awi2gc\" data-sfc-cp=\"\" data-sfc-root=\"c\" data-sfc-cb=\"\" data-hveid=\"CAEIAxAA\" data-complete=\"true\" data-processed=\"true\"><span class=\"Yjhzub\">Natur erleben. Gemeinschaft pflegen. Leidenschaft teilen.</span></div>\n<div class=\"n6owBd awi2gc\" data-sfc-cp=\"\" data-sfc-root=\"c\" data-sfc-cb=\"\" data-hveid=\"CAEIBBAA\" data-complete=\"true\" data-processed=\"true\">Eingebettet in die idyllische Landschaft von Stotel bietet unser Verein passionierten Anglern und Naturfreunden ein Zuhause. Ob erfahrener Profi, Gelegenheitsangler oder motivierter Nachwuchs &ndash; beim ASV Loxstedt steht die Freude am Fischfang im Einklang mit dem Schutz unserer heimischen Gew&auml;sser an erster Stelle.</div>\n</div>",
+        "slug": "home",
+        "template": "standard",
+        "hero_title": "Herzlich Willkommen",
+        "hero_text": "Herzlich willkommen auf der Internetseite des ASV Loxstedt \"Stoteler See\" e.V.",
+        "show_title": 1,
+        "show_intro": 1
+      },
+      {
+        "id": 12,
+        "status": "published",
+        "user_created": "f208a123-1898-4386-b8c1-55b6de700b4a",
+        "date_created": 1776761755777,
+        "user_updated": "f208a123-1898-4386-b8c1-55b6de700b4a",
+        "date_updated": 1776761931268,
+        "title": "Stotler See",
+        "content": "<h1>Der Stoteler See</h1>\n<p>Der Stoteler See liegt im s&uuml;dwestlichen Teil von Stotel in der Gemeinde Loxstedt zwischen dem Gewerbegebiet und der Autobahn.</p>\n<p>Entstanden ist der See w&auml;hrend des Baus der A27.<br>Was einst eine karge Sandkuhle war hat sich im Laufe der Jahre zu einem wundersch&ouml;nen See, ums&auml;umt von B&auml;umen, Schilfg&uuml;rteln, Seerosen und einer intakten Flora und Fauna gewandelt. Nicht selten begegnen dem aufmerksamen Beobachter selten gewordene Arten wie beispielsweise Eisv&ouml;gel und Ringelnattern, die rund um den See ideale Lebensbedingungen finden.</p>\n<p>Mit seinen rund 30 Hektar Wasserfl&auml;che, vielen interessanten Unterwasserstrukturen und am tiefsten Punkt 15 Metern Wassertiefe ist der Stoteler See ein erstklassiges Angelgew&auml;sser.</p>\n<p>Zum gesunden, selbst reproduzierenden Fischbestand z&auml;hlen insbesondere Rotaugen, Brassen, Karpfen, Hechte, Barsche, Zander, Aale und Welse. Auch Biotopfische wie Moderlieschen oder Bitterlinge k&ouml;nnen an sonnigen Tagen im Uferbereich beobachtet werden.</p>",
+        "slug": "stoteler-see",
+        "parent_page": 11,
+        "template": "standard",
+        "show_title": 1,
+        "show_intro": 0
+      },
+      {
+        "id": 4,
+        "status": "published",
+        "user_created": "f208a123-1898-4386-b8c1-55b6de700b4a",
+        "date_created": 1776349309431,
+        "title": "Verein",
+        "content": "<h1>Willkommen im Verein</h1>",
+        "slug": "verein",
+        "template": "standard",
+        "show_title": 1,
+        "show_intro": 1
+      },
+      {
+        "id": 7,
+        "status": "published",
+        "user_created": "f208a123-1898-4386-b8c1-55b6de700b4a",
+        "date_created": 1776714706091,
+        "user_updated": "f208a123-1898-4386-b8c1-55b6de700b4a",
+        "date_updated": 1776752022612,
+        "title": "Verhaltensregeln",
+        "content": "<p><strong>In den letzten Jahren sind unter Anderem &uuml;ber Mitgliederentscheide daher viele Regeln festgelegt worden, die nicht alle auf den ausgegebenen Angelkarten erfasst werden k&ouml;nnen.</strong></p>\n<p>Im unten stehenden Dokument, welches wir hier zum Download bereit gestellt haben, sind alle zur Zeit g&uuml;ltigen Regeln rund um das Verhalten am Stoteler See zusammengefasst.&nbsp;</p>\n<p>&nbsp;</p>",
+        "slug": "verhaltensregeln",
+        "parent_page": 5,
+        "template": "standard",
+        "intro": "Liebe Sportsfreunde,\nso ganz ohne Regeln geht es auch beim Angeln am Stoteler See nicht.",
+        "navigation_title": "Verhaltensregeln 111",
+        "show_title": 1,
+        "show_intro": 1
+      },
+      {
+        "id": 6,
+        "status": "published",
+        "user_created": "f208a123-1898-4386-b8c1-55b6de700b4a",
+        "date_created": 1776413810062,
+        "user_updated": "f208a123-1898-4386-b8c1-55b6de700b4a",
+        "date_updated": 1776944025165,
+        "title": "Vorstand",
+        "content": "<p>Es gibt aktuell noch freie Vorstandsposten. Wer Interesse hat im Vorstand aktiv das Vereinsgeschehen proaktiv mitzugestalten ist jederzeit willkommen. Sprecht uns einfach auf euer Interesse an!</p>",
+        "slug": "vorstand",
+        "parent_page": 4,
+        "template": "board",
+        "navigation_title": "Vorstad",
+        "show_title": 1,
+        "show_intro": 0
+      },
+      {
+        "id": 2,
+        "status": "published",
+        "user_created": "f208a123-1898-4386-b8c1-55b6de700b4a",
+        "date_created": 1776349201821,
+        "user_updated": "f208a123-1898-4386-b8c1-55b6de700b4a",
+        "date_updated": 1776840939980,
+        "title": "Über uns",
+        "content": "<h2 class=\"cm-h1\">Der Angelsportverein Loxstedt \"Stoteler See\" e.V. wurde 1975 gegr&uuml;ndet und ist mittlerweile auf eine Gr&ouml;&szlig;e von rund 420 Mitgliedern angewachsen.</h2>\n<p>Als Gew&auml;sser verf&uuml;gt der ASV neben einem Teich in Offenwarden in erster Linie &uuml;ber den Stoteler See. Ebenso haben Vereinsmitglieder die M&ouml;glichkeit in der Lune und in der Neuen Lune zu angeln.</p>\n<p>Der ASV verf&uuml;gt im gesamten Bezirk &uuml;ber einen guten Ruf. Vor allem die Jugendarbeit, der Verein hat mit 36 Jugendlich fast jedes zehnte Mitglied im jungen Alter, sorgt f&uuml;r gro&szlig;e Anerkennung. Auch sozial ist man sehr engagiert. Neben regelm&auml;&szlig;iger Pr&auml;senz bei Veranstaltungen wie Go Sports, Ferienpassaktivit&auml;ten und dem Weihnachtsmarkt wurde in 2022 sogar ein Benefizangeln ausgerichtet.</p>\n<p>Der junge, motivierte Vorstand ist mit Leib und Seele bem&uuml;ht den Verein mit Leben zu f&uuml;llen und auch f&uuml;r die Zukunft auf stabile Beine zu stellen.</p>",
+        "slug": "ueber-uns",
+        "parent_page": 4,
+        "template": "standard",
+        "show_title": 1,
+        "show_intro": 1
+      }
+    ]
+  },
+  "news": {
+    "data": [
+      {
+        "id": 7,
+        "status": "published",
+        "user_created": "f208a123-1898-4386-b8c1-55b6de700b4a",
+        "date_created": 1777137312434,
+        "user_updated": "f208a123-1898-4386-b8c1-55b6de700b4a",
+        "date_updated": 1777790915418,
+        "date": 1777593600000,
+        "title": "Die Raubfisch Season startet am Stoteler See",
+        "category": {
+          "id": 9,
+          "sort": 8,
+          "name": "allgemein "
+        }
+      },
+      {
+        "id": 6,
+        "status": "published",
+        "user_created": "f208a123-1898-4386-b8c1-55b6de700b4a",
+        "date_created": 1776837409921,
+        "user_updated": "f208a123-1898-4386-b8c1-55b6de700b4a",
+        "date_updated": 1777149472089,
+        "date": 1777075200000,
+        "title": "Freundschaftsangeln mit Butjadingen",
+        "image": {
+          "id": "68e54685-c887-4737-b651-5a774247fbf2",
+          "title": "Asv Loxstest Logo",
+          "filename_download": "ASV_Loxstest_Logo.png",
+          "type": "image/png",
+          "width": 1200,
+          "height": 1500
+        },
+        "text": "<div class=\"n6owBd awi2gc\" data-sfc-cp=\"\" data-sfc-root=\"c\" data-sfc-cb=\"\" data-hveid=\"CAEIAxAA\" data-complete=\"true\" data-processed=\"true\">\n<div class=\"n6owBd awi2gc\" data-sfc-cp=\"\" data-sfc-root=\"c\" data-sfc-cb=\"\" data-hveid=\"CAEIAxAA\" data-complete=\"true\" data-processed=\"true\">Am vergangenen Samstag, den 25. April 2026, trafen sich die Angelfreunde des <span class=\"Yjhzub\">ASV Loxstedt</span>&nbsp;und des&nbsp;<span class=\"Yjhzub\">FV Butjadingen</span>&nbsp;zum traditionellen Freundschaftsangeln. Trotz wechselhafter Bedingungen am Inselsee blicken beide Vereine auf eine rundum gelungene Veranstaltung zur&uuml;ck.</div>\n<div class=\"n6owBd awi2gc\" data-sfc-cp=\"\" data-sfc-root=\"c\" data-sfc-cb=\"\" data-hveid=\"CAEIBBAA\" data-complete=\"true\" data-processed=\"true\">&nbsp;</div>\n<div class=\"n6owBd awi2gc\" data-sfc-cp=\"\" data-sfc-root=\"c\" data-sfc-cb=\"\" data-hveid=\"CAEIBBAA\" data-complete=\"true\" data-processed=\"true\">Schon ab 06:00 Uhr morgens versammelten sich die Teilnehmer am Vereinsheim in Butjadingen. Getreu dem freundschaftlichen Charakter der Veranstaltung gab es keinen strengen Startpfiff: Sobald das Equipment aufgebaut war, flogen die K&ouml;der ins Wasser. W&auml;hrend die Angler auf der S&uuml;dseite mit kr&auml;ftigem Wind zu k&auml;mpfen hatten, genossen die Kollegen im Westen angenehmen Sonnenschein und Windstille.</div>\n<div class=\"n6owBd awi2gc\" data-sfc-cp=\"\" data-sfc-root=\"c\" data-sfc-cb=\"\" data-hveid=\"CAEIBBAA\" data-complete=\"true\" data-processed=\"true\">&nbsp;</div>\n<div class=\"n6owBd awi2gc\" data-sfc-cp=\"\" data-sfc-root=\"c\" data-sfc-cb=\"\" data-hveid=\"CAEIBRAA\" data-complete=\"true\" data-processed=\"true\">Die F&auml;nge waren verschieden: Neben Brassen, Schleien und Barsch gingen auch etliche Grundeln an den Haken. Einige Teilnehmer verzeichneten jedoch auch &bdquo;ohne Fang&ldquo; (OF) einen ruhigen Vormittag am Wasser. Um 11:30 Uhr endete die Angelzeit, und die Waage kam zum Einsatz.</div>\n<div class=\"n6owBd awi2gc\" data-sfc-cp=\"\" data-sfc-root=\"c\" data-sfc-cb=\"\" data-hveid=\"CAEIBRAA\" data-complete=\"true\" data-processed=\"true\">&nbsp;</div>\n<div class=\"n6owBd awi2gc\" data-sfc-cp=\"\" data-sfc-root=\"c\" data-sfc-cb=\"\" data-hveid=\"CAEIBhAA\" data-complete=\"true\" data-processed=\"true\"><span class=\"Yjhzub\">Heimsieg f&uuml;r Butjadingen</span><br data-sfc-root=\"c\" data-sfc-pl=\"|[]\" data-sfc-cb=\"\" data-complete=\"true\" data-processed=\"true\">Der FV Butjadingen nutzte seinen Heimvorteil konsequent aus: Die Gastgeber belegten die ersten beiden Pl&auml;tze in der Gesamtwertung und holten sich damit den begehrten Wanderpokal zur&uuml;ck. Den dritten Platz sicherte sich&nbsp;<span class=\"Yjhzub\">Silas</span>&nbsp;vom ASV Loxstedt. Er brachte insgesamt 720 Gramm auf die Waage, darunter zwei Grundeln und einen beeindruckenden Barsch von&nbsp;<span class=\"Yjhzub\">37,5 cm</span>.</div>\n<div class=\"n6owBd awi2gc\" data-sfc-cp=\"\" data-sfc-root=\"c\" data-sfc-cb=\"\" data-hveid=\"CAEIBxAA\" data-complete=\"true\" data-processed=\"true\" aria-owns=\"action-menu-parent-container\">&nbsp;</div>\n<div class=\"n6owBd awi2gc\" data-sfc-cp=\"\" data-sfc-root=\"c\" data-sfc-cb=\"\" data-hveid=\"CAEIBxAA\" data-complete=\"true\" data-processed=\"true\" aria-owns=\"action-menu-parent-container\">Nach dem Wiegen lie&szlig;en die Mitglieder beider Vereine den Tag gemeinsam am Vereinsheim ausklingen. &bdquo;Es war eine tolle Atmosph&auml;re&ldquo;, res&uuml;mierten die Organisatoren. Der ASV Loxstedt freut sich bereits jetzt darauf, die Butjadinger im n&auml;chsten Jahr zur Revanche in den eigenen Gew&auml;ssern begr&uuml;&szlig;en zu d&uuml;rfen.</div>\n</div>",
+        "category": {
+          "id": 1,
+          "sort": 6,
+          "name": "Jugend"
+        }
+      },
+      {
+        "id": 2,
+        "status": "published",
+        "user_created": "f208a123-1898-4386-b8c1-55b6de700b4a",
+        "date_created": 1776685463576,
+        "user_updated": "f208a123-1898-4386-b8c1-55b6de700b4a",
+        "date_updated": 1776863232187,
+        "date": 1776556800000,
+        "title": "Erste Hegerunde der Jugend ",
+        "image": {
+          "id": "dd1243ef-b08c-41e1-9c37-cc8e157bf11f",
+          "title": "Tiefenkarte 1 ",
+          "filename_download": "tiefenkarte_1_.jpg",
+          "type": "image/jpeg",
+          "width": 1600,
+          "height": 1424
+        },
+        "text": "<p>Am Sonntag, dem 19. April, fand die erste Hegerunde der Jugend statt. Insgesamt nahmen f&uuml;nf Teilnehmer daran teil, darunter drei neue Gesichter. Geangelt wurde im Moorbereich rund um die Pl&auml;tze 15 bis 21. Wir haben uns um 8 Uhr getroffen und konnten bereits kurz vor 9 Uhr anfangen. Geangelt wurde bis 12 Uhr.</p>\n<p>Das Wetter war bew&ouml;lkt und die Luft am Wasser angenehm. Leider gab es vier Nichtf&auml;nger. Letztlich wurde nur ein 30 g schwerer Fisch gefangen. Das war nicht die erfolgreichste Hegerunde, aber wir freuen uns &uuml;ber die steigenden Teilnehmerzahlen und die M&ouml;glichkeit, den Jugendlichen neues Wissen zu vermitteln. Angeln bedeutet auch, dass nicht immer alles so l&auml;uft, wie man es sich vorstellt.</p>",
+        "category": {
+          "id": 1,
+          "sort": 6,
+          "name": "Jugend"
+        }
+      },
+      {
+        "id": 1,
+        "status": "published",
+        "user_created": "f208a123-1898-4386-b8c1-55b6de700b4a",
+        "date_created": 1776410316868,
+        "user_updated": "f208a123-1898-4386-b8c1-55b6de700b4a",
+        "date_updated": 1776889344891,
+        "date": 1776297600000,
+        "title": "Besatz Forelle im See",
+        "text": "<div class=\"Y3BBE\" data-sfc-cp=\"\" data-sfc-root=\"c\" data-sfc-cb=\"\" data-hveid=\"CAEIAxAA\" data-complete=\"true\" data-processed=\"true\">\n<div>\n<p>Heute gegen 10 Uhr ist der Fischtransporter am See eingetroffen.</p>\n<p>Es wurden rund 120 kg gr&ouml;&szlig;ere Forellen mit einem St&uuml;ckgewicht von ca. 3&ndash;4 kg besetzt.</p>\n<p>Die Fische sind nun im See verteilt.</p>\n<p>Wir w&uuml;nschen allen Anglerinnen und Anglern viel Erfolg am Wasser und Petri Heil!</p>\n</div>\n</div>",
+        "category": {
+          "id": 5,
+          "sort": 4,
+          "name": "Gewässer"
+        }
+      },
+      {
+        "id": 3,
+        "status": "published",
+        "user_created": "f208a123-1898-4386-b8c1-55b6de700b4a",
+        "date_created": 1776836887122,
+        "user_updated": "f208a123-1898-4386-b8c1-55b6de700b4a",
+        "date_updated": 1776844384199,
+        "date": 1775260800000,
+        "title": "Rückblick auf das Osterangeln",
+        "text": "<div>\n<p>Das Osterangeln war insgesamt eine gelungene Veranstaltung.<br>Insgesamt nahmen 19 Koppeln teil.</p>\n<p>Geangelt wurde in drei Sektoren vom Pumpenhaus bis zum Badestrand. Das Wetter spielte leider nur bedingt mit &ndash; es herrschte ein eisiger Gegenwind. Zudem war das Wasser, bedingt durch den langen Winter, weiterhin sehr kalt, sodass die Fische noch recht inaktiv waren.</p>\n<p>Gefangen wurde lediglich im vorderen Moorbereich sowie vereinzelt in den hohen 30er Platznummern ein Fisch. Die Verteilung war dabei etwas ungew&ouml;hnlich, da diese Bereiche sowohl relativ flach als auch sehr tief sind. Insgesamt wurden rund 3.600 Gramm Fisch gefangen.</p>\n<p>Nach dem Angeln wurde der Grill angeschmissen &ndash; vielen Dank an Kalle, Henrik und Manuel f&uuml;r die Unterst&uuml;tzung. Es gab selbstmarinierte Schweinelachssteaks, Bratwurst sowie selbstmarinierte Pute als Alternative. Bei 38 Personen wurden &uuml;ber 60 W&uuml;rstchen, etwa ebenso viele Putenst&uuml;cke und knapp 80 Schweinesteaks verzehrt. Dem Anschein nach hat es allen geschmeckt &ndash; unser Grillteam hatte auf jeden Fall gut zu tun.</p>\n<p>Von den meisten Teilnehmern gab es positives Feedback, sowohl zur Organisation als auch zu unserem neuen Vereinsheim. Einige anfangs skeptische G&auml;ste haben sich im Anschluss sogar dazu entschlossen, sich f&uuml;r das Nachtkoppel anzumelden.</p>\n</div>",
+        "category": {
+          "id": 4,
+          "sort": 5,
+          "name": "Sport"
+        }
+      },
+      {
+        "id": 4,
+        "status": "published",
+        "user_created": "f208a123-1898-4386-b8c1-55b6de700b4a",
+        "date_created": 1776837030391,
+        "date": 1774569600000,
+        "title": "Besatz von Regenbogenforellen",
+        "text": "<div>\n<p>Moin,<br>heute wurden 100 kg Regenbogenforellen (ca. 300 g pro Fisch) im See besetzt.</p>\n<p>Bitte denkt weiterhin an das Kunstk&ouml;der- und aktiv gef&uuml;hrte K&ouml;derverbot bis einschlie&szlig;lich 30.04.</p>\n<p>Ansonsten viel Erfolg am Wasser und Petri Heil!</p>\n</div>",
+        "category": {
+          "id": 5,
+          "sort": 4,
+          "name": "Gewässer"
+        }
+      },
+      {
+        "id": 5,
+        "status": "published",
+        "user_created": "f208a123-1898-4386-b8c1-55b6de700b4a",
+        "date_created": 1776837067005,
+        "user_updated": "f208a123-1898-4386-b8c1-55b6de700b4a",
+        "date_updated": 1776837071269,
+        "date": 1772928000000,
+        "title": "Jugend‑Workshop zum Start ins Angeljahr",
+        "text": "<div>\n<p>Am Samstag begann f&uuml;r unsere Jugend das Angeljahr traditionell mit einem Workshop. In diesem Jahr lag der Schwerpunkt auf der Knotenkunde. Unter Anleitung wurden unter anderem Kreuzknoten, Grinnerknoten, Schlaufen und Clinchknoten ge&uuml;bt.</p>\n<p>Um besser erkennen zu k&ouml;nnen, ob die Knoten korrekt gebunden wurden, wurde zun&auml;chst mit bunten Leinen statt der oft schwer sichtbaren Angelschnur gearbeitet. So konnten die Teilnehmer die Abl&auml;ufe gut nachvollziehen und selbstst&auml;ndig &uuml;ben.</p>\n<p>Im Anschluss ging es auf die Wiese, wo mit Hilfe einer Castingmatte an der Wurftechnik gearbeitet wurde. Mit bunten Markierungen wurde die Abweichung vom Ziel nach links und rechts sichtbar gemacht. Die W&uuml;rfe wurden gefilmt und anschlie&szlig;end gemeinsam ausgewertet, um m&ouml;gliche Verbesserungen zu besprechen.</p>\n<p>Die Hinweise konnten direkt umgesetzt werden, sodass die Treffer auf der Wurfmatte im Verlauf deutlich zunahmen. Insgesamt hatten alle Beteiligten viel Spa&szlig;.</p>\n</div>",
+        "category": {
+          "id": 1,
+          "sort": 6,
+          "name": "Jugend"
+        }
+      }
+    ],
+    "meta": {
+      "filter_count": 7,
+      "total_count": 7
+    }
+  },
+  "downloads": {
+    "data": [
+      {
+        "id": 2,
+        "sort": 1,
+        "user_created": "f208a123-1898-4386-b8c1-55b6de700b4a",
+        "date_created": 1776410459507,
+        "user_updated": "f208a123-1898-4386-b8c1-55b6de700b4a",
+        "date_updated": 1777557558960,
+        "title": "Fangmeldung Seite 1",
+        "file": {
+          "id": "7e8b3982-3876-40cd-a8e9-a03a93ae82da",
+          "title": "Fangmeldungen Seite 1",
+          "filename_download": "Fangmeldungen Seite 1.docx",
+          "type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+        }
+      },
+      {
+        "id": 3,
+        "sort": 2,
+        "user_created": "f208a123-1898-4386-b8c1-55b6de700b4a",
+        "date_created": 1776410470674,
+        "user_updated": "f208a123-1898-4386-b8c1-55b6de700b4a",
+        "date_updated": 1777557574811,
+        "title": "Fangmeldung Seite 2",
+        "file": {
+          "id": "b65483fa-ebf7-410b-b16b-2d3f54ef5487",
+          "title": "Fangmeldungen Seite 2",
+          "filename_download": "Fangmeldungen Seite 2.docx",
+          "type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+        }
+      },
+      {
+        "id": 4,
+        "sort": 3,
+        "user_created": "f208a123-1898-4386-b8c1-55b6de700b4a",
+        "date_created": 1776410491153,
+        "user_updated": "f208a123-1898-4386-b8c1-55b6de700b4a",
+        "date_updated": 1777557637993,
+        "title": "Aufnahmeantrag",
+        "file": {
+          "id": "3270a4cb-7a2a-4fce-9bd9-bd6e17f2907f",
+          "title": "Aufnahmeantrag Asv Loxstedt Stoteler See E.v. 1 1",
+          "filename_download": "Aufnahmeantrag_ASV_Loxstedt_Stoteler_See_e.V.-1-1.pdf",
+          "type": "application/pdf"
+        }
+      },
+      {
+        "id": 1,
+        "sort": 4,
+        "user_created": "f208a123-1898-4386-b8c1-55b6de700b4a",
+        "date_created": 1776410414410,
+        "user_updated": "f208a123-1898-4386-b8c1-55b6de700b4a",
+        "date_updated": 1777557634446,
+        "title": "Tiefenkarte",
+        "file": {
+          "id": "dd1243ef-b08c-41e1-9c37-cc8e157bf11f",
+          "title": "Tiefenkarte 1 ",
+          "filename_download": "tiefenkarte_1_.jpg",
+          "type": "image/jpeg",
+          "width": 1600,
+          "height": 1424
+        },
+        "description": "eine Tiefen Ansicht vom Stoteler See."
+      }
+    ]
+  },
+  "features": {
+    "data": [
+      {
+        "id": 3,
+        "key": "board",
+        "enabled": 1
+      },
+      {
+        "id": 1,
+        "key": "calendar",
+        "enabled": 1
+      },
+      {
+        "id": 4,
+        "key": "downloads",
+        "enabled": 1
+      },
+      {
+        "id": 2,
+        "key": "news",
+        "enabled": 1
+      }
+    ]
+  },
+  "roles": {
+    "data": [
+      {
+        "id": 6,
+        "person_link": {
+          "id": 8,
+          "sort": 6,
+          "firstname": "Moritz",
+          "lastname": "Wohlers"
+        },
+        "email": "Gewaesserwart@asv-loxstedt.de",
+        "role": "1. Gewässerwart",
+        "visible": 1,
+        "is_vacant": 0,
+        "category": {
+          "id": 5,
+          "sort": 4,
+          "name": "Gewässer"
+        }
+      },
+      {
+        "id": 12,
+        "person_link": {
+          "id": 2,
+          "sort": 11,
+          "firstname": "Timo",
+          "lastname": "Sander"
+        },
+        "email": "Jugendwart@asv-loxstedt.de",
+        "role": "1. Jugendwart",
+        "visible": 1,
+        "is_vacant": 0,
+        "category": {
+          "id": 1,
+          "sort": 6,
+          "name": "Jugend"
+        }
+      },
+      {
+        "id": 3,
+        "person_link": {
+          "id": 5,
+          "sort": 3,
+          "firstname": "Marko",
+          "lastname": "Heuer"
+        },
+        "email": "Kassenwart@asv-loxstedt.de",
+        "role": "1. Kassenwart",
+        "visible": 1,
+        "is_vacant": 0,
+        "category": {
+          "id": 3,
+          "sort": 2,
+          "name": "Kasse"
+        }
+      },
+      {
+        "id": 5,
+        "person_link": {
+          "id": 7,
+          "sort": 5,
+          "firstname": "Jürgen",
+          "lastname": "Bohling"
+        },
+        "email": "Schriftfuehrer@asv-loxstedt.de",
+        "role": "1. Schriftwart",
+        "visible": 1,
+        "is_vacant": 0,
+        "category": {
+          "id": 6,
+          "sort": 3,
+          "name": "Schrift"
+        }
+      },
+      {
+        "id": 9,
+        "person_link": {
+          "id": 11,
+          "sort": 9,
+          "firstname": "Christoph",
+          "lastname": "Piecha"
+        },
+        "email": "Sportwart@asv-loxstedt.de",
+        "role": "1. Sportwart",
+        "visible": 1,
+        "is_vacant": 0,
+        "category": {
+          "id": 4,
+          "sort": 5,
+          "name": "Sport"
+        }
+      },
+      {
+        "id": 1,
+        "person_link": {
+          "id": 3,
+          "sort": 1,
+          "firstname": "Dominick",
+          "lastname": "Bohling"
+        },
+        "email": "1.Vorsitzender@asv-loxstedt.de",
+        "role": "1. Vorsitzender",
+        "visible": 1,
+        "is_vacant": 0,
+        "category": {
+          "id": 2,
+          "sort": 1,
+          "name": "Vorsitz"
+        }
+      },
+      {
+        "id": 7,
+        "person_link": {
+          "id": 9,
+          "sort": 7,
+          "firstname": "Jakob",
+          "lastname": "Brant"
+        },
+        "role": "2. Gewässerwart",
+        "visible": 1,
+        "is_vacant": 0,
+        "category": {
+          "id": 5,
+          "sort": 4,
+          "name": "Gewässer"
+        }
+      },
+      {
+        "id": 13,
+        "person_link": {
+          "id": 1,
+          "sort": 12,
+          "firstname": "Henrik",
+          "lastname": "Büchner"
+        },
+        "role": "2. Jugendwart",
+        "visible": 1,
+        "is_vacant": 0,
+        "category": {
+          "id": 1,
+          "sort": 6,
+          "name": "Jugend"
+        }
+      },
+      {
+        "id": 4,
+        "person_link": {
+          "id": 6,
+          "sort": 4,
+          "firstname": "Reinhard",
+          "lastname": "Zey"
+        },
+        "role": "2. Kassenwart",
+        "visible": 1,
+        "is_vacant": 0,
+        "category": {
+          "id": 3,
+          "sort": 2,
+          "name": "Kasse"
+        }
+      },
+      {
+        "id": 10,
+        "role": "2. Sportwart",
+        "visible": 1,
+        "is_vacant": 1,
+        "category": {
+          "id": 4,
+          "sort": 5,
+          "name": "Sport"
+        }
+      },
+      {
+        "id": 2,
+        "person_link": {
+          "id": 14,
+          "sort": 2,
+          "firstname": "Stefan",
+          "lastname": "Rückert"
+        },
+        "email": "2.Vorsitzender@asv-loxstedt.de",
+        "role": "2. Vorsitzender",
+        "visible": 1,
+        "is_vacant": 0,
+        "category": {
+          "id": 2,
+          "sort": 1,
+          "name": "Vorsitz"
+        }
+      },
+      {
+        "id": 8,
+        "person_link": {
+          "id": 10,
+          "sort": 8,
+          "firstname": "Mario",
+          "lastname": "Sarrazin-Jahn"
+        },
+        "role": "3. Gewässerwart",
+        "visible": 1,
+        "is_vacant": 0,
+        "category": {
+          "id": 5,
+          "sort": 4,
+          "name": "Gewässer"
+        }
+      },
+      {
+        "id": 14,
+        "role": "3. Jugendwart",
+        "visible": 0,
+        "is_vacant": 1,
+        "category": {
+          "id": 1,
+          "sort": 6,
+          "name": "Jugend"
+        }
+      },
+      {
+        "id": 11,
+        "person_link": {
+          "id": 12,
+          "sort": 10,
+          "firstname": "Karl-Heinz",
+          "lastname": "Liedtke"
+        },
+        "email": "3.Sportwart-Senioren@asv-loxstedt.de",
+        "role": "3. Sportwart (Seniorenwart)",
+        "visible": 1,
+        "is_vacant": 0,
+        "category": {
+          "id": 4,
+          "sort": 5,
+          "name": "Sport"
+        }
+      },
+      {
+        "id": 15,
+        "person_link": {
+          "id": 13,
+          "sort": 13,
+          "firstname": "Piotr",
+          "lastname": "Poltorak"
+        },
+        "email": "Ehrenrat@asv-loxstedt.de",
+        "role": "Vorsitzender Ehrenrat",
+        "visible": 1,
+        "is_vacant": 0,
+        "category": {
+          "id": 8,
+          "sort": 7,
+          "name": "Ehrenrat"
+        }
+      }
+    ]
+  }
+}

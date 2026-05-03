@@ -1,5 +1,8 @@
 import { appConfig } from '@/core/config/env';
-import type { DirectusFile, DirectusFileReference } from '@/shared/types/directus';
+import type {
+  DirectusFile,
+  DirectusFileReference,
+} from '@/shared/types/directus';
 
 function getAssetId(asset: DirectusFileReference): string | null {
   if (!asset) {
@@ -23,10 +26,15 @@ export function getCmsAssetUrl(
     return null;
   }
 
-  const url = new URL(
-    `${appConfig.assetsPath.replace(/^\/?/, '')}/${assetId}`,
-    `${appConfig.apiBaseUrl}/`,
-  );
+  const assetsPath =
+    appConfig.cmsMode === 'demo'
+      ? appConfig.demoAssetsPath
+      : appConfig.assetsPath;
+  const baseUrl =
+    appConfig.cmsMode === 'demo'
+      ? import.meta.env.BASE_URL
+      : `${appConfig.apiBaseUrl}/`;
+  const url = new URL(`${assetsPath.replace(/^\/?/, '')}/${assetId}`, baseUrl);
 
   if (params) {
     Object.entries(params).forEach(([key, value]) => {

@@ -1,4 +1,5 @@
 import { appConfig } from '@/core/config/env';
+import { fetchDemoDirectus } from './adapter/JsonAdapter';
 
 type QueryPrimitive = string | number | boolean;
 interface QueryObject {
@@ -80,15 +81,29 @@ export async function fetchDirectus<T>(
   path: string,
   options: FetchDirectusOptions = {},
 ): Promise<T> {
-  const response = await fetch(buildUrl(path, options.query), {
-    headers: {
-      Accept: 'application/json',
-      ...(appConfig.apiToken
-        ? { Authorization: `Bearer ${appConfig.apiToken}` }
-        : {}),
-    },
-    signal: options.signal,
-  });
+  if (appConfig.cmsMode === 'demo') {
+    return fetchDemoDirectus<T>(path);
+  }
+
+  let response: Response;
+
+  try {
+    response = await fetch(buildUrl(path, options.query), {
+      headers: {
+        Accept: 'application/json',
+        ...(appConfig.apiToken
+          ? { Authorization: `Bearer ${appConfig.apiToken}` }
+          : {}),
+      },
+      signal: options.signal,
+    });
+  } catch (error) {
+    if (appConfig.cmsMode === 'directus') {
+      throw error;
+    }
+
+    return fetchDemoDirectus<T>(path);
+  }
 
   if (!response.ok) {
     const payload = (await response
