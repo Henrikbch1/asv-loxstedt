@@ -82,7 +82,7 @@ export async function fetchDirectus<T>(
   options: FetchDirectusOptions = {},
 ): Promise<T> {
   if (appConfig.cmsMode === 'demo') {
-    return fetchDemoDirectus<T>(path);
+    return fetchDemoDirectus<T>(path, options.query);
   }
 
   let response: Response;
@@ -102,7 +102,7 @@ export async function fetchDirectus<T>(
       throw error;
     }
 
-    return fetchDemoDirectus<T>(path);
+    return fetchDemoDirectus<T>(path, options.query);
   }
 
   if (!response.ok) {

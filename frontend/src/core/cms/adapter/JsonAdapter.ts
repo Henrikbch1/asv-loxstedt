@@ -68,7 +68,10 @@ export function getDemoFilePath(assetId: string): string | null {
   return entry?.path ?? null;
 }
 
-export async function fetchDemoDirectus<T>(path: string): Promise<T> {
+export async function fetchDemoDirectus<T>(
+  path: string,
+  query?: Record<string, unknown>,
+): Promise<T> {
   const manifest = await loadDemoManifest();
 
   if (isSingletonPath(path, 'global_settings')) {
@@ -96,7 +99,16 @@ export async function fetchDemoDirectus<T>(path: string): Promise<T> {
   }
 
   if (isEntityPath(path, 'news')) {
-    return cloneValue(manifest.news) as T;
+    const allNews = cloneValue(manifest.news);
+    const totalCount = allNews.data.length;
+    const limit = Number(query?.limit ?? totalCount);
+    const page = Number(query?.page ?? 1);
+    const start = (page - 1) * limit;
+    const pagedData = limit > 0 ? allNews.data.slice(start, start + limit) : allNews.data;
+    return {
+      data: pagedData,
+      meta: { filter_count: totalCount },
+    } as T;
   }
 
   const newsById = resolveNewsById(manifest, path);
