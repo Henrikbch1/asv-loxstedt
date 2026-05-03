@@ -104,7 +104,8 @@ export async function fetchDemoDirectus<T>(
     const limit = Number(query?.limit ?? totalCount);
     const page = Number(query?.page ?? 1);
     const start = (page - 1) * limit;
-    const pagedData = limit > 0 ? allNews.data.slice(start, start + limit) : allNews.data;
+    const pagedData =
+      limit > 0 ? allNews.data.slice(start, start + limit) : allNews.data;
     return {
       data: pagedData,
       meta: { filter_count: totalCount },
