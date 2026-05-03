@@ -715,6 +715,7 @@
     "data": [
       {
         "id": 6,
+        "sort": 6,
         "person_link": {
           "id": 8,
           "sort": 6,
@@ -733,6 +734,7 @@
       },
       {
         "id": 12,
+        "sort": 12,
         "person_link": {
           "id": 2,
           "sort": 11,
@@ -751,6 +753,7 @@
       },
       {
         "id": 3,
+        "sort": 3,
         "person_link": {
           "id": 5,
           "sort": 3,
@@ -769,6 +772,7 @@
       },
       {
         "id": 5,
+        "sort": 5,
         "person_link": {
           "id": 7,
           "sort": 5,
@@ -787,6 +791,7 @@
       },
       {
         "id": 9,
+        "sort": 9,
         "person_link": {
           "id": 11,
           "sort": 9,
@@ -805,6 +810,7 @@
       },
       {
         "id": 1,
+        "sort": 1,
         "person_link": {
           "id": 3,
           "sort": 1,
@@ -823,6 +829,7 @@
       },
       {
         "id": 7,
+        "sort": 7,
         "person_link": {
           "id": 9,
           "sort": 7,
@@ -840,6 +847,7 @@
       },
       {
         "id": 13,
+        "sort": 13,
         "person_link": {
           "id": 1,
           "sort": 12,
@@ -857,6 +865,7 @@
       },
       {
         "id": 4,
+        "sort": 4,
         "person_link": {
           "id": 6,
           "sort": 4,
@@ -874,6 +883,7 @@
       },
       {
         "id": 10,
+        "sort": 10,
         "role": "2. Sportwart",
         "visible": 1,
         "is_vacant": 1,
@@ -885,6 +895,7 @@
       },
       {
         "id": 2,
+        "sort": 2,
         "person_link": {
           "id": 14,
           "sort": 2,
@@ -903,6 +914,7 @@
       },
       {
         "id": 8,
+        "sort": 8,
         "person_link": {
           "id": 10,
           "sort": 8,
@@ -920,6 +932,7 @@
       },
       {
         "id": 14,
+        "sort": 14,
         "role": "3. Jugendwart",
         "visible": 0,
         "is_vacant": 1,
@@ -931,6 +944,7 @@
       },
       {
         "id": 11,
+        "sort": 11,
         "person_link": {
           "id": 12,
           "sort": 10,
@@ -949,6 +963,7 @@
       },
       {
         "id": 15,
+        "sort": 15,
         "person_link": {
           "id": 13,
           "sort": 13,
