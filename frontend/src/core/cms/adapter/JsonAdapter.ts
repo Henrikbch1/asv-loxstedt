@@ -1,8 +1,9 @@
-import { appConfig } from '@/core/config/env';
 import type {
   DirectusListResponse,
   DirectusSingletonResponse,
 } from '@/shared/types/directus';
+
+import demoManifestRaw from '../../../../public/demo/cms.json?raw';
 
 type DemoCmsManifest = {
   global_settings: DirectusSingletonResponse<unknown>;
@@ -14,25 +15,10 @@ type DemoCmsManifest = {
   roles: DirectusListResponse<unknown>;
 };
 
-let demoManifestPromise: Promise<DemoCmsManifest> | null = null;
-
-function getDemoManifestUrl(): string {
-  const dataPath = appConfig.demoDataPath.replace(/^\/+/, '');
-  return new URL(`${dataPath}/cms.json`, import.meta.env.BASE_URL).toString();
-}
+const demoManifest = JSON.parse(demoManifestRaw) as DemoCmsManifest;
 
 async function loadDemoManifest(): Promise<DemoCmsManifest> {
-  if (!demoManifestPromise) {
-    demoManifestPromise = fetch(getDemoManifestUrl()).then(async (response) => {
-      if (!response.ok) {
-        throw new Error(`Unable to load demo CMS data: ${response.status}`);
-      }
-
-      return (await response.json()) as DemoCmsManifest;
-    });
-  }
-
-  return demoManifestPromise;
+  return Promise.resolve(demoManifest);
 }
 
 function cloneValue<T>(value: T): T {

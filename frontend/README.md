@@ -112,3 +112,15 @@ Weitere Informationen zur CMS-Konfiguration: [Directus-Setup.md](Directus-Setup.
 - Testdaten: `cms/database/snapshot.json` in Directus importieren.
 - Demo-Daten: `npm run export:demo-cms` erzeugt `public/demo/cms.json` aus der lokalen Directus-Datenbank neu.
 - Pfad-Alias `@` zeigt auf `src/` (konfiguriert in `vite.config.ts`).
+
+## GitHub Pages Demo
+
+Für die Demo wird das Frontend als statische Seite auf der Branch `gh-pages` veröffentlicht. Diese Branch bleibt vom normalen Entwicklungsfluss getrennt und wird nicht in `main` zurückgemerged.
+
+Voraussetzungen für GitHub Pages:
+
+1. In den Repository-Einstellungen GitHub Pages auf die Branch `gh-pages` und den Root-Pfad stellen.
+2. Den Workflow aus `/.github/workflows/deploy-demo-pages.yml` aktiv lassen.
+3. Die Build-Umgebung setzt `VITE_CMS_MODE=demo` und `VITE_BASE_PATH=/asv-loxstedt/`, damit die Seite ohne Directus-Backend und mit passendem Pages-Pfad läuft.
+
+Falls der Repository-Name anders ist, muss `VITE_BASE_PATH` im Workflow angepasst werden.

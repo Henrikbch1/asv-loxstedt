@@ -1,0 +1,48 @@
+name: Deploy demo to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Install dependencies
+        working-directory: frontend
+        run: npm ci
+
+      - name: Build demo site
+        working-directory: frontend
+        env:
+          VITE_CMS_MODE: demo
+          VITE_BASE_PATH: /asv-loxstedt/
+        run: npm run build
+
+      - name: Prepare GitHub Pages output
+        working-directory: frontend/dist
+        run: |
+          cp index.html 404.html
+          touch .nojekyll
+
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: frontend/dist
