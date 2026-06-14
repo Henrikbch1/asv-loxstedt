@@ -29,6 +29,9 @@ frontend/cypress/reports/
 frontend/cypress.env.json
 frontend/.env.local
 
+# IDE files
+.idea/
+
 # Coverage / test output
 frontend/coverage/
 .nyc_output/
