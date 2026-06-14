@@ -35,7 +35,8 @@ const styles = {
   imageWrap:
     'h-24 shrink-0 overflow-hidden rounded-md border border-border bg-surface-strong sm:h-28',
   image: 'block h-full w-auto object-contain',
-  fallbackIcon: 'flex h-full w-24 items-center justify-center text-muted sm:w-28',
+  fallbackIcon:
+    'flex h-full w-24 items-center justify-center text-muted sm:w-28',
   fishName: 'text-base font-semibold leading-tight text-black',
   fishMeta: 'grid gap-2 text-sm text-muted',
   metaRow: 'flex items-center justify-between gap-3',
@@ -78,10 +79,10 @@ function FishFallbackIcon() {
   return (
     <svg
       aria-hidden="true"
-      className="h-8 w-8"
+      className="h-8 w-8 overflow-visible"
       fill="none"
-      viewBox="-2 -2 28 28"
-      width="28"
+      viewBox="-3 -3 31 30"
+      width="31"
       height="28"
     >
       <path
