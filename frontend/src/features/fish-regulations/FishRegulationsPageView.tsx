@@ -33,9 +33,9 @@ const styles = {
   card: 'grid gap-3 rounded-lg border border-border bg-white p-4 shadow-sm',
   cardHeader: 'flex items-start gap-3',
   imageWrap:
-    'h-16 w-16 shrink-0 overflow-hidden rounded-md border border-border bg-surface-strong',
-  image: 'h-full w-full object-cover',
-  fallbackIcon: 'flex h-full w-full items-center justify-center text-muted',
+    'h-24 shrink-0 overflow-hidden rounded-md border border-border bg-surface-strong sm:h-28',
+  image: 'block h-full w-auto object-contain',
+  fallbackIcon: 'flex h-full w-24 items-center justify-center text-muted sm:w-28',
   fishName: 'text-base font-semibold leading-tight text-black',
   fishMeta: 'grid gap-2 text-sm text-muted',
   metaRow: 'flex items-center justify-between gap-3',
@@ -78,10 +78,11 @@ function FishFallbackIcon() {
   return (
     <svg
       aria-hidden="true"
+      className="h-8 w-8"
       fill="none"
-      viewBox="0 0 24 24"
-      width="24"
-      height="24"
+      viewBox="-2 -2 28 28"
+      width="28"
+      height="28"
     >
       <path
         d="M3 12c2.1-2.7 5.5-4.5 9.5-4.5 3.1 0 5.8 1 7.8 2.6l.7-.6v5l-3.9 1.4.7-.9A12.2 12.2 0 0 1 12.5 16.5C8.5 16.5 5.1 14.7 3 12Zm8.5-.8a.8.8 0 1 0 0 1.6.8.8 0 0 0 0-1.6Z"
@@ -96,9 +97,9 @@ function FishFallbackIcon() {
 
 function FishRegulationCard({ item }: { item: FishRegulation }) {
   const imageUrl = getCmsAssetUrl(item.image, {
-    width: 160,
-    height: 160,
-    fit: 'cover',
+    width: 320,
+    height: 320,
+    fit: 'inside',
     format: 'webp',
     quality: 70,
   });
