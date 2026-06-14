@@ -7,6 +7,8 @@ export type {
   NewsItemSummary,
   NewsItem,
   DownloadItem,
+  FishRegulation,
+  FishWaterType,
   Person,
   Role,
 } from './domain';

@@ -4,6 +4,7 @@ import {
   useNavigationTreeQuery,
 } from '@/core/shell/navigation/useNavigationQuery';
 import { buildHeaderNavItems } from '@/core/shell/navigation/buildNavTree';
+import { filterNavigationTreeByFeatures } from '@/core/config/featureGates';
 import { shouldShowCalendar } from '@/core/shell/routing/routeResolver';
 import { useFeaturesConfig } from '@/core/config/FeaturesContext';
 import { ErrorState } from '@/shared/ui/ErrorState';
@@ -45,15 +46,14 @@ export function AppLayout() {
     );
   }
 
+  const navigationItems = filterNavigationTreeByFeatures(
+    buildHeaderNavItems(navigationQuery.data ?? [], features.news),
+    features,
+  );
+
   return (
     <div className={styles.shell}>
-      <Header
-        navigationItems={buildHeaderNavItems(
-          navigationQuery.data ?? [],
-          features.news,
-        )}
-        settings={settingsQuery.data}
-      />
+      <Header navigationItems={navigationItems} settings={settingsQuery.data} />
       <main className={styles.main}>
         <Outlet />
       </main>

@@ -3,6 +3,8 @@ import { TemplateRenderer } from '@/core/templates/TemplateRenderer';
 import { useFeaturesConfig } from '@/core/config/FeaturesContext';
 import { BoardPageView } from '@/features/board/BoardPageView';
 import { DownloadsPageView } from '@/features/downloads/DownloadsPageView';
+import { FishRegulationsPageView } from '@/features/fish-regulations/FishRegulationsPageView';
+import { NotFoundState } from '@/shared/ui/NotFoundState';
 
 interface CmsPageViewProps {
   page: CmsPage;
@@ -23,6 +25,13 @@ export function CmsPageView({ page }: CmsPageViewProps) {
       return <TemplateRenderer page={{ ...page, template: 'default' }} />;
     }
     return <DownloadsPageView page={page} />;
+  }
+
+  if (page.template === 'fish_regulations') {
+    if (!features.fish_regulations) {
+      return <NotFoundState />;
+    }
+    return <FishRegulationsPageView page={page} />;
   }
 
   return <TemplateRenderer page={page} />;

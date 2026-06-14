@@ -13,4 +13,5 @@ export {
   getBoardRoles,
 } from './api/pageApi';
 export { getPublicDownloads } from './api/downloadsApi';
+export { getPublicFishRegulations } from './api/fishRegulationsApi';
 export { getFeatures } from './api/featuresApi';

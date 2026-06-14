@@ -63,6 +63,20 @@ export interface DownloadItem {
   category: DirectusRelation<Category> | null;
 }
 
+export type FishWaterType = 'all' | 'lune' | 'see';
+
+export interface FishRegulation {
+  id: CmsId;
+  name: string;
+  image: DirectusFileReference | null;
+  minimum_size_cm: number | null;
+  has_closed_season: boolean;
+  closed_start: string | null;
+  closed_end: string | null;
+  water_type: FishWaterType;
+  sort: number | null;
+}
+
 export interface Person {
   id: CmsId;
   firstname: string;

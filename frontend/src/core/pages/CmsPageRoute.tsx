@@ -2,12 +2,15 @@ import { useParams } from 'react-router-dom';
 import { ErrorState } from '@/shared/ui/ErrorState';
 import { LoadingState } from '@/shared/ui/LoadingState';
 import { NotFoundState } from '@/shared/ui/NotFoundState';
+import { useFeaturesConfig } from '@/core/config/FeaturesContext';
+import { isPathAllowed } from '@/core/config/featureGates';
 import { CmsPageView } from './CmsPageView';
 import { usePublicPageByPathQuery } from './useCmsPageQueries';
 
 export function CmsPageRoute() {
   const params = useParams();
   const path = params['*'] ?? '';
+  const features = useFeaturesConfig();
   const pageQuery = usePublicPageByPathQuery(path);
 
   if (!path) {
@@ -30,6 +33,10 @@ export function CmsPageRoute() {
   }
 
   if (!pageQuery.data) {
+    return <NotFoundState />;
+  }
+
+  if (!isPathAllowed(path, features)) {
     return <NotFoundState />;
   }
 

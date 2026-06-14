@@ -17,13 +17,14 @@ Jede Seite, die über die Website erreichbar sein soll, braucht einen Eintrag.
 
 ### Verfügbare Templates
 
-| Template    | Wann verwenden                                           |
-| ----------- | -------------------------------------------------------- |
-| `standard`  | Normale Inhaltsseite mit Rich-Text                       |
-| `board`     | Vorstandsseite – zeigt automatisch alle `roles`-Einträge |
-| `downloads` | Seite mit Datei-Downloads                                |
-| `landing`   | Landingpage                                              |
-| `legal`     | Rechtliche Seiten (alternativ zu global_settings)        |
+| Template           | Wann verwenden                                              |
+| ------------------ | ----------------------------------------------------------- |
+| `standard`         | Normale Inhaltsseite mit Rich-Text                          |
+| `board`            | Vorstandsseite – zeigt automatisch alle `roles`-Einträge    |
+| `downloads`        | Seite mit Datei-Downloads                                   |
+| `fish_regulations` | Schonzeiten & Mindestmasse mit Daten aus `fish_regulations` |
+| `landing`          | Landingpage                                                 |
+| `legal`            | Rechtliche Seiten (alternativ zu global_settings)           |
 
 ### Unterseiten (Hierarchie)
 

@@ -8,6 +8,7 @@ export interface FeatureFlags {
   calendar: boolean;
   board: boolean;
   downloads: boolean;
+  fish_regulations: boolean;
 }
 
 const defaultFlags: FeatureFlags = {
@@ -15,6 +16,7 @@ const defaultFlags: FeatureFlags = {
   calendar: false,
   board: false,
   downloads: false,
+  fish_regulations: false,
 };
 
 const FeaturesContext = createContext<FeatureFlags>(defaultFlags);
