@@ -63,7 +63,7 @@ export interface DownloadItem {
   category: DirectusRelation<Category> | null;
 }
 
-export type FishWaterType = 'all' | 'lune' | 'see';
+export type FishWaterType = string;
 
 export interface FishRegulation {
   id: CmsId;

@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { ContentPage } from '@/shared/ui/ContentPage';
 import { SectionHeading } from '@/shared/ui/SectionHeading';
 import { RichText } from '@/shared/ui/RichText';
@@ -42,23 +42,28 @@ const styles = {
   statusWrap: 'pt-1',
 } as const;
 
-type WaterFilter = 'all' | 'lune' | 'see';
+type WaterFilter = FishWaterType | null;
 
 interface FishRegulationsPageViewProps {
   page: CmsPage;
 }
 
-const WATER_FILTERS: Array<{ key: WaterFilter; label: string }> = [
-  { key: 'all', label: 'Alle' },
-  { key: 'lune', label: 'Lune' },
-  { key: 'see', label: 'Vereinsseen' },
-];
+function getWaterFilterLabel(value: string): string {
+  return value
+    .split('_')
+    .map((segment) =>
+      segment.length > 0
+        ? `${segment.charAt(0).toUpperCase()}${segment.slice(1)}`
+        : segment,
+    )
+    .join(' ');
+}
 
 function matchesWaterType(
   itemType: FishWaterType,
   filter: WaterFilter,
 ): boolean {
-  if (filter === 'all') {
+  if (!filter) {
     return true;
   }
 
@@ -148,8 +153,36 @@ export function FishRegulationsPageView({
   useSiteTitle(page.title || 'Schonzeiten und Mindestmasse');
 
   const [searchValue, setSearchValue] = useState('');
-  const [waterFilter, setWaterFilter] = useState<WaterFilter>('all');
+  const [waterFilter, setWaterFilter] = useState<WaterFilter>(null);
   const regulationsQuery = useFishRegulationsQuery();
+
+  const availableWaterFilters = useMemo<FishWaterType[]>(() => {
+    const values = new Set<FishWaterType>();
+
+    for (const item of regulationsQuery.data ?? []) {
+      if (item.water_type !== 'all') {
+        values.add(item.water_type);
+      }
+    }
+
+    const ordered = [...values];
+    ordered.sort((a, b) => a.localeCompare(b, 'de-DE'));
+
+    return ordered;
+  }, [regulationsQuery.data]);
+
+  useEffect(() => {
+    if (availableWaterFilters.length === 0) {
+      if (waterFilter !== null) {
+        setWaterFilter(null);
+      }
+      return;
+    }
+
+    if (!waterFilter || !availableWaterFilters.includes(waterFilter)) {
+      setWaterFilter(availableWaterFilters[0]);
+    }
+  }, [availableWaterFilters, waterFilter]);
 
   const filteredItems = useMemo(() => {
     const term = searchValue.trim().toLowerCase();
@@ -193,7 +226,7 @@ export function FishRegulationsPageView({
         title={page.title || 'Schonzeiten und Mindestmasse'}
         description={
           page.intro ??
-          'Suche nach Fischarten und pruefe Mindestmass, Schonzeit und Freigabe-Status fuer Lune und Vereinsseen.'
+          'Suche nach Fischarten und pruefe Mindestmass, Schonzeit und Freigabe-Status fuer Lune und Stoteler See.'
         }
       />
 
@@ -223,21 +256,21 @@ export function FishRegulationsPageView({
           role="tablist"
           aria-label="Wasser filter"
         >
-          {WATER_FILTERS.map((filter) => (
+          {availableWaterFilters.map((filter) => (
             <button
-              key={filter.key}
+              key={filter}
               className={cn(
                 styles.filterButton,
-                waterFilter === filter.key && styles.filterButtonActive,
+                waterFilter === filter && styles.filterButtonActive,
               )}
               type="button"
               onClick={() => {
-                setWaterFilter(filter.key);
+                setWaterFilter(filter);
               }}
               role="tab"
-              aria-selected={waterFilter === filter.key}
+              aria-selected={waterFilter === filter}
             >
-              {filter.label}
+              {getWaterFilterLabel(filter)}
             </button>
           ))}
         </div>
