@@ -47,10 +47,25 @@ function parseMonthDay(value: string | null): MonthDay | null {
   }
 
   const normalizedValue = value.trim();
+
+  // Legacy/Directus date format: "MM-DD".
   const match = /^(\d{2})-(\d{2})$/.exec(normalizedValue);
   if (match) {
     const month = Number(match[1]);
     const day = Number(match[2]);
+
+    if (!isValidMonthDay(month, day)) {
+      return null;
+    }
+
+    return { month, day };
+  }
+
+  // CMS text field format: "DD.MM" or "D.M" (optional trailing dot).
+  const dayMonthMatch = /^(\d{1,2})\.(\d{1,2})\.?$/.exec(normalizedValue);
+  if (dayMonthMatch) {
+    const day = Number(dayMonthMatch[1]);
+    const month = Number(dayMonthMatch[2]);
 
     if (!isValidMonthDay(month, day)) {
       return null;
@@ -161,5 +176,5 @@ export function formatClosedSeason(regulation: FishRegulation): string {
     return 'Keine';
   }
 
-  return `ab ${start} bis einschliesslich ${end}`;
+  return `ab ${start} - ${end}`;
 }

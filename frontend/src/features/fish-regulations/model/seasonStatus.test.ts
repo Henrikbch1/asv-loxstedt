@@ -81,22 +81,40 @@ describe('seasonStatus', () => {
     });
 
     expect(formatMinimumSize(55)).toBe('55 cm');
-    expect(formatMinimumSize(null)).toBe('Keines');
-    expect(formatClosedSeason(regulation)).toBe(
-      'ab 15.10. bis einschliesslich 15.02.',
-    );
+    expect(formatMinimumSize(null)).toBe('-');
+    expect(formatClosedSeason(regulation)).toBe('ab 15.10. - 15.02.');
   });
 
   it('supports German month-name values from CMS text fields', () => {
     const regulation = createRegulation({
-      closed_start: '01 Februar',
+      closed_start: '01 Maerz',
       closed_end: '01 Mai',
     });
 
-    expect(formatClosedSeason(regulation)).toBe(
-      'ab 01.02. bis einschliesslich 01.05.',
-    );
+    expect(formatClosedSeason(regulation)).toBe('ab 01.03. - 01.05.');
     expect(isInClosedSeason(regulation, new Date(2026, 2, 15))).toBe(true);
     expect(isInClosedSeason(regulation, new Date(2026, 5, 1))).toBe(false);
+  });
+
+  it('supports German month names with umlaut from CMS text fields', () => {
+    const regulation = createRegulation({
+      closed_start: '01 März',
+      closed_end: '15 April',
+    });
+
+    expect(formatClosedSeason(regulation)).toBe('ab 01.03. - 15.04.');
+    expect(isInClosedSeason(regulation, new Date(2026, 2, 10))).toBe(true);
+    expect(isInClosedSeason(regulation, new Date(2026, 4, 1))).toBe(false);
+  });
+
+  it('supports DD.MM values from CMS text fields', () => {
+    const regulation = createRegulation({
+      closed_start: '01.03',
+      closed_end: '15.04',
+    });
+
+    expect(formatClosedSeason(regulation)).toBe('ab 01.03. - 15.04.');
+    expect(isInClosedSeason(regulation, new Date(2026, 2, 10))).toBe(true);
+    expect(isInClosedSeason(regulation, new Date(2026, 1, 28))).toBe(false);
   });
 });
