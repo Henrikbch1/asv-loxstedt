@@ -143,7 +143,7 @@ function formatMonthDay(value: string | null): string | null {
 
 export function formatMinimumSize(minimumSizeCm: number | null): string {
   if (typeof minimumSizeCm !== 'number' || Number.isNaN(minimumSizeCm)) {
-    return 'Keines';
+    return '-';
   }
 
   return `${minimumSizeCm} cm`;

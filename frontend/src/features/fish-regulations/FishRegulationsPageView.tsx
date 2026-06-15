@@ -1,11 +1,10 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { ContentPage } from '@/shared/ui/ContentPage';
 import { SectionHeading } from '@/shared/ui/SectionHeading';
 import { RichText } from '@/shared/ui/RichText';
 import { LoadingState } from '@/shared/ui/LoadingState';
 import { ErrorState } from '@/shared/ui/ErrorState';
 import { EmptyState } from '@/shared/ui/EmptyState';
-import { Badge } from '@/shared/ui/Badge';
 import { useSiteTitle } from '@/core/settings/useSiteTitle';
 import type {
   CmsPage,
@@ -30,17 +29,19 @@ const styles = {
     'rounded-full border border-border px-3 py-1.5 text-sm font-medium transition hover:border-brand hover:text-brand',
   filterButtonActive: 'border-brand bg-brand text-white hover:text-white',
   list: 'grid gap-3 sm:grid-cols-2 xl:grid-cols-3',
-  card: 'grid gap-3 rounded-lg border border-border bg-white p-4 shadow-sm',
-  cardHeader: 'flex items-start gap-3',
+  card: 'grid gap-4 rounded-lg border border-border bg-white p-4 shadow-sm',
+  cardBlocked: 'border-red-300 bg-red-50 shadow-red-100',
+  cardHeader: 'grid justify-items-start gap-2',
   imageWrap:
-    'h-24 shrink-0 overflow-hidden rounded-md border border-border bg-surface-strong sm:h-28',
-  image: 'block h-full w-auto object-contain',
-  fallbackIcon:
-    'flex h-full w-24 items-center justify-center text-muted sm:w-28',
-  fishName: 'text-base font-semibold leading-tight text-black',
-  fishMeta: 'grid gap-2 text-sm text-muted',
-  metaRow: 'flex items-center justify-between gap-3',
-  statusWrap: 'pt-1',
+    'flex h-36 w-full items-center justify-center overflow-hidden rounded-md bg-white p-1 sm:h-40',
+  imageWrapBlocked: 'bg-red-50',
+  image: 'block h-full w-full scale-110 object-contain',
+  fallbackIcon: 'flex h-full w-full items-center justify-center text-muted',
+  fishName: 'text-xl font-bold leading-tight text-black',
+  fishMeta: 'grid gap-2 text-sm',
+  metaRow: 'flex items-baseline gap-1.5',
+  metaLabel: 'text-xs font-medium text-muted',
+  metaValue: 'text-sm font-semibold text-black',
 } as const;
 
 type WaterFilter = FishWaterType | null;
@@ -50,6 +51,10 @@ interface FishRegulationsPageViewProps {
 }
 
 function getWaterFilterLabel(value: string): string {
+  if (value === 'all') {
+    return 'Alle Gewaesser';
+  }
+
   return value
     .split('_')
     .map((segment) =>
@@ -109,9 +114,12 @@ function FishRegulationCard({ item }: { item: FishRegulation }) {
   const isBlocked = status === 'blocked';
 
   return (
-    <li className={styles.card}>
+    <li className={cn(styles.card, isBlocked && styles.cardBlocked)}>
       <div className={styles.cardHeader}>
-        <div className={styles.imageWrap} aria-hidden="true">
+        <div
+          className={cn(styles.imageWrap, isBlocked && styles.imageWrapBlocked)}
+          aria-hidden="true"
+        >
           {imageUrl ? (
             <img
               alt={getCmsAssetLabel(item.image)}
@@ -131,20 +139,16 @@ function FishRegulationCard({ item }: { item: FishRegulation }) {
 
       <dl className={styles.fishMeta}>
         <div className={styles.metaRow}>
-          <dt>Mindestmass</dt>
-          <dd>{formatMinimumSize(item.minimum_size_cm)}</dd>
+          <dt className={styles.metaLabel}>Mindestmaß</dt>
+          <dd className={styles.metaValue}>
+            {formatMinimumSize(item.minimum_size_cm)}
+          </dd>
         </div>
         <div className={styles.metaRow}>
-          <dt>Schonzeit</dt>
-          <dd>{formatClosedSeason(item)}</dd>
+          <dt className={styles.metaLabel}>Schonzeit</dt>
+          <dd className={styles.metaValue}>{formatClosedSeason(item)}</dd>
         </div>
       </dl>
-
-      {isBlocked ? (
-        <div className={styles.statusWrap}>
-          <Badge className="bg-red-100 text-red-700">Gesperrt</Badge>
-        </div>
-      ) : null}
     </li>
   );
 }
@@ -152,7 +156,7 @@ function FishRegulationCard({ item }: { item: FishRegulation }) {
 export function FishRegulationsPageView({
   page,
 }: FishRegulationsPageViewProps) {
-  useSiteTitle(page.title || 'Schonzeiten und Mindestmasse');
+  useSiteTitle(page.title || 'Schonzeiten und Mindestmaße');
 
   const [searchValue, setSearchValue] = useState('');
   const [waterFilter, setWaterFilter] = useState<WaterFilter>(null);
@@ -173,24 +177,23 @@ export function FishRegulationsPageView({
     return ordered;
   }, [regulationsQuery.data]);
 
-  useEffect(() => {
+  const activeWaterFilter = useMemo<WaterFilter>(() => {
     if (availableWaterFilters.length === 0) {
-      if (waterFilter !== null) {
-        setWaterFilter(null);
-      }
-      return;
+      return null;
     }
 
-    if (!waterFilter || !availableWaterFilters.includes(waterFilter)) {
-      setWaterFilter(availableWaterFilters[0]);
+    if (waterFilter && availableWaterFilters.includes(waterFilter)) {
+      return waterFilter;
     }
+
+    return availableWaterFilters[0];
   }, [availableWaterFilters, waterFilter]);
 
   const filteredItems = useMemo(() => {
     const term = searchValue.trim().toLowerCase();
 
     return (regulationsQuery.data ?? [])
-      .filter((item) => matchesWaterType(item.water_type, waterFilter))
+      .filter((item) => matchesWaterType(item.water_type, activeWaterFilter))
       .filter((item) =>
         term.length === 0 ? true : item.name.toLowerCase().includes(term),
       )
@@ -204,10 +207,10 @@ export function FishRegulationsPageView({
 
         return a.name.localeCompare(b.name, 'de-DE');
       });
-  }, [regulationsQuery.data, searchValue, waterFilter]);
+  }, [activeWaterFilter, regulationsQuery.data, searchValue]);
 
   if (regulationsQuery.isPending) {
-    return <LoadingState title="Schonzeiten und Mindestmasse werden geladen" />;
+    return <LoadingState title="Schonzeiten und Mindestmaße werden geladen" />;
   }
 
   if (regulationsQuery.isError) {
@@ -225,10 +228,10 @@ export function FishRegulationsPageView({
     <ContentPage>
       <SectionHeading
         eyebrow="Gewaesser"
-        title={page.title || 'Schonzeiten und Mindestmasse'}
+        title={page.title || 'Schonzeiten und Mindestmaße'}
         description={
           page.intro ??
-          'Suche nach Fischarten und pruefe Mindestmass, Schonzeit und Freigabe-Status fuer Lune und Stoteler See.'
+          'Suche nach Fischarten und prüfe Mindestma, Schonzeit und Freigabe-Status für Lune und Stoteler See.'
         }
       />
 
@@ -263,14 +266,14 @@ export function FishRegulationsPageView({
               key={filter}
               className={cn(
                 styles.filterButton,
-                waterFilter === filter && styles.filterButtonActive,
+                activeWaterFilter === filter && styles.filterButtonActive,
               )}
               type="button"
               onClick={() => {
                 setWaterFilter(filter);
               }}
               role="tab"
-              aria-selected={waterFilter === filter}
+              aria-selected={activeWaterFilter === filter}
             >
               {getWaterFilterLabel(filter)}
             </button>
